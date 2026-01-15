@@ -6,21 +6,34 @@ const analysisService = new AnalysisService();
 export const maxDuration = 60; // Allow 60 seconds for complex AI orchestration
 export const dynamic = 'force-dynamic';
 
-export async function OPTIONS() {
+const allowedOrigins = [
+    "http://localhost:3000",
+    process.env.ALLOWED_ORIGIN
+].filter(Boolean);
+
+function getCorsHeaders(request: NextRequest) {
+    const origin = request.headers.get("origin") || "";
+    // Si l'origine est dans la liste blanche, on la renvoie. Sinon on renvoie la première par défaut (ou null)
+    const allowedOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+
+    return {
+        "Access-Control-Allow-Origin": allowedOrigin || "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    };
+}
+
+export async function OPTIONS(request: NextRequest) {
     return new NextResponse(null, {
         status: 204,
-        headers: {
-            "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "http://localhost:3000",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
+        headers: getCorsHeaders(request),
     });
 }
 
-function corsResponse(data: any, status = 200) {
+function corsResponse(data: any, request: NextRequest, status = 200) {
     return NextResponse.json(data, {
         status,
-        headers: { "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "http://localhost:3000" }
+        headers: getCorsHeaders(request)
     });
 }
 
@@ -29,7 +42,7 @@ export async function POST(req: NextRequest) {
         const { decision, reasoning } = await req.json();
 
         if (!decision) {
-            return corsResponse({ error: "Decision is required" }, 400);
+            return corsResponse({ error: "Decision is required" }, req, 400);
         }
 
         const result = await analysisService.analyze(decision, reasoning);
@@ -38,10 +51,10 @@ export async function POST(req: NextRequest) {
             id: crypto.randomUUID(),
             ...result,
             timestamp: new Date().toISOString()
-        });
+        }, req);
 
     } catch (error: any) {
         console.error("Analysis error:", error);
-        return corsResponse({ error: error.message || "Internal Server Error" }, 500);
+        return corsResponse({ error: error.message || "Internal Server Error" }, req, 500);
     }
 }
