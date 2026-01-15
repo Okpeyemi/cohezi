@@ -20,7 +20,8 @@ Tu es le Juge Analytique de **Cohezi**. Ton rôle est de compiler les rapports d
     {
       "title": "Nom de la faille",
       "impact": "Description de l'impact",
-      "evidence": ["Agent A", "Agent B"]
+      "evidence": ["Agent A", "Agent B"],
+      "detailed_explanation": "Une explication pédagogique profonde expliquant POURQUOI c'est une faille et comment elle pourrait se manifester."
     }
   ],
   "decision_paths": [
@@ -28,7 +29,8 @@ Tu es le Juge Analytique de **Cohezi**. Ton rôle est de compiler les rapports d
       "path": "Option A / Scénario A",
       "valid_if": "Condition de validité",
       "fails_if": "Condition de rupture",
-      "robustness_score": 0 to 100
+      "robustness_score": 0 to 100,
+      "detailed_explanation": "Analyse nuancée du scénario, incluant les compromis nécessaires et les signaux d'alerte à surveiller."
     }
   ],
   "synthesis_summary": "Une analyse globale neutre du niveau de risque et de la clarté du raisonnement."

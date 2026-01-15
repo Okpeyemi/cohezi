@@ -3,11 +3,122 @@
 import React, { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layout/main-layout";
 import { InputPanel } from "@/components/panels/input-panel";
-import { BrainCircuit, Loader2, Scale, AlertTriangle, ShieldCheck } from "lucide-react";
+import { BrainCircuit, Loader2, Scale, AlertTriangle, ShieldCheck, Info, MessageSquareText } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { CausalGraph } from "@/components/ui/causal-graph";
 import { motion, AnimatePresence } from "framer-motion";
+
+function VerdictCard({
+    title,
+    subtitle,
+    detail,
+    type,
+    delay,
+    score,
+    validIf,
+    failsIf
+}: any) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay }}
+            className={cn(
+                "group relative overflow-hidden transition-all duration-300 rounded-2xl border",
+                type === "flaw"
+                    ? "bg-rose-500/[0.03] border-rose-500/10 hover:border-rose-500/30 shadow-[0_4px_20px_rgba(244,63,94,0.05)]"
+                    : "bg-zinc-900/40 border-zinc-800 hover:border-emerald-500/20 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+            )}
+        >
+            <div className="p-5">
+                <div className="flex flex-col w-full justify-between items-start gap-4">
+                    <div className="flex-1 space-y-1">
+                        <div className="flex items-center gap-2 mb-1">
+                            <h4 className={cn(
+                                "font-bold text-sm leading-tight tracking-tight",
+                                type === "flaw" ? "text-rose-200" : "text-zinc-100"
+                            )}>{title}</h4>
+                            {type === "flaw" && <div className="w-1 h-1 rounded-full bg-rose-500 animate-pulse" />}
+                        </div>
+                        {subtitle && <p className="text-[11px] text-zinc-400 leading-relaxed font-medium">{subtitle}</p>}
+
+                        {type === "path" && (
+                            <div className="pt-3 space-y-2">
+                                <div className="flex items-start gap-2">
+                                    <div className="mt-1 w-1 h-1 rounded-full bg-emerald-500" />
+                                    <p className="text-[9px] text-zinc-500 leading-tight uppercase font-bold"><span className="text-emerald-500/80">VALIDE SI:</span> {validIf}</p>
+                                </div>
+                                <div className="flex items-start gap-2">
+                                    <div className="mt-1 w-1 h-1 rounded-full bg-rose-500" />
+                                    <p className="text-[9px] text-zinc-500 leading-tight uppercase font-bold"><span className="text-rose-500/80">ÉCHOUE SI:</span> {failsIf}</p>
+                                </div>
+
+                                <div className="pt-2">
+                                    <div className="flex justify-between items-center mb-1">
+                                        <span className="text-[8px] uppercase font-bold text-zinc-600 tracking-wider">Coefficient de Résilience</span>
+                                        <span className="text-[10px] font-mono font-bold text-emerald-500">{score}%</span>
+                                    </div>
+                                    <div className="w-full bg-zinc-950 h-1.5 rounded-full overflow-hidden border border-white/5">
+                                        <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${score}%` }}
+                                            transition={{ delay: delay + 0.5, duration: 1.5, ease: "easeOut" }}
+                                            className="bg-emerald-500 h-full rounded-full shadow-[0_0_12px_rgba(16,185,129,0.4)]"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="flex justify-end w-full">
+                        <button
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className={cn(
+                                "group/btn flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 border",
+                                isExpanded
+                                    ? "bg-emerald-500 text-zinc-950 border-emerald-400"
+                                    : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-200 hover:border-zinc-700 hover:bg-zinc-900"
+                            )}
+                        >
+                            <span className="text-[8px] font-black uppercase tracking-widest">{isExpanded ? "Réduire" : "Expliquer"}</span>
+                            <MessageSquareText size={12} className={cn("transition-transform duration-300", isExpanded && "rotate-12")} />
+                        </button>
+                    </div>
+                </div>
+
+                <AnimatePresence>
+                    {isExpanded && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                            className="overflow-hidden"
+                        >
+                            <div className="mt-5 pt-5 border-t border-white/5 space-y-3 relative">
+                                <div className="absolute top-0 left-0 w-8 h-[1px] bg-emerald-500" />
+                                <div className="flex items-center gap-2">
+                                    <div className="p-1 bg-emerald-500/10 rounded">
+                                        <Info size={10} className="text-emerald-500" />
+                                    </div>
+                                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500/80">Analyse de Profondeur</span>
+                                </div>
+                                <p className="text-xs text-zinc-300 leading-relaxed font-medium bg-zinc-950/30 p-3 rounded-xl border border-white/[0.02]">
+                                    {detail || "L'algorithme de synthèse n'a pas généré d'explications supplémentaires pour ce segment de données."}
+                                </p>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </motion.div>
+    );
+}
+
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
@@ -70,11 +181,20 @@ export default function Home() {
                 </ScrollArea>
             }
             centerPanel={
-                <div className="flex flex-col h-full">
+                <div className="flex flex-col h-full gradient-subtle">
                     {/* Header Fixe */}
-                    <div className="flex items-center justify-between p-6 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md z-20">
-                        <h2 className="text-2xl font-semibold text-center tracking-tight">L'Arène de Cohezi</h2>
-                        {results && <p className="text-xs text-center text-zinc-500 mt-1 uppercase tracking-widest">Analyse en cours terminée</p>}
+                    <div className="flex items-center justify-between p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
+                        <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Arène de Cohezi</h2>
+                        {results && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="flex items-center gap-2"
+                            >
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Analyse Complétée</p>
+                            </motion.div>
+                        )}
                     </div>
 
                     <ScrollArea className="flex-1">
@@ -178,10 +298,10 @@ export default function Home() {
                 </div>
             }
             rightPanel={
-                <div className="flex flex-col h-full">
+                <div className="flex flex-col h-full bg-zinc-950">
                     {/* Header Fixe */}
-                    <div className="flex justify-center p-6 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md z-20">
-                        <h2 className="text-2xl font-semibold tracking-tight">Le Verdict</h2>
+                    <div className="flex justify-center p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
+                        <h2 className="text-2xl font-bold tracking-tight gradient-text">Le Verdict</h2>
                     </div>
 
                     <ScrollArea className="flex-1">
@@ -203,16 +323,15 @@ export default function Home() {
                                             </div>
                                             <div className="space-y-3">
                                                 {(results?.verdict?.critical_flaws || []).map((f: any, i: number) => (
-                                                    <motion.div
+                                                    <VerdictCard
                                                         key={i}
-                                                        initial={{ opacity: 0, x: 20 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 1 + (i * 0.1) }}
-                                                        className="p-4 bg-rose-500/5 border border-rose-500/10 rounded-xl group hover:bg-rose-500/10 transition-colors"
-                                                    >
-                                                        <p className="font-bold text-rose-200 text-sm mb-1">{f.title}</p>
-                                                        <p className="text-[11px] text-rose-300/70 leading-relaxed font-medium">{f.impact}</p>
-                                                    </motion.div>
+                                                        index={i}
+                                                        title={f.title}
+                                                        subtitle={f.impact}
+                                                        detail={f.detailed_explanation}
+                                                        type="flaw"
+                                                        delay={1 + (i * 0.1)}
+                                                    />
                                                 ))}
                                             </div>
                                         </div>
@@ -225,38 +344,17 @@ export default function Home() {
                                             </div>
                                             <div className="space-y-3">
                                                 {(results?.verdict?.decision_paths || []).map((p: any, i: number) => (
-                                                    <motion.div
+                                                    <VerdictCard
                                                         key={i}
-                                                        initial={{ opacity: 0, x: 20 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 1.5 + (i * 0.1) }}
-                                                        className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-xl space-y-4 hover:border-emerald-500/20 transition-all group"
-                                                    >
-                                                        <div className="flex justify-between items-start">
-                                                            <p className="font-bold text-zinc-100 text-sm flex-1 leading-tight">{p.path}</p>
-                                                            <span className="text-[10px] font-mono font-bold text-emerald-500">{p.robustness_score}%</span>
-                                                        </div>
-
-                                                        <div className="space-y-3">
-                                                            <div className="flex items-start gap-2">
-                                                                <div className="mt-1 w-1 h-1 rounded-full bg-emerald-500" />
-                                                                <p className="text-[10px] text-zinc-400 leading-tight uppercase font-bold"><span className="text-emerald-500">VALIDE SI:</span> {p.valid_if}</p>
-                                                            </div>
-                                                            <div className="flex items-start gap-2">
-                                                                <div className="mt-1 w-1 h-1 rounded-full bg-rose-500" />
-                                                                <p className="text-[10px] text-zinc-400 leading-tight uppercase font-bold"><span className="text-rose-500">ÉCHOUE SI:</span> {p.fails_if}</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="w-full bg-zinc-950 h-1 rounded-full overflow-hidden border border-zinc-800/50">
-                                                            <motion.div
-                                                                initial={{ width: 0 }}
-                                                                animate={{ width: `${p.robustness_score}%` }}
-                                                                transition={{ delay: 2, duration: 1 }}
-                                                                className="bg-emerald-500 h-full rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)]"
-                                                            />
-                                                        </div>
-                                                    </motion.div>
+                                                        index={i}
+                                                        title={p.path}
+                                                        score={p.robustness_score}
+                                                        validIf={p.valid_if}
+                                                        failsIf={p.fails_if}
+                                                        detail={p.detailed_explanation}
+                                                        type="path"
+                                                        delay={1.5 + (i * 0.1)}
+                                                    />
                                                 ))}
                                             </div>
                                         </div>

@@ -116,11 +116,33 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer utilities {
+  .glass {
+    @apply bg-zinc-900/40 backdrop-blur-md border border-white/5;
+  }
+  
+  .glow-emerald {
+    box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.2);
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px -5px rgba(244, 63, 94, 0.2);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-zinc-100 to-zinc-500;
+  }
+
+  .gradient-subtle {
+    background: radial-gradient(circle at top left, rgba(24, 24, 27, 0.8), rgba(9, 9, 11, 1));
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-zinc-950 text-zinc-100;
   }
 }

@@ -23,33 +23,35 @@ export function InputPanel({ onAnalyze, isLoading }: InputPanelProps) {
 
     return (
         <div className="space-y-8">
-            <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                    <Brain className="text-zinc-400" size={24} />
-                    <h2 className="text-2xl font-semibold tracking-tight">L'Intention</h2>
+            <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 bg-zinc-900 rounded-lg border border-white/5">
+                        <Brain className="text-emerald-500" size={20} />
+                    </div>
+                    <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Intention</h2>
                 </div>
-                <p className="text-sm text-zinc-400">
-                    Décrivez la décision que vous souhaitez soumettre à l'analyse de Cohezi.
+                <p className="text-sm text-zinc-500 leading-relaxed font-medium">
+                    Soumettez votre décision pour une évaluation cognitive multi-agents.
                 </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium text-zinc-300">Votre Décision</label>
+            <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="space-y-3">
+                    <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">Votre Décision</label>
                     <Textarea
-                        placeholder="Ex: Lancer une nouvelle ligne de produits eco-friendly..."
-                        className="min-h-[100px] bg-zinc-950 border-zinc-800 focus:border-zinc-700 transition-colors"
+                        placeholder="Ex: Pivoter l'entreprise vers un modèle 100% remote dès le mois prochain..."
+                        className="min-h-[120px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed"
                         value={decision}
                         onChange={(e) => setDecision(e.target.value)}
                         disabled={isLoading}
                     />
                 </div>
 
-                <div className="space-y-2">
-                    <label className="text-sm font-medium text-zinc-300">Votre Raisonnement (Optionnel)</label>
+                <div className="space-y-3">
+                    <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">Votre Raisonnement <span className="text-zinc-700 font-normal">(Optionnel)</span></label>
                     <Textarea
-                        placeholder="Pourquoi cette décision ? Quelles sont vos hypothèses ?"
-                        className="min-h-[200px] bg-zinc-950 border-zinc-800 focus:border-zinc-700 transition-colors"
+                        placeholder="Quelles sont vos hypothèses ? Vos doutes ? L'IA cherchera à les confirmer ou les invalider."
+                        className="min-h-[220px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed"
                         value={reasoning}
                         onChange={(e) => setReasoning(e.target.value)}
                         disabled={isLoading}
@@ -58,15 +60,16 @@ export function InputPanel({ onAnalyze, isLoading }: InputPanelProps) {
 
                 <Button
                     type="submit"
-                    className="w-full bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-medium"
+                    className="w-full bg-zinc-100 text-zinc-950 hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 h-12 rounded-xl font-bold text-sm shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
                     disabled={isLoading || !decision.trim()}
                 >
                     {isLoading ? (
-                        <span className="flex items-center gap-2">
-                            <span className="animate-pulse">Analyse en cours...</span>
-                        </span>
+                        <div className="flex items-center gap-3">
+                            <div className="w-4 h-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
+                            <span>Orchestration...</span>
+                        </div>
                     ) : (
-                        "Lancer l'Arène"
+                        "Lancer l'Analyse"
                     )}
                 </Button>
             </form>
