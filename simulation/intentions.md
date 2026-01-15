@@ -11,7 +11,7 @@ Utilisez ces scénarios pour tester la profondeur d'analyse de Cohezi.
 ---
 
 ## 2. Choix de Carrière Radical (Personnel)
-**Décision** : Quitter mon poste de Senior Engineer chez Google pour lancer une ferme de permaculture autonome en Ardèche.
+**Décision** :  
 **Raisonnement** : Crise de sens. Burn-out latent. J'ai 200k€ d'économies. Je veux prouver qu'un modèle de vie bas-carbone est viable et gratifiant. Ma famille est sceptique sur la stabilité financière, mais je pense que la résilience alimentaire vaut mieux que des actions en bourse.
 
 ---
