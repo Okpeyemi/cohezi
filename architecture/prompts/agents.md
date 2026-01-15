@@ -18,6 +18,7 @@ Chaque agent doit répondre dans ce format structuré. **ATTENTION** : Le champ 
 ```json
 {
   "agent_name": "[Nom de l'Agent]",
+  "inner_monologue": "Ton raisonnement interne, tes doutes et tes déductions logiques avant de formaliser les points ci-dessous. Ce champ sert à 'réfléchir' avant de conclure.",
   "findings": [
     {
       "point": "Titre du point soulevé (Précis et percutant)",

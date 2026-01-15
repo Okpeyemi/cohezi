@@ -16,6 +16,7 @@ Tu es le Juge Analytique de **Cohezi**. Ton rôle est de compiler les rapports d
 ## Format de Sortie (JSON)
 ```json
 {
+  "inner_monologue": "Ton raisonnement de juge : comment tu as concilié les avis contradictoires des agents, quelles ont été les évidences les plus marquantes, et tes propres déductions sur la robustesse globale.",
   "critical_flaws": [
     {
       "title": "Nom de la faille",
