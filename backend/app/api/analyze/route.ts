@@ -3,6 +3,9 @@ import { AnalysisService } from "../../../services/AnalysisService";
 
 const analysisService = new AnalysisService();
 
+export const maxDuration = 60; // Allow 60 seconds for complex AI orchestration
+export const dynamic = 'force-dynamic';
+
 export async function OPTIONS() {
     return new NextResponse(null, {
         status: 204,

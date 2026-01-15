@@ -12,10 +12,12 @@ import { AnalysisResponse } from "@/types/analysis";
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<AnalysisResponse | null>(null);
 
     const handleAnalyze = async (decision: string, reasoning: string) => {
         setIsLoading(true);
+        setError(null);
         setResults(null);
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
@@ -29,9 +31,9 @@ export default function Home() {
 
             const data: AnalysisResponse = await response.json();
             setResults(data);
-        } catch (error) {
-            console.error(error);
-            // On pourra implémenter un Toast ici plus tard
+        } catch (err: any) {
+            console.error(err);
+            setError(err.message || "Une erreur est survenue lors de l'analyse.");
         } finally {
             setIsLoading(false);
         }
@@ -67,6 +69,13 @@ export default function Home() {
                         <div className="p-6 min-h-full flex flex-col">
                             {isLoading ? (
                                 <LoadingState />
+                            ) : error ? (
+                                <div className="flex h-full items-center justify-center p-6">
+                                    <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
+                                        <h3 className="font-bold mb-2">Erreur système</h3>
+                                        <p className="text-sm opacity-80">{error}</p>
+                                    </div>
+                                </div>
                             ) : (
                                 <AgentReportList agents={results?.agents || null} isLoading={isLoading} />
                             )}
