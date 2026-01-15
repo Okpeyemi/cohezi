@@ -20,11 +20,8 @@ export default function Home() {
         setError(null);
         setResults(null);
         try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-            console.log("Environment API URL:", process.env.NEXT_PUBLIC_API_URL);
-            console.log("Resolved API URL:", apiUrl);
-
-            const response = await fetch(`${apiUrl}/api/analyze`, {
+            // Use the proxy route in the webapp itself (which calls backend + saves to DB)
+            const response = await fetch("/api/analyze", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ decision, reasoning }),

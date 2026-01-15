@@ -20,19 +20,22 @@ export const metadata: Metadata = {
 };
 
 import { Header } from "@/components/layout/Header";
+import { auth } from "@/auth";
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="fr" className={`${figtree.variable} ${geistMono.variable}`}>
       <body
         className={`font-sans bg-zinc-950 text-zinc-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200 pt-16`}
       >
-        <Header />
+        <Header user={session?.user || null} />
         {children}
       </body>
     </html>
