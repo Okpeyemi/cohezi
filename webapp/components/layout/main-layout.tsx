@@ -15,7 +15,7 @@ interface MainLayoutProps {
 
 export function MainLayout({ leftPanel, centerPanel, rightPanel }: MainLayoutProps) {
     return (
-        <div className="h-screen w-full bg-zinc-950 text-zinc-100 overflow-hidden">
+        <div className="h-[calc(100vh-4rem)] w-full bg-zinc-950 text-zinc-100 overflow-hidden">
             <ResizablePanelGroup direction="horizontal" className="h-full w-full">
                 {/* Panneau Gauche : L'Intention */}
                 <ResizablePanel defaultSize={25} minSize={20} className="bg-zinc-900/50 border-r border-zinc-800">

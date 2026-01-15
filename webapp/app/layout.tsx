@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description: "Disséquez, stress-testez et visualisez le raisonnement humain derrière chaque décision.",
 };
 
+import { Header } from "@/components/layout/Header";
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,8 +30,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${figtree.variable} ${geistMono.variable}`}>
       <body
-        className={`font-sans bg-zinc-950 text-zinc-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200`}
+        className={`font-sans bg-zinc-950 text-zinc-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200 pt-16`}
       >
+        <Header />
         {children}
       </body>
     </html>
