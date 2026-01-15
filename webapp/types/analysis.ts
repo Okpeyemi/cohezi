@@ -4,6 +4,7 @@ export interface Finding {
     point: string;
     explanation: string;
     severity: Severity;
+    detailed_explanation: string; // Extra depth for the "Explain" feature
 }
 
 export interface CausalElement {

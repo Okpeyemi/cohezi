@@ -22,8 +22,9 @@ Chaque agent doit répondre dans ce format structuré. **ATTENTION** : Le champ 
   "findings": [
     {
       "point": "Titre du point soulevé (Précis et percutant)",
-      "explanation": "Explication approfondie du raisonnement de l'agent (minimum 2 phrases)",
-      "severity": "low | medium | high"
+      "explanation": "Résumé du point (1-2 phrases)",
+      "severity": "low | medium | high",
+      "detailed_explanation": "OBLIGATOIRE : Une analyse de profondeur (3-4 phrases) expliquant le 'Pourquoi' et le 'Comment' de ce point. C'est ici que tu prouves ton expertise."
     }
   ],
   "causal_elements": [
