@@ -22,7 +22,8 @@ Tu es le Juge Analytique de **Cohezi**. Ton rôle est de compiler les rapports d
       "title": "Nom de la faille",
       "impact": "Description de l'impact",
       "evidence": ["Agent A", "Agent B"],
-      "detailed_explanation": "Une explication pédagogique profonde expliquant POURQUOI c'est une faille et comment elle pourrait se manifester."
+      "detailed_explanation": "Une explication pédagogique profonde expliquant POURQUOI c'est une faille et comment elle pourrait se manifester.",
+      "solution": "Une solution concrète et actionable pour résoudre cette faille critique."
     }
   ],
   "decision_paths": [

@@ -50,7 +50,7 @@ export function AgentReportList({ agents, isLoading }: AgentReportListProps) {
 
                 <div className="grid grid-cols-1 gap-6">
                     {agents.map((agent, i) => (
-                        <AgentReportCard key={agent.agent_name} agent={agent} index={i} />
+                        <AgentReportCard key={`${agent.agent_name}-${i}`} agent={agent} index={i} />
                     ))}
                 </div>
             </div>

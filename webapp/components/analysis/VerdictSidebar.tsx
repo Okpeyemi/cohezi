@@ -1,16 +1,19 @@
-"use client";
-
-import React from "react";
+import React, { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Scale, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Scale, AlertTriangle, ShieldCheck, Sparkles } from "lucide-react";
 import { VerdictCard } from "./VerdictCard";
 import { FinalVerdict } from "@/types/analysis";
+import { ConclusionModal } from "./ConclusionModal";
+import { cn } from "@/lib/utils";
 
 interface VerdictSidebarProps {
     verdict: FinalVerdict | null;
+    decisionContext?: string;
 }
 
-export function VerdictSidebar({ verdict }: VerdictSidebarProps) {
+export function VerdictSidebar({ verdict, decisionContext }: VerdictSidebarProps) {
+    const [isConclusionOpen, setIsConclusionOpen] = useState(false);
+
     if (!verdict) {
         return (
             <div className="h-full flex flex-col bg-zinc-950">
@@ -27,7 +30,7 @@ export function VerdictSidebar({ verdict }: VerdictSidebarProps) {
     }
 
     return (
-        <div className="flex flex-col h-full bg-zinc-950">
+        <div className="flex flex-col h-full bg-zinc-950 relative">
             <div className="flex justify-center p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
                 <h2 className="text-2xl font-bold tracking-tight gradient-text">Le Verdict</h2>
             </div>
@@ -48,6 +51,7 @@ export function VerdictSidebar({ verdict }: VerdictSidebarProps) {
                                         title={f.title}
                                         subtitle={f.impact}
                                         detail={f.detailed_explanation}
+                                        solution={f.solution}
                                         type="flaw"
                                         delay={0.1 * i}
                                     />
@@ -79,6 +83,32 @@ export function VerdictSidebar({ verdict }: VerdictSidebarProps) {
                     </div>
                 </div>
             </ScrollArea>
+
+            {/* Conclusion Button - Floating Bottom */}
+            <div className=" bottom-6 left-0 w-full p-6 z-30 border-t border-white/5 pointer-events-none">
+                <button
+                    onClick={() => setIsConclusionOpen(true)}
+                    className="w-full pointer-events-auto group bg-white hover:bg-zinc-200 text-zinc-950 p-4 rounded-xl shadow-[0_10px_40px_-10px_rgba(255,255,255,0.2)] transition-all duration-300 border border-white/20 flex items-center justify-between"
+                >
+                    <div className="flex items-center gap-3">
+                        <div className="bg-zinc-950/10 p-2 rounded-lg text-zinc-900">
+                            <Sparkles size={18} />
+                        </div>
+                        <div className="text-left">
+                            <p className="text-[10px] uppercase font-black tracking-widest opacity-60">Synthèse</p>
+                            <p className="text-sm font-bold">Voir la Conclusion</p>
+                        </div>
+                    </div>
+                    <Scale size={18} className="opacity-40 group-hover:scale-110 transition-transform duration-300" />
+                </button>
+            </div>
+
+            <ConclusionModal
+                isOpen={isConclusionOpen}
+                onClose={() => setIsConclusionOpen(false)}
+                context={decisionContext || "Aucun contexte disponible."}
+                verdict={verdict}
+            />
         </div>
     );
 }

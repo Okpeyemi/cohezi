@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquareText, Info } from "lucide-react";
+import { MessageSquareText, Info, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface VerdictCardProps {
     title: string;
     subtitle?: string;
     detail?: string;
+    solution?: string;
     type: "flaw" | "path";
     delay: number;
     score?: number;
@@ -20,13 +21,22 @@ export function VerdictCard({
     title,
     subtitle,
     detail,
+    solution,
     type,
     delay,
     score,
     validIf,
     failsIf
 }: VerdictCardProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [expandedMode, setExpandedMode] = useState<"none" | "explanation" | "solution">("none");
+
+    const toggleMode = (mode: "explanation" | "solution") => {
+        if (expandedMode === mode) {
+            setExpandedMode("none");
+        } else {
+            setExpandedMode(mode);
+        }
+    };
 
     return (
         <motion.div
@@ -81,42 +91,75 @@ export function VerdictCard({
                         )}
                     </div>
 
-                    <div className="flex justify-end w-full">
+                    <div className="flex justify-end gap-2 w-full">
+                        {type === "flaw" && solution && (
+                            <button
+                                onClick={() => toggleMode("solution")}
+                                className={cn(
+                                    "group/btn flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 border",
+                                    expandedMode === "solution"
+                                        ? "bg-amber-500 text-zinc-950 border-amber-400"
+                                        : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-amber-200 hover:border-amber-500/50 hover:bg-zinc-900"
+                                )}
+                            >
+                                <span className="text-[8px] font-black uppercase tracking-widest">{expandedMode === "solution" ? "Masquer" : "Solution"}</span>
+                                <Lightbulb size={12} className={cn("transition-transform duration-300", expandedMode === "solution" && "scale-110")} />
+                            </button>
+                        )}
+
                         <button
-                            onClick={() => setIsExpanded(!isExpanded)}
+                            onClick={() => toggleMode("explanation")}
                             className={cn(
                                 "group/btn flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 border",
-                                isExpanded
+                                expandedMode === "explanation"
                                     ? "bg-emerald-500 text-zinc-950 border-emerald-400"
                                     : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-200 hover:border-zinc-700 hover:bg-zinc-900"
                             )}
                         >
-                            <span className="text-[8px] font-black uppercase tracking-widest">{isExpanded ? "Réduire" : "Expliquer"}</span>
-                            <MessageSquareText size={12} className={cn("transition-transform duration-300", isExpanded && "rotate-12")} />
+                            <span className="text-[8px] font-black uppercase tracking-widest">{expandedMode === "explanation" ? "Réduire" : "Expliquer"}</span>
+                            <MessageSquareText size={12} className={cn("transition-transform duration-300", expandedMode === "explanation" && "rotate-12")} />
                         </button>
                     </div>
                 </div>
 
-                <AnimatePresence>
-                    {isExpanded && (
+                <AnimatePresence mode="wait">
+                    {expandedMode !== "none" && (
                         <motion.div
+                            key={expandedMode}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="overflow-hidden"
                         >
-                            <div className="mt-5 pt-5 border-t border-white/5 space-y-3 relative">
-                                <div className="absolute top-0 left-0 w-8 h-[1px] bg-emerald-500" />
-                                <div className="flex items-center gap-2">
-                                    <div className="p-1 bg-emerald-500/10 rounded">
-                                        <Info size={10} className="text-emerald-500" />
-                                    </div>
-                                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500/80">Analyse de Profondeur</span>
-                                </div>
-                                <p className="text-xs text-zinc-300 leading-relaxed font-medium bg-zinc-950/30 p-3 rounded-xl border border-white/[0.02]">
-                                    {detail || "L'algorithme de synthèse n'a pas généré d'explications supplémentaires pour ce segment de données."}
-                                </p>
+                            <div className="mt-4 pt-4 border-t border-white/5 space-y-3 relative">
+                                {expandedMode === "explanation" ? (
+                                    <>
+                                        <div className="absolute top-0 left-0 w-8 h-[1px] bg-emerald-500" />
+                                        <div className="flex items-center gap-2">
+                                            <div className="p-1 bg-emerald-500/10 rounded">
+                                                <Info size={10} className="text-emerald-500" />
+                                            </div>
+                                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500/80">Analyse de Profondeur</span>
+                                        </div>
+                                        <div className="text-xs text-zinc-300 leading-relaxed font-medium bg-zinc-950/50 p-4 rounded-xl border border-white/[0.05] shadow-inner">
+                                            {detail || "L'algorithme de synthèse n'a pas généré d'explications supplémentaires pour ce segment de données."}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="absolute top-0 left-0 w-8 h-[1px] bg-amber-500" />
+                                        <div className="flex items-center gap-2">
+                                            <div className="p-1 bg-amber-500/10 rounded">
+                                                <Lightbulb size={10} className="text-amber-500" />
+                                            </div>
+                                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-amber-500/80">Piste de Solution</span>
+                                        </div>
+                                        <div className="text-xs text-zinc-300 leading-relaxed font-medium bg-amber-500/[0.03] p-4 rounded-xl border border-amber-500/10 shadow-inner">
+                                            {solution}
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </motion.div>
                     )}

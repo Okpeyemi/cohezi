@@ -25,6 +25,7 @@ export interface CriticalFlaw {
     impact: string;
     evidence: string[];
     detailed_explanation: string;
+    solution?: string; // Proposed solution specifically for critical flaws
 }
 
 export interface DecisionPath {

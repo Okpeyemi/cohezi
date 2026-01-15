@@ -86,7 +86,7 @@ export default function Home() {
                     </ScrollArea>
                 </div>
             }
-            rightPanel={<VerdictSidebar verdict={results?.verdict || null} />}
+            rightPanel={<VerdictSidebar verdict={results?.verdict || null} decisionContext={results?.orchestration?.decision_summary} />}
         />
     );
 }
