@@ -15,10 +15,14 @@ export const geminiModel = genAI.getGenerativeModel({
 /**
  * Helper to call Gemini with a structured JSON expectation and retry logic
  */
-export async function callGeminiJSON(prompt: string, systemInstruction?: string, retries = 3) {
+/**
+ * Helper to call Gemini with a structured JSON expectation and retry logic
+ */
+export async function callGeminiJSON(prompt: string, systemInstruction?: string, tools: any[] = [], retries = 3) {
     const model = genAI.getGenerativeModel({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3-flash-preview", // Returned to Gemini 3 Flash Preview
         systemInstruction,
+        tools: tools,
     });
 
     let lastError: any;
@@ -38,6 +42,9 @@ export async function callGeminiJSON(prompt: string, systemInstruction?: string,
 
             // Si c'est une erreur de parsing JSON, on ne retente pas forcément car le contenu est peut-être invalide
             if (e instanceof SyntaxError) {
+                // If it failed to parse, it might be because the model used a tool (Wait, we asked for JSON responseMimeType, so it should be JSON)
+                // However, with tools, sometimes the flow is different.
+                // For this implementation, we assume we use tools for grounding (Google Search) which returns enriched text/JSON.
                 throw new Error("Invalid structure returned by AI");
             }
 

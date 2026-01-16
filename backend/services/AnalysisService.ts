@@ -50,10 +50,16 @@ export class AnalysisService {
 
     private async runAgent(name: string, mission: string, context: string) {
         const agentPrompt = loadPrompt("agents.md", { NOM_DE_L_AGENT: name });
-        const input = `MISSION Spécifique: ${mission}\nCONTEXTE: ${context}`;
+        const input = `MISSION Spécifique: ${mission}\nCONTEXTE: ${context}\n\nNOTE: Tu as accès à un outil de recherche Google via 'googleSearch'. Utilise-le pour vérifier les faits et enrichir ton analyse.`;
+
+        // Define the tool
+        // Note: For native Gemini Grounding, we pass it in the tools array.
+        const tools = [
+            { googleSearch: {} } // Activate Google Search Grounding
+        ];
 
         // On force Gemini à trouver un "rationale" interne (CoT) pour améliorer la qualité
         // Ce champ ne sera pas forcément affiché à l'utilisateur mais garantit la réflexion.
-        return callGeminiJSON(input, agentPrompt);
+        return callGeminiJSON(input, agentPrompt, tools);
     }
 }
