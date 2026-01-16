@@ -92,6 +92,19 @@ export function VerdictCard({
                     </div>
 
                     <div className="flex justify-end gap-2 w-full">
+                        <button
+                            onClick={() => toggleMode("explanation")}
+                            className={cn(
+                                "group/btn flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 border",
+                                expandedMode === "explanation"
+                                    ? "bg-emerald-500 text-zinc-950 border-emerald-400"
+                                    : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-200 hover:border-zinc-700 hover:bg-zinc-900"
+                            )}
+                        >
+                            <span className="text-[8px] font-black uppercase tracking-widest">{expandedMode === "explanation" ? "Réduire" : "Expliquer"}</span>
+                            <MessageSquareText size={12} className={cn("transition-transform duration-300", expandedMode === "explanation" && "rotate-12")} />
+                        </button>
+
                         {type === "flaw" && solution && (
                             <button
                                 onClick={() => toggleMode("solution")}
@@ -106,19 +119,6 @@ export function VerdictCard({
                                 <Lightbulb size={12} className={cn("transition-transform duration-300", expandedMode === "solution" && "scale-110")} />
                             </button>
                         )}
-
-                        <button
-                            onClick={() => toggleMode("explanation")}
-                            className={cn(
-                                "group/btn flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 border",
-                                expandedMode === "explanation"
-                                    ? "bg-emerald-500 text-zinc-950 border-emerald-400"
-                                    : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-200 hover:border-zinc-700 hover:bg-zinc-900"
-                            )}
-                        >
-                            <span className="text-[8px] font-black uppercase tracking-widest">{expandedMode === "explanation" ? "Réduire" : "Expliquer"}</span>
-                            <MessageSquareText size={12} className={cn("transition-transform duration-300", expandedMode === "explanation" && "rotate-12")} />
-                        </button>
                     </div>
                 </div>
 
