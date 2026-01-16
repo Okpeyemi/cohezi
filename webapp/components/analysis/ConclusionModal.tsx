@@ -5,14 +5,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles, Quote, Scale, CheckCircle2, AlertTriangle, Lightbulb } from "lucide-react";
 import { FinalVerdict } from "@/types/analysis";
 
+import { DownloadReportButton } from "../pdf/DownloadReportButton";
+
 interface ConclusionModalProps {
     isOpen: boolean;
     onClose: () => void;
     context: string;
+    originalDecision: string;
+    originalReasoning: string;
     verdict: FinalVerdict;
 }
 
-export function ConclusionModal({ isOpen, onClose, context, verdict }: ConclusionModalProps) {
+export function ConclusionModal({ isOpen, onClose, context, originalDecision, originalReasoning, verdict }: ConclusionModalProps) {
     // Extract solutions from critical flaws
     const solutions = verdict.critical_flaws
         .filter(f => f.solution)
@@ -147,7 +151,13 @@ export function ConclusionModal({ isOpen, onClose, context, verdict }: Conclusio
                                 </div>
 
                                 {/* Footer Action */}
-                                <div className="mt-8 pt-8 border-t border-white/5 flex justify-end">
+                                <div className="mt-8 pt-8 border-t border-white/5 flex justify-between items-center">
+                                    <DownloadReportButton
+                                        decision={originalDecision}
+                                        reasoning={originalReasoning}
+                                        verdict={verdict}
+                                        className="no-underline"
+                                    />
                                     <button
                                         onClick={onClose}
                                         className="px-6 py-2.5 bg-white text-zinc-950 rounded-xl font-bold text-sm hover:bg-zinc-200 transition-colors"

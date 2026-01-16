@@ -14,11 +14,13 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<AnalysisResponse | null>(null);
+    const [inputs, setInputs] = useState<{ decision: string; reasoning: string } | null>(null);
 
     const handleAnalyze = async (decision: string, reasoning: string) => {
         setIsLoading(true);
         setError(null);
         setResults(null);
+        setInputs({ decision, reasoning }); // Store inputs for PDF export
         try {
             // Use the proxy route in the webapp itself (which calls backend + saves to DB)
             const response = await fetch("/api/analyze", {
@@ -83,7 +85,14 @@ export default function Home() {
                     </ScrollArea>
                 </div>
             }
-            rightPanel={<VerdictSidebar verdict={results?.verdict || null} decisionContext={results?.orchestration?.decision_summary} />}
+            rightPanel={
+                <VerdictSidebar
+                    verdict={results?.verdict || null}
+                    decisionContext={results?.orchestration?.decision_summary}
+                    originalDecision={inputs?.decision || ""}
+                    originalReasoning={inputs?.reasoning || ""}
+                />
+            }
         />
     );
 }

@@ -9,12 +9,15 @@ import { cn } from "@/lib/utils";
 interface VerdictSidebarProps {
     verdict: FinalVerdict | null;
     decisionContext?: string;
+    originalDecision?: string;
+    originalReasoning?: string;
 }
 
-export function VerdictSidebar({ verdict, decisionContext }: VerdictSidebarProps) {
+export function VerdictSidebar({ verdict, decisionContext, originalDecision, originalReasoning }: VerdictSidebarProps) {
     const [isConclusionOpen, setIsConclusionOpen] = useState(false);
 
     if (!verdict) {
+        // ... (keep unused code collapsed if needed, but here replace works better with context)
         return (
             <div className="h-full flex flex-col bg-zinc-950">
                 <div className="flex justify-center p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
@@ -107,6 +110,8 @@ export function VerdictSidebar({ verdict, decisionContext }: VerdictSidebarProps
                 isOpen={isConclusionOpen}
                 onClose={() => setIsConclusionOpen(false)}
                 context={decisionContext || "Aucun contexte disponible."}
+                originalDecision={originalDecision || ""}
+                originalReasoning={originalReasoning || ""}
                 verdict={verdict}
             />
         </div>
