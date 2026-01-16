@@ -1,16 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/auth";
-import { db } from "@/db";
-import { decisions, analyses } from "@/db/schema";
-import { eq } from "drizzle-orm";
 
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
     try {
-        const session = await auth();
-        const userId = session?.user?.id;
-
         const { decision, reasoning } = await req.json();
 
         if (!decision) {
@@ -38,41 +31,7 @@ export async function POST(req: NextRequest) {
 
         const result = await backendResponse.json();
 
-        // Persist to Database if user is logged in
-        // (Optional: Persist even for guests? Schema says userId is nullable)
-
-        let decisionId: string | null = null;
-
-        try {
-            // 1. Save Decision
-            const [savedDecision] = await db.insert(decisions).values({
-                userId: userId || null,
-                context: decision, // 'decision' input acts as context/title
-                status: "completed",
-            }).returning({ id: decisions.id });
-
-            decisionId = savedDecision.id;
-
-            // 2. Save Analysis
-            await db.insert(analyses).values({
-                decisionId: savedDecision.id,
-                orchestrationResult: result.orchestration,
-                agentReports: result.agents,
-                finalVerdict: result.verdict,
-            });
-
-            console.log(`Saved analysis for decision ${decisionId}`);
-
-        } catch (dbError) {
-            console.error("Failed to save to DB:", dbError);
-            // Don't fail the request if DB fails, just log it. 
-            // The user still wants their analysis.
-        }
-
-        return NextResponse.json({
-            ...result,
-            saved_decision_id: decisionId
-        });
+        return NextResponse.json(result);
 
     } catch (error: any) {
         console.error("Proxy Analysis Error:", error);
