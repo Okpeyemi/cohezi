@@ -1,98 +1,44 @@
 "use client";
 
-import React, { useState } from "react";
-import { MainLayout } from "@/components/layout/main-layout";
-import { InputPanel } from "@/components/panels/input-panel";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { LoadingState } from "@/components/analysis/LoadingState";
-import { AgentReportList } from "@/components/analysis/AgentReportList";
-import { VerdictSidebar } from "@/components/analysis/VerdictSidebar";
-import { motion } from "framer-motion";
-import { AnalysisResponse } from "@/types/analysis";
+import React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-export default function Home() {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [results, setResults] = useState<AnalysisResponse | null>(null);
-    const [inputs, setInputs] = useState<{ decision: string; reasoning: string } | null>(null);
+export default function LandingPage() {
+    // Generate a random ID for the demo/test only on client side to avoid hydration mismatch
+    const [randomId, setRandomId] = React.useState("demo");
 
-    const handleAnalyze = async (decision: string, reasoning: string) => {
-        setIsLoading(true);
-        setError(null);
-        setResults(null);
-        setInputs({ decision, reasoning }); // Store inputs for PDF export
-        try {
-            // Use the proxy route in the webapp itself (which calls backend + saves to DB)
-            const response = await fetch("/api/analyze", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ decision, reasoning }),
-            });
-
-            if (!response.ok) throw new Error("Erreur lors de l'analyse");
-
-            const data: AnalysisResponse = await response.json();
-            setResults(data);
-        } catch (err: any) {
-            console.error(err);
-            setError(err.message || "Une erreur est survenue lors de l'analyse.");
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    React.useEffect(() => {
+        setRandomId(crypto.randomUUID());
+    }, []);
 
     return (
-        <MainLayout
-            leftPanel={
-                <ScrollArea className="h-full">
-                    <div className="p-6">
-                        <InputPanel onAnalyze={handleAnalyze} isLoading={isLoading} />
-                    </div>
-                </ScrollArea>
-            }
-            centerPanel={
-                <div className="flex flex-col h-full gradient-subtle">
-                    {/* Header Fixe */}
-                    <div className="flex items-center justify-between p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
-                        <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Arène de Cohezi</h2>
-                        {results && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="flex items-center gap-2"
-                            >
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Analyse Complétée</p>
-                            </motion.div>
-                        )}
-                    </div>
+        <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center bg-zinc-950 text-white relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-                    <ScrollArea className="flex-1">
-                        <div className="p-6 min-h-full flex flex-col">
-                            {isLoading ? (
-                                <LoadingState />
-                            ) : error ? (
-                                <div className="flex h-full items-center justify-center p-6">
-                                    <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
-                                        <h3 className="font-bold mb-2">Erreur système</h3>
-                                        <p className="text-sm opacity-80">{error}</p>
-                                    </div>
-                                </div>
-                            ) : (
-                                <AgentReportList agents={results?.agents || null} isLoading={isLoading} />
-                            )}
-                        </div>
-                    </ScrollArea>
+            <div className="relative z-10 flex flex-col items-center text-center space-y-8 p-6">
+                <div className="space-y-4">
+                    <h1 className="text-6xl md:text-8xl font-black tracking-tighter gradient-text">
+                        Cohezi
+                    </h1>
+                    <p className="text-xl md:text-2xl text-zinc-400 font-light tracking-wide max-w-2xl">
+                        Le Moteur d'Évaluation Cognitive pour vos Décisions Stratégiques
+                    </p>
                 </div>
-            }
-            rightPanel={
-                <VerdictSidebar
-                    verdict={results?.verdict || null}
-                    decisionContext={results?.orchestration?.decision_summary}
-                    originalDecision={inputs?.decision || ""}
-                    originalReasoning={inputs?.reasoning || ""}
-                />
-            }
-        />
+
+                <Link
+                    href={`/decision/${randomId}`}
+                    className="group flex items-center gap-3 px-8 py-4 bg-white text-zinc-950 rounded-full font-bold text-lg hover:scale-105 transition-all duration-300 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.5)]"
+                >
+                    Tester le Moteur
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+            </div>
+
+            <div className="absolute bottom-10 text-zinc-600 text-xs uppercase tracking-widest">
+                Version Bêta 0.1
+            </div>
+        </div>
     );
 }
