@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layout/main-layout";
 import { InputPanel } from "@/components/panels/input-panel";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -9,14 +9,88 @@ import { AgentReportList } from "@/components/analysis/AgentReportList";
 import { VerdictSidebar } from "@/components/analysis/VerdictSidebar";
 import { motion } from "framer-motion";
 import { AnalysisResponse } from "@/types/analysis";
+import { useParams, useRouter } from "next/navigation";
+import { db } from "@/lib/firebase/config";
+import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { useAuth } from "@/context/AuthContext";
+import { Loader2 } from "lucide-react";
 
-export default function DecisionPage({ params }: { params: { id: string } }) {
+export default function DecisionPage() {
+    const params = useParams();
+    const router = useRouter();
+    const { user, loading: authLoading } = useAuth();
+    const id = params?.id as string;
+
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<AnalysisResponse | null>(null);
     const [inputs, setInputs] = useState<{ decision: string; reasoning: string } | null>(null);
 
+    // Auth Guard
+    useEffect(() => {
+        if (!authLoading && !user) {
+            router.push("/");
+        }
+    }, [user, authLoading, router]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (!user || !id || id === "new") return;
+
+            setIsLoading(true);
+            try {
+                // 1. Fetch Decision
+                const decisionDoc = await getDoc(doc(db, "decisions", id));
+                if (!decisionDoc.exists()) {
+                    setError("Décision introuvable.");
+                    return;
+                }
+                const decisionData = decisionDoc.data();
+                setInputs({
+                    decision: decisionData.context,
+                    reasoning: decisionData.reasoning,
+                });
+
+                if (decisionData.status === "pending") {
+                    // Poll or listen? For now just show pending state
+                    return;
+                }
+
+                // 2. Fetch Analysis
+                const q = query(collection(db, "analyses"), where("decisionId", "==", id));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    const analysisData = querySnapshot.docs[0].data();
+                    setResults({
+                        orchestration: analysisData.orchestrationResult,
+                        agents: analysisData.agentReports,
+                        verdict: analysisData.finalVerdict,
+                    } as AnalysisResponse);
+                }
+
+            } catch (err: any) {
+                console.error("Error fetching data:", err);
+                if (err.code === 'unavailable') {
+                    setError("Connexion impossible au serveur Firebase. Vérifiez votre connexion.");
+                } else if (err.code === 'permission-denied') {
+                    setError("Permission refusée. Vous devez être connecté.");
+                } else {
+                    setError("Erreur lors du chargement de la décision.");
+                }
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        if (user) {
+            fetchData();
+        }
+    }, [id, user]);
+
     const handleAnalyze = async (decision: string, reasoning: string) => {
+        if (!user) return;
+
         setIsLoading(true);
         setError(null);
         setResults(null);
@@ -26,27 +100,49 @@ export default function DecisionPage({ params }: { params: { id: string } }) {
             const response = await fetch("/api/analyze", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ decision, reasoning }),
+                body: JSON.stringify({ decision, reasoning, userId: user.uid }),
             });
 
             if (!response.ok) throw new Error("Erreur lors de l'analyse");
 
-            const data: AnalysisResponse = await response.json();
-            setResults(data);
+            const data = await response.json();
+
+            // Redirect to the persistent URL if we have an ID
+            if (data.decisionId) {
+                router.push(`/decision/${data.decisionId}`);
+            } else {
+                // Fallback (shouldn't happen with new API)
+                setResults(data);
+            }
         } catch (err: any) {
             console.error(err);
             setError(err.message || "Une erreur est survenue lors de l'analyse.");
-        } finally {
             setIsLoading(false);
         }
     };
+
+    if (authLoading) {
+        return (
+            <div className="h-screen w-full flex items-center justify-center bg-zinc-950 text-white">
+                <Loader2 className="animate-spin text-emerald-500" size={32} />
+            </div>
+        );
+    }
+
+    if (!user) {
+        return null;
+    }
 
     return (
         <MainLayout
             leftPanel={
                 <ScrollArea className="h-full">
                     <div className="p-6">
-                        <InputPanel onAnalyze={handleAnalyze} isLoading={isLoading} />
+                        <InputPanel
+                            onAnalyze={handleAnalyze}
+                            isLoading={isLoading}
+                            defaultValues={inputs || undefined}
+                        />
                     </div>
                 </ScrollArea>
             }
