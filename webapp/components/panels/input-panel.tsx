@@ -8,11 +8,22 @@ import { Brain } from "lucide-react";
 interface InputPanelProps {
     onAnalyze: (decision: string, reasoning: string) => void;
     isLoading: boolean;
+    defaultValues?: {
+        decision: string;
+        reasoning: string;
+    };
 }
 
-export function InputPanel({ onAnalyze, isLoading }: InputPanelProps) {
-    const [decision, setDecision] = useState("");
-    const [reasoning, setReasoning] = useState("");
+export function InputPanel({ onAnalyze, isLoading, defaultValues }: InputPanelProps) {
+    const [decision, setDecision] = useState(defaultValues?.decision || "");
+    const [reasoning, setReasoning] = useState(defaultValues?.reasoning || "");
+
+    React.useEffect(() => {
+        if (defaultValues) {
+            setDecision(defaultValues.decision);
+            setReasoning(defaultValues.reasoning);
+        }
+    }, [defaultValues]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
