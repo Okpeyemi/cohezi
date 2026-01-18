@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase/config";
 import { collection, query, where, getDocs, deleteDoc, doc, orderBy } from "firebase/firestore";
-import { Search, Trash2, Clock, CalendarDays, ArrowRight, Loader2, AlertCircle } from "lucide-react";
+import { Search, Trash2, Clock, CalendarDays, ArrowRight, Loader2, AlertCircle, Share2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
@@ -86,6 +86,14 @@ export function HistoryModal({ isOpen, onClose }: HistoryModalProps) {
             setDeletingId(null);
             setConfirmData({ isOpen: false, id: null });
         }
+    };
+
+    const handleShare = (e: React.MouseEvent, id: string) => {
+        e.stopPropagation();
+        const url = `${window.location.origin}/decision/${id}`;
+        navigator.clipboard.writeText(url)
+            .then(() => toast.success("Lien copié dans le presse-papier !"))
+            .catch(() => toast.error("Erreur lors de la copie du lien."));
     };
 
     const handleDeleteClick = (e: React.MouseEvent, id: string) => {
@@ -170,6 +178,16 @@ export function HistoryModal({ isOpen, onClose }: HistoryModalProps) {
                                         </div>
 
                                         <div className="flex items-center gap-2">
+                                            <Button
+                                                size="icon"
+                                                variant="ghost"
+                                                className="h-7 w-7 text-zinc-600 hover:text-indigo-400 hover:bg-indigo-500/10 z-10"
+                                                onClick={(e) => handleShare(e, decision.id)}
+                                                title="Partager"
+                                            >
+                                                <Share2 size={14} />
+                                            </Button>
+
                                             <Button
                                                 size="icon"
                                                 variant="ghost"
