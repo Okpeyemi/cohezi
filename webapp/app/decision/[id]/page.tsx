@@ -31,7 +31,8 @@ export default function DecisionPage() {
     // Auth Guard
     useEffect(() => {
         if (!authLoading && !user) {
-            router.push("/");
+            const returnUrl = encodeURIComponent(window.location.pathname);
+            router.push(`/?redirect=${returnUrl}`);
         }
     }, [user, authLoading, router]);
 

@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { LoginModal } from "@/components/auth/LoginModal";
 
 export default function LandingPage() {
@@ -11,11 +11,30 @@ export default function LandingPage() {
     const { user } = useAuth();
     const router = useRouter();
 
+    const searchParams = useSearchParams();
+    const redirectUrl = searchParams.get("redirect");
+
+    useEffect(() => {
+        if (redirectUrl && !user) {
+            setIsLoginModalOpen(true);
+        } else if (redirectUrl && user) {
+            router.push(decodeURIComponent(redirectUrl));
+        }
+    }, [redirectUrl, user, router]);
+
     const handleStart = () => {
         if (user) {
             router.push("/decision/new");
         } else {
             setIsLoginModalOpen(true);
+        }
+    };
+
+    const handleLoginSuccess = () => {
+        if (redirectUrl) {
+            router.push(decodeURIComponent(redirectUrl));
+        } else {
+            router.push("/decision/new");
         }
     };
 
@@ -50,7 +69,7 @@ export default function LandingPage() {
             <LoginModal
                 isOpen={isLoginModalOpen}
                 onClose={() => setIsLoginModalOpen(false)}
-                onSuccess={() => router.push("/decision/new")}
+                onSuccess={handleLoginSuccess}
             />
         </div>
     );
