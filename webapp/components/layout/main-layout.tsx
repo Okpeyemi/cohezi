@@ -27,7 +27,7 @@ export function MainLayout({ leftPanel, centerPanel, rightPanel }: MainLayoutPro
                 <ResizableHandle withHandle className="bg-zinc-800" />
 
                 {/* Panneau Central : L'Arène */}
-                <ResizablePanel defaultSize={50} minSize={30}>
+                <ResizablePanel defaultSize={45} minSize={30}>
                     <div className="h-full">
                         {centerPanel}
                     </div>
@@ -36,7 +36,7 @@ export function MainLayout({ leftPanel, centerPanel, rightPanel }: MainLayoutPro
                 <ResizableHandle withHandle className="bg-zinc-800" />
 
                 {/* Panneau Droit : Le Verdict */}
-                <ResizablePanel defaultSize={25} minSize={20} className="bg-zinc-900/50 border-l border-zinc-800">
+                <ResizablePanel defaultSize={30} minSize={25} className="bg-zinc-900/50 border-l border-zinc-800">
                     <div className="h-full">
                         {rightPanel}
                     </div>

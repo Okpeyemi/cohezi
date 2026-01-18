@@ -102,13 +102,15 @@ export function Header() {
                             </DropdownMenu>
                         </div>
                     ) : (
-                        <button
-                            onClick={handleSignIn}
-                            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-zinc-950 font-bold text-xs hover:bg-zinc-200 transition-colors"
-                        >
-                            <LogIn size={14} />
-                            Se connecter
-                        </button>
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={handleSignIn}
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-zinc-950 font-bold text-xs hover:bg-zinc-200 transition-colors"
+                            >
+                                <LogIn size={14} />
+                                Se connecter
+                            </button>
+                        </div>
                     )}
                 </div>
             </header>

@@ -13,6 +13,7 @@ import { useParams, useRouter } from "next/navigation";
 import { db } from "@/lib/firebase/config";
 import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { useAuth } from "@/context/AuthContext";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
 
 export default function DecisionPage() {
@@ -25,6 +26,7 @@ export default function DecisionPage() {
     const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<AnalysisResponse | null>(null);
     const [inputs, setInputs] = useState<{ decision: string; reasoning: string } | null>(null);
+    const [activeTab, setActiveTab] = useState("intention");
 
     // Auth Guard
     useEffect(() => {
@@ -124,6 +126,9 @@ export default function DecisionPage() {
         }
     };
 
+
+
+
     if (authLoading) {
         return (
             <div className="h-screen w-full flex items-center justify-center bg-zinc-950 text-white">
@@ -137,61 +142,131 @@ export default function DecisionPage() {
     }
 
     return (
-        <MainLayout
-            leftPanel={
-                <ScrollArea className="h-full">
-                    <div className="p-6">
-                        <InputPanel
-                            onAnalyze={handleAnalyze}
-                            isLoading={isLoading}
-                            defaultValues={inputs || undefined}
-                        />
-                    </div>
-                </ScrollArea>
-            }
-            centerPanel={
-                <div className="flex flex-col h-full gradient-subtle">
-                    {/* Header Fixe */}
-                    <div className="flex items-center justify-between p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
-                        <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Arène de Cohezi</h2>
-                        {results && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="flex items-center gap-2"
-                            >
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Analyse Complétée</p>
-                            </motion.div>
-                        )}
+        <>
+            {/* Mobile/Tablet Layout (Tabs) */}
+            <div className="lg:hidden h-[calc(100vh-64px)] flex flex-col bg-zinc-950 pt-4">
+                <Tabs defaultValue="intention" className="w-full h-full flex flex-col" onValueChange={setActiveTab}>
+                    <div className="px-4 pb-4 shrink-0">
+                        <TabsList className="w-full grid grid-cols-3 bg-zinc-900/50 border border-white/5">
+                            <TabsTrigger value="intention">Intention</TabsTrigger>
+                            <TabsTrigger value="arena">L'Arène</TabsTrigger>
+                            <TabsTrigger value="verdict">Verdict</TabsTrigger>
+                        </TabsList>
                     </div>
 
-                    <ScrollArea className="flex-1">
-                        <div className="p-6 min-h-full flex flex-col">
-                            {isLoading ? (
-                                <LoadingState />
-                            ) : error ? (
-                                <div className="flex h-full items-center justify-center p-6">
-                                    <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
-                                        <h3 className="font-bold mb-2">Erreur système</h3>
-                                        <p className="text-sm opacity-80">{error}</p>
+                    <TabsContent value="intention" className="flex-1 overflow-hidden mt-0 data-[state=inactive]:hidden h-full">
+                        <ScrollArea className="h-full">
+                            <div className="p-4 pt-0">
+                                <InputPanel
+                                    onAnalyze={handleAnalyze}
+                                    isLoading={isLoading}
+                                    defaultValues={inputs || undefined}
+                                />
+                            </div>
+                        </ScrollArea>
+                    </TabsContent>
+
+                    <TabsContent value="arena" className="flex-1 overflow-hidden mt-0 data-[state=inactive]:hidden h-full">
+                        <div className="flex flex-col h-full gradient-subtle">
+                            {/* Header Fixe Mobile */}
+                            <div className="flex items-center justify-between p-4 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
+                                <h2 className="text-xl font-bold tracking-tight gradient-text">L'Arène</h2>
+                                {results && (
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Complété</p>
                                     </div>
+                                )}
+                            </div>
+                            <ScrollArea className="flex-1">
+                                <div className="p-4 min-h-full flex flex-col">
+                                    {isLoading ? (
+                                        <LoadingState />
+                                    ) : error ? (
+                                        <div className="flex h-full items-center justify-center p-6">
+                                            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
+                                                <h3 className="font-bold mb-2">Erreur système</h3>
+                                                <p className="text-sm opacity-80">{error}</p>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <AgentReportList agents={results?.agents || null} isLoading={isLoading} />
+                                    )}
                                 </div>
-                            ) : (
-                                <AgentReportList agents={results?.agents || null} isLoading={isLoading} />
-                            )}
+                            </ScrollArea>
                         </div>
-                    </ScrollArea>
-                </div>
-            }
-            rightPanel={
-                <VerdictSidebar
-                    verdict={results?.verdict || null}
-                    decisionContext={results?.orchestration?.decision_summary}
-                    originalDecision={inputs?.decision || ""}
-                    originalReasoning={inputs?.reasoning || ""}
+                    </TabsContent>
+
+                    <TabsContent value="verdict" className="flex-1 overflow-hidden mt-0 data-[state=inactive]:hidden h-full">
+                        <VerdictSidebar
+                            verdict={results?.verdict || null}
+                            decisionContext={results?.orchestration?.decision_summary}
+                            originalDecision={inputs?.decision || ""}
+                            originalReasoning={inputs?.reasoning || ""}
+                        />
+                    </TabsContent>
+                </Tabs>
+            </div>
+
+            {/* Desktop Layout (Original) */}
+            <div className="hidden lg:block h-[calc(100vh-64px)]">
+                <MainLayout
+                    leftPanel={
+                        <ScrollArea className="h-full">
+                            <div className="p-6">
+                                <InputPanel
+                                    onAnalyze={handleAnalyze}
+                                    isLoading={isLoading}
+                                    defaultValues={inputs || undefined}
+                                />
+                            </div>
+                        </ScrollArea>
+                    }
+                    centerPanel={
+                        <div className="flex flex-col h-full gradient-subtle">
+                            {/* Header Fixe */}
+                            <div className="flex items-center justify-between p-6 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
+                                <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Arène de Cohezi</h2>
+                                {results && (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="flex items-center gap-2"
+                                    >
+                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Analyse Complétée</p>
+                                    </motion.div>
+                                )}
+                            </div>
+
+                            <ScrollArea className="flex-1">
+                                <div className="p-6 min-h-full flex flex-col">
+                                    {isLoading ? (
+                                        <LoadingState />
+                                    ) : error ? (
+                                        <div className="flex h-full items-center justify-center p-6">
+                                            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
+                                                <h3 className="font-bold mb-2">Erreur système</h3>
+                                                <p className="text-sm opacity-80">{error}</p>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <AgentReportList agents={results?.agents || null} isLoading={isLoading} />
+                                    )}
+                                </div>
+                            </ScrollArea>
+                        </div>
+                    }
+                    rightPanel={
+                        <VerdictSidebar
+                            verdict={results?.verdict || null}
+                            decisionContext={results?.orchestration?.decision_summary}
+                            originalDecision={inputs?.decision || ""}
+                            originalReasoning={inputs?.reasoning || ""}
+                        />
+                    }
                 />
-            }
-        />
+            </div>
+        </>
     );
 }

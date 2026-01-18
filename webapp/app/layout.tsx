@@ -28,14 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${figtree.variable} ${geistMono.variable}`}>
+    <html lang="fr" className={`${figtree.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body
         className={`font-sans bg-zinc-950 text-zinc-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200 pt-16`}
       >
         <AuthProvider>
-          <Header />
-          {children}
-          <Toaster />
+            <Header />
+            {children}
+            <Toaster />
         </AuthProvider>
       </body>
     </html>
