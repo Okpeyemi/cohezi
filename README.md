@@ -31,16 +31,28 @@ Cohezi utilise une orchestration multi-agents stricte :
 
 - **Flux de Causalité Neural** : Un graphe schématique animé montrant comment votre décision se propage.
 - **Deep Dive Interactif** : Chaque verdict peut être étendu pour obtenir une explication approfondie de l'IA.
+- **Historique & Profil** : Sauvegarde automatique des analyses, recherche et gestion via un compte utilisateur.
 - **UI Premium** : Design "Glassmorphism", animations staggered avec Framer Motion, et iconographie Lucide.
 - **Orchestration Stricte** : Chaque agent est obligé de fournir une analyse critique (3-5 points min) pour garantir une valeur ajoutée maximale.
 
 ---
 
+## 🔐 Authentification & Données
+
+Cohezi intègre **Firebase Authentication** et **Firestore** pour offrir une expérience personnalisée :
+- Connexion via Google.
+- Persistance des décisions et des analyses.
+- Gestion de profil utilisateur.
+- Historique complet avec recherche et suppression.
+
+---
+
 ## 🛠️ Stack Technique
 
-- **Frontend** : Next.js 15, Tailwind CSS, Framer Motion, Lucide React.
-- **Backend** : Next.js API Routes (Node.js).
-- **IA** : Google Gemini 2.0 Flash via SDK `@google/generative-ai`.
+- **Frontend** : Next.js 16 (Turbopack), Tailwind CSS 4, Framer Motion, Lucide React, Shadcn UI.
+- **Backend/API** : Next.js API Routes + Express (Legacy).
+- **Database** : Firebase Firestore & Authentication.
+- **IA** : Google Gemini 2.0 Flash / 3.0 Flash Preview via SDK.
 - **Layout** : `react-resizable-panels` pour une interface flexible.
 
 ---

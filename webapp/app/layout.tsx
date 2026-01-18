@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "@/components/ui/sonner";
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           {children}
+          <Toaster />
         </AuthProvider>
       </body>
     </html>
