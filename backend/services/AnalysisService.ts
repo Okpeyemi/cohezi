@@ -7,8 +7,8 @@ export class AnalysisService {
 
         // Phase 1: Orchestration
         const orchestratorPrompt = loadPrompt("orchestrator.md");
-        console.log("[AnalysisService] Starting Orchestration...");
-        const orchestration = await callGeminiJSON(userInput, orchestratorPrompt);
+        console.log("[AnalysisService] Starting Orchestration (Model: Pro)...");
+        const orchestration = await callGeminiJSON(userInput, orchestratorPrompt, [], 'reasoning');
 
         // Phase 2: Multi-Agent Analysis with Dependencies (Recursive)
         // Parallel group 1: Foundations
@@ -33,13 +33,13 @@ export class AnalysisService {
         const allReports = [logicalReport, causalReport, riskReport, skepticReport, stressReport];
 
         // Phase 3: Synthesis
-        console.log("[AnalysisService] Starting Synthesis...");
+        console.log("[AnalysisService] Starting Synthesis (Model: Flash)...");
         const synthesisPrompt = loadPrompt("synthesis.md");
         const synthesisInput = `
             RAPPORT ORCHESTRATEUR: ${JSON.stringify(orchestration)}
             RAPPORTS DES AGENTS: ${JSON.stringify(allReports)}
         `;
-        const verdict = await callGeminiJSON(synthesisInput, synthesisPrompt);
+        const verdict = await callGeminiJSON(synthesisInput, synthesisPrompt, [], 'fast');
 
         return {
             orchestration,
@@ -60,6 +60,7 @@ export class AnalysisService {
 
         // On force Gemini à trouver un "rationale" interne (CoT) pour améliorer la qualité
         // Ce champ ne sera pas forcément affiché à l'utilisateur mais garantit la réflexion.
-        return callGeminiJSON(input, agentPrompt, tools);
+        // Utilisation du modèle 'reasoning' (Pro) pour les agents cognitifs
+        return callGeminiJSON(input, agentPrompt, tools, 'reasoning');
     }
 }

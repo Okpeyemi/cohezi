@@ -8,19 +8,24 @@ if (!apiKey) {
 
 const genAI = new GoogleGenerativeAI(apiKey);
 
+export type ModelTier = 'fast' | 'reasoning';
+
+const MODELS: Record<ModelTier, string> = {
+    fast: "gemini-3-flash-preview",
+    reasoning: "gemini-3-pro-preview",
+};
+
 export const geminiModel = genAI.getGenerativeModel({
-    model: "gemini-3-flash-preview",
+    model: MODELS.fast,
 });
 
 /**
  * Helper to call Gemini with a structured JSON expectation and retry logic
  */
-/**
- * Helper to call Gemini with a structured JSON expectation and retry logic
- */
-export async function callGeminiJSON(prompt: string, systemInstruction?: string, tools: any[] = [], retries = 3) {
+export async function callGeminiJSON(prompt: string, systemInstruction?: string, tools: any[] = [], tier: ModelTier = 'fast', retries = 3) {
+    const modelName = MODELS[tier];
     const model = genAI.getGenerativeModel({
-        model: "gemini-3-flash-preview",
+        model: modelName,
         systemInstruction,
         tools: tools,
     });
