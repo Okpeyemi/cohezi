@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Brain, FileText, Upload, X } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface InputPanelProps {
     onAnalyze: (decision: string, reasoning: string) => void;
@@ -145,9 +146,11 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                 >
                                     Supprimer
                                 </Button>
-                                <div className="w-full mt-4 p-4 bg-zinc-950 rounded-lg border border-white/5 max-h-[200px] overflow-y-auto">
-                                    <pre className="text-xs text-zinc-400 whitespace-pre-wrap font-mono">{fileContent.slice(0, 500)}...</pre>
-                                </div>
+                                <ScrollArea className="w-full mt-4 h-[400px] rounded-lg border border-white/5 bg-zinc-950">
+                                    <div className="p-4">
+                                        <pre className="text-xs text-zinc-400 whitespace-pre-wrap font-mono">{fileContent}</pre>
+                                    </div>
+                                </ScrollArea>
                             </div>
                         ) : (
                             <>
