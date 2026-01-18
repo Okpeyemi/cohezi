@@ -103,7 +103,10 @@ export default function DecisionPage() {
                 body: JSON.stringify({ decision, reasoning, userId: user.uid }),
             });
 
-            if (!response.ok) throw new Error("Erreur lors de l'analyse");
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ error: "Erreur inconnue" }));
+                throw new Error(errorData.error || `Erreur ${response.status}: ${response.statusText}`);
+            }
 
             const data = await response.json();
 

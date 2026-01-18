@@ -9,7 +9,7 @@ if (!apiKey) {
 const genAI = new GoogleGenerativeAI(apiKey);
 
 export const geminiModel = genAI.getGenerativeModel({
-    model: "gemini-3-flash-preview", // Utilisation de Gemini 3 Flash Preview
+    model: "gemini-3-flash-preview",
 });
 
 /**
@@ -20,7 +20,7 @@ export const geminiModel = genAI.getGenerativeModel({
  */
 export async function callGeminiJSON(prompt: string, systemInstruction?: string, tools: any[] = [], retries = 3) {
     const model = genAI.getGenerativeModel({
-        model: "gemini-3-flash-preview", // Returned to Gemini 3 Flash Preview
+        model: "gemini-3-flash-preview",
         systemInstruction,
         tools: tools,
     });
