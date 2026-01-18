@@ -12,7 +12,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History, Share2, Users } from "lucide-react";
+import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History, Share2, Users, Plus } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { signInWithGoogle, logOut } from "@/lib/firebase/auth";
 import { useRouter, useParams } from "next/navigation";
@@ -108,7 +108,7 @@ export function Header() {
                     ) : user ? (
                         <div className="flex items-center gap-3">
                             <button
-                                className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
+                                className="hidden md:flex w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
                                 title="Historique"
                                 onClick={() => setIsHistoryOpen(true)}
                             >
@@ -126,6 +126,15 @@ export function Header() {
                                 </button>
                             )}
 
+                            <button
+                                className="flex items-center gap-2 px-2 h-8 rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
+                                title="Nouvelle discussion"
+                                onClick={() => router.push("/decision/new")}
+                            >
+                                <Plus size={16} />
+                                <span className="text-xs font-medium hidden sm:inline">Nouvelle discussion</span>
+                            </button>
+
                             <DropdownMenu modal={false}>
                                 <DropdownMenuTrigger className="outline-none">
                                     <Avatar className="h-8 w-8 ring-2 ring-white/10 hover:ring-white/20 transition-all cursor-pointer">
@@ -140,6 +149,21 @@ export function Header() {
                                             <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
                                         </div>
                                     </DropdownMenuLabel>
+                                    <DropdownMenuSeparator className="bg-white/10" />
+                                    <DropdownMenuItem
+                                        className="focus:bg-zinc-900 focus:text-white cursor-pointer group"
+                                        onClick={() => router.push("/decision/new")}
+                                    >
+                                        <Plus className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
+                                        <span>Nouvelle discussion</span>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                        className="focus:bg-zinc-900 focus:text-white cursor-pointer group"
+                                        onClick={() => setIsHistoryOpen(true)}
+                                    >
+                                        <History className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
+                                        <span>Historique</span>
+                                    </DropdownMenuItem>
                                     <DropdownMenuSeparator className="bg-white/10" />
                                     <DropdownMenuItem
                                         className="focus:bg-zinc-900 focus:text-white cursor-pointer group"
