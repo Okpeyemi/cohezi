@@ -12,17 +12,59 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History } from "lucide-react";
+import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History, Share2, Users } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { signInWithGoogle, logOut } from "@/lib/firebase/auth";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { toast } from "sonner";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase/config";
 
 export function Header() {
     const { user, loading } = useAuth();
     const router = useRouter();
+    const params = useParams();
+    const decisionId = params?.id as string;
 
     const [isProfileOpen, setIsProfileOpen] = React.useState(false);
     const [isHistoryOpen, setIsHistoryOpen] = React.useState(false);
+    const [isShared, setIsShared] = React.useState(false);
+
+    const showShare = decisionId && decisionId !== "new";
+
+    React.useEffect(() => {
+        const checkOwnership = async () => {
+            if (!user || !decisionId || decisionId === "new") {
+                setIsShared(false);
+                return;
+            }
+
+            try {
+                const docRef = doc(db, "decisions", decisionId);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if (data.userId !== user.uid) {
+                        setIsShared(true);
+                    } else {
+                        setIsShared(false);
+                    }
+                }
+            } catch (error) {
+                console.error("Error verifying ownership:", error);
+            }
+        };
+
+        checkOwnership();
+    }, [decisionId, user]);
+
+    const handleShare = () => {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url)
+            .then(() => toast.success("Lien copié dans le presse-papier !"))
+            .catch(() => toast.error("Erreur lors de la copie du lien."));
+    };
 
     const handleSignOut = async () => {
         await logOut();
@@ -41,13 +83,22 @@ export function Header() {
         <>
             <header className="fixed top-0 left-0 right-0 h-16 border-b border-white/5 bg-zinc-950/80 backdrop-blur-xl z-50 flex items-center justify-between px-6">
                 {/* Logo / Brand */}
-                <div className="flex items-center gap-3 cursor-pointer" onClick={() => router.push("/")}>
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                        <BrainCircuit className="text-emerald-500" size={18} />
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 cursor-pointer" onClick={() => router.push("/")}>
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                            <BrainCircuit className="text-emerald-500" size={18} />
+                        </div>
+                        <h1 className="text-lg font-bold tracking-tight text-white mb-0.5">
+                            Cohezi <span className="text-zinc-600 font-medium text-xs ml-2">v1.0</span>
+                        </h1>
                     </div>
-                    <h1 className="text-lg font-bold tracking-tight text-white mb-0.5">
-                        Cohezi <span className="text-zinc-600 font-medium text-xs ml-2">v1.0</span>
-                    </h1>
+
+                    {isShared && (
+                        <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium animate-in fade-in slide-in-from-left-4 duration-500">
+                            <Users size={12} />
+                            <span>Discussion partagée avec vous</span>
+                        </div>
+                    )}
                 </div>
 
                 {/* Profile Menu or Sign In */}
@@ -57,12 +108,23 @@ export function Header() {
                     ) : user ? (
                         <div className="flex items-center gap-3">
                             <button
-                                onClick={() => setIsHistoryOpen(true)}
                                 className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
                                 title="Historique"
+                                onClick={() => setIsHistoryOpen(true)}
                             >
                                 <History size={16} />
                             </button>
+
+                            {/* Share Button */}
+                            {showShare && (
+                                <button
+                                    onClick={handleShare}
+                                    className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
+                                    title="Partager la discussion"
+                                >
+                                    <Share2 size={16} />
+                                </button>
+                            )}
 
                             <DropdownMenu modal={false}>
                                 <DropdownMenuTrigger className="outline-none">

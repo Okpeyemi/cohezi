@@ -25,7 +25,7 @@ export default function DecisionPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<AnalysisResponse | null>(null);
-    const [inputs, setInputs] = useState<{ decision: string; reasoning: string } | null>(null);
+    const [inputs, setInputs] = useState<{ decision: string; reasoning: string; userId: string } | null>(null);
     const [activeTab, setActiveTab] = useState("intention");
 
     // Auth Guard
@@ -51,6 +51,7 @@ export default function DecisionPage() {
                 setInputs({
                     decision: decisionData.context,
                     reasoning: decisionData.reasoning,
+                    userId: decisionData.userId,
                 });
 
                 if (decisionData.status === "pending") {
@@ -96,7 +97,7 @@ export default function DecisionPage() {
         setIsLoading(true);
         setError(null);
         setResults(null);
-        setInputs({ decision, reasoning }); // Store inputs for PDF export
+        setInputs({ decision, reasoning, userId: user.uid }); // Store inputs for PDF export
         try {
             // Use the proxy route in the webapp itself (which calls backend + saves to DB)
             const response = await fetch("/api/analyze", {
@@ -140,6 +141,7 @@ export default function DecisionPage() {
     if (!user) {
         return null;
     }
+    const isOwner = inputs && user ? inputs.userId === user.uid : true;
 
     return (
         <>
@@ -161,6 +163,7 @@ export default function DecisionPage() {
                                     onAnalyze={handleAnalyze}
                                     isLoading={isLoading}
                                     defaultValues={inputs || undefined}
+                                    isReadOnly={!isOwner}
                                 />
                             </div>
                         </ScrollArea>
@@ -218,6 +221,7 @@ export default function DecisionPage() {
                                     onAnalyze={handleAnalyze}
                                     isLoading={isLoading}
                                     defaultValues={inputs || undefined}
+                                    isReadOnly={!isOwner}
                                 />
                             </div>
                         </ScrollArea>

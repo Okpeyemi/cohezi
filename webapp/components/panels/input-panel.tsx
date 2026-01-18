@@ -12,9 +12,10 @@ interface InputPanelProps {
         decision: string;
         reasoning: string;
     };
+    isReadOnly?: boolean;
 }
 
-export function InputPanel({ onAnalyze, isLoading, defaultValues }: InputPanelProps) {
+export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = false }: InputPanelProps) {
     const [decision, setDecision] = useState(defaultValues?.decision || "");
     const [reasoning, setReasoning] = useState(defaultValues?.reasoning || "");
 
@@ -27,7 +28,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues }: InputPanelPr
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (decision.trim()) {
+        if (decision.trim() && !isReadOnly) {
             onAnalyze(decision, reasoning);
         }
     };
@@ -42,7 +43,10 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues }: InputPanelPr
                     <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Intention</h2>
                 </div>
                 <p className="text-sm text-zinc-500 leading-relaxed font-medium">
-                    Soumettez votre décision pour une évaluation cognitive multi-agents.
+                    {isReadOnly
+                        ? "Mode lecture seule : Cette décision appartient à un autre utilisateur."
+                        : "Soumettez votre décision pour une évaluation cognitive multi-agents."
+                    }
                 </p>
             </div>
 
@@ -51,10 +55,10 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues }: InputPanelPr
                     <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">Votre Décision</label>
                     <Textarea
                         placeholder="Ex: Pivoter l'entreprise vers un modèle 100% remote dès le mois prochain..."
-                        className="min-h-[120px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed"
+                        className="min-h-[120px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed disabled:opacity-70 disabled:cursor-not-allowed"
                         value={decision}
                         onChange={(e) => setDecision(e.target.value)}
-                        disabled={isLoading}
+                        disabled={isLoading || isReadOnly}
                     />
                 </div>
 
@@ -62,27 +66,29 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues }: InputPanelPr
                     <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">Votre Raisonnement <span className="text-zinc-700 font-normal">(Optionnel)</span></label>
                     <Textarea
                         placeholder="Quelles sont vos hypothèses ? Vos doutes ? L'IA cherchera à les confirmer ou les invalider."
-                        className="min-h-[220px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed"
+                        className="min-h-[220px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed disabled:opacity-70 disabled:cursor-not-allowed"
                         value={reasoning}
                         onChange={(e) => setReasoning(e.target.value)}
-                        disabled={isLoading}
+                        disabled={isLoading || isReadOnly}
                     />
                 </div>
 
-                <Button
-                    type="submit"
-                    className="w-full bg-zinc-100 text-zinc-950 hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 h-12 rounded-xl font-bold text-sm shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
-                    disabled={isLoading || !decision.trim()}
-                >
-                    {isLoading ? (
-                        <div className="flex items-center gap-3">
-                            <div className="w-4 h-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
-                            <span>Orchestration...</span>
-                        </div>
-                    ) : (
-                        "Lancer l'Analyse"
-                    )}
-                </Button>
+                {!isReadOnly && (
+                    <Button
+                        type="submit"
+                        className="w-full bg-zinc-100 text-zinc-950 hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 h-12 rounded-xl font-bold text-sm shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+                        disabled={isLoading || !decision.trim()}
+                    >
+                        {isLoading ? (
+                            <div className="flex items-center gap-3">
+                                <div className="w-4 h-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
+                                <span>Orchestration...</span>
+                            </div>
+                        ) : (
+                            "Lancer l'Analyse"
+                        )}
+                    </Button>
+                )}
             </form>
         </div>
     );
