@@ -19,17 +19,22 @@ import { useRouter, useParams } from "next/navigation";
 import { toast } from "sonner";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+
+import { useTranslations } from "next-intl";
 
 export function Header() {
     const { user, loading } = useAuth();
     const router = useRouter();
     const params = useParams();
     const decisionId = params?.id as string;
+    const t = useTranslations("Header");
 
     const [isProfileOpen, setIsProfileOpen] = React.useState(false);
     const [isHistoryOpen, setIsHistoryOpen] = React.useState(false);
     const [isShared, setIsShared] = React.useState(false);
 
+    // ... (keep useEffect and handlers same)
     const showShare = decisionId && decisionId !== "new";
 
     React.useEffect(() => {
@@ -96,7 +101,7 @@ export function Header() {
                     {isShared && (
                         <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium animate-in fade-in slide-in-from-left-4 duration-500">
                             <Users size={12} />
-                            <span>Discussion partagée avec vous</span>
+                            <span>{t("sharedDiscussion")}</span>
                         </div>
                     )}
                 </div>
@@ -107,9 +112,11 @@ export function Header() {
                         <Loader2 className="h-5 w-5 animate-spin text-zinc-500" />
                     ) : user ? (
                         <div className="flex items-center gap-3">
+                            <LanguageSwitcher />
+
                             <button
                                 className="hidden md:flex w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
-                                title="Historique"
+                                title={t("history")}
                                 onClick={() => setIsHistoryOpen(true)}
                             >
                                 <History size={16} />
@@ -128,11 +135,11 @@ export function Header() {
 
                             <button
                                 className="flex items-center gap-2 px-2 h-8 rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
-                                title="Nouvelle discussion"
+                                title={t("newDecision")}
                                 onClick={() => router.push("/decision/new")}
                             >
                                 <Plus size={16} />
-                                <span className="text-xs font-medium hidden sm:inline">Nouvelle discussion</span>
+                                <span className="text-xs font-medium hidden sm:inline">{t("newDecision")}</span>
                             </button>
 
                             <DropdownMenu modal={false}>
@@ -155,14 +162,14 @@ export function Header() {
                                         onClick={() => router.push("/decision/new")}
                                     >
                                         <Plus className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
-                                        <span>Nouvelle discussion</span>
+                                        <span>{t("newDecision")}</span>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem
                                         className="focus:bg-zinc-900 focus:text-white cursor-pointer group"
                                         onClick={() => setIsHistoryOpen(true)}
                                     >
                                         <History className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
-                                        <span>Historique</span>
+                                        <span>{t("history")}</span>
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator className="bg-white/10" />
                                     <DropdownMenuItem
@@ -170,11 +177,11 @@ export function Header() {
                                         onClick={() => setIsProfileOpen(true)}
                                     >
                                         <User className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
-                                        <span>Profil</span>
+                                        <span>{t("profile")}</span>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem className="focus:bg-zinc-900 focus:text-white cursor-pointer group">
                                         <Settings className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
-                                        <span>Paramètres</span>
+                                        <span>{t("settings")}</span>
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator className="bg-white/10" />
                                     <DropdownMenuItem
@@ -182,19 +189,20 @@ export function Header() {
                                         onClick={handleSignOut}
                                     >
                                         <LogOut className="mr-2 h-4 w-4" />
-                                        <span>Se déconnecter</span>
+                                        <span>{t("signOut")}</span>
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </div>
                     ) : (
                         <div className="flex items-center gap-3">
+                            <LanguageSwitcher />
                             <button
                                 onClick={handleSignIn}
                                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-zinc-950 font-bold text-xs hover:bg-zinc-200 transition-colors"
                             >
                                 <LogIn size={14} />
-                                Se connecter
+                                {t("signIn")}
                             </button>
                         </div>
                     )}
