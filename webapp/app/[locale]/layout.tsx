@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { AuthProvider } from "@/context/AuthContext";
 import { Toaster } from "@/components/ui/sonner";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -22,21 +26,34 @@ export const metadata: Metadata = {
   description: "Disséquez, stress-testez et visualisez le raisonnement humain derrière chaque décision.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  // Ensure that the incoming `locale` is valid
+  const { locale } = await params;
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  const messages = await getMessages();
+
   return (
-    <html lang="fr" className={`${figtree.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${figtree.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body
         className={`font-sans bg-zinc-950 text-zinc-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200 pt-16`}
       >
-        <AuthProvider>
+        <NextIntlClientProvider messages={messages}>
+          <AuthProvider>
             <Header />
             {children}
             <Toaster />
-        </AuthProvider>
+          </AuthProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

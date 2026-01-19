@@ -16,11 +16,14 @@ import { useAuth } from "@/context/AuthContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
 
+import { useTranslations } from "next-intl";
+
 export default function DecisionPage() {
     const params = useParams();
     const router = useRouter();
     const { user, loading: authLoading } = useAuth();
     const id = params?.id as string;
+    const t = useTranslations("DecisionPage");
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -45,7 +48,7 @@ export default function DecisionPage() {
                 // 1. Fetch Decision
                 const decisionDoc = await getDoc(doc(db, "decisions", id));
                 if (!decisionDoc.exists()) {
-                    setError("Décision introuvable.");
+                    setError(t("errors.notFound"));
                     return;
                 }
                 const decisionData = decisionDoc.data();
@@ -76,11 +79,11 @@ export default function DecisionPage() {
             } catch (err: any) {
                 console.error("Error fetching data:", err);
                 if (err.code === 'unavailable') {
-                    setError("Connexion impossible au serveur Firebase. Vérifiez votre connexion.");
+                    setError(t("errors.connection"));
                 } else if (err.code === 'permission-denied') {
-                    setError("Permission refusée. Vous devez être connecté.");
+                    setError(t("errors.permission"));
                 } else {
-                    setError("Erreur lors du chargement de la décision.");
+                    setError(t("errors.loadError"));
                 }
             } finally {
                 setIsLoading(false);
@@ -108,7 +111,7 @@ export default function DecisionPage() {
             });
 
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ error: "Erreur inconnue" }));
+                const errorData = await response.json().catch(() => ({ error: t("errors.unknown") }));
                 throw new Error(errorData.error || `Erreur ${response.status}: ${response.statusText}`);
             }
 
@@ -123,7 +126,7 @@ export default function DecisionPage() {
             }
         } catch (err: any) {
             console.error(err);
-            setError(err.message || "Une erreur est survenue lors de l'analyse.");
+            setError(err.message || t("errors.unknown"));
             setIsLoading(false);
         }
     };
@@ -151,9 +154,9 @@ export default function DecisionPage() {
                 <Tabs defaultValue="intention" className="w-full h-full flex flex-col" onValueChange={setActiveTab}>
                     <div className="px-4 pb-4 shrink-0">
                         <TabsList className="w-full grid grid-cols-3 bg-zinc-900/50 border border-white/5">
-                            <TabsTrigger value="intention">Intention</TabsTrigger>
-                            <TabsTrigger value="arena">L'Arène</TabsTrigger>
-                            <TabsTrigger value="verdict">Verdict</TabsTrigger>
+                            <TabsTrigger value="intention">{t("tabs.intention")}</TabsTrigger>
+                            <TabsTrigger value="arena">{t("tabs.arena")}</TabsTrigger>
+                            <TabsTrigger value="verdict">{t("tabs.verdict")}</TabsTrigger>
                         </TabsList>
                     </div>
 
@@ -174,11 +177,11 @@ export default function DecisionPage() {
                         <div className="flex flex-col h-full gradient-subtle">
                             {/* Header Fixe Mobile */}
                             <div className="flex items-center justify-between p-4 border-b border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20">
-                                <h2 className="text-xl font-bold tracking-tight gradient-text">L'Arène</h2>
+                                <h2 className="text-xl font-bold tracking-tight gradient-text">{t("tabs.arena")}</h2>
                                 {results && (
                                     <div className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Complété</p>
+                                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">{t("status.completed")}</p>
                                     </div>
                                 )}
                             </div>
@@ -189,7 +192,7 @@ export default function DecisionPage() {
                                     ) : error ? (
                                         <div className="flex h-full items-center justify-center p-6">
                                             <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
-                                                <h3 className="font-bold mb-2">Erreur système</h3>
+                                                <h3 className="font-bold mb-2">{t("errors.system")}</h3>
                                                 <p className="text-sm opacity-80">{error}</p>
                                             </div>
                                         </div>
@@ -239,7 +242,7 @@ export default function DecisionPage() {
                                         className="flex items-center gap-2"
                                     >
                                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Analyse Complétée</p>
+                                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">{t("status.analysisCompleted")}</p>
                                     </motion.div>
                                 )}
                             </div>
@@ -251,7 +254,7 @@ export default function DecisionPage() {
                                     ) : error ? (
                                         <div className="flex h-full items-center justify-center p-6">
                                             <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
-                                                <h3 className="font-bold mb-2">Erreur système</h3>
+                                                <h3 className="font-bold mb-2">{t("errors.system")}</h3>
                                                 <p className="text-sm opacity-80">{error}</p>
                                             </div>
                                         </div>
