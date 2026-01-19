@@ -2,11 +2,18 @@ import { callGeminiJSON } from "../lib/gemini";
 import { loadPrompt } from "../utils/prompt-loader";
 
 export class AnalysisService {
+    // Instruction universelle pour forcer la langue de réponse
+    private readonly LANGUAGE_INSTRUCTION = `
+IMPORTANT: You must output your analysis in the SAME language as the user's decision (e.g. if the decision is in English, respond in English; if French, in French). 
+This overrides the language of the system prompt. Maintain the JSON structure rigorously.`;
+
     async analyze(decision: string, reasoning: string) {
-        const userInput = `DÉCISION: ${decision}\nRAISONNEMENT: ${reasoning || "Non fourni"}`;
+        const userInput = `DÉCISION/DECISION: ${decision}\nRAISONNEMENT/REASONING: ${reasoning || "Non fourni / Not provided"}`;
 
         // Phase 1: Orchestration
-        const orchestratorPrompt = loadPrompt("orchestrator.md");
+        let orchestratorPrompt = loadPrompt("orchestrator.md");
+        orchestratorPrompt += `\n\n${this.LANGUAGE_INSTRUCTION}`;
+
         console.log("[AnalysisService] Starting Orchestration (Model: Pro)...");
         const orchestration = await callGeminiJSON(userInput, orchestratorPrompt, [], 'reasoning');
 
@@ -34,7 +41,9 @@ export class AnalysisService {
 
         // Phase 3: Synthesis
         console.log("[AnalysisService] Starting Synthesis (Model: Flash)...");
-        const synthesisPrompt = loadPrompt("synthesis.md");
+        let synthesisPrompt = loadPrompt("synthesis.md");
+        synthesisPrompt += `\n\n${this.LANGUAGE_INSTRUCTION}`;
+
         const synthesisInput = `
             RAPPORT ORCHESTRATEUR: ${JSON.stringify(orchestration)}
             RAPPORTS DES AGENTS: ${JSON.stringify(allReports)}
@@ -49,7 +58,9 @@ export class AnalysisService {
     }
 
     private async runAgent(name: string, mission: string, context: string) {
-        const agentPrompt = loadPrompt("agents.md", { NOM_DE_L_AGENT: name });
+        let agentPrompt = loadPrompt("agents.md", { NOM_DE_L_AGENT: name });
+        agentPrompt += `\n\n${this.LANGUAGE_INSTRUCTION}`;
+
         const input = `MISSION Spécifique: ${mission}\nCONTEXTE: ${context}\n\nNOTE: Tu as accès à un outil de recherche Google via 'googleSearch'. Utilise-le pour vérifier les faits et enrichir ton analyse.`;
 
         // Define the tool
@@ -64,3 +75,4 @@ export class AnalysisService {
         return callGeminiJSON(input, agentPrompt, tools, 'reasoning');
     }
 }
+
