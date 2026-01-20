@@ -1,0 +1,70 @@
+{
+    "LandingPage": {
+        "subtitle": "Le Moteur d'Évaluation Cognitive pour vos Décisions Stratégiques",
+        "cta": "Tester le Moteur",
+        "version": "Version Bêta 0.1",
+        "loading": "Chargement..."
+    },
+    "LoginModal": {
+        "title": "Connexion Requise",
+        "description": "Pour accéder au moteur d'analyse et sauvegarder vos décisions, vous devez vous identifier.",
+        "continueWithGoogle": "Continuer avec Google"
+    },
+    "Header": {
+        "newDecision": "Nouvelle discussion",
+        "history": "Historique",
+        "profile": "Profil",
+        "settings": "Paramètres",
+        "signOut": "Se déconnecter",
+        "signIn": "Se connecter",
+        "sharedDiscussion": "Discussion partagée avec vous"
+    },
+    "DecisionPage": {
+        "tabs": {
+            "intention": "Intention",
+            "arena": "L'Arène",
+            "verdict": "Verdict"
+        },
+        "loading": {
+            "orchestration": "Orchestration..."
+        },
+        "status": {
+            "completed": "Complété",
+            "analysisCompleted": "Analyse Complétée"
+        },
+        "errors": {
+            "notFound": "Décision introuvable.",
+            "connection": "Connexion impossible au serveur Firebase.",
+            "permission": "Permission refusée.",
+            "system": "Erreur système",
+            "unknown": "Une erreur est survenue.",
+            "loadError": "Erreur lors du chargement de la décision."
+        },
+        "input": {
+            "title": "L'Intention",
+            "mode": {
+                "text": "Texte",
+                "file": "Fichier"
+            },
+            "readOnly": "Mode lecture seule : Cette décision appartient à un autre utilisateur.",
+            "submitPrompt": "Soumettez votre décision pour une évaluation cognitive multi-agents.",
+            "labels": {
+                "decision": "Votre Décision",
+                "reasoning": "Votre Raisonnement",
+                "optional": "(Optionnel)"
+            },
+            "placeholders": {
+                "decision": "Ex: Pivoter l'entreprise vers un modèle 100% remote dès le mois prochain...",
+                "reasoning": "Quelles sont vos hypothèses ? Vos doutes ? L'IA cherchera à les confirmer ou les invalider."
+            },
+            "file": {
+                "ready": "Prêt pour l'analyse",
+                "remove": "Supprimer",
+                "instruction": "Importer un fichier",
+                "formats": "Supporte .md, .txt (Max 5MB)",
+                "select": "Sélectionner un fichier"
+            },
+            "cta": "Lancer l'Analyse"
+        }
+    }
+}

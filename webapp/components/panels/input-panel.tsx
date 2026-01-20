@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Brain, FileText, Upload, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+import { useTranslations } from "next-intl";
+
 interface InputPanelProps {
     onAnalyze: (decision: string, reasoning: string) => void;
     isLoading: boolean;
@@ -17,6 +19,7 @@ interface InputPanelProps {
 }
 
 export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = false }: InputPanelProps) {
+    const t = useTranslations("DecisionPage.input");
     const [decision, setDecision] = useState(defaultValues?.decision || "");
     const [reasoning, setReasoning] = useState(defaultValues?.reasoning || "");
     const [inputType, setInputType] = useState<"text" | "file">("text");
@@ -48,8 +51,6 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
 
         if (inputType === "file" && fileContent && !isReadOnly) {
             // For file input, we treat the whole file content as the decision context
-            // and pass an empty string or a standard message for reasoning?
-            // Or maybe we split it if possible? For now, let's treat it as decision context.
             onAnalyze(fileContent, "Basé sur le fichier importé : " + fileName);
         } else if (inputType === "text" && decision.trim() && !isReadOnly) {
             onAnalyze(decision, reasoning);
@@ -64,7 +65,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                         <div className="p-2 bg-zinc-900 rounded-lg border border-white/5">
                             <Brain className="text-emerald-500" size={20} />
                         </div>
-                        <h2 className="text-2xl font-bold tracking-tight gradient-text">L'Intention</h2>
+                        <h2 className="text-2xl font-bold tracking-tight gradient-text">{t("title")}</h2>
                     </div>
 
                     {!isReadOnly && (
@@ -76,7 +77,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                     : "text-zinc-500 hover:text-zinc-300"
                                     }`}
                             >
-                                Texte
+                                {t("mode.text")}
                             </button>
                             <button
                                 onClick={() => setInputType("file")}
@@ -85,15 +86,15 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                     : "text-zinc-500 hover:text-zinc-300"
                                     }`}
                             >
-                                Fichier
+                                {t("mode.file")}
                             </button>
                         </div>
                     )}
                 </div>
                 <p className="text-sm text-zinc-500 leading-relaxed font-medium">
                     {isReadOnly
-                        ? "Mode lecture seule : Cette décision appartient à un autre utilisateur."
-                        : "Soumettez votre décision pour une évaluation cognitive multi-agents."
+                        ? t("readOnly")
+                        : t("submitPrompt")
                     }
                 </p>
             </div>
@@ -102,9 +103,9 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                 {inputType === "text" ? (
                     <>
                         <div className="space-y-3">
-                            <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">Votre Décision</label>
+                            <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">{t("labels.decision")}</label>
                             <Textarea
-                                placeholder="Ex: Pivoter l'entreprise vers un modèle 100% remote dès le mois prochain..."
+                                placeholder={t("placeholders.decision")}
                                 className="min-h-[120px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed disabled:opacity-70 disabled:cursor-not-allowed"
                                 value={decision}
                                 onChange={(e) => setDecision(e.target.value)}
@@ -113,9 +114,9 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                         </div>
 
                         <div className="space-y-3">
-                            <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">Votre Raisonnement <span className="text-zinc-700 font-normal">(Optionnel)</span></label>
+                            <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 pl-1">{t("labels.reasoning")} <span className="text-zinc-700 font-normal">{t("labels.optional")}</span></label>
                             <Textarea
-                                placeholder="Quelles sont vos hypothèses ? Vos doutes ? L'IA cherchera à les confirmer ou les invalider."
+                                placeholder={t("placeholders.reasoning")}
                                 className="min-h-[220px] bg-zinc-950/50 border-zinc-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 transition-all duration-300 resize-none rounded-xl text-sm leading-relaxed disabled:opacity-70 disabled:cursor-not-allowed"
                                 value={reasoning}
                                 onChange={(e) => setReasoning(e.target.value)}
@@ -132,7 +133,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                 </div>
                                 <div className="text-center">
                                     <p className="text-sm font-medium text-white">{fileName}</p>
-                                    <p className="text-xs text-zinc-500 mt-1">Prêt pour l'analyse</p>
+                                    <p className="text-xs text-zinc-500 mt-1">{t("file.ready")}</p>
                                 </div>
                                 <Button
                                     type="button"
@@ -144,7 +145,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                     }}
                                     className="text-rose-500 hover:text-rose-400 hover:bg-rose-500/10"
                                 >
-                                    Supprimer
+                                    {t("file.remove")}
                                 </Button>
                                 <ScrollArea className="w-full mt-4 h-[400px] rounded-lg border border-white/5 bg-zinc-950">
                                     <div className="p-4">
@@ -158,8 +159,8 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                     <Upload size={24} />
                                 </div>
                                 <div className="text-center space-y-1">
-                                    <p className="text-sm font-medium text-zinc-300">Importer un fichier</p>
-                                    <p className="text-xs text-zinc-500">Supporte .md, .txt (Max 5MB)</p>
+                                    <p className="text-sm font-medium text-zinc-300">{t("file.instruction")}</p>
+                                    <p className="text-xs text-zinc-500">{t("file.formats")}</p>
                                 </div>
                                 <input
                                     type="file"
@@ -176,7 +177,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                                     onClick={() => document.getElementById("file-upload")?.click()}
                                     disabled={isLoading || isReadOnly}
                                 >
-                                    Sélectionner un fichier
+                                    {t("file.select")}
                                 </Button>
                             </>
                         )}
@@ -192,10 +193,10 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                         {isLoading ? (
                             <div className="flex items-center gap-3">
                                 <div className="w-4 h-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
-                                <span>Orchestration...</span>
+                                <span>{useTranslations("DecisionPage.loading")("orchestration")}</span>
                             </div>
                         ) : (
-                            "Lancer l'Analyse"
+                            t("cta")
                         )}
                     </Button>
                 )}

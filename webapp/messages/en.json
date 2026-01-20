@@ -1,0 +1,70 @@
+{
+    "LandingPage": {
+        "subtitle": "The Cognitive Evaluation Engine for your Strategic Decisions",
+        "cta": "Test the Engine",
+        "version": "Beta Version 0.1",
+        "loading": "Loading..."
+    },
+    "LoginModal": {
+        "title": "Authentication Required",
+        "description": "To access the analysis engine and save your decisions, you must identify yourself.",
+        "continueWithGoogle": "Continue with Google"
+    },
+    "Header": {
+        "newDecision": "New Discussion",
+        "history": "History",
+        "profile": "Profile",
+        "settings": "Settings",
+        "signOut": "Sign Out",
+        "signIn": "Sign In",
+        "sharedDiscussion": "Discussion shared with you"
+    },
+    "DecisionPage": {
+        "tabs": {
+            "intention": "Intention",
+            "arena": "The Arena",
+            "verdict": "Verdict"
+        },
+        "loading": {
+            "orchestration": "Orchestrating..."
+        },
+        "status": {
+            "completed": "Completed",
+            "analysisCompleted": "Analysis Completed"
+        },
+        "errors": {
+            "notFound": "Decision not found.",
+            "connection": "Unable to connect to Firebase server.",
+            "permission": "Permission denied.",
+            "system": "System Error",
+            "unknown": "An error occurred.",
+            "loadError": "Error loading the decision."
+        },
+        "input": {
+            "title": "The Intention",
+            "mode": {
+                "text": "Text",
+                "file": "File"
+            },
+            "readOnly": "Read-only mode: This decision belongs to another user.",
+            "submitPrompt": "Submit your decision for multi-agent cognitive evaluation.",
+            "labels": {
+                "decision": "Your Decision",
+                "reasoning": "Your Reasoning",
+                "optional": "(Optional)"
+            },
+            "placeholders": {
+                "decision": "Ex: Pivot the company to a 100% remote model starting next month...",
+                "reasoning": "What are your assumptions? Your doubts? The AI will seek to confirm or invalidate them."
+            },
+            "file": {
+                "ready": "Ready for analysis",
+                "remove": "Remove",
+                "instruction": "Import a file",
+                "formats": "Supports .md, .txt (Max 5MB)",
+                "select": "Select a file"
+            },
+            "cta": "Start Analysis"
+        }
+    }
+}
