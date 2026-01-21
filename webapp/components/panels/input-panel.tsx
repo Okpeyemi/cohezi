@@ -20,7 +20,9 @@ interface InputPanelProps {
 
 export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = false }: InputPanelProps) {
     const t = useTranslations("DecisionPage.input");
+    const tLoading = useTranslations("DecisionPage.loading");
     const [decision, setDecision] = useState(defaultValues?.decision || "");
+
     const [reasoning, setReasoning] = useState(defaultValues?.reasoning || "");
     const [inputType, setInputType] = useState<"text" | "file">("text");
     const [fileContent, setFileContent] = useState<string | null>(null);
@@ -193,7 +195,7 @@ export function InputPanel({ onAnalyze, isLoading, defaultValues, isReadOnly = f
                         {isLoading ? (
                             <div className="flex items-center gap-3">
                                 <div className="w-4 h-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin" />
-                                <span>{useTranslations("DecisionPage.loading")("orchestration")}</span>
+                                <span>{tLoading("orchestration")}</span>
                             </div>
                         ) : (
                             t("cta")
