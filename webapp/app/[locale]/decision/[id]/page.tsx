@@ -17,6 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
 
 import { useTranslations } from "next-intl";
+import { useCompletion } from "@ai-sdk/react";
 
 export default function DecisionPage() {
     const params = useParams();
@@ -30,6 +31,16 @@ export default function DecisionPage() {
     const [results, setResults] = useState<AnalysisResponse | null>(null);
     const [inputs, setInputs] = useState<{ decision: string; reasoning: string; userId: string } | null>(null);
     const [activeTab, setActiveTab] = useState("intention");
+    const [statusMessage, setStatusMessage] = useState<string>("");
+
+    const { complete, completion: streamData } = useCompletion({
+        api: "/api/analyze",
+        onFinish: () => setIsLoading(false),
+        onError: (err) => {
+            setError(err.message || t("errors.unknown"));
+            setIsLoading(false);
+        },
+    });
 
     // Auth Guard
     useEffect(() => {
@@ -95,35 +106,104 @@ export default function DecisionPage() {
         }
     }, [id, user]);
 
+    useEffect(() => {
+        if (!streamData || !Array.isArray(streamData)) return;
+
+        setResults((prev) => {
+            const next = prev ? { ...prev } : {} as any;
+            let status = "";
+
+            streamData.forEach((item: any) => {
+                if (item.type === 'status') status = item.message;
+                if (item.type === 'orchestration') next.orchestration = item.data;
+                if (item.type === 'agent_result') {
+                    if (!next.agents) next.agents = [];
+                    const exists = next.agents.some((a: any) => a.agent_name === item.data.agent_name);
+                    if (!exists) next.agents.push(item.data);
+                }
+                if (item.type === 'synthesis') next.verdict = item.data;
+                if (item.type === 'error') setError(item.message);
+            });
+
+            if (status) setStatusMessage(status);
+            return next;
+        });
+    }, [streamData]);
+
+
+
+    // Effet pour processer les données du stream en temps réel
+    useEffect(() => {
+        if (!streamData) return;
+
+        // streamData est un tableau d'objets JSON accumulés (grâce au protocole '2:[...]')
+        // On reconstruit l'état 'results' à chaque mise à jour
+
+        // Note: streamData dans useCompletion (version récente) peut être un tableau si le serveur envoie des Data parts.
+        // Sinon, il faut parser. Avec le protocole standard '2:', useCompletion expose 'data' comme un tableau.
+
+        let newResults: any = { ...results };
+        let newStatus = "";
+
+        // Si streamData est un tableau
+        if (Array.isArray(streamData)) {
+            streamData.forEach((item: any) => {
+                if (item.type === 'status') {
+                    newStatus = item.message;
+                } else if (item.type === 'orchestration') {
+                    newResults.orchestration = item.data;
+                } else if (item.type === 'agent_result' || item.type === 'foundations' || item.type === 'challenges') {
+                    // Accumulate agents
+                    if (!newResults.agents) newResults.agents = [];
+                    // Check duplication by name ?
+                    // Simple push for now, or replace if specific logic needed
+                    // Assuming item.data is the report
+                    const report = item.data;
+                    if (item.type === 'agent_result') {
+                        // Avoid duplicates if re-rendering
+                        if (!newResults.agents.find((a: any) => a.agent_name === report.agent_name)) {
+                            newResults.agents.push(report);
+                        }
+                    } else if (Array.isArray(item.data)) {
+                        // foundations/challenges arrays
+                        item.data.forEach((r: any) => {
+                            if (!newResults.agents.find((a: any) => a.agent_name === r.agent_name)) {
+                                newResults.agents.push(r);
+                            }
+                        });
+                    }
+                } else if (item.type === 'synthesis') {
+                    newResults.verdict = item.data;
+                } else if (item.type === 'error') {
+                    setError(item.message);
+                }
+            });
+
+            setResults(newResults);
+            if (newStatus) setStatusMessage(newStatus);
+        }
+
+    }, [streamData]);
+
+
     const handleAnalyze = async (decision: string, reasoning: string) => {
         if (!user) return;
 
         setIsLoading(true);
         setError(null);
         setResults(null);
-        setInputs({ decision, reasoning, userId: user.uid }); // Store inputs for PDF export
+        setInputs({ decision, reasoning, userId: user.uid });
+        setStatusMessage(t("status.initializing"));
+
         try {
-            // Use the proxy route in the webapp itself (which calls backend + saves to DB)
-            const response = await fetch("/api/analyze", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ decision, reasoning, userId: user.uid }),
+            // Déclenche le stream
+            // complete() envoie le prompt. Ici on envoie un JSON stringifié comme prompt,
+            // ou on passe le body directement. useCompletion envoie { prompt } par défaut.
+            // On peut surcharger le body.
+            await complete(decision, {
+                body: { decision, reasoning }
             });
 
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ error: t("errors.unknown") }));
-                throw new Error(errorData.error || `Erreur ${response.status}: ${response.statusText}`);
-            }
-
-            const data = await response.json();
-
-            // Redirect to the persistent URL if we have an ID
-            if (data.decisionId) {
-                router.push(`/decision/${data.decisionId}`);
-            } else {
-                // Fallback (shouldn't happen with new API)
-                setResults(data);
-            }
         } catch (err: any) {
             console.error(err);
             setError(err.message || t("errors.unknown"));
@@ -188,7 +268,7 @@ export default function DecisionPage() {
                             <ScrollArea className="flex-1">
                                 <div className="p-4 min-h-full flex flex-col">
                                     {isLoading ? (
-                                        <LoadingState />
+                                        <LoadingState message={statusMessage} />
                                     ) : error ? (
                                         <div className="flex h-full items-center justify-center p-6">
                                             <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">
@@ -250,7 +330,7 @@ export default function DecisionPage() {
                             <ScrollArea className="flex-1">
                                 <div className="p-6 min-h-full flex flex-col">
                                     {isLoading ? (
-                                        <LoadingState />
+                                        <LoadingState message={statusMessage} />
                                     ) : error ? (
                                         <div className="flex h-full items-center justify-center p-6">
                                             <div className="bg-rose-500/10 border border-rose-500/20 text-rose-200 p-6 rounded-xl text-center max-w-sm">

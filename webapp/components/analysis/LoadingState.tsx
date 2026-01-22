@@ -15,15 +15,16 @@ const LOADING_MESSAGES = [
     "Compilation de la synthèse finale..."
 ];
 
-export function LoadingState() {
+export function LoadingState({ message }: { message?: string }) {
     const [messageIndex, setMessageIndex] = useState(0);
 
     useEffect(() => {
+        if (message) return; // Don't cycle if message is provided
         const interval = setInterval(() => {
             setMessageIndex((prev) => (prev + 1) % LOADING_MESSAGES.length);
         }, 3000);
         return () => clearInterval(interval);
-    }, []);
+    }, [message]);
 
     return (
         <div className="w-full h-[calc(100vh-200px)] flex flex-col items-center justify-center space-y-6">
@@ -34,7 +35,7 @@ export function LoadingState() {
                 </div>
             </div>
             <div className="space-y-3 text-center">
-                <p className="text-lg font-medium text-zinc-200">{LOADING_MESSAGES[messageIndex]}</p>
+                <p className="text-lg font-medium text-zinc-200">{message || LOADING_MESSAGES[messageIndex]}</p>
                 <div className="flex gap-2 justify-center">
                     {[0, 1, 2, 3, 4].map((i) => (
                         <div

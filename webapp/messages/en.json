@@ -30,7 +30,8 @@
         },
         "status": {
             "completed": "Completed",
-            "analysisCompleted": "Analysis Completed"
+            "analysisCompleted": "Analysis Completed",
+            "initializing": "Initializing analysis..."
         },
         "errors": {
             "notFound": "Decision not found.",
