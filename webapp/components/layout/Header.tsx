@@ -4,6 +4,7 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserProfileModal } from "@/components/modals/UserProfileModal";
 import { HistoryModal } from "@/components/modals/HistoryModal";
+import { FeedbackModal } from "@/components/modals/FeedbackModal";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -12,7 +13,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History, Share2, Users, Plus } from "lucide-react";
+import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History, Share2, Users, Plus, MessageSquare } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { signInWithGoogle, logOut } from "@/lib/firebase/auth";
 import { useRouter, useParams } from "next/navigation";
@@ -32,6 +33,7 @@ export function Header() {
 
     const [isProfileOpen, setIsProfileOpen] = React.useState(false);
     const [isHistoryOpen, setIsHistoryOpen] = React.useState(false);
+    const [isFeedbackOpen, setIsFeedbackOpen] = React.useState(false);
     const [isShared, setIsShared] = React.useState(false);
 
     // ... (keep useEffect and handlers same)
@@ -122,6 +124,15 @@ export function Header() {
                                 <History size={16} />
                             </button>
 
+                            <button
+                                className="hidden md:flex items-center gap-2 px-3 h-8 rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
+                                title={t("feedback")}
+                                onClick={() => setIsFeedbackOpen(true)}
+                            >
+                                <MessageSquare size={16} />
+                                <span className="text-xs font-medium">{t("feedback")}</span>
+                            </button>
+
                             {/* Share Button */}
                             {showShare && (
                                 <button
@@ -171,6 +182,13 @@ export function Header() {
                                         <History className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
                                         <span>{t("history")}</span>
                                     </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                        className="focus:bg-zinc-900 focus:text-white cursor-pointer group"
+                                        onClick={() => setIsFeedbackOpen(true)}
+                                    >
+                                        <MessageSquare className="mr-2 h-4 w-4 text-zinc-500 group-hover:text-emerald-500 transition-colors" />
+                                        <span>{t("feedback")}</span>
+                                    </DropdownMenuItem>
                                     <DropdownMenuSeparator className="bg-white/10" />
                                     <DropdownMenuItem
                                         className="focus:bg-zinc-900 focus:text-white cursor-pointer group"
@@ -211,6 +229,7 @@ export function Header() {
 
             <UserProfileModal isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
             <HistoryModal isOpen={isHistoryOpen} onClose={() => setIsHistoryOpen(false)} />
+            <FeedbackModal isOpen={isFeedbackOpen} onClose={() => setIsFeedbackOpen(false)} />
         </>
     );
 }

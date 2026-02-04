@@ -17,7 +17,8 @@
         "settings": "Paramètres",
         "signOut": "Se déconnecter",
         "signIn": "Se connecter",
-        "sharedDiscussion": "Discussion partagée avec vous"
+        "sharedDiscussion": "Discussion partagée avec vous",
+        "feedback": "Feedback"
     },
     "DecisionPage": {
         "tabs": {
@@ -66,5 +67,18 @@
             },
             "cta": "Lancer l'Analyse"
         }
+    },
+    "FeedbackModal": {
+        "title": "Envoyer un Feedback",
+        "description": "Votre avis est précieux pour nous aider à améliorer Cohezi. Dites-nous ce que vous pensez !",
+        "placeholder": "J'ai remarqué que...",
+        "cancel": "Annuler",
+        "send": "Envoyer",
+        "sending": "Envoi...",
+        "success": "Feedback envoyé !",
+        "successDescription": "Merci pour votre retour précieux.",
+        "error": "Erreur",
+        "errorDescription": "L'envoi du feedback a échoué. Veuillez réessayer.",
+        "feedbackBodyPrefix": "Voici mon feedback :"
     }
 }
