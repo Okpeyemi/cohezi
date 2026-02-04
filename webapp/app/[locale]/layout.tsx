@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
@@ -52,6 +53,7 @@ export default async function RootLayout({
             <Header />
             {children}
             <Toaster />
+            <Analytics />
           </AuthProvider>
         </NextIntlClientProvider>
       </body>
