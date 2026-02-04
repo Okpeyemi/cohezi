@@ -16,7 +16,7 @@ import {
 import { BrainCircuit, LogOut, Settings, User, LogIn, Loader2, History, Share2, Users, Plus, MessageSquare } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { signInWithGoogle, logOut } from "@/lib/firebase/auth";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, usePathname } from "next/navigation";
 import { toast } from "sonner";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
@@ -28,8 +28,11 @@ export function Header() {
     const { user, loading } = useAuth();
     const router = useRouter();
     const params = useParams();
+    const pathname = usePathname();
     const decisionId = params?.id as string;
     const t = useTranslations("Header");
+
+    const isHomePage = pathname === "/" || pathname === "/fr" || pathname === "/en"; // Add other locales if needed
 
     const [isProfileOpen, setIsProfileOpen] = React.useState(false);
     const [isHistoryOpen, setIsHistoryOpen] = React.useState(false);
@@ -120,6 +123,7 @@ export function Header() {
                                 className="hidden md:flex w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
                                 title={t("history")}
                                 onClick={() => setIsHistoryOpen(true)}
+                                style={{ display: isHomePage ? "none" : undefined }}
                             >
                                 <History size={16} />
                             </button>
@@ -128,6 +132,7 @@ export function Header() {
                                 className="hidden md:flex items-center gap-2 px-3 h-8 rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 transition-all"
                                 title={t("feedback")}
                                 onClick={() => setIsFeedbackOpen(true)}
+                                style={{ display: isHomePage ? "none" : undefined }}
                             >
                                 <MessageSquare size={16} />
                                 <span className="text-xs font-medium">{t("feedback")}</span>
