@@ -3,7 +3,7 @@
 **The Hook (0:00 - 0:10)**
 "Hello everyone.
 Today, AI can write, code, draw... but can it help us **think**?
-The problem with current chatbots is that they are complacent. They are 'Yes-men'. They validate your ideas, even the bad ones. For a decision-maker, this is dangerous."
+The problem with current chatbots is that they are complacent. They are 'Yes-men'. They validate your ideas, even the bad ones. For a decision-maker, this is dangerous." 
 
 **The Solution: Cohezi (0:10 - 0:30)**
 "That's why I created **Cohezi**.
