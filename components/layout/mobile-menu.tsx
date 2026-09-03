@@ -15,6 +15,7 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
 
   useEffect(() => {
     if (!open) return;
+    const trigger = triggerRef.current;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setOpen(false);
     };
@@ -24,7 +25,7 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = previousOverflow;
-      triggerRef.current?.focus();
+      trigger?.focus();
     };
   }, [open]);
 
