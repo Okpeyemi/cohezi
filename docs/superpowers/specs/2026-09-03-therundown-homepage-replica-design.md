@@ -1,7 +1,7 @@
 # Spec — Réplique de la page d'accueil therundown.ai en Next.js
 
 - Date : 2026-09-03
-- Statut : validé en brainstorming, en attente de relecture avant plan
+- Statut : validé, plan d'implémentation écrit (`docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`)
 - Projet : `cohezi` (dépôt vide au départ, hors captures de référence)
 
 ## 1. Contexte et objectif
@@ -65,7 +65,8 @@ cohezi/
     layout.tsx                 police, métadonnées, <html lang="en">, fond ink
     page.tsx                   assemble les 8 sections depuis content/
     globals.css                @import "tailwindcss" + @theme tokens + base
-    [slug]/page.tsx            page « à venir » pour les liens de nav (generateStaticParams)
+    [...slug]/page.tsx         page « à venir » (attrape-tout, generateStaticParams sur les slugs connus)
+    not-found.tsx              page 404 avec header et footer
     api/newsletter/route.ts    POST, validation email, réponse simulée
   components/
     layout/site-header.tsx     logo, nav desktop, CTA, déclenche MobileMenu
@@ -133,7 +134,8 @@ Typographie : h1 72px / 1.08 / -0.025em / 700 (mobile 36px) ; h2 48px / 1 / -0.0
 ## 7. Modèle de données (`content/types.ts`)
 
 ```ts
-export type IconName = string;                       // clé de lib/icons.ts
+export type IconName = 'menu' | 'close' | 'arrow-right' | /* … 39 noms, liste complète dans le plan */ 'community';
+// union fermée : `lib/icons.ts` est typé `Record<IconName, IconSvgElement>`, une icône manquante casse la compilation
 export type ImageRef = { src?: string; alt: string }; // sans src → PlaceholderImage
 export type NavItem = { label: string; href: string };
 export type Category = { slug: string; label: string; icon: IconName };
@@ -142,7 +144,7 @@ export type Article = {
   slug: string; title: string; subtitle?: string; author: string;
   readingMinutes: number; tag: ArticleTag; image: ImageRef; featured?: boolean;
 };
-export type Guide = { slug: string; title: string; categories: string[]; image: ImageRef };
+export type Guide = { slug: string; title: string; categories: string[]; image: ImageRef };  // lien : /guides/<slug>
 export type Tool = {
   slug: string; name: string; description: string; categories: string[];
   badgeIcon: IconName; image: ImageRef;
@@ -152,8 +154,10 @@ export type SocialLink = { label: string; href: string; icon: IconName };
 export type FooterColumn = { heading: string; links: NavItem[] };
 export type SiteConfig = {
   name: string; tagline: string; nav: NavItem[]; headerCta: NavItem;
-  hero: { titleStart: string; titleAccent: string; titleEnd: string; subtitle: string;
-          trustedByLabel: string; trustedBy: string[] };
+  hero: HeroContent;   // titleStart/Accent/End, subtitle, emailPlaceholder, subscribeLabel,
+                       // trustedByPrefix/Count/Suffix (le compte est en gras), trustedBy: string[]
+  sections: { articles: SectionCopy; guides: SectionCopy; tools: SectionCopy };  // titre, sous-titre, « View all » label + href
+  comingSoonSlugs: string[];
   footer: { description: string; columns: FooterColumn[]; copyright: string; social: SocialLink[] };
 };
 ```
@@ -168,8 +172,10 @@ ajoutée par `FilterableGrid`.
 
 ## 8. Sections et composants
 
-Toutes les sections sont des Server Components qui reçoivent leurs données en props depuis
-`page.tsx`. Chaque section a un `aria-labelledby` vers son h2.
+Les sections reçoivent leurs données en props depuis `page.tsx`. Hero, Podcast et University CTA
+sont des Server Components ; Latest Articles, Guides et Trending Tools sont des Client Components
+(voir §9 : une fonction de rendu ne traverse pas la frontière serveur → client). Chaque section a
+un `aria-labelledby` vers son h2.
 
 ### 8.1 Header (`site-header`) — 68 px
 Fond transparent sur ink, `position: sticky; top: 0; z-50`. Logo (monogramme carré 24 px +
@@ -265,12 +271,16 @@ type Props<T> = {
   variant: 'tabs' | 'chips';
   renderItems: (visible: T[]) => ReactNode; // la section décide de la mise en page
   emptyLabel?: string;                      // défaut « Nothing here yet. »
-  labelledBy: string;                       // id du h2 pour aria
+  filterLabel: string;                      // aria-label du groupe de filtres
+  allLabel?: string;                        // défaut « All »
 };
 ```
 État local `active` (défaut `all`). Les contrôles sont des `<button type="button">` avec
 `aria-pressed`. Le composant ne connaît pas la forme des items : Latest Articles lui passe
 `renderItems` qui choisit la une et la grille 2×2 ; Guides et Tools passent une grille simple.
+`renderItems` étant une fonction, elle ne peut pas être passée depuis un Server Component : les
+trois sections qui utilisent `FilterableGrid` sont donc elles-mêmes des Client Components et ne
+reçoivent de `page.tsx` que des données sérialisables.
 
 ### `ui/newsletter-form.tsx` (client)
 Props : `variant: 'hero' | 'footer'`, `placeholder`, `buttonLabel`. Validation locale via
@@ -305,10 +315,12 @@ texte 18px / 700 blanc, avec `letter-spacing` léger, sans logo réel.
 
 ## 12. Pages « à venir »
 
-`app/[slug]/page.tsx` avec `generateStaticParams` sur les slugs de la nav et du footer
-(`articles`, `guides`, `tools`, `courses`, `careers`, `advertise`, `university`, `podcast`,
-`contact`, `privacy`, `terms`). Rendu : header, titre humanisé, phrase « This page is coming
-soon. », lien retour, footer. Slug inconnu → `notFound()`.
+`app/[...slug]/page.tsx` (attrape-tout) avec `generateStaticParams` sur `site.comingSoonSlugs`
+(`ai-university`, `articles`, `guides`, `tools`, `courses`, `careers`, `advertise`,
+`privacy-policy`, `terms-privacy`). Les liens des cartes (`/articles/<slug>`, `/guides/<slug>`,
+`/tools/<slug>`) tombent aussi sur cette page puisque leur premier segment est connu. Rendu :
+header, titre humanisé (`lib/slug.ts`), phrase « This page is coming soon. », lien retour, footer.
+Premier segment inconnu → `notFound()` (`app/not-found.tsx`).
 
 ## 13. Responsive
 
