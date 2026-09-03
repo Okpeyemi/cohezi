@@ -3160,7 +3160,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `Guide`, `Tool`, `Category`, `SectionCopy` ; `PlaceholderImage`, `Icon`, `SectionHeading`, `FilterableGrid`, `ButtonLink`, `cn`.
 - Produces: `CardFrame({ href: string; children: ReactNode; className?: string })` ; `GuideCard({ guide: Guide })` ; `ToolCard({ tool: Tool })` ; `Guides({ copy: SectionCopy; guides: Guide[]; categories: Category[] })` et `TrendingTools({ copy: SectionCopy; tools: Tool[]; categories: Category[] })` (Client Components).
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/cards/guide-card.test.tsx` :
 ```tsx
@@ -3261,7 +3261,7 @@ describe('TrendingTools', () => {
 Run : `pnpm test tests/components/cards tests/components/sections/guides.test.tsx tests/components/sections/trending-tools.test.tsx`
 Expected : FAIL — modules introuvables.
 
-- [ ] **Step 2 : `components/cards/card-frame.tsx`, `guide-card.tsx`, `tool-card.tsx`**
+- [x] **Step 2 : `components/cards/card-frame.tsx`, `guide-card.tsx`, `tool-card.tsx`**
 
 `components/cards/card-frame.tsx` :
 ```tsx
@@ -3330,7 +3330,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
 }
 ```
 
-- [ ] **Step 3 : `components/sections/guides.tsx` et `components/sections/trending-tools.tsx`**
+- [x] **Step 3 : `components/sections/guides.tsx` et `components/sections/trending-tools.tsx`**
 
 `components/sections/guides.tsx` :
 ```tsx
@@ -3425,7 +3425,7 @@ Les classes `[&>li:nth-child(n+4)]:hidden md:[&>li:nth-child(n+4)]:block` reprod
 Run : `pnpm test tests/components && pnpm typecheck && pnpm lint`
 Expected : PASS.
 
-- [ ] **Step 4 : commit**
+- [x] **Step 4 : commit**
 
 ```bash
 git add components/cards components/sections/guides.tsx components/sections/trending-tools.tsx tests/components
