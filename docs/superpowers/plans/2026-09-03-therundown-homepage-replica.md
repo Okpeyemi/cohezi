@@ -2913,7 +2913,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `HeroContent`, `Article`, `ArticleTag`, `Category`, `SectionCopy` ; `NewsletterForm`, `LogoWordmark`, `PlaceholderImage`, `SectionHeading`, `FilterableGrid`, `ButtonLink`, `Icon` ; `pickFeatured`.
 - Produces: `Hero({ hero: HeroContent })` ; `ArticleCard({ article: Article; variant: 'featured' | 'compact' })`, `TAG_LABELS: Record<ArticleTag, string>` ; `LatestArticles({ copy: SectionCopy; articles: Article[] })` (Client Component), `ARTICLE_TABS: Category[]`.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/sections/hero.test.tsx` :
 ```tsx
@@ -2998,7 +2998,7 @@ describe('LatestArticles', () => {
 Run : `pnpm test tests/components/sections/hero.test.tsx tests/components/cards tests/components/sections/latest-articles.test.tsx`
 Expected : FAIL — modules introuvables.
 
-- [ ] **Step 2 : `components/sections/hero.tsx`**
+- [x] **Step 2 : `components/sections/hero.tsx`**
 
 ```tsx
 import { LogoWordmark } from '@/components/ui/logo-wordmark';
@@ -3034,7 +3034,7 @@ export function Hero({ hero }: { hero: HeroContent }) {
 }
 ```
 
-- [ ] **Step 3 : `components/cards/article-card.tsx`**
+- [x] **Step 3 : `components/cards/article-card.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -3078,7 +3078,7 @@ export function ArticleCard({ article, variant }: ArticleCardProps) {
 }
 ```
 
-- [ ] **Step 4 : `components/sections/latest-articles.tsx`**
+- [x] **Step 4 : `components/sections/latest-articles.tsx`**
 
 ```tsx
 'use client';
@@ -3139,7 +3139,7 @@ export function LatestArticles({ copy, articles }: LatestArticlesProps) {
 Run : `pnpm test tests/components && pnpm typecheck && pnpm lint`
 Expected : PASS.
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 git add components/sections/hero.tsx components/cards/article-card.tsx components/sections/latest-articles.tsx tests/components/sections tests/components/cards
