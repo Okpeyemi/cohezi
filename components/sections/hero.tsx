@@ -12,11 +12,11 @@ export function Hero({ hero }: { hero: HeroContent }) {
         {hero.titleStart} <br className="hidden md:inline" />
         <span className="text-brand-gradient">{hero.titleAccent}</span> {hero.titleEnd}
       </h1>
-      <p className="mx-auto mt-6 max-w-xl text-lg leading-7 text-white/80">{hero.subtitle}</p>
+      <p className="mx-auto mt-6 max-w-[420px] text-lg leading-7 text-white/80">{hero.subtitle}</p>
       <div className="mt-8 flex justify-center">
         <NewsletterForm variant="hero" placeholder={hero.emailPlaceholder} buttonLabel={hero.subscribeLabel} />
       </div>
-      <p className="mt-12 text-sm text-white/80">
+      <p className="mt-16 text-sm text-white/80">
         {hero.trustedByPrefix} <strong className="font-bold text-white">{hero.trustedByCount}</strong> {hero.trustedBySuffix}
       </p>
       <ul aria-label="Trusted by" className="mx-auto mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3">

@@ -30,15 +30,16 @@ export function FilterableGrid<T>({
   const [active, setActive] = useState<string>(ALL);
   const options: Category[] = [{ slug: ALL, label: allLabel, icon: 'all' }, ...categories];
   const visible = filterByCategory(items, active, getCategories);
+  // Comme sur le site, les filtres n'existent pas sous md : la grille affiche alors ses 3 premières cartes.
 
   return (
     <div>
       {variant === 'tabs' ? (
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 hidden justify-center md:flex">
           <Tabs items={options} active={active} onChange={setActive} ariaLabel={filterLabel} />
         </div>
       ) : (
-        <div role="group" aria-label={filterLabel} className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-2">
+        <div role="group" aria-label={filterLabel} className="mx-auto mt-8 hidden max-w-[840px] flex-wrap justify-center gap-2 md:flex">
           {options.map((category) => (
             <Chip
               key={category.slug}
