@@ -60,7 +60,7 @@
 
 Le dossier n'est pas vide (`docs/`, `screenshots/`, `.git`) : `create-next-app` refuserait de s'y installer. On scaffolde donc à la main, avec les fichiers exacts ci-dessous.
 
-- [ ] **Step 1 : package.json et installation**
+- [x] **Step 1 : package.json et installation**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -86,7 +86,7 @@ pnpm add -D typescript@^5 @types/node@^22 @types/react@^19.2.18 @types/react-dom
 
 Attendu : `node_modules/next/package.json` indique une version `16.3.x` ; `ls node_modules/next/dist/docs/` liste les guides (à consulter avant chaque API Next).
 
-- [ ] **Step 2 : fichiers de configuration**
+- [x] **Step 2 : fichiers de configuration**
 
 `tsconfig.json` :
 ```json
@@ -173,7 +173,7 @@ export default defineConfig({
 import '@testing-library/jest-dom/vitest';
 ```
 
-- [ ] **Step 3 : application minimale pour que `build` passe**
+- [x] **Step 3 : application minimale pour que `build` passe**
 
 `app/globals.css` :
 ```css
@@ -206,7 +206,7 @@ export default function HomePage() {
 }
 ```
 
-- [ ] **Step 4 : test `cn` qui échoue**
+- [x] **Step 4 : test `cn` qui échoue**
 
 `tests/lib/cn.test.ts` :
 ```ts
@@ -227,7 +227,7 @@ describe('cn', () => {
 Run : `pnpm test`
 Expected : FAIL — `Failed to resolve import "@/lib/cn"`.
 
-- [ ] **Step 5 : implémentation `cn`**
+- [x] **Step 5 : implémentation `cn`**
 
 `lib/cn.ts` :
 ```ts
@@ -242,12 +242,12 @@ export function cn(...inputs: ClassValue[]): string {
 Run : `pnpm test`
 Expected : PASS (2 tests).
 
-- [ ] **Step 6 : vérifier lint, typecheck et build**
+- [x] **Step 6 : vérifier lint, typecheck et build**
 
 Run : `pnpm typecheck && pnpm lint && pnpm build`
 Expected : les trois passent. `next build` affiche la route `/` en statique. Si `next build` réécrit `tsconfig.json` (Next ajuste `jsx`, `include`), conserver ses modifications.
 
-- [ ] **Step 7 : commit**
+- [x] **Step 7 : commit**
 
 ```bash
 git add package.json pnpm-lock.yaml tsconfig.json next.config.ts postcss.config.mjs eslint.config.mjs vitest.config.mts tests/ app/ lib/
