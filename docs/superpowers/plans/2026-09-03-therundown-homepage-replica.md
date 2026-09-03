@@ -3627,7 +3627,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: tout `content/`, toutes les sections, `SiteHeader`, `SiteFooter`, `humanize`, `ButtonLink`, `Icon`.
 - Produces: `HomePage()` (Server Component synchrone), `ComingSoonPage({ params })` (async), `NotFound()`.
 
-- [ ] **Step 1 : test de la page qui échoue**
+- [x] **Step 1 : test de la page qui échoue**
 
 `tests/app/page.test.tsx` :
 ```tsx
@@ -3654,7 +3654,7 @@ describe('HomePage', () => {
 Run : `pnpm test tests/app/page.test.tsx`
 Expected : FAIL — la page « Hello » n'a ni h1 attendu ni sections.
 
-- [ ] **Step 2 : `app/page.tsx`**
+- [x] **Step 2 : `app/page.tsx`**
 
 ```tsx
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -3698,7 +3698,7 @@ export default function HomePage() {
 Run : `pnpm test tests/app/page.test.tsx`
 Expected : PASS.
 
-- [ ] **Step 3 : `app/[...slug]/page.tsx` et `app/not-found.tsx`**
+- [x] **Step 3 : `app/[...slug]/page.tsx` et `app/not-found.tsx`**
 
 `app/[...slug]/page.tsx` :
 ```tsx
@@ -3768,7 +3768,7 @@ export default function NotFound() {
 }
 ```
 
-- [ ] **Step 4 : build, routes, commit**
+- [x] **Step 4 : build, routes, commit**
 
 ```bash
 pnpm typecheck && pnpm lint && pnpm test && pnpm build
