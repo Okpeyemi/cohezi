@@ -349,6 +349,10 @@ fallback si Satoshi indisponible, visuels placeholders.
 ## 16. Risques et notes
 
 - Satoshi : téléchargement depuis Fontshare au moment de l'implémentation ; repli documenté.
+  URL vérifiées le 2026-09-03 (woff2, ~25 Ko chacun, en-tête `wOF2` confirmé) :
+  - 400 : https://cdn.fontshare.com/wf/TTX2Z3BF3P6Y5BQT3IV2VNOK6FL22KUT/7QYRJOI3JIMYHGY6CH7SOIFRQLZOLNJ6/KFIAZD4RUMEZIYV6FQ3T3GP5PDBDB6JY.woff2
+  - 500 : https://cdn.fontshare.com/wf/P2LQKHE6KA6ZP4AAGN72KDWMHH6ZH3TA/ZC32TK2P7FPS5GFTL46EU6KQJA24ZYDB/7AHDUZ4A7LFLVFUIFSARGIWCRQJHISQP.woff2
+  - 700 : https://cdn.fontshare.com/wf/LAFFD4SDUCDVQEXFPDC7C53EQ4ZELWQI/PXCT3G6LO6ICM5I3NTYENYPWJAECAWDD/GHM6WVH6MILNYOOCXHXB5GTSGNTMGXZR.woff2
 - Next 16 : lire la doc embarquée avant chaque API (`next/font`, route handlers, `params`
   asynchrones, `generateStaticParams`).
 - Noms d'icônes : vérifiés sur `@hugeicons/core-free-icons` 4.3.0 ; si un nom manque à
