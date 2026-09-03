@@ -3446,7 +3446,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `PodcastContent`, `UniversityContent` ; `SectionHeading`, `ButtonLink`, `Icon`, `PlaceholderImage`, `cn`.
 - Produces: `Podcast({ podcast: PodcastContent })`, `UniversityCta({ university: UniversityContent })` (Server Components).
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/sections/podcast.test.tsx` :
 ```tsx
@@ -3495,7 +3495,7 @@ describe('UniversityCta', () => {
 Run : `pnpm test tests/components/sections/podcast.test.tsx tests/components/sections/university-cta.test.tsx`
 Expected : FAIL — modules introuvables.
 
-- [ ] **Step 2 : `components/sections/podcast.tsx`**
+- [x] **Step 2 : `components/sections/podcast.tsx`**
 
 ```tsx
 import { ButtonLink } from '@/components/ui/button';
@@ -3548,7 +3548,7 @@ export function Podcast({ podcast }: { podcast: PodcastContent }) {
 }
 ```
 
-- [ ] **Step 3 : `components/sections/university-cta.tsx`**
+- [x] **Step 3 : `components/sections/university-cta.tsx`**
 
 ```tsx
 import { ButtonLink } from '@/components/ui/button';
@@ -3605,7 +3605,7 @@ export function UniversityCta({ university }: { university: UniversityContent })
 Run : `pnpm test tests/components && pnpm typecheck && pnpm lint`
 Expected : PASS.
 
-- [ ] **Step 4 : commit**
+- [x] **Step 4 : commit**
 
 ```bash
 git add components/sections/podcast.tsx components/sections/university-cta.tsx tests/components/sections
