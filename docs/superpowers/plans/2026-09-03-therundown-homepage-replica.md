@@ -1578,7 +1578,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - `LogoWordmark({ name: string; className?: string })`
   - `BrandLogo({ name: string; tone: 'light' | 'dark'; className?: string })`
 
-- [ ] **Step 1 : tests qui échouent (7 fichiers)**
+- [x] **Step 1 : tests qui échouent (7 fichiers)**
 
 `tests/components/ui/icon.test.tsx` :
 ```tsx
@@ -1786,7 +1786,7 @@ describe('LogoWordmark', () => {
 Run : `pnpm test tests/components/ui`
 Expected : FAIL — 7 fichiers, modules introuvables.
 
-- [ ] **Step 2 : `components/ui/icon.tsx`**
+- [x] **Step 2 : `components/ui/icon.tsx`**
 
 ```tsx
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -1820,7 +1820,7 @@ export function Icon({ name, size = 20, strokeWidth = 1.8, className, label }: I
 
 `HugeiconsIcon` est un simple `forwardRef` sans hook ni directive `use client` (vérifié dans `@hugeicons/react` 1.1.10) : utilisable dans les Server Components.
 
-- [ ] **Step 3 : `components/ui/button.tsx`**
+- [x] **Step 3 : `components/ui/button.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -1870,7 +1870,7 @@ export function ButtonLink({ variant, size, className, ...rest }: ButtonLinkProp
 }
 ```
 
-- [ ] **Step 4 : `components/ui/chip.tsx` et `components/ui/tabs.tsx`**
+- [x] **Step 4 : `components/ui/chip.tsx` et `components/ui/tabs.tsx`**
 
 `components/ui/chip.tsx` :
 ```tsx
@@ -1941,7 +1941,7 @@ export function Tabs({ items, active, onChange, ariaLabel }: TabsProps) {
 }
 ```
 
-- [ ] **Step 5 : `components/ui/section-heading.tsx`**
+- [x] **Step 5 : `components/ui/section-heading.tsx`**
 
 ```tsx
 import { cn } from '@/lib/cn';
@@ -1973,7 +1973,7 @@ export function SectionHeading({ id, title, subtitle, tone = 'light', className,
 }
 ```
 
-- [ ] **Step 6 : `components/ui/placeholder-image.tsx`**
+- [x] **Step 6 : `components/ui/placeholder-image.tsx`**
 
 ```tsx
 import Image from 'next/image';
@@ -2041,7 +2041,7 @@ export function PlaceholderImage({
 }
 ```
 
-- [ ] **Step 7 : `components/ui/logo-wordmark.tsx` et `components/ui/brand-logo.tsx`**
+- [x] **Step 7 : `components/ui/logo-wordmark.tsx` et `components/ui/brand-logo.tsx`**
 
 `components/ui/logo-wordmark.tsx` :
 ```tsx
@@ -2078,7 +2078,7 @@ export function BrandLogo({ name, tone, className }: BrandLogoProps) {
 }
 ```
 
-- [ ] **Step 8 : tests, lint, commit**
+- [x] **Step 8 : tests, lint, commit**
 
 Run : `pnpm test tests/components/ui && pnpm typecheck && pnpm lint`
 Expected : PASS (13 tests).
