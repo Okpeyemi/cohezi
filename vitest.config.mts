@@ -11,5 +11,7 @@ export default defineConfig({
     setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.test.{ts,tsx}'],
     css: false,
+    // Le rendu de la page complète en jsdom dépasse 5 s quand les 30 fichiers tournent en parallèle.
+    testTimeout: 20000,
   },
 });
