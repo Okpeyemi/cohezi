@@ -267,7 +267,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Interfaces:**
 - Produces: variable CSS `--font-satoshi` sur `<html>` ; utilitaires Tailwind `bg-ink`, `bg-ink-soft`, `border-ink-border`, `bg-icon-box`, `border-line`, `text-muted`, `bg-paper`, `bg-podcast-card`, `text-brand`, `ring-brand`, `rounded-sheet`, `bg-brand-gradient`, `text-brand-gradient`, `bg-university-gradient`. `font-sans` pointe sur Satoshi.
 
-- [ ] **Step 1 : télécharger Satoshi**
+- [x] **Step 1 : télécharger Satoshi**
 
 ```bash
 mkdir -p public/fonts/satoshi
@@ -280,7 +280,7 @@ file public/fonts/satoshi/*.woff2
 
 Expected : trois lignes `Web Open Font Format (Version 2)`, chacune d'environ 25 Ko. Si l'un des téléchargements échoue (réseau), utiliser le repli du Step 2b et ne pas créer le dossier.
 
-- [ ] **Step 2 : `app/fonts.ts` (Satoshi)**
+- [x] **Step 2 : `app/fonts.ts` (Satoshi)**
 
 ```ts
 import localFont from 'next/font/local';
@@ -297,7 +297,7 @@ export const satoshi = localFont({
 });
 ```
 
-- [ ] **Step 2b (repli uniquement si le Step 1 a échoué) : Instrument Sans**
+- [x] **Step 2b (repli uniquement si le Step 1 a échoué) : Instrument Sans**
 
 ```ts
 import { Instrument_Sans } from 'next/font/google';
@@ -311,7 +311,7 @@ export const satoshi = Instrument_Sans({
 ```
 Le nom d'export reste `satoshi` et la variable `--font-satoshi` pour que rien d'autre ne change. Noter le repli dans le message de commit.
 
-- [ ] **Step 3 : `app/globals.css` avec les tokens**
+- [x] **Step 3 : `app/globals.css` avec les tokens**
 
 ```css
 @import "tailwindcss";
@@ -367,7 +367,7 @@ Le nom d'export reste `satoshi` et la variable `--font-satoshi` pour que rien d'
 }
 ```
 
-- [ ] **Step 4 : `app/layout.tsx` avec la police et les métadonnées**
+- [x] **Step 4 : `app/layout.tsx` avec la police et les métadonnées**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -389,7 +389,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 5 : vérifier que les tokens et la police sont bien servis**
+- [x] **Step 5 : vérifier que les tokens et la police sont bien servis**
 
 `app/page.tsx` temporaire pour vérifier visuellement (sera remplacé en Task 12) :
 ```tsx
@@ -422,7 +422,7 @@ pkill -f "next start" || true
 ```
 Lire `/tmp/cohezi-task2.png` : le mot « 5 minutes » doit être en dégradé rose → violet → bleu.
 
-- [ ] **Step 6 : lint, typecheck, tests, commit**
+- [x] **Step 6 : lint, typecheck, tests, commit**
 
 Run : `pnpm typecheck && pnpm lint && pnpm test`
 Expected : PASS.
