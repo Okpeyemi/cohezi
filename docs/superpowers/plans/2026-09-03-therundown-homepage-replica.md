@@ -932,7 +932,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: types de `@/content/types`.
 - Produces: `icons: Record<IconName, IconSvgElement>`, `getIcon(name: IconName): IconSvgElement` ; `guideCategories: Category[]` (17), `toolCategories: Category[]` (20) ; `site: SiteConfig` ; `articles: Article[]` (5) ; `guides: Guide[]` (8) ; `tools: Tool[]` (12) ; `podcast: PodcastContent` ; `university: UniversityContent`.
 
-- [ ] **Step 1 : test d'intégrité qui échoue**
+- [x] **Step 1 : test d'intégrité qui échoue**
 
 `tests/content/content.test.ts` :
 ```ts
@@ -1007,7 +1007,7 @@ describe('content integrity', () => {
 Run : `pnpm test tests/content/content.test.ts`
 Expected : FAIL — modules introuvables.
 
-- [ ] **Step 2 : `lib/icons.ts`**
+- [x] **Step 2 : `lib/icons.ts`**
 
 ```ts
 import type { IconSvgElement } from '@hugeicons/react';
@@ -1103,7 +1103,7 @@ export function getIcon(name: IconName): IconSvgElement {
 }
 ```
 
-- [ ] **Step 3 : `content/categories.ts`**
+- [x] **Step 3 : `content/categories.ts`**
 
 ```ts
 import type { Category } from './types';
@@ -1152,7 +1152,7 @@ export const toolCategories: Category[] = [
 ];
 ```
 
-- [ ] **Step 4 : `content/site.ts`**
+- [x] **Step 4 : `content/site.ts`**
 
 ```ts
 import type { SiteConfig } from './types';
@@ -1257,7 +1257,7 @@ export const site: SiteConfig = {
 };
 ```
 
-- [ ] **Step 5 : `content/articles.ts`**
+- [x] **Step 5 : `content/articles.ts`**
 
 ```ts
 import type { Article } from './types';
@@ -1308,7 +1308,7 @@ export const articles: Article[] = [
 ];
 ```
 
-- [ ] **Step 6 : `content/guides.ts`**
+- [x] **Step 6 : `content/guides.ts`**
 
 ```ts
 import type { Guide } from './types';
@@ -1366,7 +1366,7 @@ export const guides: Guide[] = [
 ];
 ```
 
-- [ ] **Step 7 : `content/tools.ts`**
+- [x] **Step 7 : `content/tools.ts`**
 
 ```ts
 import type { Tool } from './types';
@@ -1473,7 +1473,7 @@ export const tools: Tool[] = [
 ];
 ```
 
-- [ ] **Step 8 : `content/podcast.ts` et `content/university.ts`**
+- [x] **Step 8 : `content/podcast.ts` et `content/university.ts`**
 
 `content/podcast.ts` :
 ```ts
@@ -1546,7 +1546,7 @@ export const university: UniversityContent = {
 };
 ```
 
-- [ ] **Step 9 : tests, typecheck, commit**
+- [x] **Step 9 : tests, typecheck, commit**
 
 Run : `pnpm test tests/content/content.test.ts && pnpm typecheck`
 Expected : PASS (6 tests) ; typecheck sans erreur (le `Record<IconName, …>` garantit qu'aucune icône ne manque).
