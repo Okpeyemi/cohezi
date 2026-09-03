@@ -2594,7 +2594,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `site` (`@/content/site`), `NavItem`, `SiteConfig` ; `BrandLogo`, `ButtonLink`, `Icon`, `NewsletterForm`.
 - Produces: `SiteHeader({ name: string; nav: NavItem[]; cta: NavItem })` ; `MobileMenu({ nav: NavItem[]; cta: NavItem })` ; `SiteFooter({ site: SiteConfig })`.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/layout/site-header.test.tsx` :
 ```tsx
@@ -2707,7 +2707,7 @@ describe('SiteFooter', () => {
 Run : `pnpm test tests/components/layout`
 Expected : FAIL — modules introuvables.
 
-- [ ] **Step 2 : `components/layout/mobile-menu.tsx`**
+- [x] **Step 2 : `components/layout/mobile-menu.tsx`**
 
 ```tsx
 'use client';
@@ -2785,7 +2785,7 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
 }
 ```
 
-- [ ] **Step 3 : `components/layout/site-header.tsx`**
+- [x] **Step 3 : `components/layout/site-header.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -2824,7 +2824,7 @@ export function SiteHeader({ name, nav, cta }: SiteHeaderProps) {
 }
 ```
 
-- [ ] **Step 4 : `components/layout/site-footer.tsx`**
+- [x] **Step 4 : `components/layout/site-footer.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -2892,7 +2892,7 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
 Run : `pnpm test tests/components/layout && pnpm typecheck && pnpm lint`
 Expected : PASS (5 tests).
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 git add components/layout tests/components/layout
