@@ -1,0 +1,432 @@
+{
+  "extractedAt": "2026-09-03T19:25:57.544Z",
+  "url": "https://www.therundown.ai/",
+  "title": "The Rundown AI - Daily AI News & Insights in 5 Minutes a Day",
+  "metaDescription": "Get the latest AI news, understand why it matters, and learn how to apply it in your work. Join over 2,000,000+ readers of The Rundown AI newsletter.",
+  "header": {
+    "logoText": "The Rundown",
+    "nav": [
+      {
+        "label": "AI University",
+        "href": "/ai-university"
+      },
+      {
+        "label": "Articles",
+        "href": "/articles"
+      },
+      {
+        "label": "Guides",
+        "href": "/guides"
+      },
+      {
+        "label": "Tools",
+        "href": "/tools"
+      },
+      {
+        "label": "Courses",
+        "href": "/courses"
+      },
+      {
+        "label": "Careers",
+        "href": "https://electrify.teamtailor.com/jobs?division=The+Rundown+AI"
+      },
+      {
+        "label": "Advertise",
+        "href": "/advertise-with-us"
+      }
+    ],
+    "cta": {
+      "label": "University Platform",
+      "href": "https://app.therundown.ai/"
+    }
+  },
+  "hero": {
+    "h1": "Learn AI in 5 minutes a day.",
+    "accent": "5 minutes",
+    "subtitle": "Get the latest AI news, understand why it matters, and learn how to apply it in your work.",
+    "emailPlaceholder": "Email Address",
+    "button": "Subscribe",
+    "joinLine": "Join over 2,000,000+ readers from companies like:",
+    "trusted": [
+      "Google",
+      "OpenAI",
+      "Meta",
+      "Microsoft",
+      "Stripe",
+      "Apple",
+      "Netflix"
+    ]
+  },
+  "latestArticles": {
+    "title": "Latest Articles",
+    "subtitle": "The latest developments in AI, Tech and Robotics.",
+    "tabs": [
+      "All",
+      "AI",
+      "Tech",
+      "Robotics"
+    ],
+    "cards": [
+      {
+        "href": "/articles/meta-google-join-the-ai-launch-party",
+        "tag": "AI",
+        "title": "Meta, Google join the AI launch party",
+        "subtitle": "PLUS: Nail job interviews with the “Proof Project” method",
+        "meta": "Zach Mink • 8 minutes",
+        "imgAlt": "Meta, Google join the AI launch party"
+      },
+      {
+        "href": "/articles/fable-5-1-kicks-off-launch-week-at-the-frontier",
+        "tag": "AI",
+        "title": "Fable 5.1 kicks off launch week at the frontier",
+        "subtitle": "",
+        "meta": "Zach Mink • 7 minutes",
+        "imgAlt": "Fable 5.1 kicks off launch week at the frontier"
+      },
+      {
+        "href": "/articles/dyson-puts-ai-in-a-499-toothbrush",
+        "tag": "Tech",
+        "title": "Dyson puts AI in a $499 toothbrush",
+        "subtitle": "",
+        "meta": "Jennifer Mossalgue • 5 minutes",
+        "imgAlt": "Dyson puts AI in a $499 toothbrush"
+      },
+      {
+        "href": "/articles/runway-solaris-previews-the-no-code-internet",
+        "tag": "AI",
+        "title": "Runway's Solaris previews the no-code internet",
+        "subtitle": "",
+        "meta": "Zach Mink • 7 minutes",
+        "imgAlt": "Runway's Solaris previews the no-code internet"
+      },
+      {
+        "href": "/articles/hugging-face-robot-duck-is-already-a-hit",
+        "tag": "Robotics",
+        "title": "Hugging Face’s robot duck is already a hit",
+        "subtitle": "",
+        "meta": "Jennifer Mossalgue • 6 minutes",
+        "imgAlt": "Hugging Face’s robot duck is already a hit"
+      }
+    ],
+    "viewAll": {
+      "label": "View all articles →",
+      "href": "/articles"
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "subtitle": "We crowdsource the top real-world AI use cases across our audience of over 1 million early adopters and create daily guides on exactly how you can copy them and apply it to your work.",
+    "chips": [
+      "All",
+      "Coding",
+      "Marketing",
+      "Content Creator",
+      "Educator",
+      "Sales",
+      "Design",
+      "Data Analysis",
+      "Project Management",
+      "Consulting",
+      "Finance",
+      "Government",
+      "Healthcare",
+      "Legal",
+      "Recruiting HR",
+      "Student",
+      "General",
+      "Business Operations"
+    ],
+    "cards": [
+      {
+        "href": "https://app.therundown.ai/guides/stand-out-in-an-ai-job-interview-with-the-proof-project-method",
+        "title": "Stand Out in an AI Job Interview With the “Proof Project” Method",
+        "imgAlt": "Stand Out in an AI Job Interview With the “Proof Project” Method"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/how-to-pick-a-dedicated-ai-device",
+        "title": "How To Pick a Dedicated AI Device",
+        "imgAlt": "How To Pick a Dedicated AI Device"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/how-to-connect-chatgpt-to-imessage-and-what-it-can-do",
+        "title": "How To Connect ChatGPT to iMessage (and What It Can Do)",
+        "imgAlt": "How To Connect ChatGPT to iMessage (and What It Can Do)"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/turn-your-codex-ios-app-into-a-paid-app-and-ship-it-to-the-app-store",
+        "title": "Submit Your iOS App to the App Store With ChatGPT Work",
+        "imgAlt": "Submit Your iOS App to the App Store With ChatGPT Work"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/use-these-ai-skills-to-make-better-decisions-quickly",
+        "title": "Use These AI Skills To Make Better Decisions Quickly",
+        "imgAlt": "Use These AI Skills To Make Better Decisions Quickly"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/beginners-guide-to-chatgpt-work-chatgpt-projects-101",
+        "title": "Beginner’s Guide to ChatGPT Work (ChatGPT Projects 101)",
+        "imgAlt": "Beginner’s Guide to ChatGPT Work (ChatGPT Projects 101)"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/build-a-reusable-ai-design-system-with-open-design",
+        "title": "Build a Reusable AI Design System With Open Design",
+        "imgAlt": "Build a Reusable AI Design System With Open Design"
+      },
+      {
+        "href": "https://app.therundown.ai/guides/use-gemini-canvas-to-visualize-google-sheets-like-a-pro",
+        "title": "Use Gemini Canvas to Visualize Google Sheets Like a Pro",
+        "imgAlt": "Use Gemini Canvas to Visualize Google Sheets Like a Pro"
+      }
+    ],
+    "viewAll": {
+      "label": "View all guides →",
+      "href": "/guides"
+    }
+  },
+  "trendingTools": {
+    "title": "Trending Tools",
+    "subtitle": "The most useful AI tools - organized and categorized in one spot.",
+    "chips": [
+      "All",
+      "Agents",
+      "Consumer",
+      "Miscellaneous",
+      "Science",
+      "Coding",
+      "Marketing",
+      "Content Creator",
+      "Educators",
+      "Business Operations",
+      "Sales",
+      "Finance",
+      "Design",
+      "Healthcare",
+      "Consulting",
+      "Government",
+      "Data Analysis",
+      "Project Management",
+      "Legal",
+      "Recruiting / HR",
+      "Students"
+    ],
+    "cards": [
+      {
+        "href": "/tools/muse-spark-1-3",
+        "name": "Muse Spark 1.3",
+        "description": "Meta's cost-effective, intelligent model",
+        "imgAlt": "Muse Spark 1.3",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/claude-fable-5-1",
+        "name": "Claude Fable 5.1",
+        "description": "Anthropic's new flagship, top-rated model",
+        "imgAlt": "Claude Fable 5.1",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/gemini-3-8-flash",
+        "name": "Gemini 3.8 Flash",
+        "description": "Google's strongest Flash model yet for coding and agents",
+        "imgAlt": "Gemini 3.8 Flash",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/google-pics",
+        "name": "Google Pics",
+        "description": "Google's Nano Banana image editor built into Docs and Slides",
+        "imgAlt": "Google Pics",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/muse-voice-transcribe",
+        "name": "Muse Voice Transcribe",
+        "description": "Muse Voice Transcribe - Meta's live speech-to-text that tracks 20+ speakers and mid-sentence language switches",
+        "imgAlt": "Muse Voice Transcribe",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/openclaw-2-0",
+        "name": "Openclaw 2.0",
+        "description": "Open-source personal agent, rebuilt with easier setup and multiplayer sessions",
+        "imgAlt": "Openclaw 2.0",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/cohere-parse-5",
+        "name": "Cohere Parse 5",
+        "description": "Low-cost model converting complex documents into machine-readable data",
+        "imgAlt": "Cohere Parse 5",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/gemini-omni-1-1-flash",
+        "name": "Gemini Omni 1.1 Flash",
+        "description": "Google's video model update with scene extensions and 4K upscaling",
+        "imgAlt": "Gemini Omni 1.1 Flash",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/gemini-3-5-transcribe",
+        "name": "Gemini 3.5 Transcribe",
+        "description": "Google's new speech-to-text model that edits out filler words",
+        "imgAlt": "Gemini 3.5 Transcribe",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/glm-3-5-flash",
+        "name": "GLM-5.3-Flash",
+        "description": "Z AI’s new multimodal system revealed as the mystery Ox Alpha model on OpenRouter",
+        "imgAlt": "GLM-5.3-Flash",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/h3-max",
+        "name": "H3 Max",
+        "description": "fal's MiniMax H3 remixed video model tuned for speed and quality",
+        "imgAlt": "H3 Max",
+        "hasBadge": false
+      },
+      {
+        "href": "/tools/keenable",
+        "name": "Keenable",
+        "description": "Search API that lets agents query and learn from the live web",
+        "imgAlt": "Keenable",
+        "hasBadge": false
+      }
+    ],
+    "viewAll": {
+      "label": "View all tools →",
+      "href": "/tools"
+    }
+  },
+  "podcast": {
+    "title": "Rowan's Notes",
+    "subtitle": "Rowan's Notes is a podcast hosted by Rowan Cheung, where he talks with experts in the AI industry about the latest developments, why they matter, and how you can leverage them in the future of work.",
+    "buttons": [
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/2zQpIc96gbruTylpzo9dVY"
+      },
+      {
+        "label": "Apple Podcasts",
+        "href": "https://podcasts.apple.com/us/podcast/the-state-of-ai-with-rowan-cheung/id1689006106"
+      }
+    ],
+    "embed": "https://embed.podcasts.apple.com/us/podcast/the-state-of-ai-with-rowan-cheung/id1689006106?theme=dark"
+  },
+  "university": {
+    "label": "The Rundown University",
+    "title": "AI training for the future of work.",
+    "subtitle": "Get access to all our AI courses, hundreds of real-world AI use cases, live expert-led workshops, an exclusive network of AI early adopters, and more.",
+    "buttons": [
+      {
+        "label": "Join AI University",
+        "href": "https://app.therundown.ai/"
+      },
+      {
+        "label": "Explore The Rundown University",
+        "href": "/ai-university"
+      }
+    ],
+    "cards": [
+      {
+        "title": "AI Courses",
+        "description": "Get unlimited access to all of our current & upcoming industry-specific AI courses for the duration of your subscription."
+      },
+      {
+        "title": "Daily Guides",
+        "description": "To keep up with the rapid pace of AI, our team publishes AI implementation guides daily. Our library contains 300+ practical use cases to automate real-world work."
+      },
+      {
+        "title": "Workshops",
+        "description": "Join weekly, live, interactive sessions with industry leaders who are at the forefront of AI for hands-on implementation guidance and exclusive insights."
+      },
+      {
+        "title": "Community",
+        "description": "Network with an exclusive community of AI-first professionals who are working smarter with AI. Learn how early adopters are using AI in their work and businesses."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Get the latest AI news, understand why it matters, and learn how to apply it in your work. Join 2,000,000+ readers from companies like Apple, OpenAI, NASA.",
+    "emailPlaceholder": "Email Address",
+    "columns": [
+      {
+        "heading": "Stay Updated",
+        "links": [
+          {
+            "label": "Articles",
+            "href": "/articles"
+          },
+          {
+            "label": "Podcast",
+            "href": "https://podcasts.apple.com/us/podcast/the-state-of-ai-with-rowan-cheung/id1689006106"
+          },
+          {
+            "label": "Tools",
+            "href": "/tools"
+          }
+        ]
+      },
+      {
+        "heading": "AI University",
+        "links": [
+          {
+            "label": "Courses",
+            "href": "/courses"
+          },
+          {
+            "label": "Guides",
+            "href": "/guides"
+          }
+        ]
+      },
+      {
+        "heading": "Company",
+        "links": [
+          {
+            "label": "Advertise",
+            "href": "/advertise-with-us"
+          },
+          {
+            "label": "Careers",
+            "href": "https://electrify.teamtailor.com/jobs?division=The+Rundown+AI"
+          },
+          {
+            "label": "Contact Us",
+            "href": "mailto:support@therundown.ai"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "/privacy-policy"
+          },
+          {
+            "label": "Terms & Conditions",
+            "href": "/terms-privacy"
+          }
+        ]
+      }
+    ],
+    "copyright": "© 2026 The Rundown AI, Inc. All rights reserved.",
+    "social": [
+      {
+        "href": "https://twitter.com/therundownai",
+        "label": "X (Twitter)"
+      },
+      {
+        "href": "https://www.instagram.com/therundownai",
+        "label": "Instagram"
+      },
+      {
+        "href": "https://linkedin.com/company/the-rundown-ai",
+        "label": "LinkedIn"
+      }
+    ]
+  },
+  "notes": [
+    "Extrait automatiquement du DOM de https://www.therundown.ai/ le 2026-09-03 (viewport 1440).",
+    "Les catégories des guides ne figurent pas sur les cartes du site : à attribuer dans content/guides.ts.",
+    "Les icônes de badge des outils sont des SVG non nommés : à attribuer dans content/tools.ts."
+  ]
+}

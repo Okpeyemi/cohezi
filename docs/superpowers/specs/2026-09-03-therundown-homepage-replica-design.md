@@ -294,10 +294,12 @@ longueur max 254.
 ## 11. Placeholders d'images
 
 `lib/placeholder.ts` : `hashToGradient(seed)` calcule un hash 32 bits du texte et en dérive deux
-teintes HSL (h et h+40°, s 55 %, l 45 % et 60 %). `PlaceholderImage` rend un `<svg>` avec
-`viewBox` au ratio demandé (`16/9`, `16/10`, `1/1`), un dégradé linéaire diagonal, un motif de
-fines lignes à 8 % d'opacité et le libellé centré (16px / 600, blanc 90 %, tronqué à 28
-caractères). `role="img"` et `aria-label` = alt. Si `image.src` est fourni, le composant rend
+teintes HSL (h et h+40°, s 55 %, l 45 % et 60 %). `PlaceholderImage` remplit son conteneur
+(`absolute inset-0` dans un parent `relative` qui porte le ratio via `aspect-[16/9]`,
+`aspect-[16/10]` ou `aspect-square`, éventuellement différent selon le point de rupture). Il rend
+un `<svg>` `width="100%" height="100%"` avec `preserveAspectRatio="xMidYMid slice"`, un dégradé
+linéaire diagonal, un motif de fines lignes à 8 % d'opacité et le libellé centré (16px / 600,
+blanc 90 %, tronqué à 28 caractères). `role="img"` et `aria-label` = alt. Si `image.src` est fourni, le composant rend
 `next/image` avec `fill` et `object-cover` à la place. Les `LogoWordmark` rendent le nom en
 texte 18px / 700 blanc, avec `letter-spacing` léger, sans logo réel.
 
@@ -321,7 +323,7 @@ Aucune requête média custom ; pas de JS pour le responsive.
 
 Sémantique `header / main / section / footer`, un seul h1, h2 par section, `aria-labelledby`,
 icônes `aria-hidden` sauf boutons icône seule (`aria-label`), contrastes conformes AA pour les
-textes muted sur blanc (#737373 sur #FFF = 4.6:1) et blanc 80 % sur ink, focus visible
+textes muted sur blanc (#737373 sur #FFF = 4.7:1) et blanc 80 % sur ink, focus visible
 (anneau 2 px brand) sur tous les éléments interactifs, `prefers-reduced-motion` respecté pour
 les transitions.
 
