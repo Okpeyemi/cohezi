@@ -2284,7 +2284,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `isValidEmail`, `normalizeEmail`, `maskEmail` ; `Button`, `Icon`, `cn`.
 - Produces: `POST(request: Request): Promise<NextResponse>` → 200 `{ ok: true }` | 400 `{ ok: false, error: 'invalid_email' }` ; `NewsletterForm({ variant?: 'hero' | 'footer'; placeholder?: string; buttonLabel?: string; endpoint?: string; className?: string })` ; `MESSAGES = { invalid, success, failure }`.
 
-- [ ] **Step 1 : test de la route qui échoue**
+- [x] **Step 1 : test de la route qui échoue**
 
 `tests/app/api/newsletter/route.test.ts` :
 ```ts
@@ -2339,7 +2339,7 @@ describe('POST /api/newsletter', () => {
 Run : `pnpm test tests/app/api/newsletter/route.test.ts`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 2 : `app/api/newsletter/route.ts`**
+- [x] **Step 2 : `app/api/newsletter/route.ts`**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -2372,7 +2372,7 @@ export async function POST(request: Request) {
 Run : `pnpm test tests/app/api/newsletter/route.test.ts`
 Expected : PASS (4 tests).
 
-- [ ] **Step 3 : test du formulaire qui échoue**
+- [x] **Step 3 : test du formulaire qui échoue**
 
 `tests/components/ui/newsletter-form.test.tsx` :
 ```tsx
@@ -2454,7 +2454,7 @@ describe('NewsletterForm', () => {
 Run : `pnpm test tests/components/ui/newsletter-form.test.tsx`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 4 : `components/ui/newsletter-form.tsx`**
+- [x] **Step 4 : `components/ui/newsletter-form.tsx`**
 
 ```tsx
 'use client';
@@ -2569,7 +2569,7 @@ export function NewsletterForm({
 Run : `pnpm test tests/components/ui/newsletter-form.test.tsx`
 Expected : PASS (5 tests).
 
-- [ ] **Step 5 : vérifier la route en conditions réelles, puis commit**
+- [x] **Step 5 : vérifier la route en conditions réelles, puis commit**
 
 ```bash
 (pnpm dev > /tmp/cohezi-dev.log 2>&1 &) && sleep 6
