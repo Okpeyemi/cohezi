@@ -446,7 +446,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces (types) : `IconName`, `ImageRef`, `NavItem`, `Category`, `ArticleTag`, `Article`, `Guide`, `Tool`, `UniversityFeature`, `SocialLink`, `FooterColumn`, `HeroContent`, `SectionCopy`, `SiteConfig`, `PodcastContent`, `UniversityContent` depuis `@/content/types`.
 - Produces (fonctions) : `ALL = 'all'`, `filterByCategory<T>(items, active, getCategories): T[]` ; `isValidEmail(value: unknown): boolean`, `normalizeEmail(value: unknown): string`, `maskEmail(email: string): string`, `MAX_EMAIL_LENGTH = 254` ; `hashString(seed: string): number`, `hashToGradient(seed: string): Gradient`, `truncateLabel(label: string, max = 28): string` ; `pickFeatured(articles): { featured: Article | undefined; rest: Article[] }` ; `humanize(slug: string): string`.
 
-- [ ] **Step 1 : `content/types.ts`** (pas de test dédié : vérifié par `pnpm typecheck` et utilisé partout ensuite)
+- [x] **Step 1 : `content/types.ts`** (pas de test dédié : vérifié par `pnpm typecheck` et utilisé partout ensuite)
 
 ```ts
 export type IconName =
@@ -597,7 +597,7 @@ export type UniversityContent = {
 };
 ```
 
-- [ ] **Step 2 : test `filterByCategory` qui échoue**
+- [x] **Step 2 : test `filterByCategory` qui échoue**
 
 `tests/lib/filter.test.ts` :
 ```ts
@@ -638,7 +638,7 @@ describe('filterByCategory', () => {
 Run : `pnpm test tests/lib/filter.test.ts`
 Expected : FAIL — module `@/lib/filter` introuvable.
 
-- [ ] **Step 3 : `lib/filter.ts`**
+- [x] **Step 3 : `lib/filter.ts`**
 
 ```ts
 export const ALL = 'all';
@@ -656,7 +656,7 @@ export function filterByCategory<T>(
 Run : `pnpm test tests/lib/filter.test.ts`
 Expected : PASS (4 tests).
 
-- [ ] **Step 4 : test `validate-email` qui échoue**
+- [x] **Step 4 : test `validate-email` qui échoue**
 
 `tests/lib/validate-email.test.ts` :
 ```ts
@@ -705,7 +705,7 @@ describe('maskEmail', () => {
 Run : `pnpm test tests/lib/validate-email.test.ts`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 5 : `lib/validate-email.ts`**
+- [x] **Step 5 : `lib/validate-email.ts`**
 
 ```ts
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -731,7 +731,7 @@ export function maskEmail(email: string): string {
 Run : `pnpm test tests/lib/validate-email.test.ts`
 Expected : PASS (6 tests).
 
-- [ ] **Step 6 : test `placeholder` qui échoue**
+- [x] **Step 6 : test `placeholder` qui échoue**
 
 `tests/lib/placeholder.test.ts` :
 ```ts
@@ -783,7 +783,7 @@ describe('truncateLabel', () => {
 Run : `pnpm test tests/lib/placeholder.test.ts`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 7 : `lib/placeholder.ts`**
+- [x] **Step 7 : `lib/placeholder.ts`**
 
 ```ts
 export type Gradient = { from: string; to: string; angle: number };
@@ -816,7 +816,7 @@ export function truncateLabel(label: string, max = 28): string {
 Run : `pnpm test tests/lib/placeholder.test.ts`
 Expected : PASS (6 tests). La coupe à 27 caractères de la chaîne testée donne « Stand Out in an AI Job Inte » (sans espace final), donc 28 caractères avec l'ellipse.
 
-- [ ] **Step 8 : test `pickFeatured` qui échoue**
+- [x] **Step 8 : test `pickFeatured` qui échoue**
 
 `tests/lib/articles.test.ts` :
 ```ts
@@ -857,7 +857,7 @@ describe('pickFeatured', () => {
 Run : `pnpm test tests/lib/articles.test.ts`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 9 : `lib/articles.ts`**
+- [x] **Step 9 : `lib/articles.ts`**
 
 ```ts
 import type { Article } from '@/content/types';
@@ -874,7 +874,7 @@ export function pickFeatured(articles: readonly Article[]): {
 Run : `pnpm test tests/lib/articles.test.ts`
 Expected : PASS (3 tests).
 
-- [ ] **Step 10 : test `humanize` qui échoue**
+- [x] **Step 10 : test `humanize` qui échoue**
 
 `tests/lib/slug.test.ts` :
 ```ts
@@ -896,7 +896,7 @@ describe('humanize', () => {
 Run : `pnpm test tests/lib/slug.test.ts`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 11 : `lib/slug.ts`**
+- [x] **Step 11 : `lib/slug.ts`**
 
 ```ts
 export function humanize(slug: string): string {
@@ -911,7 +911,7 @@ export function humanize(slug: string): string {
 Run : `pnpm test`
 Expected : PASS (tous les tests, 21 au total).
 
-- [ ] **Step 12 : commit**
+- [x] **Step 12 : commit**
 
 ```bash
 git add content/types.ts lib/ tests/lib/
