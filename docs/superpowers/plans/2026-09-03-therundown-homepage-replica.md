@@ -2116,7 +2116,7 @@ export function FilterableGrid<T>(props: FilterableGridProps<T>): JSX.Element
 ```
 `renderItems` est une fonction : les sections qui l'utilisent doivent être des Client Components (Tasks 9 et 10).
 
-- [ ] **Step 1 : test qui échoue**
+- [x] **Step 1 : test qui échoue**
 
 `tests/components/ui/filterable-grid.test.tsx` :
 ```tsx
@@ -2197,7 +2197,7 @@ describe('FilterableGrid', () => {
 Run : `pnpm test tests/components/ui/filterable-grid.test.tsx`
 Expected : FAIL — module introuvable.
 
-- [ ] **Step 2 : `components/ui/filterable-grid.tsx`**
+- [x] **Step 2 : `components/ui/filterable-grid.tsx`**
 
 ```tsx
 'use client';
@@ -2263,7 +2263,7 @@ export function FilterableGrid<T>({
 Run : `pnpm test tests/components/ui/filterable-grid.test.tsx`
 Expected : PASS (4 tests).
 
-- [ ] **Step 3 : commit**
+- [x] **Step 3 : commit**
 
 ```bash
 git add components/ui/filterable-grid.tsx tests/components/ui/filterable-grid.test.tsx
