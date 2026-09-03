@@ -1,7 +1,7 @@
 # Spec — Réplique de la page d'accueil therundown.ai en Next.js
 
 - Date : 2026-09-03
-- Statut : validé, plan d'implémentation écrit (`docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`)
+- Statut : implémenté le 2026-09-03 (branche `feat/homepage-replica`, plan `docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`). Écarts connus : visuels placeholders, logos en texte, carte podcast statique (pas d'embed), hauteur mobile 8565 px contre 8630 sur le site.
 - Projet : `cohezi` (dépôt vide au départ, hors captures de référence)
 
 ## 1. Contexte et objectif
@@ -208,18 +208,18 @@ l'article `featured` (image 16:9 pleine largeur, tag pilule blanche en haut à g
 2×2 des 4 autres (image 16:10, tag, titre 18px / 700, méta). Quand un onglet filtre et qu'aucun
 article n'est `featured` dans la sélection, le premier de la sélection prend la place de la une.
 Sous la grille, bouton « View all articles → » outline line, rayon 8, hauteur 42, 14px / 600.
-Mobile : une colonne, toutes les cartes au format petit, image 16:9.
+Mobile : onglets masqués, une colonne, toutes les cartes au format petit, image 16:9.
 
 ### 8.5 Guides — 1199 px desktop
 Heading + paragraphe de 3 lignes (max-w 680). `FilterableGrid` variante `chips` : puces pilule
 blanches bordure line, hauteur 39, 17px, icône 16 px + libellé, active ink/blanc ; 17 puces
 centrées sur 4 lignes. Grille `md:grid-cols-2 lg:grid-cols-4 gap-5` de cartes 12 px de rayon,
 bordure line, `padding` 10 : image 16:9 (rayon 8), titre 16px / 700 sur 2–3 lignes. Mobile :
-une colonne et seulement les 3 premières cartes visibles (`nth-child(n+4)` masqué sous `md`),
-comme sur le site. Bouton « View all guides → ».
+puces masquées, une colonne et seulement les 3 premières cartes visibles (`nth-child(n+4)` masqué
+sous `md`), comme sur le site. Bouton « View all guides → ».
 
 ### 8.6 Trending Tools — 1442 px desktop
-Même squelette que Guides avec 20 puces. Carte : image 16:9 avec badge carré blanc 32 px rayon 8
+Même squelette que Guides avec 20 puces (masquées sous `md` également). Carte : image 16:9 avec badge carré blanc 32 px rayon 8
 en haut à gauche portant `badgeIcon`, nom 16px / 700, description 14px / 20 muted sur 2–3
 lignes. 12 cartes en 3 lignes de 4. Mobile : 3 premières cartes. Bouton « View all tools → ».
 
@@ -326,7 +326,8 @@ Premier segment inconnu → `notFound()` (`app/not-found.tsx`).
 
 Points de rupture Tailwind par défaut : `md` 768, `lg` 1024. Comportements clés :
 - < `md` : hamburger, une colonne partout, h1 36px, h2 32px, feuille à 8 px des bords,
-  3 cartes visibles dans Guides et Tools, footer empilé, boutons University côte à côte.
+  **filtres masqués** (ni onglets d'articles, ni puces de guides et d'outils, comme sur le site),
+  3 cartes visibles dans Guides et Tools, footer empilé, boutons University empilés.
 - `md` : 2 colonnes pour guides, tools et cartes University.
 - `lg` : nav complète, 2 colonnes articles (une + 2×2), 4 colonnes guides et tools.
 Aucune requête média custom ; pas de JS pour le responsive.

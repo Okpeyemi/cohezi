@@ -3798,7 +3798,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Interfaces:** aucune nouvelle.
 
-- [ ] **Step 1 : lancer le build de production et le navigateur gstack**
+- [x] **Step 1 : lancer le build de production et le navigateur gstack**
 
 ```bash
 pnpm build && (pnpm start -p 3000 > /tmp/cohezi-start.log 2>&1 &) && sleep 3
@@ -3808,7 +3808,7 @@ $B console --errors          # attendu : aucune erreur
 $B network | grep -E " (4|5)[0-9]{2} " || echo "no failed requests"
 ```
 
-- [ ] **Step 2 : captures par section à 1440 px et comparaison**
+- [x] **Step 2 : captures par section à 1440 px et comparaison**
 
 Pour chaque section, positionner puis capturer le viewport, et lire côte à côte la référence dans `screenshots/therundown-ai/sections/desktop/` :
 
@@ -3836,7 +3836,7 @@ Lire chaque PNG produit et la capture de référence correspondante (`01-hero-14
 
 Pour chaque écart de plus de ~8 px ou de structure (colonne manquante, retour à la ligne inattendu), corriger la classe Tailwind concernée dans le composant, relancer `pnpm build` + `pnpm start` et recapturer. Ne pas toucher aux données.
 
-- [ ] **Step 3 : mobile 375 px**
+- [x] **Step 3 : mobile 375 px**
 
 ```bash
 $B viewport 375x812 && $B goto http://localhost:3000
@@ -3852,7 +3852,7 @@ $B js "document.querySelectorAll('#guides-title ~ div li').length + ' guide item
 
 Comparer avec `screenshots/therundown-ai/sections/mobile/`. Points de contrôle : hamburger blanc à droite ; h1 36 px sur trois lignes ; wordmarks sur deux lignes ; articles en une colonne ; **3 cartes** visibles dans Guides et Tools (les autres masquées par CSS) ; carte podcast compacte (pochette 96 px) ; cartes University empilées ; footer empilé ; aucun débordement horizontal (`$B js "document.documentElement.scrollWidth <= window.innerWidth"` → `true`).
 
-- [ ] **Step 4 : parcours fonctionnels dans le navigateur**
+- [x] **Step 4 : parcours fonctionnels dans le navigateur**
 
 ```bash
 $B viewport 1440x900 && $B goto http://localhost:3000
@@ -3865,7 +3865,7 @@ $B goto http://localhost:3000/guides && $B text | grep -c "This page is coming s
 pkill -f "next start" || true
 ```
 
-- [ ] **Step 5 : vérification finale et livraison**
+- [x] **Step 5 : vérification finale et livraison**
 
 ```bash
 pnpm typecheck && pnpm lint && pnpm test && pnpm build
