@@ -15,4 +15,14 @@ describe('UniversityCta', () => {
       expect(screen.getByText(feature.description)).toBeInTheDocument();
     }
   });
+
+  it('gives every feature card the animated border halo instead of a static accent line', () => {
+    render(<UniversityCta university={university} />);
+    const cards = screen.getAllByRole('listitem');
+    expect(cards).toHaveLength(4);
+    for (const card of cards) {
+      expect(card).toHaveClass('animated-border');
+      expect(card.className).not.toMatch(/before:/);
+    }
+  });
 });

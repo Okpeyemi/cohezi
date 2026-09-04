@@ -1,7 +1,6 @@
 import { ButtonLink } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import type { UniversityContent } from '@/content/types';
-import { cn } from '@/lib/cn';
 
 export function UniversityCta({ university }: { university: UniversityContent }) {
   return (
@@ -28,15 +27,12 @@ export function UniversityCta({ university }: { university: UniversityContent })
         </ButtonLink>
       </div>
       <ul className="mx-auto mt-14 grid max-w-[900px] gap-5 md:grid-cols-2">
-        {university.features.map((feature, index) => (
+        {university.features.map((feature) => (
           <li
             key={feature.title}
-            className={cn(
-              'relative rounded-2xl border border-ink-border bg-ink-soft p-8 before:absolute before:inset-y-6 before:w-px before:bg-brand-gradient',
-              index % 2 === 0 ? 'before:left-0' : 'before:right-0',
-            )}
+            className="animated-border rounded-2xl border border-ink-border bg-ink-soft p-8"
           >
-            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-icon-box text-brand">
+            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl border border-ink-border bg-icon-box text-brand">
               <Icon name={feature.icon} size={24} />
             </span>
             <h3 className="mt-5 text-xl font-bold text-white">{feature.title}</h3>

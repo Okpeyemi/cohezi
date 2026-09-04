@@ -1,7 +1,7 @@
 # Spec — Réplique de la page d'accueil therundown.ai en Next.js
 
 - Date : 2026-09-03
-- Statut : implémenté le 2026-09-03, bascule au défilement ajoutée le 2026-09-04 (branche `feat/homepage-replica`, plan `docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`). Écarts connus : visuels placeholders, logos en texte, carte podcast statique (pas d'embed), hauteur mobile 8565 px contre 8630 sur le site.
+- Statut : implémenté le 2026-09-03, bascule au défilement et halo animé des cartes University ajoutés le 2026-09-04 (branche `feat/homepage-replica`, plan `docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`). Écarts connus : visuels placeholders, logos en texte, carte podcast statique (pas d'embed), hauteur mobile 8565 px contre 8630 sur le site.
 - Projet : `cohezi` (dépôt vide au départ, hors captures de référence)
 
 ## 1. Contexte et objectif
@@ -248,8 +248,11 @@ Fond `--gradient-university`, `padding` 96 px vertical. Ligne logo « The Rundow
 Boutons : « Join AI University » fond `--gradient-brand`, rayon 8, hauteur 48, 600, `padding`
 12×24 ; « Explore The Rundown University » outline blanc 40 %, hauteur 50. Grille `md:grid-cols-2
 gap-5 max-w-[900px]` de 4 cartes : fond ink-soft, bordure ink-border, rayon 16, `padding` 32,
-liseré dégradé 1 px sur le bord gauche des cartes 1 et 3 et le bord droit des cartes 2 et 4
-(pseudo-élément), icône 56 px dans un carré rayon 12 fond #2A2A2A avec icône violette 24 px,
+halo animé le long du bord (classe `animated-border`, ajout du 2026-09-04) : `::before` en
+`inset: -1px`, `padding: 1px`, `conic-gradient(from var(--border-angle), transparent 0deg 264deg,
+#cd408f 294deg, #8b4cd4 326deg, transparent 356deg)`, masque `exclude` ne laissant qu'un anneau de
+1 px, `--border-angle` enregistrée par `@property` et animée 0 → 360° en 9 s linéaire en boucle ;
+icône 56 px dans un carré rayon 12 fond #272727 bordure 1 px #333 avec icône violette 24 px,
 h3 20px / 700 blanc, description 16px blanc 70 %. Icônes : `CourseIcon`, `PlaySquareIcon`,
 `Presentation01Icon`, `UserGroupIcon`.
 
