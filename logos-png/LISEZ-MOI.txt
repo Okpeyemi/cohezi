@@ -1,0 +1,27 @@
+COHEZI — LOGOS PNG
+==================
+
+symbole/            le disque + le monogramme, 1024 / 512 / 256 / 128 / 64 / 32 px, fond transparent hors du disque
+  cohezi-symbole-vert-*.png         disque vert dégradé, glyphe noir  — version principale
+  cohezi-symbole-vert-aplat-*.png   disque vert aplat #7CFF6B         — impression
+  cohezi-symbole-noir-*.png         disque noir, glyphe blanc cassé   — fond clair
+  cohezi-symbole-blanc-*.png        disque blanc cassé, glyphe noir   — fond vert ou photo
+
+app-icon/           icône d'application, squircle rayon 25 %, 1024 → 32 px
+
+monogramme/         les trois barres seules, fond transparent, 1024 / 512 / 256 / 128 px
+                    vert / noir / blanc cassé
+
+lockup/             disque + logotype (+ signature sur les deux premiers), 2x
+  cohezi-lockup-fond-noir.png         fond #0B0B0B inclus
+  cohezi-lockup-fond-clair.png        fond #F7F7F4 inclus
+  cohezi-lockup-transparent-blanc.png fond transparent, logotype blanc cassé
+  cohezi-lockup-transparent-noir.png  fond transparent, logotype noir
+
+logotype/           le mot seul, fond transparent, blanc cassé ou noir
+
+RAPPELS
+- Taille minimale : symbole 24 px, logo horizontal 120 px de large.
+- Zone de protection : 15 % du diamètre du disque tout autour.
+- Interdits : capitales, contour, ombre portée, symbole vert sur fond vert, recadrage du symbole.
+- Pour les grands formats et l'impression, préférer les SVG du dossier assets/.
