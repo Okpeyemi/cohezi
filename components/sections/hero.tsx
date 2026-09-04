@@ -4,7 +4,7 @@ import type { HeroContent } from '@/content/types';
 
 export function Hero({ hero }: { hero: HeroContent }) {
   return (
-    <section aria-labelledby="hero-title" className="px-5 pb-16 pt-20 text-center md:pt-28">
+    <section aria-labelledby="hero-title" className="hero-dark-change px-5 pb-16 pt-20 text-center md:pt-28">
       <h1
         id="hero-title"
         className="mx-auto max-w-4xl text-4xl font-bold leading-[1.08] tracking-[-0.025em] text-white md:text-[72px]"

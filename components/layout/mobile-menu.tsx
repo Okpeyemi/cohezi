@@ -40,7 +40,7 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        className="menu-trigger flex h-10 w-10 items-center justify-center rounded-lg bg-white text-ink transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
       >
         <Icon name={open ? 'close' : 'menu'} size={20} />
       </button>

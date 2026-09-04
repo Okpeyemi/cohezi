@@ -49,3 +49,34 @@
     }
   }
 }
+
+/* Bascule sombre → clair au défilement (body.hero-light posé par HeroLightSwitch).
+   Hors @layer volontairement : ces règles doivent l'emporter sur les utilitaires Tailwind. */
+@media (min-width: 768px) {
+  .page-dark {
+    transition: background-color 1s;
+  }
+  body.hero-light .page-dark {
+    background-color: var(--color-paper);
+  }
+  .hero-dark-change :is(h1, h2, p, li, strong, em, span) {
+    transition: color 1s;
+  }
+  body.hero-light .hero-dark-change :is(h1, h2, p, li, strong, em, span):not(.text-brand-gradient, form *) {
+    color: var(--color-ink);
+  }
+  body.hero-light .site-header {
+    background-color: color-mix(in oklab, var(--color-paper) 95%, transparent);
+    border-bottom-color: var(--color-line);
+    backdrop-filter: blur(8px);
+  }
+  body.hero-light .site-header .site-nav-link,
+  body.hero-light .site-header .brand-name {
+    color: var(--color-ink);
+  }
+  body.hero-light .site-header .brand-mark,
+  body.hero-light .site-header .menu-trigger {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+}

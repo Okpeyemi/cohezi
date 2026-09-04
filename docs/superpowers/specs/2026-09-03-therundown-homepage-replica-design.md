@@ -1,7 +1,7 @@
 # Spec — Réplique de la page d'accueil therundown.ai en Next.js
 
 - Date : 2026-09-03
-- Statut : implémenté le 2026-09-03 (branche `feat/homepage-replica`, plan `docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`). Écarts connus : visuels placeholders, logos en texte, carte podcast statique (pas d'embed), hauteur mobile 8565 px contre 8630 sur le site.
+- Statut : implémenté le 2026-09-03, bascule au défilement ajoutée le 2026-09-04 (branche `feat/homepage-replica`, plan `docs/superpowers/plans/2026-09-03-therundown-homepage-replica.md`). Écarts connus : visuels placeholders, logos en texte, carte podcast statique (pas d'embed), hauteur mobile 8565 px contre 8630 sur le site.
 - Projet : `cohezi` (dépôt vide au départ, hors captures de référence)
 
 ## 1. Contexte et objectif
@@ -185,6 +185,16 @@ gauche, bouton carré blanc 40 px à droite avec `Menu01Icon` ouvrant `MobileMen
 plein écran, liens en colonne, CTA, `Cancel01Icon`, fermeture Échap et au clic sur un lien,
 `aria-expanded` et `aria-controls` sur le déclencheur, focus ramené sur le déclencheur à la
 fermeture).
+
+### 8.1 bis Bascule sombre → clair au défilement (ajout du 2026-09-04)
+Comme sur le site : au-delà de 130 px de défilement, un composant client sans rendu
+(`components/layout/hero-light-switch.tsx`, monté par `app/page.tsx` seulement) pose la classe
+`hero-light` sur `<body>` ; en remontant, il la retire. Des règles CSS hors `@layer` dans
+`globals.css`, limitées à `min-width: 768px`, font la transition : fond du conteneur `.page-dark`
+vers blanc en 1 s, textes du hero (`.hero-dark-change`) vers ink en 1 s sauf le mot en dégradé et le
+formulaire, header (`.site-header`) vers blanc 95 % avec bordure line et flou en 0,3 s, logo et
+bouton du menu inversés. Sur mobile, rien ne change (le site d'origine non plus). Le CTA du header
+porte toujours une bordure line, ce qui le rend « contour » sur fond clair.
 
 ### 8.2 Hero — desktop 0–704 px
 `padding-top` 112 px desktop / 80 mobile, `padding-bottom` 64. h1 sur deux lignes, le mot

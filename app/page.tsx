@@ -1,4 +1,5 @@
 import { SiteFooter } from '@/components/layout/site-footer';
+import { HeroLightSwitch } from '@/components/layout/hero-light-switch';
 import { SiteHeader } from '@/components/layout/site-header';
 import { Guides } from '@/components/sections/guides';
 import { Hero } from '@/components/sections/hero';
@@ -17,9 +18,11 @@ import { university } from '@/content/university';
 export default function HomePage() {
   return (
     <>
+      <HeroLightSwitch />
       <SiteHeader name={site.name} nav={site.nav} cta={site.headerCta} />
-      <main className="flex-1 bg-ink">
-        <Hero hero={site.hero} />
+      <main className="flex-1">
+        <div className="page-dark bg-ink">
+          <Hero hero={site.hero} />
         <div className="px-2 md:px-5">
           <div className="mx-auto rounded-sheet bg-paper">
             <LatestArticles copy={site.sections.articles} articles={articles} />
@@ -28,7 +31,8 @@ export default function HomePage() {
             <Podcast podcast={podcast} />
           </div>
         </div>
-        <UniversityCta university={university} />
+          <UniversityCta university={university} />
+        </div>
       </main>
       <SiteFooter site={site} />
     </>
