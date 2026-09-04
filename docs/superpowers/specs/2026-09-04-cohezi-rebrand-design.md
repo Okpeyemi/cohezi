@@ -66,12 +66,11 @@ Décryptage et le bloc newsletter ; vert réservé aux accents listés ci-dessus
 Copiés dans `public/brand/` depuis `logos-png/` : `cohezi-lockup-transparent-blanc.png` (header sur
 fond sombre), `cohezi-lockup-transparent-noir.png` (header en clair, footer),
 `cohezi-symbole-vert-64.png` et `-32.png` (repères), `cohezi-app-256.png` → `app/icon.png` (favicon
-par convention Next) et `app/apple-icon.png`. Taille minimale respectée : lockup ≥ 120 px de large
-(header : hauteur 28 px ⇒ ≈ 65 px de large pour le disque + mot ; on affiche le lockup à 32 px de
-haut ⇒ 75 px… insuffisant → **le header utilise le lockup à 36 px de haut, soit 84 px de large, et
-sans la signature** ; pour rester ≥ 120 px on affiche donc le lockup complet à 52 px de haut
-(≈ 121 px) sur desktop et le symbole seul 32 px + logotype à 24 px sur mobile). Zone de
-protection 15 % conservée par le padding du lien. Interdits respectés : pas de capitales dans le
+par convention Next) et `app/apple-icon.png`. Tailles : header desktop = lockup transparent complet (disque + mot + signature) affiché à
+120 px de large, soit 51 px de haut, minimum de la charte, centré dans les 68 px du header ;
+header mobile = symbole vert 32 px suivi du logotype à 24 px de haut ; footer = lockup noir à
+160 px de large. Zone de protection : le padding du lien vaut au moins 15 % du diamètre du disque.
+Interdits respectés : pas de capitales dans le
 mot, pas de contour, pas d'ombre, pas de vert sur vert.
 
 Composant `components/ui/cohezi-logo.tsx` : `CoheziLogo({ tone: 'dark' | 'light'; size?: 'header' | 'footer' })`
@@ -208,12 +207,10 @@ correspondants supprimés ; JSON de référence Rundown et captures conservés d
 ## 10. Accessibilité et responsive
 
 Inchangés par rapport à la spec Rundown : sémantique, `aria-labelledby`, focus visible (anneau
-2 px **vert**), `prefers-reduced-motion`. Contrastes vérifiés : muted #8A8A8A sur paper #F7F7F4 =
-3.2:1 → réservé aux textes ≥ 18 px ou 14 px gras ; pour les métadonnées 12 px on utilise
-`--color-accent-deep`-free `#6B6B6B` ? Non : on garde la palette et on passe les métadonnées à 13 px
-Inter 500 en `#5C5C5C`… **Décision : métadonnées en `text-muted` uniquement à 14 px et plus ; en
-dessous de 14 px, texte ink 60 %** (contraste 6.4:1). Vert #7CFF6B sur ink #111 = 13.6:1 ; vert sur
-paper = 1.4:1 → jamais de texte vert sur fond clair sans `accent-deep` (#123C2A sur paper = 11.9:1).
+2 px **vert**), `prefers-reduced-motion`. Contrastes : muted #8A8A8A sur paper #F7F7F4 = 3.2:1, donc réservé aux textes d'au moins 18 px
+(ou 14 px gras) ; les métadonnées plus petites utilisent ink à 60 % d'opacité (6.4:1). Vert
+#7CFF6B sur ink = 13.6:1, texte autorisé ; vert sur paper = 1.4:1, donc jamais de texte vert sur
+fond clair : on utilise accent-deep #123C2A (11.9:1).
 Responsive : points de rupture et comportements du clone conservés (filtres masqués sous `md`,
 3 cartes sur mobile, menu mobile). Le H1 mobile passe à 36 px et le Décryptage s'empile.
 
