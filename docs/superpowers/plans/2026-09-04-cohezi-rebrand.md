@@ -14,7 +14,7 @@
 
 - Gestionnaire de paquets : **pnpm**. Aucune dépendance ajoutée (polices via `next/font/google`, aucun paquet Fontsource sauf si le build ne peut pas joindre Google Fonts : voir Task 1 Step 2b).
 - Branche de travail : `feat/cohezi-rebrand` créée depuis `main` (tag `rundown-replica-v1` déjà posé sur la réplique).
-- Palette exclusive (spec §4) : `--color-ink #111111`, `--color-ink-soft #1a1a1a`, `--color-paper #f7f7f4`, `--color-accent #7cff6b`, `--color-accent-deep #123c2a`, `--color-muted #8a8a8a`, `--color-line #e2e2de`, `--color-line-dark #2a2a2a`. **Aucun `bg-white`, `text-white`, `neutral-*`, dégradé ou halo** dans `components/` et `app/` à la fin de Task 7.
+- Palette exclusive (spec §4) : `--color-ink #111111`, `--color-ink-soft #1a1a1a`, `--color-paper #f7f7f4`, `--color-accent #7cff6b`, `--color-accent-deep #123c2a`, `--color-muted #8a8a8a`, `--color-line #e2e2de`, `--color-line-dark #2a2a2a`. **Aucun `bg-white`, `text-white`, `neutral-*`, dégradé (`*-gradient`) ni halo animé** dans `components/` et `app/` à la fin de Task 7. Les chemins d'assets `/brand/…` et la fonction `hashToGradient` de `lib/placeholder.ts` sont les seules occurrences autorisées des mots « brand » et « gradient ».
 - Vert (`accent`) uniquement pour : carré des eyebrows et du H1, repère des badges de catégorie, soulignement de nav au survol, numéro du Décryptage, lien « Lire le décryptage », bouton du bloc newsletter, anneau de focus. Jamais de texte vert sur fond clair (utiliser `accent-deep`).
 - Polices : `font-display` (Space Grotesk) pour H1, titres de sections, titres d'articles, numéro du Décryptage, promesse du hero ; `font-sans` (Inter) partout ailleurs.
 - Logo : uniquement les fichiers copiés dans `public/brand/` (Task 1) ; lockup ≥ 120 px de large ; jamais de capitales dans le mot, ni contour, ni ombre.
@@ -502,6 +502,9 @@ export type SocialLink = { label: string; href: string; icon: IconName };
 
 export type FooterColumn = { heading: string; links: NavItem[] };
 
+/** Page annoncée mais pas encore écrite : premier segment d'URL et libellé affiché. */
+export type ComingSoonPage = { slug: string; label: string };
+
 export type HeroContent = {
   eyebrow: string;
   titleLine1: string;
@@ -556,8 +559,8 @@ export type SiteConfig = {
     copyright: string;
     social: SocialLink[];
   };
-  /** Premiers segments d'URL servis par la page « bientôt disponible ». */
-  comingSoonSlugs: string[];
+  /** Pages servies par la route attrape-tout, dans l'ordre de pré-rendu. */
+  comingSoon: ComingSoonPage[];
 };
 ```
 
@@ -619,7 +622,8 @@ describe('content integrity', () => {
 
   it('resolves every icon name used by the site config', () => {
     for (const social of site.footer.social) expect(icons[social.icon], social.label).toBeDefined();
-    expect(site.comingSoonSlugs.every((s) => s.length > 0)).toBe(true);
+    expect(site.comingSoon).toHaveLength(7);
+    expect(site.comingSoon.every((page) => page.slug.length > 0 && page.label.length > 0)).toBe(true);
     expect(site.headerCta.href).toBe('#newsletter');
   });
 });
@@ -1081,7 +1085,15 @@ export const site: SiteConfig = {
       { label: 'TikTok', href: 'https://www.tiktok.com/@cohezi', icon: 'tiktok' },
     ],
   },
-  comingSoonSlugs: ['actualite', 'business', 'societe', 'analyses', 'a-propos', 'contact', 'recherche'],
+  comingSoon: [
+    { slug: 'actualite', label: 'Actualité' },
+    { slug: 'business', label: 'Business' },
+    { slug: 'societe', label: 'Société' },
+    { slug: 'analyses', label: 'Analyses' },
+    { slug: 'a-propos', label: 'À propos' },
+    { slug: 'contact', label: 'Contact' },
+    { slug: 'recherche', label: 'Recherche' },
+  ],
 };
 ```
 Les majuscules (eyebrows, titres, promesse, en-têtes du footer) sont appliquées par CSS `uppercase` dans les composants : le contenu reste en casse naturelle.
@@ -1574,3 +1586,1258 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
 
 ---
+
+### Task 3 : Header, menu mobile et footer Cohezi
+
+**Files:**
+- Modify: `components/layout/site-header.tsx`, `components/layout/mobile-menu.tsx`, `components/layout/site-footer.tsx`, `components/ui/tabs.tsx`
+- Delete: `components/ui/brand-logo.tsx`, `tests/components/ui/brand-logo.test.tsx`
+- Test: `tests/components/layout/site-header.test.tsx`, `tests/components/layout/mobile-menu.test.tsx`, `tests/components/layout/site-footer.test.tsx`, `tests/components/ui/tabs.test.tsx`
+
+**Interfaces:**
+- Consumes : `CoheziLogo`, `Button`/`ButtonLink` (variante `paper`), `Icon` (`search`, `arrow-right`, `menu`, `close`), `site` (nav, headerCta, searchHref, searchLabel, footer, newsletter).
+- Produces : `SiteHeader({ name, nav, cta, searchHref, searchLabel })`, `MobileMenu({ nav, cta, searchHref, searchLabel })`, `SiteFooter({ site })`.
+- État attendu en fin de tâche : tests de `layout` et `ui` verts ; `hero`, `latest-articles`, `page`, `newsletter-form` encore rouges (Tasks 4, 5, 6, 7).
+
+- [ ] **Step 1 : tests qui échouent**
+
+`tests/components/layout/site-header.test.tsx` (contenu complet) :
+```tsx
+import { render, screen, within } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { SiteHeader } from '@/components/layout/site-header';
+import { site } from '@/content/site';
+
+function renderHeader() {
+  return render(
+    <SiteHeader
+      name={site.name}
+      nav={site.nav}
+      cta={site.headerCta}
+      searchHref={site.searchHref}
+      searchLabel={site.searchLabel}
+    />,
+  );
+}
+
+describe('SiteHeader', () => {
+  it('renders the Cohezi logo link, the four editorial sections, search and the subscribe CTA', () => {
+    renderHeader();
+    expect(screen.getByRole('link', { name: 'Cohezi, accueil' })).toHaveAttribute('href', '/');
+    const nav = screen.getByRole('navigation', { name: 'Navigation principale' });
+    expect(within(nav).getAllByRole('link')).toHaveLength(4);
+    for (const item of site.nav) {
+      expect(within(nav).getByRole('link', { name: item.label })).toHaveAttribute('href', item.href);
+    }
+    expect(screen.getByRole('link', { name: 'Rechercher' })).toHaveAttribute('href', '/recherche');
+    expect(screen.getByRole('link', { name: /S’inscrire/ })).toHaveAttribute('href', '#newsletter');
+    expect(screen.getByRole('button', { name: 'Ouvrir le menu' })).toBeInTheDocument();
+  });
+
+  it('shows the brand logo, never a Rundown wordmark', () => {
+    const { container } = renderHeader();
+    expect(container.querySelectorAll('img[src^="/brand/"]').length).toBeGreaterThan(0);
+    expect(screen.queryByText('The Rundown')).toBeNull();
+  });
+});
+```
+
+`tests/components/layout/mobile-menu.test.tsx` : garder le `vi.mock('next/link', …)` en tête du fichier, remplacer le `describe` par :
+```tsx
+describe('MobileMenu', () => {
+  const props = {
+    nav: site.nav,
+    cta: site.headerCta,
+    searchHref: site.searchHref,
+    searchLabel: site.searchLabel,
+  };
+
+  it('opens the panel, locks body scroll and reflects the state in aria-expanded', async () => {
+    const user = userEvent.setup();
+    render(<MobileMenu {...props} />);
+    const trigger = screen.getByRole('button', { name: 'Ouvrir le menu' });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('dialog')).toBeNull();
+
+    await user.click(trigger);
+    expect(screen.getByRole('button', { name: 'Fermer le menu' })).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('dialog', { name: 'Menu' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Société' })).toHaveAttribute('href', '/societe');
+    expect(screen.getByRole('link', { name: 'Rechercher' })).toHaveAttribute('href', '/recherche');
+    expect(document.body.style.overflow).toBe('hidden');
+  });
+
+  it('closes on Escape and restores body scroll', async () => {
+    const user = userEvent.setup();
+    render(<MobileMenu {...props} />);
+    await user.click(screen.getByRole('button', { name: 'Ouvrir le menu' }));
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Ouvrir le menu' })).toHaveAttribute('aria-expanded', 'false');
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  it('closes when a navigation link is clicked', async () => {
+    const user = userEvent.setup();
+    render(<MobileMenu {...props} />);
+    await user.click(screen.getByRole('button', { name: 'Ouvrir le menu' }));
+    await user.click(screen.getByRole('link', { name: 'Business' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+});
+```
+
+`tests/components/layout/site-footer.test.tsx` (contenu complet) :
+```tsx
+import { render, screen, within } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { site } from '@/content/site';
+
+describe('SiteFooter', () => {
+  it('renders the tagline, the three columns, the copyright and the social row', () => {
+    render(<SiteFooter site={site} />);
+    for (const line of site.footer.tagline) expect(screen.getByText(line)).toBeInTheDocument();
+    for (const column of site.footer.columns) {
+      const nav = screen.getByRole('navigation', { name: column.heading });
+      for (const link of column.links) {
+        expect(within(nav).getByRole('link', { name: link.label })).toHaveAttribute('href', link.href);
+      }
+    }
+    expect(screen.getByText('© 2026 Cohezi')).toBeInTheDocument();
+    const social = within(screen.getByRole('list', { name: 'Réseaux sociaux' }));
+    for (const link of site.footer.social) {
+      expect(social.getByRole('link', { name: link.label })).toHaveAttribute('href', link.href);
+    }
+    expect(screen.getByRole('button', { name: /S’inscrire/ })).toBeInTheDocument();
+  });
+
+  it('uses the black Cohezi lockup', () => {
+    const { container } = render(<SiteFooter site={site} />);
+    expect(container.querySelector('img[src="/brand/cohezi-lockup-noir.png"]')).not.toBeNull();
+  });
+});
+```
+
+`tests/components/ui/tabs.test.tsx` : remplacer les libellés du tableau `items` par `{ slug: 'all', label: 'Toutes' }` et `{ slug: 'business', label: 'Business' }`, l'`ariaLabel` par `"Filtrer les articles"`, et les recherches de boutons par `{ name: 'Toutes' }` / `{ name: 'Business' }` (l'assertion `onChange` attend `'business'`).
+
+Run : `pnpm test tests/components/layout tests/components/ui/tabs.test.tsx`
+Expected : FAIL — libellés anglais, props `searchHref`/`searchLabel` absentes, logo Rundown encore présent.
+
+- [ ] **Step 2 : `components/layout/site-header.tsx` (contenu complet)**
+
+```tsx
+import Link from 'next/link';
+import { ButtonLink } from '@/components/ui/button';
+import { CoheziLogo } from '@/components/ui/cohezi-logo';
+import { Icon } from '@/components/ui/icon';
+import type { NavItem } from '@/content/types';
+import { MobileMenu } from './mobile-menu';
+
+type SiteHeaderProps = {
+  name: string;
+  nav: NavItem[];
+  cta: NavItem;
+  searchHref: string;
+  searchLabel: string;
+};
+
+export function SiteHeader({ name, nav, cta, searchHref, searchLabel }: SiteHeaderProps) {
+  return (
+    <header className="site-header sticky top-0 z-50 border-b border-transparent bg-ink transition-colors duration-300">
+      <div className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between px-5 lg:px-24">
+        <Link
+          href="/"
+          aria-label={`${name}, accueil`}
+          className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        >
+          <CoheziLogo tone="dark" />
+        </Link>
+        <nav aria-label="Navigation principale" className="hidden items-center gap-8 lg:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="site-nav-link relative py-1 text-base font-medium text-paper/90 transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform hover:text-paper hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="hidden items-center gap-2 lg:flex">
+          <Link
+            href={searchHref}
+            aria-label={searchLabel}
+            className="site-nav-link flex h-10 w-10 items-center justify-center rounded-lg text-paper/90 transition-colors hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <Icon name="search" size={18} />
+          </Link>
+          <ButtonLink href={cta.href} variant="paper" size="sm" className="border border-line">
+            {cta.label}
+            <Icon name="arrow-right" size={16} />
+          </ButtonLink>
+        </div>
+        <MobileMenu nav={nav} cta={cta} searchHref={searchHref} searchLabel={searchLabel} />
+      </div>
+    </header>
+  );
+}
+```
+
+- [ ] **Step 3 : `components/layout/mobile-menu.tsx` (props et libellés)**
+
+Remplacer le type et la signature :
+```tsx
+type MobileMenuProps = { nav: NavItem[]; cta: NavItem; searchHref: string; searchLabel: string };
+
+export function MobileMenu({ nav, cta, searchHref, searchLabel }: MobileMenuProps) {
+```
+Remplacer les libellés du déclencheur :
+```tsx
+        aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+```
+Et le contenu du panneau (`<nav>` + CTA) par :
+```tsx
+        <nav aria-label="Navigation mobile" className="flex flex-col gap-4">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={close}
+              className="font-display text-xl font-semibold uppercase text-paper/90 transition-colors hover:text-paper"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href={searchHref}
+            aria-label={searchLabel}
+            onClick={close}
+            className="inline-flex items-center gap-2 text-base font-medium text-paper/80 transition-colors hover:text-paper"
+          >
+            <Icon name="search" size={18} />
+            {searchLabel}
+          </Link>
+        </nav>
+        <ButtonLink href={cta.href} variant="paper" size="sm" className="self-start" onClick={close}>
+          {cta.label}
+          <Icon name="arrow-right" size={16} />
+        </ButtonLink>
+```
+Note : le lien de recherche porte `aria-label` **et** un texte visible identique ; `getByRole('link', { name: 'Rechercher' })` reste sans ambiguïté.
+
+- [ ] **Step 4 : `components/layout/site-footer.tsx` (contenu complet)**
+
+```tsx
+import Link from 'next/link';
+import { CoheziLogo } from '@/components/ui/cohezi-logo';
+import { Icon } from '@/components/ui/icon';
+import { NewsletterForm } from '@/components/ui/newsletter-form';
+import type { SiteConfig } from '@/content/types';
+
+export function SiteFooter({ site }: { site: SiteConfig }) {
+  return (
+    <footer className="bg-paper px-2 pb-2 pt-16 md:px-5">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-12">
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <Link
+              href="/"
+              aria-label={`${site.name}, accueil`}
+              className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              <CoheziLogo tone="light" size="footer" />
+            </Link>
+            <p className="mt-6 max-w-sm font-display text-lg font-medium leading-7 text-ink">
+              {site.footer.tagline.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
+            <NewsletterForm
+              variant="footer"
+              placeholder={site.newsletter.emailPlaceholder}
+              buttonLabel={site.hero.subscribeLabel}
+              className="mt-6"
+            />
+          </div>
+          {site.footer.columns.map((column) => (
+            <nav key={column.heading} aria-label={column.heading}>
+              <h3 className="font-sans text-xs font-semibold uppercase tracking-[0.12em] text-ink">{column.heading}</h3>
+              <ul className="mt-4 space-y-3">
+                {column.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-ink/70 transition-colors hover:text-ink">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
+          <p className="text-xs text-ink/60">{site.footer.copyright}</p>
+          <ul aria-label="Réseaux sociaux" className="flex items-center gap-3">
+            {site.footer.social.map((social) => (
+              <li key={social.href}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:bg-line/60"
+                >
+                  <Icon name={social.icon} size={14} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </footer>
+  );
+}
+```
+
+- [ ] **Step 5 : `components/ui/tabs.tsx` (onglets Cohezi)**
+
+Remplacer la classe du bouton par :
+```tsx
+            className={cn(
+              'h-[33px] rounded-lg px-4 font-sans text-[15px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+              isActive ? 'bg-ink text-paper' : 'text-ink hover:bg-line/60',
+            )}
+```
+
+- [ ] **Step 6 : suppression du logo Rundown, tests, commit**
+
+```bash
+cd /home/darellchooks/Documents/cohezi
+git rm -q components/ui/brand-logo.tsx tests/components/ui/brand-logo.test.tsx
+pnpm test tests/components/layout tests/components/ui
+```
+Expected : PASS sauf `tests/components/ui/newsletter-form.test.tsx` (libellés anglais, Task 6).
+
+```bash
+git add -A components tests docs/superpowers/plans/
+git commit -m "feat(cohezi): header, menu mobile et footer aux couleurs et contenus Cohezi
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 4 : Hero Cohezi
+
+**Files:**
+- Rewrite: `components/sections/hero.tsx`
+- Delete: `components/ui/logo-wordmark.tsx`
+- Test: `tests/components/sections/hero.test.tsx`
+
+**Interfaces:**
+- Consumes : `HeroContent` (eyebrow, titleLine1, titleLine2, description, emailPlaceholder, subscribeLabel, microCopy, promise), `NewsletterForm`.
+- Produces : `Hero({ hero: HeroContent })`.
+- État attendu : test `hero` vert ; `latest-articles`, `page`, `newsletter-form` encore rouges.
+
+- [ ] **Step 1 : test qui échoue**
+
+`tests/components/sections/hero.test.tsx` (contenu complet) :
+```tsx
+import { render, screen, within } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { Hero } from '@/components/sections/hero';
+import { site } from '@/content/site';
+
+describe('Hero', () => {
+  it('renders the eyebrow, the two-line headline, the form, the micro-copy and the promise', () => {
+    render(<Hero hero={site.hero} />);
+    expect(screen.getByText(site.hero.eyebrow)).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveTextContent('L’IA change le monde. Comprenez ce qui compte');
+    expect(heading.className).toContain('font-display');
+    expect(heading.className).toContain('uppercase');
+    expect(screen.getByText(site.hero.description)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /S’inscrire/ })).toBeInTheDocument();
+    expect(screen.getByText(site.hero.microCopy)).toBeInTheDocument();
+    expect(screen.getByText(site.hero.promise)).toBeInTheDocument();
+  });
+
+  it('closes the headline with a decorative green square instead of a full stop', () => {
+    render(<Hero hero={site.hero} />);
+    const heading = screen.getByRole('heading', { level: 1 });
+    const square = within(heading).getByTestId('hero-accent-square');
+    expect(square).toHaveAttribute('aria-hidden', 'true');
+    expect(square.className).toContain('bg-accent');
+    expect(heading.textContent?.trim().endsWith('.')).toBe(false);
+  });
+
+  it('does not show any Rundown trusted-by logo row', () => {
+    render(<Hero hero={site.hero} />);
+    expect(screen.queryByRole('list', { name: 'Trusted by' })).toBeNull();
+    expect(screen.queryByText('Google')).toBeNull();
+  });
+});
+```
+
+Run : `pnpm test tests/components/sections/hero.test.tsx`
+Expected : FAIL — le hero rend encore le titre Rundown et la rangée de logos.
+
+- [ ] **Step 2 : `components/sections/hero.tsx` (contenu complet)**
+
+```tsx
+import { NewsletterForm } from '@/components/ui/newsletter-form';
+import type { HeroContent } from '@/content/types';
+
+export function Hero({ hero }: { hero: HeroContent }) {
+  return (
+    <section aria-labelledby="hero-title" className="hero-dark-change px-5 pb-16 pt-20 text-center md:pt-28">
+      <p className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-paper/70">
+        <span aria-hidden className="h-2 w-2 bg-accent" />
+        {hero.eyebrow}
+      </p>
+      <h1
+        id="hero-title"
+        className="mx-auto mt-6 max-w-4xl font-display text-4xl font-bold uppercase leading-[1.08] tracking-[-0.01em] text-paper md:text-[64px]"
+      >
+        {hero.titleLine1} <br className="hidden md:inline" />
+        {hero.titleLine2}
+        <span
+          aria-hidden="true"
+          data-testid="hero-accent-square"
+          className="ml-2 inline-block h-[0.16em] w-[0.16em] bg-accent align-baseline"
+        />
+      </h1>
+      <p className="mx-auto mt-6 max-w-[520px] text-lg leading-7 text-paper/80">{hero.description}</p>
+      <div className="mt-8 flex justify-center">
+        <NewsletterForm variant="hero" placeholder={hero.emailPlaceholder} buttonLabel={hero.subscribeLabel} />
+      </div>
+      <p className="mt-4 text-sm text-paper/60">{hero.microCopy}</p>
+      <p className="mx-auto mt-16 max-w-2xl font-display text-sm font-medium uppercase tracking-[0.12em] text-paper/70">
+        {hero.promise}
+      </p>
+    </section>
+  );
+}
+```
+Le carré vert est un `<span>` sans texte : il n'est pas repeint par la bascule au défilement, qui ne change que la propriété `color`.
+
+- [ ] **Step 3 : suppression, tests, commit**
+
+```bash
+cd /home/darellchooks/Documents/cohezi
+git rm -q components/ui/logo-wordmark.tsx
+pnpm test tests/components/sections/hero.test.tsx
+```
+Expected : PASS (3 tests).
+
+```bash
+git add -A components tests docs/superpowers/plans/
+git commit -m "feat(cohezi): hero éditorial avec promesse et accent vert
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 5 : À la une, Business et Société
+
+**Files:**
+- Rewrite: `components/sections/latest-articles.tsx`
+- Create: `components/sections/article-grid-section.tsx`
+- Test: `tests/components/sections/latest-articles.test.tsx`, `tests/components/sections/article-grid-section.test.tsx`
+
+**Interfaces:**
+- Consumes : `ArticleCard` (variantes `featured`, `compact`, `grid`), `FilterableGrid`, `SectionHeading`, `ButtonLink`, `Icon`, `categories`, `latest` / `byCategory` / `pickFeatured`.
+- Produces : `LatestArticles({ copy: SectionCopy; articles: Article[] })` (client), `ArticleGridSection({ id: string; copy: SectionCopy; articles: Article[] })` (serveur).
+- État attendu : tests `sections` verts ; `page` et `newsletter-form` encore rouges.
+
+- [ ] **Step 1 : tests qui échouent**
+
+`tests/components/sections/latest-articles.test.tsx` (contenu complet) :
+```tsx
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
+import { LatestArticles } from '@/components/sections/latest-articles';
+import { articles } from '@/content/articles';
+import { site } from '@/content/site';
+import { latest } from '@/lib/articles';
+
+const front = latest(articles);
+
+describe('LatestArticles', () => {
+  it('renders the French heading, the five front-page articles and the view-all link', () => {
+    render(<LatestArticles copy={site.sections.latest} articles={front} />);
+    expect(screen.getByRole('heading', { level: 2, name: 'À la une' })).toBeInTheDocument();
+    expect(screen.getAllByRole('article')).toHaveLength(5);
+    expect(screen.getByRole('link', { name: /Voir toutes les actualités/ })).toHaveAttribute('href', '/actualite');
+  });
+
+  it('offers one tab per editorial category plus "Toutes"', () => {
+    render(<LatestArticles copy={site.sections.latest} articles={front} />);
+    const tabs = screen.getByRole('group', { name: 'Filtrer les articles' });
+    expect(tabs.querySelectorAll('button')).toHaveLength(5);
+    for (const label of ['Toutes', 'Actualité', 'Business', 'Société', 'Analyse']) {
+      expect(screen.getByRole('button', { name: label })).toBeInTheDocument();
+    }
+  });
+
+  it('filters by tab and promotes the first match as the featured card', async () => {
+    const user = userEvent.setup();
+    render(<LatestArticles copy={site.sections.latest} articles={front} />);
+    await user.click(screen.getByRole('button', { name: 'Business' }));
+    const cards = screen.getAllByRole('article');
+    expect(cards.length).toBeGreaterThan(0);
+    expect(cards.length).toBeLessThan(5);
+    expect(cards[0]!.className).toContain('featured');
+    for (const card of cards) expect(card).toHaveTextContent('Business');
+  });
+});
+```
+
+`tests/components/sections/article-grid-section.test.tsx` :
+```tsx
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { ArticleGridSection } from '@/components/sections/article-grid-section';
+import { articles } from '@/content/articles';
+import { site } from '@/content/site';
+import { byCategory } from '@/lib/articles';
+
+const business = byCategory(articles, 'business');
+
+describe('ArticleGridSection', () => {
+  it('renders the heading, the eight cards and the view-all link', () => {
+    render(<ArticleGridSection id="business" copy={site.sections.business} articles={business} />);
+    expect(screen.getByRole('heading', { level: 2, name: 'Business' })).toHaveAttribute('id', 'business-title');
+    expect(screen.getAllByRole('listitem')).toHaveLength(8);
+    expect(screen.getAllByRole('article')).toHaveLength(8);
+    expect(screen.getByRole('link', { name: /Voir tout le business/ })).toHaveAttribute('href', '/business');
+  });
+
+  it('labels the section with its own heading and shows no filter', () => {
+    render(<ArticleGridSection id="societe" copy={site.sections.societe} articles={byCategory(articles, 'societe')} />);
+    expect(screen.getByRole('region', { name: 'Société' })).toBeInTheDocument();
+    expect(screen.queryByRole('group')).toBeNull();
+  });
+});
+```
+
+Run : `pnpm test tests/components/sections`
+Expected : FAIL — `article-grid-section` introuvable, `LatestArticles` encore sur le contenu Rundown.
+
+- [ ] **Step 2 : `components/sections/latest-articles.tsx` (contenu complet)**
+
+```tsx
+'use client';
+
+import { ArticleCard } from '@/components/cards/article-card';
+import { ButtonLink } from '@/components/ui/button';
+import { FilterableGrid } from '@/components/ui/filterable-grid';
+import { Icon } from '@/components/ui/icon';
+import { SectionHeading } from '@/components/ui/section-heading';
+import { categories } from '@/content/categories';
+import type { Article, SectionCopy } from '@/content/types';
+import { pickFeatured } from '@/lib/articles';
+
+const TABS = categories.map((category) => ({ slug: category.slug, label: category.label }));
+
+type LatestArticlesProps = { copy: SectionCopy; articles: Article[] };
+
+export function LatestArticles({ copy, articles }: LatestArticlesProps) {
+  return (
+    <section aria-labelledby="latest-articles-title" className="px-5 py-16 md:py-20">
+      <SectionHeading id="latest-articles-title" title={copy.title} subtitle={copy.subtitle} />
+      <FilterableGrid
+        items={articles}
+        categories={TABS}
+        getCategories={(article) => [article.category]}
+        filterLabel="Filtrer les articles"
+        allLabel="Toutes"
+        renderItems={(visible) => {
+          const { featured, rest } = pickFeatured(visible);
+          return (
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+              {featured ? <ArticleCard article={featured} variant="featured" /> : null}
+              {rest.length > 0 ? (
+                <div className="grid gap-8 sm:grid-cols-2">
+                  {rest.map((article) => (
+                    <ArticleCard key={article.slug} article={article} variant="compact" />
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          );
+        }}
+      />
+      <div className="mt-12 flex justify-center">
+        <ButtonLink href={copy.viewAllHref} variant="outline" size="sm">
+          {copy.viewAllLabel}
+          <Icon name="arrow-right" size={16} />
+        </ButtonLink>
+      </div>
+    </section>
+  );
+}
+```
+
+- [ ] **Step 3 : `components/sections/article-grid-section.tsx`**
+
+```tsx
+import { ArticleCard } from '@/components/cards/article-card';
+import { ButtonLink } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
+import { SectionHeading } from '@/components/ui/section-heading';
+import type { Article, SectionCopy } from '@/content/types';
+
+type ArticleGridSectionProps = { id: string; copy: SectionCopy; articles: Article[] };
+
+/**
+ * Grille éditoriale partagée par Business et Société : même gabarit que les grilles du clone
+ * (4 colonnes desktop, 3 cartes visibles sous md), sans filtre.
+ */
+export function ArticleGridSection({ id, copy, articles }: ArticleGridSectionProps) {
+  return (
+    <section aria-labelledby={`${id}-title`} className="px-5 py-16 md:py-20">
+      <SectionHeading id={`${id}-title`} title={copy.title} subtitle={copy.subtitle} />
+      <ul className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-2 lg:grid-cols-4 [&>li:nth-child(n+4)]:hidden md:[&>li:nth-child(n+4)]:block">
+        {articles.map((article) => (
+          <li key={article.slug}>
+            <ArticleCard article={article} variant="grid" />
+          </li>
+        ))}
+      </ul>
+      <div className="mt-12 flex justify-center">
+        <ButtonLink href={copy.viewAllHref} variant="outline" size="sm">
+          {copy.viewAllLabel}
+          <Icon name="arrow-right" size={16} />
+        </ButtonLink>
+      </div>
+    </section>
+  );
+}
+```
+
+- [ ] **Step 4 : tests et commit**
+
+Run : `pnpm test tests/components/sections`
+Expected : PASS (hero 3 + latest 3 + grid 2).
+
+```bash
+git add -A components tests docs/superpowers/plans/
+git commit -m "feat(cohezi): section À la une filtrable et grilles Business / Société
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 6 : Décryptage, bloc newsletter et formulaire en français
+
+**Files:**
+- Create: `components/sections/deep-dive.tsx`, `components/sections/newsletter-cta.tsx`
+- Modify: `components/ui/newsletter-form.tsx`
+- Test: `tests/components/sections/deep-dive.test.tsx`, `tests/components/sections/newsletter-cta.test.tsx`, `tests/components/ui/newsletter-form.test.tsx`
+
+**Interfaces:**
+- Consumes : `DeepDiveCopy`, `NewsletterCopy`, `Article`, `articleHref`, `Icon`, `NewsletterForm`.
+- Produces : `DeepDive({ copy: DeepDiveCopy; article: Article })`, `NewsletterCta({ copy: NewsletterCopy })`, `NewsletterForm({ variant?; buttonTone?: 'ink' | 'accent'; placeholder?; buttonLabel?; endpoint?; className? })`, `MESSAGES` en français.
+- État attendu : tous les tests verts sauf `tests/app/page.test.tsx` (Task 7).
+
+- [ ] **Step 1 : tests qui échouent**
+
+`tests/components/sections/deep-dive.test.tsx` :
+```tsx
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { DeepDive } from '@/components/sections/deep-dive';
+import { articles } from '@/content/articles';
+import { site } from '@/content/site';
+import { deepDive } from '@/lib/articles';
+
+const article = deepDive(articles)!;
+
+describe('DeepDive', () => {
+  it('renders the eyebrow, the green number, the title, the excerpt and the reading time', () => {
+    render(<DeepDive copy={site.deepDive} article={article} />);
+    expect(screen.getByText('Cohezi / Décryptage')).toBeInTheDocument();
+    const number = screen.getByText('01');
+    expect(number.className).toContain('text-accent');
+    expect(number.className).toContain('font-display');
+    expect(screen.getByRole('heading', { level: 2, name: article.title })).toBeInTheDocument();
+    expect(screen.getByText(article.excerpt)).toBeInTheDocument();
+    expect(screen.getByText(`${article.readingMinutes} min de lecture`)).toBeInTheDocument();
+  });
+
+  it('links to the article on a dark surface', () => {
+    const { container } = render(<DeepDive copy={site.deepDive} article={article} />);
+    expect(screen.getByRole('link', { name: /Lire le décryptage/ })).toHaveAttribute(
+      'href',
+      `/analyses/${article.slug}`,
+    );
+    expect(container.querySelector('.bg-ink')).not.toBeNull();
+  });
+});
+```
+
+`tests/components/sections/newsletter-cta.test.tsx` :
+```tsx
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { NewsletterCta } from '@/components/sections/newsletter-cta';
+import { site } from '@/content/site';
+
+describe('NewsletterCta', () => {
+  it('renders the two-line heading, the description and the green subscribe button', () => {
+    render(<NewsletterCta copy={site.newsletter} />);
+    const heading = screen.getByRole('heading', { level: 2 });
+    expect(heading).toHaveTextContent('Moins de bruit. Plus de contexte.');
+    expect(screen.getByText(site.newsletter.description)).toBeInTheDocument();
+    const button = screen.getByRole('button', { name: /Je m’inscris/ });
+    expect(button.className).toContain('bg-accent');
+    expect(screen.getByText(site.newsletter.microCopy)).toBeInTheDocument();
+  });
+
+  it('is the anchor target of the header CTA', () => {
+    const { container } = render(<NewsletterCta copy={site.newsletter} />);
+    expect(container.querySelector('section#newsletter')).not.toBeNull();
+  });
+});
+```
+
+`tests/components/ui/newsletter-form.test.tsx` : remplacer les recherches de bouton `{ name: /subscribe/i }` par `{ name: /S’inscrire/ }`, le libellé `'Email address'` par `'Adresse e-mail'`, et le dernier test par :
+```tsx
+  it('uses the given placeholder, button label and accent tone', () => {
+    render(<NewsletterForm variant="hero" buttonTone="accent" placeholder="Votre adresse e-mail" buttonLabel="Je m’inscris" />);
+    expect(screen.getByPlaceholderText('Votre adresse e-mail')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Je m’inscris/ }).className).toContain('bg-accent');
+  });
+```
+
+Run : `pnpm test tests/components/sections/deep-dive.test.tsx tests/components/sections/newsletter-cta.test.tsx tests/components/ui/newsletter-form.test.tsx`
+Expected : FAIL — composants introuvables, libellés anglais.
+
+- [ ] **Step 2 : `components/ui/newsletter-form.tsx` (messages FR et ton du bouton)**
+
+Remplacer `MESSAGES`, le type des props et la signature :
+```tsx
+export const MESSAGES = {
+  invalid: 'Saisissez une adresse e-mail valide.',
+  success: 'Vérifiez votre boîte mail pour confirmer.',
+  failure: 'Une erreur est survenue, réessayez.',
+} as const;
+
+type Status = 'idle' | 'sending' | 'success' | 'error';
+
+type NewsletterFormProps = {
+  variant?: 'hero' | 'footer';
+  buttonTone?: 'ink' | 'accent';
+  placeholder?: string;
+  buttonLabel?: string;
+  endpoint?: string;
+  className?: string;
+};
+
+export function NewsletterForm({
+  variant = 'hero',
+  buttonTone = 'ink',
+  placeholder = 'Votre adresse e-mail',
+  buttonLabel = 'S’inscrire',
+  endpoint = '/api/newsletter',
+  className,
+}: NewsletterFormProps) {
+```
+Remplacer le libellé masqué et le bouton :
+```tsx
+        <label htmlFor={inputId} className="sr-only">
+          Adresse e-mail
+        </label>
+```
+```tsx
+        <Button
+          type="submit"
+          variant={buttonTone}
+          size={isHero ? 'md' : 'sm'}
+          disabled={sending}
+          className={cn(!isHero && 'h-9 px-3 text-sm')}
+        >
+          {buttonLabel}
+          <Icon name="send" size={16} />
+        </Button>
+```
+Remplacer la classe du message d'état (couleurs Cohezi) :
+```tsx
+        className={cn(
+          'mt-2 text-sm',
+          status === 'error' ? (isHero ? 'text-accent' : 'text-accent-deep') : isHero ? 'text-paper/80' : 'text-ink/70',
+          !message && 'sr-only',
+        )}
+```
+
+- [ ] **Step 3 : `components/sections/deep-dive.tsx`**
+
+```tsx
+import Link from 'next/link';
+import { articleHref } from '@/components/cards/article-card';
+import { Icon } from '@/components/ui/icon';
+import type { Article, DeepDiveCopy } from '@/content/types';
+
+type DeepDiveProps = { copy: DeepDiveCopy; article: Article };
+
+/** Bloc éditorial sombre, à la place du bloc podcast du clone. */
+export function DeepDive({ copy, article }: DeepDiveProps) {
+  return (
+    <section aria-labelledby="deep-dive-title" className="px-5 py-16 md:py-20">
+      <div className="mx-auto max-w-6xl rounded-2xl bg-ink px-8 py-16 text-paper md:px-16 md:py-20">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
+          <div>
+            <p className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-paper/70">
+              <span aria-hidden className="h-2 w-2 bg-accent" />
+              {copy.eyebrow}
+            </p>
+            <p className="mt-6 font-display text-6xl font-bold leading-none text-accent md:text-[96px]">{copy.number}</p>
+          </div>
+          <div>
+            <h2
+              id="deep-dive-title"
+              className="font-display text-[28px] font-bold uppercase leading-[1.1] tracking-[-0.01em] text-paper md:text-[40px]"
+            >
+              {article.title}
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-7 text-paper/70">{article.excerpt}</p>
+            <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper/60">
+              {article.readingMinutes} {copy.readLabel}
+            </p>
+            <Link
+              href={articleHref(article)}
+              className="group mt-6 inline-flex items-center gap-2 font-semibold text-accent transition-colors hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              {copy.ctaLabel}
+              <Icon name="arrow-right" size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+- [ ] **Step 4 : `components/sections/newsletter-cta.tsx`**
+
+```tsx
+import { NewsletterForm } from '@/components/ui/newsletter-form';
+import type { NewsletterCopy } from '@/content/types';
+
+/** Bloc newsletter plein écran, à la place du bloc University du clone. */
+export function NewsletterCta({ copy }: { copy: NewsletterCopy }) {
+  return (
+    <section id="newsletter" aria-labelledby="newsletter-title" className="bg-ink px-5 py-24 text-center">
+      <p className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-paper/70">
+        <span aria-hidden className="h-2 w-2 bg-accent" />
+        {copy.eyebrow}
+      </p>
+      <h2
+        id="newsletter-title"
+        className="mx-auto mt-6 max-w-3xl font-display text-[32px] font-bold uppercase leading-[1.05] tracking-[-0.01em] text-paper md:text-5xl"
+      >
+        {copy.titleLine1} <br className="hidden md:inline" />
+        {copy.titleLine2}
+      </h2>
+      <p className="mx-auto mt-5 max-w-xl text-lg leading-7 text-paper/80">{copy.description}</p>
+      <div className="mt-8 flex justify-center">
+        <NewsletterForm
+          variant="hero"
+          buttonTone="accent"
+          placeholder={copy.emailPlaceholder}
+          buttonLabel={copy.buttonLabel}
+        />
+      </div>
+      <p className="mt-4 text-sm text-paper/60">{copy.microCopy}</p>
+    </section>
+  );
+}
+```
+
+- [ ] **Step 5 : tests et commit**
+
+Run : `pnpm test tests/components`
+Expected : PASS (tous les composants).
+
+```bash
+git add -A components tests docs/superpowers/plans/
+git commit -m "feat(cohezi): bloc Décryptage, CTA newsletter et formulaire en français
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 7 : Assemblage de la page, pages « bientôt disponible » et build vert
+
+**Files:**
+- Rewrite: `app/page.tsx`, `app/[...slug]/page.tsx`, `app/not-found.tsx`
+- Delete: `lib/slug.ts`, `tests/lib/slug.test.ts`
+- Test: `tests/app/page.test.tsx`, `tests/app/coming-soon.test.tsx`
+
+**Interfaces:**
+- Consumes : toutes les sections, `SiteHeader`, `SiteFooter`, `HeroLightSwitch`, `latest`, `byCategory`, `deepDive`, `site.comingSoon`.
+- Produces : `HomePage()` (Server Component synchrone), `ComingSoonPage({ params })` (async), `NotFound()`.
+- État attendu : `pnpm test`, `pnpm typecheck`, `pnpm lint`, `pnpm build` **tous verts**.
+
+- [ ] **Step 1 : tests qui échouent**
+
+`tests/app/page.test.tsx` (contenu complet) :
+```tsx
+import { render, screen, within } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import HomePage from '@/app/page';
+import { articles } from '@/content/articles';
+import { deepDive } from '@/lib/articles';
+
+describe('HomePage', () => {
+  it('assembles the header, the Cohezi sections and the footer from content', () => {
+    render(<HomePage />);
+    expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'L’IA change le monde. Comprenez ce qui compte',
+    );
+    const h2 = screen.getAllByRole('heading', { level: 2 }).map((heading) => heading.textContent);
+    expect(h2).toEqual([
+      'À la une',
+      'Business',
+      'Société',
+      deepDive(articles)!.title,
+      'Moins de bruit. Plus de contexte.',
+    ]);
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+  });
+
+  it('shows five front-page cards, eight business cards and eight société cards', () => {
+    render(<HomePage />);
+    expect(screen.getAllByRole('article')).toHaveLength(21);
+    const main = screen.getByRole('main');
+    expect(within(main).getAllByRole('link', { name: /Voir tout/ })).toHaveLength(3);
+  });
+
+  it('offers three subscribe forms: hero, newsletter block and footer', () => {
+    render(<HomePage />);
+    expect(screen.getAllByRole('button', { name: /inscri/i })).toHaveLength(3);
+    expect(screen.getByRole('link', { name: /S’inscrire/ })).toHaveAttribute('href', '#newsletter');
+  });
+
+  it('keeps no Rundown content', () => {
+    render(<HomePage />);
+    for (const word of ['Guides', 'Trending Tools', 'Rowan', 'University', 'The Rundown']) {
+      expect(screen.queryByText(new RegExp(word))).toBeNull();
+    }
+  });
+});
+```
+Note : le libellé « Voir toutes les actualités » commence aussi par « Voir tout », les trois liens sont donc bien comptés.
+
+`tests/app/coming-soon.test.tsx` :
+```tsx
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import ComingSoonPage, { generateStaticParams } from '@/app/[...slug]/page';
+import { site } from '@/content/site';
+
+describe('ComingSoonPage', () => {
+  it('pre-renders one path per announced page', () => {
+    expect(generateStaticParams()).toEqual(site.comingSoon.map((page) => ({ slug: [page.slug] })));
+  });
+
+  it('renders the French label of a known section', async () => {
+    render(await ComingSoonPage({ params: Promise.resolve({ slug: ['a-propos'] }) }));
+    expect(screen.getByRole('heading', { level: 1, name: 'À propos' })).toBeInTheDocument();
+    expect(screen.getByText('Cette page arrive bientôt.')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Retour à l’accueil/ })).toHaveAttribute('href', '/');
+  });
+
+  it('accepts a deeper path under a known section', async () => {
+    render(await ComingSoonPage({ params: Promise.resolve({ slug: ['business', 'un-article'] }) }));
+    expect(screen.getByRole('heading', { level: 1, name: 'Business' })).toBeInTheDocument();
+  });
+});
+```
+
+Run : `pnpm test tests/app`
+Expected : FAIL — page encore assemblée avec les sections Rundown, `site.comingSoon` inexistant.
+
+- [ ] **Step 2 : `app/page.tsx` (contenu complet)**
+
+```tsx
+import { HeroLightSwitch } from '@/components/layout/hero-light-switch';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { SiteHeader } from '@/components/layout/site-header';
+import { ArticleGridSection } from '@/components/sections/article-grid-section';
+import { DeepDive } from '@/components/sections/deep-dive';
+import { Hero } from '@/components/sections/hero';
+import { LatestArticles } from '@/components/sections/latest-articles';
+import { NewsletterCta } from '@/components/sections/newsletter-cta';
+import { articles } from '@/content/articles';
+import { site } from '@/content/site';
+import { byCategory, deepDive, latest } from '@/lib/articles';
+
+export default function HomePage() {
+  const front = latest(articles);
+  const business = byCategory(articles, 'business');
+  const societe = byCategory(articles, 'societe');
+  const analysis = deepDive(articles);
+
+  return (
+    <>
+      <HeroLightSwitch />
+      <SiteHeader
+        name={site.name}
+        nav={site.nav}
+        cta={site.headerCta}
+        searchHref={site.searchHref}
+        searchLabel={site.searchLabel}
+      />
+      <main className="flex-1">
+        <div className="page-dark bg-ink">
+          <Hero hero={site.hero} />
+          <div className="px-2 md:px-5">
+            <div className="mx-auto rounded-sheet bg-paper">
+              <LatestArticles copy={site.sections.latest} articles={front} />
+              <ArticleGridSection id="business" copy={site.sections.business} articles={business} />
+              <ArticleGridSection id="societe" copy={site.sections.societe} articles={societe} />
+              {analysis ? <DeepDive copy={site.deepDive} article={analysis} /> : null}
+            </div>
+          </div>
+          <NewsletterCta copy={site.newsletter} />
+        </div>
+      </main>
+      <SiteFooter site={site} />
+    </>
+  );
+}
+```
+
+- [ ] **Step 3 : `app/[...slug]/page.tsx` (contenu complet)**
+
+```tsx
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { SiteHeader } from '@/components/layout/site-header';
+import { ButtonLink } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
+import { site } from '@/content/site';
+
+type ComingSoonPageProps = { params: Promise<{ slug: string[] }> };
+
+function findPage(segment: string | undefined) {
+  return site.comingSoon.find((page) => page.slug === segment);
+}
+
+export function generateStaticParams() {
+  return site.comingSoon.map((page) => ({ slug: [page.slug] }));
+}
+
+export async function generateMetadata({ params }: ComingSoonPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const page = findPage(slug[0]);
+  return { title: page ? `${page.label} — Bientôt disponible` : 'Bientôt disponible' };
+}
+
+export default async function ComingSoonPage({ params }: ComingSoonPageProps) {
+  const { slug } = await params;
+  const page = findPage(slug[0]);
+  if (!page) notFound();
+
+  return (
+    <>
+      <SiteHeader
+        name={site.name}
+        nav={site.nav}
+        cta={site.headerCta}
+        searchHref={site.searchHref}
+        searchLabel={site.searchLabel}
+      />
+      <main className="flex flex-1 flex-col items-center justify-center bg-ink px-5 py-32 text-center text-paper">
+        <p className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-paper/60">
+          <span aria-hidden className="h-2 w-2 bg-accent" />
+          {slug.join(' / ')}
+        </p>
+        <h1 className="mt-4 font-display text-4xl font-bold uppercase tracking-[-0.01em] md:text-6xl">{page.label}</h1>
+        <p className="mt-4 text-lg text-paper/80">Cette page arrive bientôt.</p>
+        <ButtonLink href="/" variant="paper" size="sm" className="mt-8">
+          <Icon name="arrow-right" size={16} className="rotate-180" />
+          Retour à l’accueil
+        </ButtonLink>
+      </main>
+      <SiteFooter site={site} />
+    </>
+  );
+}
+```
+
+- [ ] **Step 4 : `app/not-found.tsx` (contenu complet)**
+
+```tsx
+import { SiteFooter } from '@/components/layout/site-footer';
+import { SiteHeader } from '@/components/layout/site-header';
+import { ButtonLink } from '@/components/ui/button';
+import { site } from '@/content/site';
+
+export default function NotFound() {
+  return (
+    <>
+      <SiteHeader
+        name={site.name}
+        nav={site.nav}
+        cta={site.headerCta}
+        searchHref={site.searchHref}
+        searchLabel={site.searchLabel}
+      />
+      <main className="flex flex-1 flex-col items-center justify-center bg-ink px-5 py-32 text-center text-paper">
+        <h1 className="font-display text-4xl font-bold uppercase tracking-[-0.01em] md:text-6xl">Page introuvable</h1>
+        <ButtonLink href="/" variant="paper" size="sm" className="mt-8">
+          Retour à l’accueil
+        </ButtonLink>
+      </main>
+      <SiteFooter site={site} />
+    </>
+  );
+}
+```
+
+- [ ] **Step 5 : suppression du helper devenu inutile et vérification complète**
+
+```bash
+cd /home/darellchooks/Documents/cohezi
+git rm -q lib/slug.ts tests/lib/slug.test.ts
+pnpm test && pnpm typecheck && pnpm lint && pnpm build
+```
+Expected : tests verts (aucun échec), typecheck sans erreur, lint sans avertissement, build listant `/`, `/_not-found`, `/api/newsletter` et `/[...slug]` avec les 7 chemins pré-rendus.
+
+Contrôle des routes :
+```bash
+curl -s -o /dev/null http://localhost:3000 && OWN="" || { setsid node_modules/.bin/next start -p 3000 > /tmp/cohezi-server.log 2>&1 < /dev/null & echo $! > /tmp/cohezi-server.pgid; OWN=1; sleep 4; }
+for p in / /business /business/un-article /analyses /a-propos /recherche /inconnu; do printf "%-24s %s\n" "$p" "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000$p)"; done
+[ -n "${OWN:-}" ] && kill -TERM -- "-$(cat /tmp/cohezi-server.pgid)" && rm -f /tmp/cohezi-server.pgid || true
+```
+Expected : `/` 200, `/business` 200, `/business/un-article` 200, `/analyses` 200, `/a-propos` 200, `/recherche` 200, `/inconnu` 404.
+
+- [ ] **Step 6 : commit**
+
+```bash
+git add -A app lib tests docs/superpowers/plans/
+git commit -m "feat(cohezi): assemblage de la page d’accueil et pages bientôt disponibles
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 8 : QA visuelle, conformité à la charte et livraison
+
+**Files:**
+- Modify: tout composant dont le rendu s'écarte de la charte ou de la structure du clone ; `docs/superpowers/specs/2026-09-04-cohezi-rebrand-design.md` (statut)
+
+**Interfaces:** aucune nouvelle.
+
+- [ ] **Step 1 : audit statique de la charte**
+
+```bash
+cd /home/darellchooks/Documents/cohezi
+echo "--- couleurs interdites (attendu : aucune sortie) ---"
+grep -rnE "bg-white|text-white|border-white|neutral-[0-9]|indigo-|purple-|violet-|-gradient|ring-brand|text-brand\b|bg-brand\b" components app content --include=*.tsx --include=*.ts --include=*.css || echo OK
+# `hashToGradient` (lib/) et les chemins `/brand/…` du logo sont légitimes : le motif ci-dessus ne les vise pas.
+echo "--- polices : chaque titre de section, H1 et H2 doit porter font-display ---"
+grep -rn "font-display" components | wc -l    # attendu : >= 8
+echo "--- part du vert : occurrences de accent dans les composants ---"
+grep -rno "accent" components --include=*.tsx | wc -l   # attendu : entre 15 et 40 (accent rare)
+echo "--- textes anglais résiduels ---"
+grep -rnE "\b(Subscribe|Guides|Tools|Podcast|University|Latest Articles|coming soon|Back to home)\b" components app content --include=*.tsx --include=*.ts || echo OK
+```
+Corriger toute sortie inattendue avant de continuer.
+
+- [ ] **Step 2 : captures desktop 1440 et mobile 375**
+
+```bash
+curl -s -o /dev/null http://localhost:3000 && OWN="" || { pnpm build && setsid node_modules/.bin/next start -p 3000 > /tmp/cohezi-server.log 2>&1 < /dev/null & echo $! > /tmp/cohezi-server.pgid; OWN=1; sleep 5; }
+B="$HOME/.claude/skills/gstack/browse/dist/browse"
+mkdir -p /tmp/cohezi-qa-v2
+scroll() { $B js "document.documentElement.style.scrollBehavior='auto'; window.scrollTo({top: $1, behavior: 'instant'})" >/dev/null; sleep 0.4; }
+section() { $B js "document.documentElement.style.scrollBehavior='auto'; window.scrollTo({top: document.getElementById('$1-title').getBoundingClientRect().top + window.scrollY - $2, behavior: 'instant'})" >/dev/null; sleep 0.4; }
+
+$B viewport 1440x900 >/dev/null; $B goto http://localhost:3000 >/dev/null
+echo "erreurs console :"; $B console --errors | sed -n '2,6p'
+echo "hauteur desktop : $($B js 'document.documentElement.scrollHeight') | pas de débordement : $($B js 'document.documentElement.scrollWidth <= window.innerWidth')"
+scroll 0; $B screenshot --viewport /tmp/cohezi-qa-v2/d-01-hero.png >/dev/null
+for s in latest-articles business societe deep-dive newsletter; do section "$s" 120; $B screenshot --viewport "/tmp/cohezi-qa-v2/d-$s.png" >/dev/null; done
+scroll 99999; $B screenshot --viewport /tmp/cohezi-qa-v2/d-footer.png >/dev/null
+
+$B viewport 375x812 >/dev/null; $B goto http://localhost:3000 >/dev/null
+echo "hauteur mobile : $($B js 'document.documentElement.scrollHeight') | pas de débordement : $($B js 'document.documentElement.scrollWidth <= window.innerWidth')"
+scroll 0; $B screenshot --viewport /tmp/cohezi-qa-v2/m-01-hero.png >/dev/null
+for s in latest-articles business societe deep-dive newsletter; do section "$s" 80; $B screenshot --viewport "/tmp/cohezi-qa-v2/m-$s.png" >/dev/null; done
+$B js "document.querySelector('button[aria-label=\"Ouvrir le menu\"]').click()" >/dev/null; sleep 0.4
+$B screenshot --viewport /tmp/cohezi-qa-v2/m-menu.png >/dev/null; $B press Escape >/dev/null
+[ -n "${OWN:-}" ] && kill -TERM -- "-$(cat /tmp/cohezi-server.pgid)" && rm -f /tmp/cohezi-server.pgid || true
+```
+
+Lire chaque PNG et vérifier, point par point :
+1. **Header** : lockup Cohezi lisible (≥ 120 px de large), 4 liens, icône de recherche, bouton « S’inscrire » ; en clair après défilement, lockup noir sur fond blanc cassé.
+2. **Hero** : eyebrow avec carré vert, H1 en capitales Space Grotesk sur deux lignes terminé par le carré vert, description, formulaire, micro-copy, promesse. Aucun logo d'entreprise.
+3. **À la une** : 5 onglets centrés, une grande carte à gauche avec badge, extrait et date française, 2×2 à droite, bouton « Voir toutes les actualités ».
+4. **Business / Société** : 4 colonnes × 2 lignes de cartes bordées `#E2E2DE`, badge et date sur chaque carte, bouton « Voir tout ».
+5. **Décryptage** : bloc noir arrondi, « 01 » vert en gros, titre en capitales, temps de lecture, lien vert.
+6. **Newsletter** : fond noir, titre deux lignes, bouton vert « Je m’inscris ».
+7. **Footer** : lockup noir, tagline sur deux lignes, 3 colonnes, « © 2026 Cohezi », 3 icônes rondes.
+8. **Mobile** : hamburger, une colonne, 3 cartes par grille, menu plein écran lisible, aucun débordement horizontal.
+9. **Part du vert** : sur chaque capture, le vert ne doit apparaître que par petites touches (jamais un aplat de fond).
+
+Corriger les écarts dans les composants concernés, relancer `pnpm build` puis recapturer.
+
+- [ ] **Step 3 : comparaison structurelle avec la réplique Rundown**
+
+Comparer les hauteurs de section avec les captures de référence `screenshots/therundown-ai/sections/desktop/` : la structure doit rester reconnaissable (feuille blanche arrondie, mêmes largeurs de conteneur, même rythme vertical). Un écart de hauteur supérieur à 25 % sur une section signale un espacement modifié sans raison : le corriger, sauf si le contenu Cohezi le justifie (à noter dans le rapport final).
+
+```bash
+B="$HOME/.claude/skills/gstack/browse/dist/browse"
+$B viewport 1440x900 >/dev/null; $B goto http://localhost:3000 >/dev/null
+$B js "JSON.stringify([...document.querySelectorAll('section')].map((s) => ({ id: s.getAttribute('aria-labelledby'), h: Math.round(s.getBoundingClientRect().height) })))"
+```
+Référence Rundown (desktop) : hero 704, À la une 988, grille 1199, grille 1442, bloc sombre 890, CTA 1142.
+
+- [ ] **Step 4 : parcours fonctionnels**
+
+```bash
+B="$HOME/.claude/skills/gstack/browse/dist/browse"
+$B viewport 1440x900 >/dev/null; $B goto http://localhost:3000 >/dev/null
+$B js "[...document.querySelectorAll('button[aria-pressed]')].find((b) => b.textContent.trim() === 'Business').click()" >/dev/null; sleep 0.3
+echo "cartes après l’onglet Business : $($B js "document.querySelectorAll('#latest-articles-title ~ div article').length")"
+$B fill "input[name=email]" "jane@example.com" >/dev/null
+$B js "document.querySelector('form').requestSubmit()" >/dev/null; sleep 1.5
+echo "message : $($B js "document.querySelector('[role=status]').textContent")"   # attendu : Vérifiez votre boîte mail pour confirmer.
+$B js "document.querySelector('a[href=\"#newsletter\"]').click()" >/dev/null; sleep 0.6
+echo "ancre newsletter atteinte : $($B js "Math.round(document.getElementById('newsletter').getBoundingClientRect().top) < 200")"
+$B goto http://localhost:3000/analyses >/dev/null
+echo "page à venir : $($B js "document.querySelector('main h1').textContent") / $($B js "document.querySelectorAll('main p')[1].textContent")"
+```
+Expected : onglet Business filtre bien, message de succès en français, ancre newsletter fonctionnelle, page « Analyses » avec « Cette page arrive bientôt. ».
+
+- [ ] **Step 5 : vérification finale, statut de la spec, commit**
+
+```bash
+cd /home/darellchooks/Documents/cohezi
+pnpm test && pnpm typecheck && pnpm lint && pnpm build
+git status --short
+```
+Mettre à jour la ligne « Statut » de `docs/superpowers/specs/2026-09-04-cohezi-rebrand-design.md` en : `implémenté le <date>, écarts connus : <liste ou aucun>`.
+
+```bash
+git add -A
+git commit -m "fix(cohezi): ajustements visuels après QA et spec marquée implémentée
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+Rapport de fin attendu : sections livrées, nombre de tests, sortie de `pnpm build`, écarts restants (placeholders d'images, contenus fictifs, repli de police éventuel), et rappel que les textes d'articles sont fictifs et ne doivent pas être publiés tels quels.
