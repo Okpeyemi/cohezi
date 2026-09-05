@@ -6,9 +6,9 @@ import { ButtonLink } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import type { NavItem } from '@/content/types';
 
-type MobileMenuProps = { nav: NavItem[]; cta: NavItem };
+type MobileMenuProps = { nav: NavItem[]; cta: NavItem; searchHref: string; searchLabel: string };
 
-export function MobileMenu({ nav, cta }: MobileMenuProps) {
+export function MobileMenu({ nav, cta, searchHref, searchLabel }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -36,7 +36,7 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
       <button
         ref={triggerRef}
         type="button"
-        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
@@ -52,17 +52,26 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
         hidden={!open}
         className="fixed inset-x-0 bottom-0 top-[68px] z-40 flex flex-col gap-8 overflow-y-auto bg-ink px-5 py-8"
       >
-        <nav aria-label="Mobile" className="flex flex-col gap-4">
+        <nav aria-label="Navigation mobile" className="flex flex-col gap-4">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={close}
-              className="text-xl font-medium text-paper/90 transition-colors hover:text-paper"
+              className="font-display text-xl font-semibold uppercase text-paper/90 transition-colors hover:text-paper"
             >
               {item.label}
             </Link>
           ))}
+          <Link
+            href={searchHref}
+            aria-label={searchLabel}
+            onClick={close}
+            className="inline-flex items-center gap-2 text-base font-medium text-paper/80 transition-colors hover:text-paper"
+          >
+            <Icon name="search" size={18} />
+            {searchLabel}
+          </Link>
         </nav>
         <ButtonLink href={cta.href} variant="paper" size="sm" className="self-start" onClick={close}>
           {cta.label}

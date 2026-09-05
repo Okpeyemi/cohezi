@@ -1599,7 +1599,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces : `SiteHeader({ name, nav, cta, searchHref, searchLabel })`, `MobileMenu({ nav, cta, searchHref, searchLabel })`, `SiteFooter({ site })`.
 - État attendu en fin de tâche : tests de `layout` et `ui` verts ; `hero`, `latest-articles`, `page`, `newsletter-form` encore rouges (Tasks 4, 5, 6, 7).
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/layout/site-header.test.tsx` (contenu complet) :
 ```tsx
@@ -1724,7 +1724,7 @@ describe('SiteFooter', () => {
 Run : `pnpm test tests/components/layout tests/components/ui/tabs.test.tsx`
 Expected : FAIL — libellés anglais, props `searchHref`/`searchLabel` absentes, logo Rundown encore présent.
 
-- [ ] **Step 2 : `components/layout/site-header.tsx` (contenu complet)**
+- [x] **Step 2 : `components/layout/site-header.tsx` (contenu complet)**
 
 ```tsx
 import Link from 'next/link';
@@ -1784,7 +1784,7 @@ export function SiteHeader({ name, nav, cta, searchHref, searchLabel }: SiteHead
 }
 ```
 
-- [ ] **Step 3 : `components/layout/mobile-menu.tsx` (props et libellés)**
+- [x] **Step 3 : `components/layout/mobile-menu.tsx` (props et libellés)**
 
 Remplacer le type et la signature :
 ```tsx
@@ -1826,7 +1826,7 @@ Et le contenu du panneau (`<nav>` + CTA) par :
 ```
 Note : le lien de recherche porte `aria-label` **et** un texte visible identique ; `getByRole('link', { name: 'Rechercher' })` reste sans ambiguïté.
 
-- [ ] **Step 4 : `components/layout/site-footer.tsx` (contenu complet)**
+- [x] **Step 4 : `components/layout/site-footer.tsx` (contenu complet)**
 
 ```tsx
 import Link from 'next/link';
@@ -1901,7 +1901,7 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
 }
 ```
 
-- [ ] **Step 5 : `components/ui/tabs.tsx` (onglets Cohezi)**
+- [x] **Step 5 : `components/ui/tabs.tsx` (onglets Cohezi)**
 
 Remplacer la classe du bouton par :
 ```tsx
@@ -1911,7 +1911,7 @@ Remplacer la classe du bouton par :
             )}
 ```
 
-- [ ] **Step 6 : suppression du logo Rundown, tests, commit**
+- [x] **Step 6 : suppression du logo Rundown, tests, commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
