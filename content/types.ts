@@ -1,4 +1,13 @@
-export type IconName = 'menu' | 'close' | 'arrow-right' | 'send' | 'search' | 'instagram' | 'linkedin' | 'tiktok';
+export type IconName =
+  | 'menu'
+  | 'close'
+  | 'arrow-right'
+  | 'send'
+  | 'search'
+  | 'instagram'
+  | 'linkedin'
+  | 'tiktok'
+  | 'x';
 
 /** Sans `src`, le composant PlaceholderImage génère un visuel. */
 export type ImageRef = { src?: string; alt: string };

@@ -5,6 +5,7 @@ import {
   InstagramIcon,
   LinkedinIcon,
   Menu01Icon,
+  NewTwitterIcon,
   SearchIcon,
   SentIcon,
   TiktokIcon,
@@ -21,6 +22,8 @@ export const icons: Record<IconName, IconSvgElement> = {
   instagram: InstagramIcon,
   linkedin: LinkedinIcon,
   tiktok: TiktokIcon,
+  // Hugeicons nomme encore l'icône X « NewTwitter ».
+  x: NewTwitterIcon,
 };
 
 export function getIcon(name: IconName): IconSvgElement {
