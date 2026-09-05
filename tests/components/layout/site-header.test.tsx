@@ -24,7 +24,7 @@ describe('SiteHeader', () => {
     for (const item of site.nav) {
       expect(within(nav).getByRole('link', { name: item.label })).toHaveAttribute('href', item.href);
     }
-    expect(screen.getByRole('link', { name: 'Rechercher' })).toHaveAttribute('href', '/recherche');
+    expect(screen.getByRole('link', { name: 'Rechercher' })).toHaveAttribute('href', site.searchHref);
     expect(screen.getByRole('link', { name: /S’inscrire/ })).toHaveAttribute('href', '#newsletter');
     expect(screen.getByRole('button', { name: 'Ouvrir le menu' })).toBeInTheDocument();
   });

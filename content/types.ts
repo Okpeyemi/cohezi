@@ -97,6 +97,7 @@ export type SiteConfig = {
   sections: { latest: SectionCopy; business: SectionCopy; societe: SectionCopy };
   deepDive: DeepDiveCopy;
   newsletter: NewsletterCopy;
+  articles: ArticlesPageCopy;
   footer: {
     /** Une entrée par ligne affichée. */
     tagline: string[];

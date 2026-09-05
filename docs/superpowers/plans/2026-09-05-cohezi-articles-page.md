@@ -976,7 +976,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes : `SectionHero`, `ArticleBrowser`, `articles`, `site`, `ArticlesPageCopy`.
 - Produces : route `/articles` statique exportant `metadata` ; `site.articles: ArticlesPageCopy` ; `nextConfig.redirects()`.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/app/articles-page.test.tsx` :
 
@@ -1073,7 +1073,7 @@ describe('articles page copy', () => {
 Run : `pnpm test tests/app/articles-page.test.tsx tests/app/redirects.test.ts tests/content`
 Expected : FAIL — page, redirections et bloc `site.articles` inexistants.
 
-- [ ] **Step 2 : `content/types.ts` — brancher `ArticlesPageCopy` sur `SiteConfig`**
+- [x] **Step 2 : `content/types.ts` — brancher `ArticlesPageCopy` sur `SiteConfig`**
 
 Dans `SiteConfig`, après la ligne `newsletter: NewsletterCopy;`, ajouter :
 
@@ -1081,7 +1081,7 @@ Dans `SiteConfig`, après la ligne `newsletter: NewsletterCopy;`, ajouter :
   articles: ArticlesPageCopy;
 ```
 
-- [ ] **Step 3 : `content/site.ts` — bloc `articles` et adresses filtrées**
+- [x] **Step 3 : `content/site.ts` — bloc `articles` et adresses filtrées**
 
 Remplacer le tableau `nav` par :
 ```ts
@@ -1123,7 +1123,7 @@ Après le bloc `newsletter`, ajouter :
 
 `searchHref` vaut déjà `/recherche` : le remplacer par `'/articles'`.
 
-- [ ] **Step 4 : `app/articles/page.tsx`**
+- [x] **Step 4 : `app/articles/page.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -1191,7 +1191,7 @@ import { Suspense } from 'react';
               </Suspense>
 ```
 
-- [ ] **Step 5 : `next.config.ts` — les cinq redirections**
+- [x] **Step 5 : `next.config.ts` — les cinq redirections**
 
 ```ts
 import type { NextConfig } from 'next';
@@ -1212,7 +1212,7 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 ```
 
-- [ ] **Step 6 : supprimer les anciennes routes et le composant de page de rubrique**
+- [x] **Step 6 : supprimer les anciennes routes et le composant de page de rubrique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -1225,7 +1225,7 @@ git rm -q components/sections/category-page.tsx
 à servir `/business/mon-article`. Les redirections ne portent que sur les chemins exacts sans
 segment supplémentaire.
 
-- [ ] **Step 7 : vérification complète**
+- [x] **Step 7 : vérification complète**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint && pnpm build`
 Expected : tests verts, build listant `/`, `/articles`, `/_not-found`, `/api/newsletter` et
@@ -1245,7 +1245,7 @@ printf "  %-14s %s\n" "/inconnu" "$(curl -s -o /dev/null -w '%{http_code}' http:
 Expected : `/articles` en 200 ; les cinq anciennes adresses en 308 vers la bonne destination ;
 `/business/x` en 200 (page « bientôt disponible ») ; `/inconnu` en 404.
 
-- [ ] **Step 8 : commit**
+- [x] **Step 8 : commit**
 
 ```bash
 git add -A app content next.config.ts components tests docs/superpowers/plans/

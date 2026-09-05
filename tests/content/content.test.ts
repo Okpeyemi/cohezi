@@ -52,7 +52,8 @@ describe('content integrity', () => {
 
   it('resolves every icon name used by the site config', () => {
     for (const social of site.footer.social) expect(icons[social.icon], social.label).toBeDefined();
-    expect(site.comingSoon).toHaveLength(3);
+    // « recherche » a quitté la liste : il redirige désormais vers /articles.
+    expect(site.comingSoon.map((page) => page.slug)).toEqual(['a-propos', 'contact']);
     expect(site.comingSoon.every((page) => page.slug.length > 0 && page.label.length > 0)).toBe(true);
     expect(site.headerCta.href).toBe('#newsletter');
   });
@@ -76,5 +77,36 @@ describe('category metadata', () => {
   it('reuses the home page wording for Business and Société', () => {
     expect(categoryBySlug.business.description).toBe(site.sections.business.subtitle);
     expect(categoryBySlug.societe.description).toBe(site.sections.societe.subtitle);
+  });
+});
+
+describe('articles page copy', () => {
+  it('carries every string the articles page needs', () => {
+    for (const key of [
+      'eyebrow',
+      'title',
+      'description',
+      'searchLabel',
+      'searchPlaceholder',
+      'allLabel',
+      'emptyTitle',
+      'emptyAction',
+    ] as const) {
+      expect(site.articles[key].length, key).toBeGreaterThan(0);
+    }
+    expect(site.articles.title).toBe('Articles');
+  });
+
+  it('points the navigation at the filtered articles page', () => {
+    expect(site.nav.map((item) => item.href)).toEqual([
+      '/articles?categorie=actualite',
+      '/articles?categorie=business',
+      '/articles?categorie=societe',
+      '/articles?categorie=analyse',
+    ]);
+    expect(site.searchHref).toBe('/articles');
+    expect(site.sections.latest.viewAllHref).toBe('/articles?categorie=actualite');
+    expect(site.sections.business.viewAllHref).toBe('/articles?categorie=business');
+    expect(site.sections.societe.viewAllHref).toBe('/articles?categorie=societe');
   });
 });

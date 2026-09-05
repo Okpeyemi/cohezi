@@ -4,13 +4,13 @@ export const site: SiteConfig = {
   name: 'Cohezi',
   tagline: 'L’IA change le monde. Comprenez ce qui compte.',
   nav: [
-    { label: 'Actualité', href: '/actualite' },
-    { label: 'Business', href: '/business' },
-    { label: 'Société', href: '/societe' },
-    { label: 'Analyses', href: '/analyses' },
+    { label: 'Actualité', href: '/articles?categorie=actualite' },
+    { label: 'Business', href: '/articles?categorie=business' },
+    { label: 'Société', href: '/articles?categorie=societe' },
+    { label: 'Analyses', href: '/articles?categorie=analyse' },
   ],
   headerCta: { label: 'S’inscrire', href: '#newsletter' },
-  searchHref: '/recherche',
+  searchHref: '/articles',
   searchLabel: 'Rechercher',
   hero: {
     eyebrow: 'Cohezi / Intelligence artificielle',
@@ -28,19 +28,19 @@ export const site: SiteConfig = {
       title: 'À la une',
       subtitle: 'Les dernières actualités de l’IA, avec le contexte qui compte.',
       viewAllLabel: 'Voir toutes les actualités',
-      viewAllHref: '/actualite',
+      viewAllHref: '/articles?categorie=actualite',
     },
     business: {
       title: 'Business',
       subtitle: 'Entreprises, financements, marchés et infrastructures de l’IA.',
       viewAllLabel: 'Voir tout le business',
-      viewAllHref: '/business',
+      viewAllHref: '/articles?categorie=business',
     },
     societe: {
       title: 'Société',
       subtitle: 'Emploi, éducation, santé, culture : ce que l’IA change au quotidien.',
       viewAllLabel: 'Voir toute la société',
-      viewAllHref: '/societe',
+      viewAllHref: '/articles?categorie=societe',
     },
   },
   deepDive: {
@@ -58,15 +58,25 @@ export const site: SiteConfig = {
     buttonLabel: 'Je m’inscris',
     microCopy: 'La newsletter IA claire, 3× par semaine.',
   },
+  articles: {
+    eyebrow: 'Cohezi / Articles',
+    title: 'Articles',
+    description: 'Toute l’actualité de l’IA, filtrable par rubrique et par mot-clé.',
+    searchLabel: 'Rechercher un article',
+    searchPlaceholder: 'Titre, sujet, entreprise…',
+    allLabel: 'Toutes',
+    emptyTitle: 'Aucun article ne correspond.',
+    emptyAction: 'Réinitialiser les filtres',
+  },
   footer: {
     tagline: ['Comprendre l’IA.', 'Comprendre ce qui change.'],
     columns: [
       {
         heading: 'Actualité',
         links: [
-          { label: 'Business', href: '/business' },
-          { label: 'Société', href: '/societe' },
-          { label: 'Analyses', href: '/analyses' },
+          { label: 'Business', href: '/articles?categorie=business' },
+          { label: 'Société', href: '/articles?categorie=societe' },
+          { label: 'Analyses', href: '/articles?categorie=analyse' },
         ],
       },
       {
@@ -96,6 +106,5 @@ export const site: SiteConfig = {
   comingSoon: [
     { slug: 'a-propos', label: 'À propos' },
     { slug: 'contact', label: 'Contact' },
-    { slug: 'recherche', label: 'Recherche' },
   ],
 };
