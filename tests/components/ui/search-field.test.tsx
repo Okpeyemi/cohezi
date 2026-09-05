@@ -10,6 +10,8 @@ describe('SearchField', () => {
     expect(input).toHaveAttribute('type', 'search');
     expect(input).toHaveAttribute('placeholder', 'Titre, sujet…');
     expect(input).toHaveValue('openai');
+    // WebKit ajoute sa propre croix si on ne la neutralise pas.
+    expect(input.className).toContain('[&::-webkit-search-cancel-button]:appearance-none');
   });
 
   it('reports every keystroke', async () => {

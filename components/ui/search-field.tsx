@@ -27,7 +27,9 @@ export function SearchField({ label, placeholder, value, onChange, clearLabel = 
         value={value}
         placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
-        className="h-11 min-w-0 flex-1 bg-transparent font-sans text-base text-ink placeholder:text-muted focus:outline-none"
+        // `appearance-none` sur le bouton natif : sans lui, WebKit ajoute sa propre croix
+        // en plus de celle du composant.
+        className="h-11 min-w-0 flex-1 bg-transparent font-sans text-base text-ink placeholder:text-muted focus:outline-none [&::-webkit-search-cancel-button]:appearance-none"
       />
       {value.length > 0 ? (
         <button
