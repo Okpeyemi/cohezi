@@ -473,7 +473,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consumes : `ArticleBlock`, `Article`, `CategoryBadge`, `ArticleCard` (variante `grid`), `categoryBySlug`, `formatDateFr`, `site.article`.
 - Produces : `ArticleBody({ blocks: ArticleBlock[] })`, `ArticleHeader({ article: Article; homeLabel: string })`, `RelatedArticles({ articles: Article[]; title: string })`.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/article/article-body.test.tsx` :
 
@@ -579,7 +579,7 @@ describe('RelatedArticles', () => {
 Run : `pnpm test tests/components/article`
 Expected : FAIL — les trois modules n'existent pas.
 
-- [ ] **Step 2 : `components/article/article-body.tsx`**
+- [x] **Step 2 : `components/article/article-body.tsx`**
 
 ```tsx
 import type { ArticleBlock } from '@/content/types';
@@ -660,7 +660,7 @@ export function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
 
 Le `switch` est exhaustif sur l'union : ajouter un type de bloc sans le rendre casse la compilation.
 
-- [ ] **Step 3 : `components/article/article-header.tsx`**
+- [x] **Step 3 : `components/article/article-header.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -707,7 +707,7 @@ export function ArticleHeader({ article, homeLabel }: ArticleHeaderProps) {
 }
 ```
 
-- [ ] **Step 4 : `components/article/related-articles.tsx`**
+- [x] **Step 4 : `components/article/related-articles.tsx`**
 
 ```tsx
 import { ArticleCard } from '@/components/cards/article-card';
@@ -735,7 +735,7 @@ export function RelatedArticles({ articles, title }: RelatedArticlesProps) {
 }
 ```
 
-- [ ] **Step 5 : vérifier et commiter**
+- [x] **Step 5 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS.
