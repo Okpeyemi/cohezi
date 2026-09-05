@@ -318,7 +318,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes : `SiteHeader`, `SiteFooter`, `HeroLightSwitch`, `CategoryHero`, `CategoryTabs`, `NewsletterCta`, `ArticleCard` (variantes `featured` et `grid`), `categoryBySlug`, `articles`, `byCategory`, `site`.
 - Produces : `CategoryPage({ slug: CategorySlug })` (Server Component synchrone).
 
-- [ ] **Step 1 : test qui échoue**
+- [x] **Step 1 : test qui échoue**
 
 `tests/components/sections/category-page.test.tsx` :
 
@@ -363,7 +363,10 @@ describe('CategoryPage', () => {
 
   it('marks the current category in the tabs', () => {
     render(<CategoryPage slug="societe" />);
-    expect(screen.getByRole('link', { name: 'Société' })).toHaveAttribute('aria-current', 'page');
+    // « Société » figure aussi dans le menu du header : on cible les onglets.
+    const tabs = within(screen.getByRole('navigation', { name: 'Catégories' }));
+    expect(tabs.getByRole('link', { name: 'Société' })).toHaveAttribute('aria-current', 'page');
+    expect(tabs.getByRole('link', { name: 'Business' })).not.toHaveAttribute('aria-current');
   });
 });
 ```
@@ -371,7 +374,7 @@ describe('CategoryPage', () => {
 Run : `pnpm test tests/components/sections/category-page.test.tsx`
 Expected : FAIL — module `@/components/sections/category-page` introuvable.
 
-- [ ] **Step 2 : `components/sections/category-page.tsx`**
+- [x] **Step 2 : `components/sections/category-page.tsx`**
 
 ```tsx
 import { ArticleCard } from '@/components/cards/article-card';
@@ -444,7 +447,7 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
 Contrairement aux grilles de l'accueil, aucune carte n'est masquée sous `md` : sur une page de
 rubrique, tous les articles doivent rester accessibles.
 
-- [ ] **Step 3 : vérifier et commiter**
+- [x] **Step 3 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS.
