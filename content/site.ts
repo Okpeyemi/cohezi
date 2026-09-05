@@ -94,10 +94,6 @@ export const site: SiteConfig = {
     ],
   },
   comingSoon: [
-    { slug: 'actualite', label: 'Actualité' },
-    { slug: 'business', label: 'Business' },
-    { slug: 'societe', label: 'Société' },
-    { slug: 'analyses', label: 'Analyses' },
     { slug: 'a-propos', label: 'À propos' },
     { slug: 'contact', label: 'Contact' },
     { slug: 'recherche', label: 'Recherche' },
