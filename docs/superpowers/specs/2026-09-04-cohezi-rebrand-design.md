@@ -1,7 +1,11 @@
 # Spec — Refonte de la page d'accueil vers l'identité Cohezi
 
 - Date : 2026-09-04
-- Statut : validé en brainstorming, en attente de relecture avant plan
+- Statut : **implémenté le 2026-09-05** (branche `feat/cohezi-rebrand`, plan `docs/superpowers/plans/2026-09-04-cohezi-rebrand.md`).
+  Écarts connus : visuels en placeholders générés (champ `image.src` prêt pour de vraies photos) ;
+  textes d'articles fictifs, à remplacer avant publication ; sections Société, Décryptage et
+  Newsletter plus courtes que leurs équivalents Rundown (8 cartes au lieu de 12, bloc texte au lieu
+  du lecteur podcast, pas de cartes sous le CTA) — écarts voulus par le guide, pas des régressions.
 - Base : réplique The Rundown (tag git `rundown-replica-v1`, spec `2026-09-03-therundown-homepage-replica-design.md`)
 - Source de vérité éditoriale et visuelle : `cohezi-homepage-spec-corrige.md` (racine du dépôt) ; logos : `logos-png/` (voir `LISEZ-MOI.txt`)
 

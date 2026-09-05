@@ -2742,7 +2742,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Interfaces:** aucune nouvelle.
 
-- [ ] **Step 1 : audit statique de la charte**
+- [x] **Step 1 : audit statique de la charte**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -2758,7 +2758,7 @@ grep -rnE "\b(Subscribe|Guides|Tools|Podcast|University|Latest Articles|coming s
 ```
 Corriger toute sortie inattendue avant de continuer.
 
-- [ ] **Step 2 : captures desktop 1440 et mobile 375**
+- [x] **Step 2 : captures desktop 1440 et mobile 375**
 
 ```bash
 curl -s -o /dev/null http://localhost:3000 && OWN="" || { pnpm build && setsid node_modules/.bin/next start -p 3000 > /tmp/cohezi-server.log 2>&1 < /dev/null & echo $! > /tmp/cohezi-server.pgid; OWN=1; sleep 5; }
@@ -2796,7 +2796,7 @@ Lire chaque PNG et vérifier, point par point :
 
 Corriger les écarts dans les composants concernés, relancer `pnpm build` puis recapturer.
 
-- [ ] **Step 3 : comparaison structurelle avec la réplique Rundown**
+- [x] **Step 3 : comparaison structurelle avec la réplique Rundown**
 
 Comparer les hauteurs de section avec les captures de référence `screenshots/therundown-ai/sections/desktop/` : la structure doit rester reconnaissable (feuille blanche arrondie, mêmes largeurs de conteneur, même rythme vertical). Un écart de hauteur supérieur à 25 % sur une section signale un espacement modifié sans raison : le corriger, sauf si le contenu Cohezi le justifie (à noter dans le rapport final).
 
@@ -2807,7 +2807,7 @@ $B js "JSON.stringify([...document.querySelectorAll('section')].map((s) => ({ id
 ```
 Référence Rundown (desktop) : hero 704, À la une 988, grille 1199, grille 1442, bloc sombre 890, CTA 1142.
 
-- [ ] **Step 4 : parcours fonctionnels**
+- [x] **Step 4 : parcours fonctionnels**
 
 ```bash
 B="$HOME/.claude/skills/gstack/browse/dist/browse"
@@ -2824,7 +2824,7 @@ echo "page à venir : $($B js "document.querySelector('main h1').textContent") /
 ```
 Expected : onglet Business filtre bien, message de succès en français, ancre newsletter fonctionnelle, page « Analyses » avec « Cette page arrive bientôt. ».
 
-- [ ] **Step 5 : vérification finale, statut de la spec, commit**
+- [x] **Step 5 : vérification finale, statut de la spec, commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi

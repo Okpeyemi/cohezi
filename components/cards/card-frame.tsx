@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 
 type CardFrameProps = { href: string; children: ReactNode; className?: string };
 
-/** Cadre commun des cartes Guides et Tools : bordure line, rayon 12, padding 10. */
+/** Cadre commun des cartes en grille : bordure line, rayon 12, padding 10, fond de la feuille. */
 export function CardFrame({ href, children, className }: CardFrameProps) {
   return (
     <Link

@@ -84,7 +84,7 @@ export function NewsletterForm({
           disabled={sending}
           className={cn(
             'min-w-0 flex-1 bg-transparent px-3 text-ink placeholder:text-muted focus:outline-none',
-            isHero ? 'h-11 text-base' : 'h-9 text-sm',
+            isHero ? 'h-11 text-sm md:text-base' : 'h-9 text-sm',
           )}
         />
         <Button
