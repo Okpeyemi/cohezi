@@ -103,69 +103,72 @@ article.
 
 ## 6. Les 24 sujets
 
-Six par rubrique.
+Six par rubrique, **12 faits chauds et 12 sujets de fond**. Un fait chaud est daté du
+1er au 5 septembre 2026 ; un sujet de fond est adossé à un document dont la valeur tient
+au-delà de la semaine — rapport d'autorité, étude chiffrée, texte réglementaire.
 
-**Écart assumé sur l'équilibre.** L'intention était de moitié d'actualité récente, moitié
-de sujets de fond. Le relevé donne en réalité **18 faits datés du 1er au 5 septembre 2026
-et 6 sujets de fond** (Model Hardware Standard, filigrane obligatoire, souveraineté de
-Mistral, enquête CNIL sur les jeunes, affiches IA, AI Act). La raison est simple : ce qui
-est librement accessible et vérifiable en ligne, c'est l'actualité chaude. Les sujets de
-fond documentés par des sources primaires stables sont plus rares. Rééquilibrer
-demanderait un second relevé ciblé sur des dossiers durables — économie de l'inférence,
-consommation électrique des datacenters, IA et santé, ouvert contre fermé. Cette décision
-revient au commanditaire ; en l'état, la spec décrit le lot 18/6.
+### Actualité — 4 chauds, 2 de fond
 
-### Actualité
+| Sujet | Date | Type | Sources |
+|---|---|---|---|
+| Claude Fable 5.1 et Mythos 5.1 | 2026-09-01 | chaud | anthropic.com/claude-fable-and-mythos-5-1 ; next.ink/brief-article/anthropic-relance-la-course-aux-modeles-avec-claude-fable-5-1/ |
+| GPT-6 Astra et le retour du mot AGI | 2026-09-03 | chaud | next.ink/254620/ ; numerama.com/tech/2324799- |
+| Gemini 3.8 Flash et sa variante Cyber | 2026-09-03 | chaud | next.ink/brief-article/google-lance-gemini-3-8-flash-et-sa-declinaison-cyber/ |
+| La panne simultanée des quatre assistants | 2026-09-03 | chaud | next.ink/brief-article/claude-chatgpt-gemini-et-grok-sont-simultanement-tombes-en-panne-spacexai-sexcuse/ ; numerama.com/tech/2325131- |
+| Le Model Hardware Standard | 2026-08-27 | fond | anthropic.com/news/model-hardware-standard-research-preview |
+| Le filigrane obligatoire sur les textes générés | 2026-08-02 | fond | anthropic.com/news/claude-text-watermark ; next.ink/251980/ |
 
-| Sujet | Date du fait | Sources |
-|---|---|---|
-| Claude Fable 5.1 et Mythos 5.1 | 2026-09-01 | Anthropic, Next |
-| GPT-6 Astra et le retour du mot AGI | 2026-09-03 | Next, Numerama |
-| Gemini 3.8 Flash et sa variante Cyber | 2026-09-03 | Next |
-| La panne simultanée des quatre assistants | 2026-09-03 | Next, Numerama |
-| Le Model Hardware Standard | 2026-08-27 | Anthropic |
-| Le filigrane obligatoire sur les textes générés | 2026-08-02 | Anthropic, Next |
+### Business — 3 chauds, 3 de fond
 
-### Business
+| Sujet | Date | Type | Sources |
+|---|---|---|---|
+| NVIDIA rachète Hugging Face pour 12,9 Md$ | 2026-09-03 | chaud | next.ink/253379/ |
+| Nscale cherche 3,5 Md$ avant son IPO | 2026-09-04 | chaud | techcrunch.com/2026/09/04/ai-compute-provider-nscale-is-looking-for-3-5b-in-pre-ipo-financing/ |
+| La publicité devient un pilier d'OpenAI | 2026-09-01 | chaud | next.ink/brief-article/openai-veut-mettre-toujours-plus-de-publicite-dans-chatgpt/ |
+| Le prix du token s'effondre : 9× à 900× par an | 2025-03-12, données 2025-11-20 | fond | epoch.ai/data-insights/llm-inference-price-trends |
+| L'électricité que consomme l'IA : 415 TWh mesurés, 950 attendus | 2025-04-10, MàJ 2026-04-16 | fond | iea.org/reports/energy-and-ai/executive-summary ; iea.org/reports/key-questions-on-energy-and-ai/executive-summary |
+| La souveraineté selon Mistral : Europe et Golfe | 2026-08-11 et 2026-08-24 | fond | mistral.ai/news/regional-inference-open-models-new-compute/ ; mistral.ai/news/mistral-x-humain/ |
 
-| Sujet | Date du fait | Sources |
-|---|---|---|
-| NVIDIA rachète Hugging Face pour 12,9 Md$ | 2026-09-03 | Next |
-| Nscale cherche 3,5 Md$ avant son IPO | 2026-09-04 | TechCrunch |
-| Crusoe lève 3 Md$ sur 30 Md$ de valorisation | 2026-09-03 | TechCrunch |
-| Thinking Machines en discussion à 40 Md$ | 2026-09-03 | TechCrunch |
-| La publicité devient un pilier d'OpenAI | 2026-09-01 | Next |
-| La souveraineté selon Mistral : Europe et Golfe | 2026-08-11 et 2026-08-24 | Mistral AI |
+### Société — 3 chauds, 3 de fond
 
-### Société
+| Sujet | Date | Type | Sources |
+|---|---|---|---|
+| Des agents OpenAI détournent un wiki allemand | 2026-09-02 à 09-05 | chaud | numerama.com/cyberguerre/2325585- ; techcrunch.com/2026/09/05/openai-confirms-wiki-incident-says-its-working-on-a-framework-for-more-disclosure/ |
+| Les scribes IA médicaux produisent des erreurs | 2026-09-03 | chaud | next.ink/254301/ |
+| Le Parlement australien inondé de citations inventées | 2026-09-01 | chaud | next.ink/253917/ |
+| 1 614 dispositifs médicaux IA, 2,4 % d'essais randomisés | 2026-09-04 | fond | fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices ; hai.stanford.edu/ai-index/2026-ai-index-report/medicine ; ema.europa.eu/en/about-us/how-we-work/big-data/artificial-intelligence |
+| Les jeunes se confient aux IA conversationnelles | 2026-05-05 | fond | cnil.fr/fr/ia-conversationnelle-et-sante-mentale-des-jeunes-resultats-de-lenquete-europeenne |
+| L'emploi des jeunes développeurs recule de 20 % | 2026-04 | fond | hai.stanford.edu/ai-index/2026-ai-index-report/economy ; next.ink/164900/ |
 
-| Sujet | Date du fait | Sources |
-|---|---|---|
-| Des agents OpenAI détournent un wiki allemand | 2026-09-02 à 09-05 | Numerama, TechCrunch |
-| Les scribes IA médicaux produisent des erreurs | 2026-09-03 | Next |
-| Le Parlement australien inondé de citations inventées | 2026-09-01 | Next |
-| New York interdit l'IA générative avant la 4e | 2026-09-03 | Next |
-| Les jeunes se confient aux IA conversationnelles | 2026-05-05 | CNIL |
-| L'été où les affiches IA ont inondé la France | 2026-08-27 | Next |
+### Analyses — 2 chauds, 4 de fond
 
-### Analyses
-
-| Sujet | Date du fait | Sources |
-|---|---|---|
-| Le raisonnement opaque d'Astra inquiète la sûreté | 2026-09-02 | TechCrunch |
-| Terence Tao veut sanctuariser des problèmes de maths | 2026-09-03 | Numerama |
-| Le G20 adopte l'approche américaine | 2026-09-03 | Next |
-| Washington prend le parti d'OpenAI contre le NYT | 2026-09-03 | Next |
-| RSF montre le contournement des sanctions | 2026-09-03 | Next |
-| L'AI Act remanié par l'Omnibus | 2026-07-27 | Commission européenne |
+| Sujet | Date | Type | Sources |
+|---|---|---|---|
+| Washington prend le parti d'OpenAI contre le NYT | 2026-09-03 | chaud | next.ink/254333/ |
+| RSF montre le contournement des sanctions | 2026-09-03 | chaud | next.ink/254256/ |
+| L'AI Act remanié par l'Omnibus | 2026-07-27 | fond | digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai |
+| Peut-on croire les benchmarks ? | 2025-05-25 | fond | arxiv.org/abs/2502.06559 ; hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai |
+| Quatre mois d'écart entre modèles ouverts et fermés | 2026-05-29 | fond | epoch.ai/data-insights/open-closed-eci-gap |
+| Moissonnage et RGPD : ce que le CEPD exige | 2026-07-07 | fond | cnil.fr/fr/cepd-ia-generative-chaines-blocs ; digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august |
 
 **Mise en avant** : NVIDIA / Hugging Face en une (`featured`), l'AI Act en analyse de fond
 (`deepDive`).
 
-Les sujets d'appoint relevés mais non retenus (Genmod de la CNIL, DLSS 5, WeatherNext 3,
-Abliteration.ai, Muse Spark de Meta, AfterQuery, le vote Debian, l'étiquetage d'Apple
-Music, l'étude Pew, les datacenters dans l'Ohio, les profils IA d'Instagram) servent de
-réserve si un sujet retenu se révèle infondé à la rédaction.
+### Sujets écartés, gardés en réserve
+
+Solides et vérifiés, mais non retenus faute de place, ou pour éviter la redite : les levées
+de Crusoe et de Thinking Machines (la rubrique Business comptait déjà trois tours de
+table) ; le raisonnement opaque d'Astra ; Terence Tao et la sanctuarisation des
+mathématiques ; le G20 ; l'interdiction scolaire à New York ; les affiches IA de l'été ; le
+raccordement au réseau européen ; qui paie l'IA au travail ; le registre européen des
+opt-out ; Genmod et la généalogie des modèles ouverts ; l'indice ECI ; le capex des
+hyperscalers. Ils servent de remplacement si un sujet retenu se révèle infondé à la
+rédaction.
+
+**Un sujet écarté pour une raison de méthode** : « ce que coûte vraiment une requête »
+reposait sur un article de Next payant, lu à 32 % seulement. La règle de vérification n° 2
+l'interdit. Il est remplacé par la consommation électrique des centres de données, dont la
+source primaire de l'AIE est entièrement accessible.
 
 ## 7. Les contradictions à rapporter
 
@@ -188,6 +191,41 @@ matière même de ce qu'un agrégateur apporte.
 Un quatrième point relève de la prudence plus que de la contradiction : les
 « 103 milliards de revenus » de Nscale sont une projection fondée sur des baux signés, pas
 un chiffre d'affaires réalisé. Le texte le qualifie explicitement.
+
+### Précautions de lecture sur les sujets de fond
+
+Les sources primaires retenues déclarent elles-mêmes leurs limites. Les ignorer produirait
+des articles faussement assurés. Chaque article concerné porte la limite dans le texte.
+
+- **Mesure contre projection.** L'AIE mesure 415 TWh consommés par les centres de données
+  en 2024 et 485 TWh en 2025 ; les 950 TWh de 2030 et la fourchette 700–1 700 TWh de 2035
+  sont des scénarios. Le texte ne mélange pas les deux registres.
+- **Une affirmation de l'AIE reste non chiffrée** : l'énergie par tâche baisserait « d'au
+  moins un ordre de grandeur par an », sans mesure publiée sur la page consultée. Elle est
+  rapportée comme une affirmation de l'agence, pas comme un fait établi.
+- **La liste FDA n'est pas exhaustive**, l'agence le dit : elle est bâtie par repérage de
+  termes dans les résumés d'autorisation. Les 1 614 dispositifs sont un plancher.
+- **L'écart ouvert/fermé dépend de la méthode.** Epoch donne quatre mois ; une note
+  antérieure d'octobre 2025 donnait trois mois, et le chiffre passerait à six mois avec un
+  critère de dépassement plus strict. Ce n'est pas une contradiction mais un choix de
+  méthode, et l'article le dit.
+- **Le record de puissance par site repose sur six points de mesure**, dont deux fois le
+  même site, et les points futurs sont des annonces. La tendance du doublement tous les
+  dix mois est présentée pour ce qu'elle est : une extrapolation fragile.
+- **Les sous-groupes d'enquête sont petits.** L'enquête Epoch/Ipsos sur le financement de
+  l'IA au travail compte 49 à 207 répondants par sous-groupe, avec des intervalles larges.
+  Si ce sujet sort de la réserve, les écarts sont cités, jamais les niveaux précis.
+- **Les intentions déclarées ne sont pas des faits.** Le solde de 2 millions d'emplois du
+  Forum économique mondial est une projection d'entreprises interrogées ; la baisse de 20 %
+  de l'emploi des développeurs de 22 à 25 ans est une mesure. Le même article porte les
+  deux, distingués.
+- **Aucun PDF n'a été ouvert** lors du relevé : rapports complets de l'AIE, lignes
+  directrices du CEPD, étude sur le registre d'opt-out, étude CNIL/VYV, chapitres de l'AI
+  Index. Les faits proviennent des pages de synthèse HTML. Les articles s'en tiennent à
+  ce périmètre, ou les PDF sont ouverts à la rédaction.
+- **La Haute Autorité de santé est inaccessible** (HTTP 403). Aucun élément français sur
+  les dispositifs médicaux à base d'IA n'a pu être vérifié ; l'article sur le sujet reste
+  américain et européen, et le dit.
 
 ## 8. Structure du corps
 
