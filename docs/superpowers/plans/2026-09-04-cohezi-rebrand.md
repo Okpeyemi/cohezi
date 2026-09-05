@@ -2053,7 +2053,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces : `LatestArticles({ copy: SectionCopy; articles: Article[] })` (client), `ArticleGridSection({ id: string; copy: SectionCopy; articles: Article[] })` (serveur).
 - État attendu : tests `sections` verts ; `page` et `newsletter-form` encore rouges.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/sections/latest-articles.test.tsx` (contenu complet) :
 ```tsx
@@ -2128,7 +2128,7 @@ describe('ArticleGridSection', () => {
 Run : `pnpm test tests/components/sections`
 Expected : FAIL — `article-grid-section` introuvable, `LatestArticles` encore sur le contenu Rundown.
 
-- [ ] **Step 2 : `components/sections/latest-articles.tsx` (contenu complet)**
+- [x] **Step 2 : `components/sections/latest-articles.tsx` (contenu complet)**
 
 ```tsx
 'use client';
@@ -2183,7 +2183,7 @@ export function LatestArticles({ copy, articles }: LatestArticlesProps) {
 }
 ```
 
-- [ ] **Step 3 : `components/sections/article-grid-section.tsx`**
+- [x] **Step 3 : `components/sections/article-grid-section.tsx`**
 
 ```tsx
 import { ArticleCard } from '@/components/cards/article-card';
@@ -2220,7 +2220,7 @@ export function ArticleGridSection({ id, copy, articles }: ArticleGridSectionPro
 }
 ```
 
-- [ ] **Step 4 : tests et commit**
+- [x] **Step 4 : tests et commit**
 
 Run : `pnpm test tests/components/sections`
 Expected : PASS (hero 3 + latest 3 + grid 2).
