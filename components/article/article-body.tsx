@@ -1,5 +1,7 @@
+import { entities } from '@/content/entities';
 import type { ArticleBlock } from '@/content/types';
 import { cn } from '@/lib/cn';
+import { linkEntities, type TextSegment } from '@/lib/link-entities';
 
 /** Marge haute d'un bloc selon son type ; le premier bloc n'en a jamais. */
 const TOP_MARGIN: Record<ArticleBlock['type'], string> = {
@@ -10,14 +12,37 @@ const TOP_MARGIN: Record<ArticleBlock['type'], string> = {
   takeaway: 'mt-10',
 };
 
-function Block({ block, first }: { block: ArticleBlock; first: boolean }) {
+/** Rend un paragraphe en liant la première mention de chaque organisation connue. */
+function Prose({ segments }: { segments: TextSegment[] }) {
+  return (
+    <>
+      {segments.map((segment, index) =>
+        segment.href ? (
+          <a
+            key={`${segment.text}-${index}`}
+            href={segment.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-line underline-offset-4 transition-colors hover:decoration-accent hover:text-accent"
+          >
+            {segment.text}
+          </a>
+        ) : (
+          <span key={`t-${index}`}>{segment.text}</span>
+        ),
+      )}
+    </>
+  );
+}
+
+function Block({ block, first, segments }: { block: ArticleBlock; first: boolean; segments?: TextSegment[] }) {
   const margin = first ? '' : TOP_MARGIN[block.type];
 
   switch (block.type) {
     case 'paragraph':
       return (
         <p data-block="paragraph" className={cn('text-lg leading-8 text-ink/85', margin)}>
-          {block.text}
+          {segments ? <Prose segments={segments} /> : block.text}
         </p>
       );
     case 'heading':
@@ -64,10 +89,17 @@ function Block({ block, first }: { block: ArticleBlock; first: boolean }) {
 }
 
 export function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
+  // Une seule mémoire pour tout l'article : chaque organisation n'est liée qu'une fois.
+  // Le découpage est fait avant le rendu, pour ne dépendre d'aucun ordre d'exécution.
+  const used = new Set<string>();
+  const prose = blocks.map((block) =>
+    block.type === 'paragraph' ? linkEntities(block.text, entities, used) : undefined,
+  );
+
   return (
     <div className="mx-auto max-w-[680px]">
       {blocks.map((block, index) => (
-        <Block key={`${block.type}-${index}`} block={block} first={index === 0} />
+        <Block key={`${block.type}-${index}`} block={block} first={index === 0} segments={prose[index]} />
       ))}
     </div>
   );

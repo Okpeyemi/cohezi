@@ -27,7 +27,10 @@ describe('ArticlePage', () => {
     expect(screen.getByRole('heading', { level: 1, name: article.title })).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: 'Fil d’Ariane' })).toBeInTheDocument();
     const firstBlock = article.body[0]!;
-    if (firstBlock.type === 'paragraph') expect(screen.getByText(firstBlock.text)).toBeInTheDocument();
+    if (firstBlock.type === 'paragraph') {
+      // Le paragraphe est découpé par les liens d'entités : on compare le texte reconstitué.
+      expect(document.querySelector('[data-block="paragraph"]')!.textContent).toBe(firstBlock.text);
+    }
     const related = within(screen.getByRole('region', { name: 'À lire ensuite' }));
     expect(related.getByRole('heading', { level: 2, name: 'À lire ensuite' })).toBeInTheDocument();
     expect(related.getAllByRole('article')).toHaveLength(3);

@@ -1,4 +1,12 @@
-import type { SiteConfig } from './types';
+import type { SiteConfig, SocialLink } from './types';
+
+/** Comptes officiels. Source unique : le pied de page les affiche en icônes et en toutes lettres. */
+const social: SocialLink[] = [
+  { label: 'TikTok', href: 'https://www.tiktok.com/@cohezi.io', icon: 'tiktok' },
+  { label: 'Instagram', href: 'https://www.instagram.com/cohezi.io', icon: 'instagram' },
+  { label: 'X', href: 'https://x.com/coheziio', icon: 'x' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cohezi.io', icon: 'linkedin' },
+];
 
 export const site: SiteConfig = {
   name: 'Cohezi',
@@ -93,19 +101,11 @@ export const site: SiteConfig = {
       },
       {
         heading: 'Suivre',
-        links: [
-          { label: 'Instagram', href: 'https://www.instagram.com/cohezi' },
-          { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cohezi' },
-          { label: 'TikTok', href: 'https://www.tiktok.com/@cohezi' },
-        ],
+        links: social.map(({ label, href }) => ({ label, href })),
       },
     ],
     copyright: '© 2026 Cohezi',
-    social: [
-      { label: 'Instagram', href: 'https://www.instagram.com/cohezi', icon: 'instagram' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cohezi', icon: 'linkedin' },
-      { label: 'TikTok', href: 'https://www.tiktok.com/@cohezi', icon: 'tiktok' },
-    ],
+    social,
   },
   comingSoon: [
     { slug: 'a-propos', label: 'À propos' },

@@ -17,8 +17,11 @@ describe('content integrity', () => {
     expect(count('analyse')).toBe(6);
     expect(categories).toHaveLength(4);
     expect(site.nav).toHaveLength(4);
-    expect(site.footer.columns.map((c) => c.links.length)).toEqual([3, 3, 3]);
-    expect(site.footer.social).toHaveLength(3);
+    // La colonne « Suivre » dérive de site.footer.social : une seule source de vérité.
+    expect(site.footer.columns.map((c) => c.links.length)).toEqual([3, 3, site.footer.social.length]);
+    const follow = site.footer.columns.at(-1)!;
+    expect(follow.links.map((l) => l.href)).toEqual(site.footer.social.map((s) => s.href));
+    expect(site.footer.social).toHaveLength(4);
   });
 
   it('uses unique slugs and valid ISO dates', () => {
@@ -88,7 +91,10 @@ describe('content integrity', () => {
   });
 
   it('resolves every icon name used by the site config', () => {
-    for (const social of site.footer.social) expect(icons[social.icon], social.label).toBeDefined();
+    for (const social of site.footer.social) {
+      expect(icons[social.icon], social.label).toBeDefined();
+      expect(social.href, social.label).toMatch(/^https:\/\/\S+$/);
+    }
     // « recherche » a quitté la liste : il redirige désormais vers /articles.
     expect(site.comingSoon.map((page) => page.slug)).toEqual(['a-propos', 'contact']);
     expect(site.comingSoon.every((page) => page.slug.length > 0 && page.label.length > 0)).toBe(true);

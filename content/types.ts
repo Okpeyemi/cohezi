@@ -1,4 +1,13 @@
-export type IconName = 'menu' | 'close' | 'arrow-right' | 'send' | 'search' | 'instagram' | 'linkedin' | 'tiktok';
+export type IconName =
+  | 'menu'
+  | 'close'
+  | 'arrow-right'
+  | 'send'
+  | 'search'
+  | 'instagram'
+  | 'linkedin'
+  | 'tiktok'
+  | 'x';
 
 /** Sans `src`, le composant PlaceholderImage génère un visuel. */
 export type ImageRef = { src?: string; alt: string };
@@ -30,6 +39,9 @@ export type ArticleBlock =
   | { type: 'list'; items: string[] }
   /** Encadré « À retenir » : les points clés de l'article. */
   | { type: 'takeaway'; title: string; items: string[] };
+
+/** Organisation citée dans les corps d'article, liée vers son site officiel. */
+export type Entity = { name: string; href: string };
 
 /** Page consultée pour établir les faits d'un article. */
 export type Source = {
