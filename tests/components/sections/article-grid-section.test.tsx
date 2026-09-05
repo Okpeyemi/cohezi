@@ -13,7 +13,7 @@ describe('ArticleGridSection', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Business' })).toHaveAttribute('id', 'business-title');
     expect(screen.getAllByRole('listitem')).toHaveLength(8);
     expect(screen.getAllByRole('article')).toHaveLength(8);
-    expect(screen.getByRole('link', { name: /Voir tout le business/ })).toHaveAttribute('href', '/business');
+    expect(screen.getByRole('link', { name: /Voir tout le business/ })).toHaveAttribute('href', site.sections.business.viewAllHref);
   });
 
   it('labels the section with its own heading and shows no filter', () => {

@@ -9,9 +9,13 @@ describe('isKnownSection', () => {
   });
 
   it('accepts the announced pages', () => {
-    for (const slug of ['a-propos', 'contact', 'recherche']) {
+    for (const slug of ['a-propos', 'contact']) {
       expect(isKnownSection(slug), slug).toBe(true);
     }
+  });
+
+  it('no longer serves /recherche, which now redirects to /articles', () => {
+    expect(isKnownSection('recherche')).toBe(false);
   });
 
   it('rejects unknown or missing segments', () => {

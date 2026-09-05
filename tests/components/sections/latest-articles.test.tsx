@@ -13,7 +13,7 @@ describe('LatestArticles', () => {
     render(<LatestArticles copy={site.sections.latest} articles={front} />);
     expect(screen.getByRole('heading', { level: 2, name: 'À la une' })).toBeInTheDocument();
     expect(screen.getAllByRole('article')).toHaveLength(5);
-    expect(screen.getByRole('link', { name: /Voir toutes les actualités/ })).toHaveAttribute('href', '/actualite');
+    expect(screen.getByRole('link', { name: /Voir toutes les actualités/ })).toHaveAttribute('href', site.sections.latest.viewAllHref);
   });
 
   it('offers one tab per editorial category plus "Toutes"', () => {

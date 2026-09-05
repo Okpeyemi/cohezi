@@ -10,6 +10,10 @@ export type CategorySlug = 'actualite' | 'business' | 'societe' | 'analyse';
 export type Category = {
   slug: CategorySlug;
   label: string;
+  /**
+   * Préfixe des chemins d'article de la rubrique (`/business` → `/business/mon-article`),
+   * et non un lien vers une page de rubrique : celles-ci redirigent vers `/articles`.
+   */
   href: string;
   /** Nom de la rubrique tel qu'affiché en titre de page et dans les onglets (« Analyses »). */
   title: string;
@@ -75,6 +79,17 @@ export type NewsletterCopy = {
   microCopy: string;
 };
 
+export type ArticlesPageCopy = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  searchLabel: string;
+  searchPlaceholder: string;
+  allLabel: string;
+  emptyTitle: string;
+  emptyAction: string;
+};
+
 export type SiteConfig = {
   name: string;
   tagline: string;
@@ -86,6 +101,7 @@ export type SiteConfig = {
   sections: { latest: SectionCopy; business: SectionCopy; societe: SectionCopy };
   deepDive: DeepDiveCopy;
   newsletter: NewsletterCopy;
+  articles: ArticlesPageCopy;
   footer: {
     /** Une entrée par ligne affichée. */
     tagline: string[];

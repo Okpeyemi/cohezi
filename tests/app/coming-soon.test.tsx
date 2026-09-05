@@ -6,7 +6,7 @@ import { site } from '@/content/site';
 describe('ComingSoonPage', () => {
   it('pre-renders one path per announced page, categories excluded', () => {
     expect(generateStaticParams()).toEqual(site.comingSoon.map((page) => ({ slug: [page.slug] })));
-    expect(site.comingSoon.map((page) => page.slug)).toEqual(['a-propos', 'contact', 'recherche']);
+    expect(site.comingSoon.map((page) => page.slug)).toEqual(['a-propos', 'contact']);
   });
 
   it('renders the French label of a known section', async () => {
