@@ -10,10 +10,10 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
       <div className="mx-auto max-w-[1400px] px-5 md:px-12">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Link href="/" aria-label={`${site.name} homepage`} className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
+            <Link href="/" aria-label={`${site.name} homepage`} className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               <BrandLogo name={site.name} tone="light" />
             </Link>
-            <p className="mt-6 max-w-sm text-sm leading-6 text-neutral-700">{site.footer.description}</p>
+            <p className="mt-6 max-w-sm text-sm leading-6 text-ink/80">{site.footer.description}</p>
             <NewsletterForm
               variant="footer"
               placeholder={site.hero.emailPlaceholder}
@@ -46,7 +46,7 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={social.label}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:bg-neutral-100"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-ink transition-colors hover:bg-line/60"
                 >
                   <Icon name={social.icon} size={14} />
                 </a>

@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { satoshi } from './fonts';
+import { inter, spaceGrotesk } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'The Rundown AI - Daily AI News & Insights in 5 Minutes a Day',
+  title: 'Cohezi — L’IA change le monde. Comprenez ce qui compte.',
   description:
-    'Get the latest AI news, understand why it matters, and learn how to apply it in your work.',
+    'Actualités, business, société et analyses pour comprendre l’intelligence artificielle sans le bruit.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${satoshi.variable} h-full antialiased`}>
+    <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-paper font-sans text-ink">{children}</body>
     </html>
   );

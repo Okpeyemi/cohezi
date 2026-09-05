@@ -26,11 +26,11 @@ export default async function ComingSoonPage({ params }: ComingSoonPageProps) {
   return (
     <>
       <SiteHeader name={site.name} nav={site.nav} cta={site.headerCta} />
-      <main className="flex flex-1 flex-col items-center justify-center bg-ink px-5 py-32 text-center text-white">
-        <p className="text-sm uppercase tracking-wide text-white/60">{slug.join(' / ')}</p>
+      <main className="flex flex-1 flex-col items-center justify-center bg-ink px-5 py-32 text-center text-paper">
+        <p className="text-sm uppercase tracking-wide text-paper/60">{slug.join(' / ')}</p>
         <h1 className="mt-4 text-4xl font-bold tracking-[-0.025em] md:text-6xl">{humanize(section)}</h1>
-        <p className="mt-4 text-lg text-white/80">This page is coming soon.</p>
-        <ButtonLink href="/" variant="white" size="sm" className="mt-8">
+        <p className="mt-4 text-lg text-paper/80">This page is coming soon.</p>
+        <ButtonLink href="/" variant="paper" size="sm" className="mt-8">
           <Icon name="arrow-right" size={16} className="rotate-180" />
           Back to home
         </ButtonLink>

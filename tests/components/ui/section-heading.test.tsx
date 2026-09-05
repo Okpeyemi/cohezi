@@ -8,12 +8,13 @@ describe('SectionHeading', () => {
     const heading = screen.getByRole('heading', { level: 2, name: 'Guides' });
     expect(heading).toHaveAttribute('id', 'guides-title');
     expect(heading.className).toContain('text-ink');
+    expect(heading.className).toContain('font-display');
     expect(screen.getByText('Sub')).toBeInTheDocument();
   });
 
   it('switches to light text on dark tone and omits the subtitle when absent', () => {
     render(<SectionHeading id="u" title="AI training" tone="dark" />);
-    expect(screen.getByRole('heading', { level: 2 }).className).toContain('text-white');
+    expect(screen.getByRole('heading', { level: 2 }).className).toContain('text-paper');
     expect(screen.queryByText('Sub')).toBeNull();
   });
 });

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/lib/cn';
 
-export type ButtonVariant = 'ink' | 'gradient' | 'outline' | 'outline-light' | 'white';
+export type ButtonVariant = 'ink' | 'paper' | 'accent' | 'outline' | 'outline-light';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export type ButtonStyleProps = {
@@ -12,14 +12,14 @@ export type ButtonStyleProps = {
 };
 
 const base =
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60';
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60';
 
 const variants: Record<ButtonVariant, string> = {
-  ink: 'bg-ink text-white hover:bg-neutral-800',
-  gradient: 'bg-brand-gradient text-white hover:opacity-90',
-  outline: 'border border-line bg-transparent text-ink hover:bg-neutral-50',
-  'outline-light': 'border border-white/40 bg-transparent text-white hover:bg-white/10',
-  white: 'bg-white font-medium text-ink hover:bg-neutral-100',
+  ink: 'bg-ink text-paper hover:bg-ink-soft',
+  paper: 'bg-paper font-medium text-ink hover:bg-line/60',
+  accent: 'bg-accent text-ink hover:bg-accent-deep hover:text-paper',
+  outline: 'border border-line bg-transparent text-ink hover:bg-line/40',
+  'outline-light': 'border border-paper/40 bg-transparent text-paper hover:bg-paper/10',
 };
 
 const sizes: Record<ButtonSize, string> = {

@@ -13,11 +13,11 @@ export function ArticleCard({ article, variant }: ArticleCardProps) {
     <article className={cn('group', featured ? 'article-card-featured' : 'article-card-compact')}>
       <Link
         href={`/articles/${article.slug}`}
-        className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+        className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         <div className={cn('relative overflow-hidden rounded-lg', featured ? 'aspect-video' : 'aspect-video lg:aspect-[16/10]')}>
           <PlaceholderImage image={article.image} label={article.title} priority={featured} />
-          <span className="absolute left-4 top-4 rounded-md bg-white px-2 py-0.5 text-xs font-semibold text-ink shadow-sm">
+          <span className="absolute left-4 top-4 rounded-md bg-paper px-2 py-0.5 text-xs font-semibold text-ink shadow-sm">
             {TAG_LABELS[article.tag]}
           </span>
         </div>
@@ -29,7 +29,7 @@ export function ArticleCard({ article, variant }: ArticleCardProps) {
         >
           {article.title}
         </h3>
-        {featured && article.subtitle ? <p className="mt-2 text-base text-neutral-500">{article.subtitle}</p> : null}
+        {featured && article.subtitle ? <p className="mt-2 text-base text-muted">{article.subtitle}</p> : null}
         <p className="mt-2 text-xs text-muted">
           {article.author} • {article.readingMinutes} minutes
         </p>

@@ -1,35 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #171717;
-  --color-ink-soft: #212121;
-  --color-ink-border: #333333;
-  --color-icon-box: #272727;
-  --color-line: #e5e5e5;
-  --color-muted: #737373;
-  --color-paper: #ffffff;
-  --color-podcast-card: #efefef;
-  --color-brand: #8b4cd4;
+  --color-ink: #111111;
+  --color-ink-soft: #1a1a1a;
+  --color-paper: #f7f7f4;
+  --color-accent: #7cff6b;
+  --color-accent-deep: #123c2a;
+  --color-muted: #8a8a8a;
+  --color-line: #e2e2de;
+  --color-line-dark: #2a2a2a;
   --radius-sheet: 28.8px;
 }
 
 @theme inline {
-  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
-}
-
-@utility bg-brand-gradient {
-  background-image: linear-gradient(45deg, #cd408f 0%, #8b4cd4 50%, #6254ff 100%);
-}
-
-@utility text-brand-gradient {
-  background-image: linear-gradient(45deg, #cd408f 0%, #8b4cd4 50%, #6254ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@utility bg-university-gradient {
-  background-image: linear-gradient(#000000, #292929);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -50,8 +35,12 @@
   }
 }
 
-/* Bascule sombre → clair au défilement (body.hero-light posé par HeroLightSwitch).
-   Hors @layer volontairement : ces règles doivent l'emporter sur les utilitaires Tailwind. */
+/* Variantes de logo commutées par la bascule sombre → clair. Hors @layer : doit l'emporter sur les utilitaires. */
+.hero-light-only {
+  display: none;
+}
+
+/* Bascule sombre → clair au défilement (body.hero-light posé par HeroLightSwitch, desktop seulement). */
 @media (min-width: 768px) {
   .page-dark {
     transition: background-color 1s;
@@ -62,7 +51,7 @@
   .hero-dark-change :is(h1, h2, p, li, strong, em, span) {
     transition: color 1s;
   }
-  body.hero-light .hero-dark-change :is(h1, h2, p, li, strong, em, span):not(.text-brand-gradient, form *) {
+  body.hero-light .hero-dark-change :is(h1, h2, p, li, strong, em, span):not(form *) {
     color: var(--color-ink);
   }
   body.hero-light .site-header {
@@ -70,50 +59,17 @@
     border-bottom-color: var(--color-line);
     backdrop-filter: blur(8px);
   }
-  body.hero-light .site-header .site-nav-link,
-  body.hero-light .site-header .brand-name {
+  body.hero-light .site-header .site-nav-link {
     color: var(--color-ink);
   }
-  body.hero-light .site-header .brand-mark,
   body.hero-light .site-header .menu-trigger {
     background-color: var(--color-ink);
     color: var(--color-paper);
   }
-}
-
-/* Halo animé le long du bord des cartes University (mécanisme du site d'origine). */
-@property --border-angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes border-rotate {
-  to {
-    --border-angle: 360deg;
+  body.hero-light .hero-light-hidden {
+    display: none;
   }
-}
-
-.animated-border {
-  position: relative;
-}
-
-.animated-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from var(--border-angle),
-    transparent 0deg 264deg,
-    #cd408f 294deg,
-    #8b4cd4 326deg,
-    transparent 356deg
-  );
-  mask:
-    linear-gradient(#fff 0 0) content-box exclude,
-    linear-gradient(#fff 0 0);
-  pointer-events: none;
-  animation: border-rotate 9s linear infinite;
+  body.hero-light .hero-light-only {
+    display: inline-flex;
+  }
 }

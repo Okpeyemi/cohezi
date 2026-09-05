@@ -62,7 +62,7 @@
 **Interfaces:**
 - Produces : utilitaires `bg-ink`, `bg-ink-soft`, `bg-paper`, `bg-accent`, `bg-accent-deep`, `text-muted`, `text-accent`, `text-accent-deep`, `border-line`, `border-line-dark`, `ring-accent`, `font-sans`, `font-display`, `rounded-sheet` ; classes CSS `hero-light-hidden` / `hero-light-only` (commutées par `body.hero-light` à partir de 768 px) ; `CoheziLogo({ tone: 'dark' | 'light'; size?: 'header' | 'footer'; className?: string })` ; `Button` / `ButtonLink` avec `variant: 'ink' | 'paper' | 'accent' | 'outline' | 'outline-light'` ; exports `inter` et `spaceGrotesk` depuis `app/fonts.ts`.
 
-- [ ] **Step 1 : branche et assets de marque**
+- [x] **Step 1 : branche et assets de marque**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -80,7 +80,7 @@ ls -la public/brand app/icon.png app/apple-icon.png
 ```
 Expected : 5 PNG dans `public/brand/` (1268×544, 1268×544, 808×368, 808×368, 64×64), `app/icon.png` et `app/apple-icon.png` de 256×256, plus de dossier `public/fonts`.
 
-- [ ] **Step 2 : `app/fonts.ts` (Inter + Space Grotesk, variables)**
+- [x] **Step 2 : `app/fonts.ts` (Inter + Space Grotesk, variables)**
 
 ```ts
 import { Inter, Space_Grotesk } from 'next/font/google';
@@ -98,7 +98,7 @@ export const spaceGrotesk = Space_Grotesk({
 });
 ```
 
-- [ ] **Step 2b (repli, uniquement si `pnpm build` échoue au Step 9 avec une erreur réseau `next/font`)**
+- [x] **Step 2b (repli, uniquement si `pnpm build` échoue au Step 9 avec une erreur réseau `next/font`)**
 
 ```bash
 pnpm add @fontsource-variable/inter @fontsource-variable/space-grotesk
@@ -121,7 +121,7 @@ export const spaceGrotesk = localFont({
 ```
 Les noms d'export et les variables CSS restent identiques ; noter le repli dans le message de commit.
 
-- [ ] **Step 3 : `app/globals.css` (contenu complet)**
+- [x] **Step 3 : `app/globals.css` (contenu complet)**
 
 ```css
 @import "tailwindcss";
@@ -201,7 +201,7 @@ Les noms d'export et les variables CSS restent identiques ; noter le repli dans 
 }
 ```
 
-- [ ] **Step 4 : `app/layout.tsx`**
+- [x] **Step 4 : `app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -223,7 +223,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 5 : tests qui échouent (logo, boutons, titre de section)**
+- [x] **Step 5 : tests qui échouent (logo, boutons, titre de section)**
 
 `tests/components/ui/cohezi-logo.test.tsx` :
 ```tsx
@@ -295,7 +295,7 @@ describe('CoheziLogo', () => {
 Run : `pnpm test tests/components/ui/cohezi-logo.test.tsx tests/components/ui/button.test.tsx tests/components/ui/section-heading.test.tsx`
 Expected : FAIL — `cohezi-logo` introuvable ; `bg-accent` / `bg-paper` absents ; `text-paper` / `font-display` absents.
 
-- [ ] **Step 6 : `components/ui/cohezi-logo.tsx`**
+- [x] **Step 6 : `components/ui/cohezi-logo.tsx`**
 
 ```tsx
 import Image from 'next/image';
@@ -365,7 +365,7 @@ export function CoheziLogo({ tone, size = 'header', className }: CoheziLogoProps
 }
 ```
 
-- [ ] **Step 7 : `components/ui/button.tsx` (variantes Cohezi)**
+- [x] **Step 7 : `components/ui/button.tsx` (variantes Cohezi)**
 
 Remplacer le bloc des types et des variantes par :
 ```tsx
@@ -391,7 +391,7 @@ const variants: Record<ButtonVariant, string> = {
 ```
 Le reste du fichier (`sizes`, `buttonClasses`, `Button`, `ButtonLink`) est inchangé.
 
-- [ ] **Step 8 : remplacements de classes de couleur dans tout le code**
+- [x] **Step 8 : remplacements de classes de couleur dans tout le code**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -430,7 +430,7 @@ Expected : la première commande `grep` n'affiche rien ; la seconde n'affiche qu
 
 Mettre à jour `components/ui/section-heading.tsx` : dans la classe du `h2`, remplacer `'text-[32px] font-bold leading-none tracking-[-0.025em] md:text-5xl'` par `'font-display text-[32px] font-bold uppercase leading-none tracking-[-0.01em] md:text-5xl'`.
 
-- [ ] **Step 9 : vérifications et commit**
+- [x] **Step 9 : vérifications et commit**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint && pnpm build`
 Expected : tests verts (le test `brand-logo` existant passe encore : `BrandLogo` n'est supprimé qu'en Task 3), typecheck et lint propres, build OK. Si le build échoue sur le téléchargement des polices, appliquer le Step 2b puis relancer.

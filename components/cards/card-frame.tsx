@@ -10,7 +10,7 @@ export function CardFrame({ href, children, className }: CardFrameProps) {
     <Link
       href={href}
       className={cn(
-        'group block h-full rounded-xl border border-line bg-white p-2.5 transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2',
+        'group block h-full rounded-xl border border-line bg-paper p-2.5 transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2',
         className,
       )}
     >

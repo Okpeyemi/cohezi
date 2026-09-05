@@ -19,7 +19,7 @@ export function UniversityCta({ university }: { university: UniversityContent })
       </h2>
       <p className="mx-auto mt-5 max-w-xl text-lg leading-7 text-white/80">{university.subtitle}</p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <ButtonLink href={university.primaryCta.href} variant="gradient" size="lg">
+        <ButtonLink href={university.primaryCta.href} variant="accent" size="lg">
           {university.primaryCta.label}
         </ButtonLink>
         <ButtonLink href={university.secondaryCta.href} variant="outline-light" size="lg" className="h-[50px]">

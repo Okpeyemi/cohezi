@@ -41,7 +41,7 @@ export function PlaceholderImage({
           <stop offset="1" stopColor={gradient.to} />
         </linearGradient>
         <pattern id={`${id}-lines`} width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <line x1="0" y1="0" x2="0" y2="12" stroke="white" strokeOpacity="0.08" strokeWidth="1" />
+          <line x1="0" y1="0" x2="0" y2="12" stroke="#f7f7f4" strokeOpacity="0.06" strokeWidth="1" />
         </pattern>
       </defs>
       <rect width="320" height="180" fill={`url(#${id})`} />
@@ -50,8 +50,8 @@ export function PlaceholderImage({
         x="160"
         y="95"
         textAnchor="middle"
-        fill="white"
-        fillOpacity="0.9"
+        fill="#f7f7f4"
+        fillOpacity="0.92"
         fontSize="16"
         fontWeight="600"
         fontFamily="var(--font-sans), system-ui, sans-serif"

@@ -65,7 +65,7 @@ export function NewsletterForm({
 
   return (
     <form onSubmit={handleSubmit} noValidate className={cn('w-full', isHero ? 'max-w-[512px]' : 'max-w-[320px]', className)}>
-      <div className={cn('flex items-center gap-2 rounded-xl bg-white p-1.5 ring-1 ring-black/10', isHero && 'shadow-lg')}>
+      <div className={cn('flex items-center gap-2 rounded-xl bg-paper p-1.5 ring-1 ring-ink/10', isHero && 'shadow-lg')}>
         <label htmlFor={inputId} className="sr-only">
           Email address
         </label>
@@ -81,7 +81,7 @@ export function NewsletterForm({
           aria-describedby={message ? messageId : undefined}
           disabled={sending}
           className={cn(
-            'min-w-0 flex-1 bg-transparent px-3 text-ink placeholder:text-neutral-400 focus:outline-none',
+            'min-w-0 flex-1 bg-transparent px-3 text-ink placeholder:text-muted focus:outline-none',
             isHero ? 'h-11 text-base' : 'h-9 text-sm',
           )}
         />
@@ -96,7 +96,7 @@ export function NewsletterForm({
         aria-live="polite"
         className={cn(
           'mt-2 text-sm',
-          status === 'error' ? (isHero ? 'text-red-300' : 'text-red-600') : isHero ? 'text-white/80' : 'text-neutral-600',
+          status === 'error' ? (isHero ? 'text-accent' : 'text-accent-deep') : isHero ? 'text-paper/80' : 'text-ink/70',
           !message && 'sr-only',
         )}
       >

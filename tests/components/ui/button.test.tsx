@@ -12,14 +12,19 @@ describe('Button', () => {
 
   it('applies variant and size classes and forwards disabled', () => {
     render(
-      <Button variant="gradient" size="lg" disabled>
-        Join
+      <Button variant="accent" size="lg" disabled>
+        Je m’inscris
       </Button>,
     );
-    const button = screen.getByRole('button', { name: 'Join' });
-    expect(button.className).toContain('bg-brand-gradient');
+    const button = screen.getByRole('button', { name: 'Je m’inscris' });
+    expect(button.className).toContain('bg-accent');
     expect(button.className).toContain('h-12');
     expect(button).toBeDisabled();
+  });
+
+  it('offers a paper variant for light buttons on dark backgrounds', () => {
+    render(<Button variant="paper">S’inscrire</Button>);
+    expect(screen.getByRole('button', { name: 'S’inscrire' }).className).toContain('bg-paper');
   });
 });
 

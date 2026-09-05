@@ -17,8 +17,8 @@ export function Chip({ label, icon, active = false, onClick, className }: ChipPr
       aria-pressed={active}
       onClick={onClick}
       className={cn(
-        'inline-flex h-[39px] items-center gap-2 rounded-full border px-3.5 text-[17px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2',
-        active ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink hover:bg-neutral-50',
+        'inline-flex h-[39px] items-center gap-2 rounded-full border px-3.5 text-[17px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2',
+        active ? 'border-ink bg-ink text-paper' : 'border-line bg-paper text-ink hover:bg-line/40',
         className,
       )}
     >

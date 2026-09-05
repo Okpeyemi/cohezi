@@ -15,12 +15,12 @@ export function SectionHeading({ id, title, subtitle, tone = 'light', className,
     <div className={cn('mx-auto max-w-3xl text-center', className)}>
       <h2
         id={id}
-        className={cn('text-[32px] font-bold leading-none tracking-[-0.025em] md:text-5xl', dark ? 'text-white' : 'text-ink')}
+        className={cn('font-display text-[32px] font-bold uppercase leading-none tracking-[-0.01em] md:text-5xl', dark ? 'text-paper' : 'text-ink')}
       >
         {title}
       </h2>
       {subtitle ? (
-        <p className={cn('mt-4 text-lg leading-7', dark ? 'text-white/80' : 'text-neutral-700', subtitleClassName)}>{subtitle}</p>
+        <p className={cn('mt-4 text-lg leading-7', dark ? 'text-paper/80' : 'text-ink/80', subtitleClassName)}>{subtitle}</p>
       ) : null}
     </div>
   );

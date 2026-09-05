@@ -40,7 +40,7 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="menu-trigger flex h-10 w-10 items-center justify-center rounded-lg bg-white text-ink transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        className="menu-trigger flex h-10 w-10 items-center justify-center rounded-lg bg-paper text-ink transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         <Icon name={open ? 'close' : 'menu'} size={20} />
       </button>
@@ -58,13 +58,13 @@ export function MobileMenu({ nav, cta }: MobileMenuProps) {
               key={item.href}
               href={item.href}
               onClick={close}
-              className="text-xl font-medium text-white/90 transition-colors hover:text-white"
+              className="text-xl font-medium text-paper/90 transition-colors hover:text-paper"
             >
               {item.label}
             </Link>
           ))}
         </nav>
-        <ButtonLink href={cta.href} variant="white" size="sm" className="self-start" onClick={close}>
+        <ButtonLink href={cta.href} variant="paper" size="sm" className="self-start" onClick={close}>
           {cta.label}
           <Icon name="arrow-right" size={16} />
         </ButtonLink>
