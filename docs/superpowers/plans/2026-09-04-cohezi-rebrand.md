@@ -2487,7 +2487,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces : `HomePage()` (Server Component synchrone), `ComingSoonPage({ params })` (async), `NotFound()`.
 - État attendu : `pnpm test`, `pnpm typecheck`, `pnpm lint`, `pnpm build` **tous verts**.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/app/page.test.tsx` (contenu complet) :
 ```tsx
@@ -2567,7 +2567,7 @@ describe('ComingSoonPage', () => {
 Run : `pnpm test tests/app`
 Expected : FAIL — page encore assemblée avec les sections Rundown, `site.comingSoon` inexistant.
 
-- [ ] **Step 2 : `app/page.tsx` (contenu complet)**
+- [x] **Step 2 : `app/page.tsx` (contenu complet)**
 
 ```tsx
 import { HeroLightSwitch } from '@/components/layout/hero-light-switch';
@@ -2618,7 +2618,7 @@ export default function HomePage() {
 }
 ```
 
-- [ ] **Step 3 : `app/[...slug]/page.tsx` (contenu complet)**
+- [x] **Step 3 : `app/[...slug]/page.tsx` (contenu complet)**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -2677,7 +2677,7 @@ export default async function ComingSoonPage({ params }: ComingSoonPageProps) {
 }
 ```
 
-- [ ] **Step 4 : `app/not-found.tsx` (contenu complet)**
+- [x] **Step 4 : `app/not-found.tsx` (contenu complet)**
 
 ```tsx
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -2707,7 +2707,7 @@ export default function NotFound() {
 }
 ```
 
-- [ ] **Step 5 : suppression du helper devenu inutile et vérification complète**
+- [x] **Step 5 : suppression du helper devenu inutile et vérification complète**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -2724,7 +2724,7 @@ for p in / /business /business/un-article /analyses /a-propos /recherche /inconn
 ```
 Expected : `/` 200, `/business` 200, `/business/un-article` 200, `/analyses` 200, `/a-propos` 200, `/recherche` 200, `/inconnu` 404.
 
-- [ ] **Step 6 : commit**
+- [x] **Step 6 : commit**
 
 ```bash
 git add -A app lib tests docs/superpowers/plans/
