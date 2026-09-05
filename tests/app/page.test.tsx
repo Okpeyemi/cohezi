@@ -22,9 +22,10 @@ describe('HomePage', () => {
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
-  it('shows five front-page cards, eight business cards and eight société cards', () => {
+  it('shows the front-page cards plus one card per business and société article', () => {
     render(<HomePage />);
-    expect(screen.getAllByRole('article')).toHaveLength(21);
+    const perCategory = (slug: string) => articles.filter((article) => article.category === slug).length;
+    expect(screen.getAllByRole('article')).toHaveLength(5 + perCategory('business') + perCategory('societe'));
     const main = screen.getByRole('main');
     expect(within(main).getAllByRole('link', { name: /Voir tout/ })).toHaveLength(3);
   });

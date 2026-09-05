@@ -185,7 +185,7 @@ export const analyseArticles: Article[] = [
     body: [
       {
         type: 'paragraph',
-        text: 'Les benchmarks quantitatifs sont devenus les instruments de référence pour juger la performance, les capacités et la sûreté des systèmes d’IA. Ils orientent la recherche, la communication des laboratoires et, désormais, les cadres réglementaires. Sept chercheurs — Maria Eriksson, Erasmo Purificato, Arman Noroozian, Joao Vinagre, Guillaume Chaslot, Emilia Gomez et David Fernandez-Llorca — ont passé en revue une centaine d’études publiées sur dix ans et consacrées à leurs faiblesses.',
+        text: 'Les benchmarks quantitatifs sont devenus les instruments de référence pour juger la performance, les capacités et la sûreté des systèmes d’IA. Ils orientent la recherche, la communication des laboratoires et, désormais, les cadres réglementaires. Sept chercheurs — Maria Eriksson, Erasmo Purificato, Arman Noroozian, Joao Vinagre, Guillaume Chaslot, Emilia Gomez et David Fernandez-Llorca — ont passé en revue une centaine d’études publiées sur dix ans et consacrées à leurs faiblesses. Leur travail est déposé sur arXiv, serveur de préprints : il n’a donc pas nécessairement fait l’objet d’une relecture par les pairs, ce qu’il faut garder à l’esprit pour un article qui parle précisément de rigueur d’évaluation.',
       },
       { type: 'heading', text: 'Les défauts de conception' },
       {

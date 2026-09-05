@@ -31,6 +31,8 @@ describe('ArticlePage', () => {
     const related = within(screen.getByRole('region', { name: 'À lire ensuite' }));
     expect(related.getByRole('heading', { level: 2, name: 'À lire ensuite' })).toBeInTheDocument();
     expect(related.getAllByRole('article')).toHaveLength(3);
+    const sources = within(screen.getByRole('region', { name: 'Sources' }));
+    expect(sources.getAllByRole('link')).toHaveLength(article.sources.length);
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 });

@@ -2,7 +2,7 @@
 
 - Date : 2026-09-05
 - Auteur : Maqsoud Tawaliou, avec Claude
-- Statut : validé en brainstorming, en attente de relecture avant plan
+- Statut : **implémenté le 2026-09-05** (branche `feat/cohezi-articles-reels`). Écarts connus : `Source.publishedAt` est devenu optionnel, les chapitres de l'AI Index de Stanford n'affichant aucune date de publication ; la borne basse du nombre de sources est 1 et non 2, huit articles reposant sur une source unique nommée dans la prose ; plusieurs chiffres du relevé initial ont été écartés faute d'avoir été retrouvés sur les pages au moment d'écrire.
 
 ## 1. Pourquoi
 

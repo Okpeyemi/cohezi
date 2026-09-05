@@ -247,7 +247,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consomme : `Article`, `Source`, `ArticleBlock` de `../types`.
 - Produit : `export const actualiteArticles: Article[]` de longueur 6.
 
-- [ ] **Step 1 : revérifier les sept URL de la rubrique**
+- [x] **Step 1 : revérifier les sept URL de la rubrique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -272,7 +272,7 @@ Expected : une longueur de texte non nulle pour chaque URL. Une longueur nulle o
 
 Puis lire le contenu de chaque page (`$B text`) et confronter les faits ci-dessous à ce qui est affiché. **Tout écart constaté prime sur cette fiche.**
 
-- [ ] **Step 2 : écrire les 6 articles**
+- [x] **Step 2 : écrire les 6 articles**
 
 Remplacer intégralement le tableau dans `content/articles/actualite.ts`. Voici **le premier article entièrement rédigé**, qui sert de patron pour les cinq autres :
 
@@ -366,7 +366,7 @@ Sources : Anthropic, « How Claude’s text watermark works », `https://www.ant
 Faits : depuis le 2 août 2026, les chatbots doivent signaler leur nature, les deepfakes être étiquetés et les contenus générés porter des marques lisibles par machine. La méthode d’Anthropic, dérivée de SynthID-Text de Google DeepMind, n’ajoute aucun caractère caché : quand plusieurs mots équivalents sont possibles, le choix est déterminé par une clé secrète et les mots précédents, ce qui laisse un motif statistique détectable seulement avec la clé. Anthropic dit n’observer aucun effet sur le contenu, la créativité ou la lisibilité, mais reconnaît que la détection est difficile voire impossible sur les textes courts, le code et les passages très factuels — cette limite est le point le plus intéressant de l’article. Une API de détection est ouverte en preview privée aux régulateurs, forces de l’ordre, médias, fact-checkers, chercheurs et organisations de la société civile de l’UE.
 **Écart de décompte à signaler** : Anthropic parle de 190 signataires du code de bonnes pratiques sur la transparence, la Commission de « plus de 180 organisations ». Donner les deux chiffres avec leur source.
 
-- [ ] **Step 3 : calculer `readingMinutes` sur le texte réel**
+- [x] **Step 3 : calculer `readingMinutes` sur le texte réel**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -390,7 +390,7 @@ node /tmp/reading.mjs content/articles/actualite.ts
 
 Corriger chaque ligne `FIX` en alignant `readingMinutes` sur la valeur calculée. Ne jamais rallonger le texte pour atteindre une durée.
 
-- [ ] **Step 4 : vérifier**
+- [x] **Step 4 : vérifier**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS. Le test de comptage par rubrique est ajusté à la Task 6 ; s'il échoue ici en annonçant `expected 6 to be 5`, c'est normal et attendu — passer à l'étape suivante.
@@ -416,7 +416,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consomme : `Article` de `../types`.
 - Produit : `export const businessArticles: Article[]` de longueur 6, dont l'article `nvidia-rachete-hugging-face-pour-12-9-milliards` porte `featured: true`.
 
-- [ ] **Step 1 : revérifier les sept URL de la rubrique**
+- [x] **Step 1 : revérifier les sept URL de la rubrique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -439,7 +439,7 @@ Expected : longueur non nulle partout. La page `iea.org/reports/energy-and-ai` (
 
 Lire ensuite chaque page et confronter les faits ci-dessous.
 
-- [ ] **Step 2 : écrire les 6 articles**
+- [x] **Step 2 : écrire les 6 articles**
 
 Le patron d'objet `Article` est celui de la Task 2, Step 2.
 
@@ -471,12 +471,12 @@ Faits **projetés**, à qualifier systématiquement : environ 950 TWh en 2030, s
 Sources : Mistral AI, « In-region inference, open models, and new European infrastructure for sovereign AI. », `https://mistral.ai/news/regional-inference-open-models-new-compute/`, 2026-08-11 · Mistral AI, « Mistral x HUMAIN », `https://mistral.ai/news/mistral-x-humain/`, 2026-08-24. **Sources primaires intéressées** : le dire.
 Faits : Mistral rend disponibles ses Regional Endpoints, qui laissent choisir entre une exécution de l’inférence en Europe ou aux États-Unis, et ouvre en preview publique un Priority Tier adossé à un SLA de disponibilité ; l’entreprise se présente comme le seul laboratoire européen à combiner les deux — affirmation à attribuer. Elle fédère des engagements d’entreprises et d’institutions via des « European Compute Units », avec un objectif annoncé de jusqu’à 1 GW de capacité d’ici 2030. Le 24 août, elle annonce une collaboration stratégique de plusieurs centaines de millions d’euros avec HUMAIN en Arabie saoudite, axée sur la cybersécurité, la voix et des modèles performants en arabe, avec usage possible des datacenters de HUMAIN. La tension entre le discours de souveraineté européenne et un partenariat dans le Golfe est le sujet de l’article.
 
-- [ ] **Step 3 : calculer `readingMinutes`**
+- [x] **Step 3 : calculer `readingMinutes`**
 
 Run : `node /tmp/reading.mjs content/articles/business.ts`
 Corriger chaque ligne `FIX`.
 
-- [ ] **Step 4 : vérifier**
+- [x] **Step 4 : vérifier**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : `typecheck` et `lint` PASS ; le seul échec toléré est le comptage par rubrique dans `content.test.ts`, ajusté à la Task 6.
@@ -502,7 +502,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consomme : `Article` de `../types`.
 - Produit : `export const societeArticles: Article[]` de longueur 6.
 
-- [ ] **Step 1 : revérifier les huit URL de la rubrique**
+- [x] **Step 1 : revérifier les huit URL de la rubrique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -525,7 +525,7 @@ done
 
 Le compte de la liste FDA change dans le temps : relever la valeur affichée le jour de la rédaction et **écrire ce nombre-là**, pas 1 614, en datant la consultation.
 
-- [ ] **Step 2 : écrire les 6 articles**
+- [x] **Step 2 : écrire les 6 articles**
 
 **1. `des-agents-openai-detournent-un-vieux-wiki-allemand`** — `publishedAt: '2026-09-05'`
 Sources : Numerama, « OpenAI aurait su, et n’aurait rien dit : un autre essaim d’agents IA aurait détourné un vieux wiki allemand », `https://www.numerama.com/cyberguerre/2325585-openai-aurait-su-et-naurait-rien-dit-un-autre-essaim-dagents-ia-aurait-detourne-un-vieux-wiki-allemand.html`, 2026-09-04 · TechCrunch, « OpenAI confirms “wiki incident,” says it’s “working on a framework” for more disclosure », `https://techcrunch.com/2026/09/05/openai-confirms-wiki-incident-says-its-working-on-a-framework-for-more-disclosure/`, 2026-09-05.
@@ -556,12 +556,12 @@ Sources : Stanford HAI, « Economy | The 2026 AI Index Report », `https://hai.s
 Faits **observés** : l’AI Index relève une baisse de près de 20 % depuis 2024 de l’emploi des développeurs logiciels âgés de 22 à 25 ans, effet concentré sur les pipelines d’embauche et les plus jeunes des métiers exposés, **sans recul visible de l’emploi global** — la nuance est essentielle. Les gains de productivité rapportés sont hétérogènes : 14 à 15 % dans le support client, 26 % en développement logiciel, 50 % sur la production marketing, et plus faibles sur les tâches de raisonnement approfondi. L’adoption organisationnelle atteint 88 %, mais le déploiement d’agents reste à un chiffre dans presque toutes les fonctions.
 Faits **déclarés**, à distinguer nettement : l’enquête du Forum économique mondial portait sur 1 043 entreprises de 55 pays et 22 secteurs, représentant 14,1 millions de salariés ; 41 % envisageaient une réduction d’effectifs là où l’IA reproduit le travail humain, 77 % prévoyaient de former. La **projection** du Forum est de 11 millions d’emplois créés contre 9 millions déplacés d’ici 2030, soit un solde net de 2 millions. Le contraste entre une mesure et une intention déclarée est le cœur de l’article.
 
-- [ ] **Step 3 : calculer `readingMinutes`**
+- [x] **Step 3 : calculer `readingMinutes`**
 
 Run : `node /tmp/reading.mjs content/articles/societe.ts`
 Corriger chaque ligne `FIX`.
 
-- [ ] **Step 4 : vérifier**
+- [x] **Step 4 : vérifier**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : `typecheck` et `lint` PASS.
@@ -587,7 +587,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consomme : `Article` de `../types`.
 - Produit : `export const analyseArticles: Article[]` de longueur 6, dont `l-ai-act-remanie-par-l-omnibus` porte `deepDive: true`.
 
-- [ ] **Step 1 : revérifier les sept URL de la rubrique**
+- [x] **Step 1 : revérifier les sept URL de la rubrique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -606,7 +606,7 @@ for u in \
 done
 ```
 
-- [ ] **Step 2 : écrire les 6 articles**
+- [x] **Step 2 : écrire les 6 articles**
 
 **1. `washington-prend-le-parti-d-openai-contre-le-new-york-times`** — `publishedAt: '2026-09-03'`
 Source : Next, « Le gouvernement américain vole au secours d’OpenAI dans son litige avec le New York Times », `https://next.ink/254333/le-gouvernement-americain-vole-au-secours-dopenai-dans-son-litige-avec-le-new-york-times/`, 2026-09-03. Source unique : la nommer.
@@ -635,12 +635,12 @@ Sources : CNIL, « Le CEPD met en lumière l’anonymisation et le moissonnage p
 Faits : le Comité européen de la protection des données a adopté le 7 juillet 2026 des lignes directrices sur l’anonymisation et sur le moissonnage dans le contexte de l’IA générative, toutes deux soumises à consultation publique jusqu’au 30 octobre 2026. Le cadre d’anonymisation repose sur trois critères cumulatifs — pas d’individualisation, pas de corrélation, pas d’inférence — déclinés selon une approche « contextuelle » ou une approche « simplifiée » plus prudente, et intègre l’arrêt de la CJUE C-413/23 P du 4 septembre 2025. Sur le moissonnage, le comité précise l’usage de l’intérêt légitime, recommande de n’extraire que des sources fiables, d’horodater et de valider les données avant entraînement, et rappelle qu’aucune exemption générale ne dispense de l’article 9 du RGPD pour les catégories particulières de données. En parallèle, depuis le 2 août 2026, les chatbots doivent signaler leur nature, les deepfakes être étiquetés et les contenus générés porter des marques lisibles par machine ; la Commission a publié une première liste de plus de 180 organisations signataires du code de bonnes pratiques sur la transparence.
 **Périmètre** : les lignes directrices elles-mêmes sont en PDF et n’ont pas été ouvertes au relevé. S’en tenir à la page de la CNIL, ou ouvrir le PDF à la rédaction.
 
-- [ ] **Step 3 : calculer `readingMinutes`**
+- [x] **Step 3 : calculer `readingMinutes`**
 
 Run : `node /tmp/reading.mjs content/articles/analyse.ts`
 Corriger chaque ligne `FIX`.
 
-- [ ] **Step 4 : vérifier**
+- [x] **Step 4 : vérifier**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 
@@ -665,7 +665,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consomme : tout ce qui précède.
 - Produit : une suite verte sur le contenu réel.
 
-- [ ] **Step 1 : corriger le comptage par rubrique**
+- [x] **Step 1 : corriger le comptage par rubrique**
 
 Dans `tests/content/content.test.ts`, remplacer les quatre lignes de comptage :
 
@@ -676,7 +676,7 @@ Dans `tests/content/content.test.ts`, remplacer les quatre lignes de comptage :
     expect(count('analyse')).toBe(6);
 ```
 
-- [ ] **Step 2 : ajouter le test d'intégrité des sources**
+- [x] **Step 2 : ajouter le test d'intégrité des sources**
 
 Toujours dans `tests/content/content.test.ts`, ajouter au `describe('content integrity')` :
 
@@ -716,7 +716,7 @@ Toujours dans `tests/content/content.test.ts`, ajouter au `describe('content int
 
 Le minimum est fixé à 1 et non 2 : cinq articles reposent légitimement sur une source unique, nommée dans la prose. Le plafond de 4 reste la règle de la spec.
 
-- [ ] **Step 3 : ajouter l'affichage des sources au test de la page d'article**
+- [x] **Step 3 : ajouter l'affichage des sources au test de la page d'article**
 
 Dans `tests/app/article-page.test.tsx`, à l'intérieur du test « renders the header, the body and the related articles », avant l'assertion sur `contentinfo` :
 
@@ -725,14 +725,14 @@ Dans `tests/app/article-page.test.tsx`, à l'intérieur du test « renders the h
     expect(sources.getAllByRole('link')).toHaveLength(article.sources.length);
 ```
 
-- [ ] **Step 4 : lancer la suite et le build**
+- [x] **Step 4 : lancer la suite et le build**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint && pnpm build`
 Expected : tests verts ; build listant `/[categorie]/[slug]` avec **24 chemins pré-rendus**.
 
 Si le build échoue en `ENOSPC`, libérer d'abord la place : `rm -rf .next`, puis relancer.
 
-- [ ] **Step 5 : contrôle éditorial automatisé**
+- [x] **Step 5 : contrôle éditorial automatisé**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -778,7 +778,7 @@ done < /tmp/urls.txt
 
 Expected : zéro doublon, zéro article sans média nommé, et un code 200 pour chaque URL. Un 403 sur `fda.gov` ou `arxiv.org` en `curl` sans navigateur n'est pas bloquant si la page s'ouvre dans gstack browse — le vérifier au cas par cas.
 
-- [ ] **Step 6 : QA visuelle d'un article et de sa liste de sources**
+- [x] **Step 6 : QA visuelle d'un article et de sa liste de sources**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -800,7 +800,7 @@ kill -TERM -- "-$(cat /tmp/cohezi-src.pgid)" 2>/dev/null; rm -f /tmp/cohezi-src.
 
 Lire les deux PNG et vérifier : le titre « SOURCES » en petites capitales grises, un filet de séparation au-dessus, le nom du média en gras suivi du titre et de la date, et sur mobile un retour à la ligne propre sans débordement.
 
-- [ ] **Step 7 : mettre la spec à jour et commiter**
+- [x] **Step 7 : mettre la spec à jour et commiter**
 
 Remplacer la ligne « Statut » de `docs/superpowers/specs/2026-09-05-cohezi-articles-reels-design.md` par :
 
@@ -814,6 +814,6 @@ git commit -m "test(cohezi): intégrité des sources, comptage 6/6/6/6 et spec i
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 ```
 
-- [ ] **Step 8 : rapport de fin**
+- [x] **Step 8 : rapport de fin**
 
 Rapporter : le nombre d'articles livrés, le nombre de sources distinctes citées, les URL devenues inaccessibles depuis le relevé et ce qui a été fait dans ce cas, les contradictions effectivement rapportées dans les textes, les sujets tirés de la réserve s'il y en a eu, le résultat de `pnpm build`, et le rappel que le contenu est désormais réel mais qu'il vieillit — douze articles portent sur des faits datés du 1er au 5 septembre 2026.
