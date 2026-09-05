@@ -40,6 +40,9 @@ export type ArticleBlock =
   /** Encadré « À retenir » : les points clés de l'article. */
   | { type: 'takeaway'; title: string; items: string[] };
 
+/** Organisation citée dans les corps d'article, liée vers son site officiel. */
+export type Entity = { name: string; href: string };
+
 /** Page consultée pour établir les faits d'un article. */
 export type Source = {
   /** Média ou organisme, tel qu'on le nomme dans la prose : « Next », « CNIL ». */
