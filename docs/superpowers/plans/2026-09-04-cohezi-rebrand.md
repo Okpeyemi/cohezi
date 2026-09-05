@@ -1941,7 +1941,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces : `Hero({ hero: HeroContent })`.
 - État attendu : test `hero` vert ; `latest-articles`, `page`, `newsletter-form` encore rouges.
 
-- [ ] **Step 1 : test qui échoue**
+- [x] **Step 1 : test qui échoue**
 
 `tests/components/sections/hero.test.tsx` (contenu complet) :
 ```tsx
@@ -1984,7 +1984,7 @@ describe('Hero', () => {
 Run : `pnpm test tests/components/sections/hero.test.tsx`
 Expected : FAIL — le hero rend encore le titre Rundown et la rangée de logos.
 
-- [ ] **Step 2 : `components/sections/hero.tsx` (contenu complet)**
+- [x] **Step 2 : `components/sections/hero.tsx` (contenu complet)**
 
 ```tsx
 import { NewsletterForm } from '@/components/ui/newsletter-form';
@@ -2023,7 +2023,7 @@ export function Hero({ hero }: { hero: HeroContent }) {
 ```
 Le carré vert est un `<span>` sans texte : il n'est pas repeint par la bascule au défilement, qui ne change que la propriété `color`.
 
-- [ ] **Step 3 : suppression, tests, commit**
+- [x] **Step 3 : suppression, tests, commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
