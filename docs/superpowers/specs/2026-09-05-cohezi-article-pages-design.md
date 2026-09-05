@@ -1,7 +1,7 @@
 # Spec — Pages d'article et corps de texte
 
 - Date : 2026-09-05
-- Statut : validé en brainstorming, en attente de relecture avant plan
+- Statut : **implémenté le 2026-09-05** (branche `feat/cohezi-article-pages`). Écarts connus : corps d’environ 240 mots au lieu des 400-600 prévus, `readingMinutes` recalculé à 2 pour tous les articles ; la typographie française n’utilise pas l’espace fine insécable avant `? ! ; :`.
 - Base : branche `feat/cohezi-articles-page` à `f7b93f8` (PR #2 ouverte)
 - Specs précédentes : `2026-09-04-cohezi-rebrand-design.md`, `2026-09-05-cohezi-category-pages-design.md`, `2026-09-05-cohezi-articles-page-design.md`
 - Guide de marque : `cohezi-homepage-spec-corrige.md`

@@ -1017,7 +1017,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 
 **Interfaces:** aucune nouvelle.
 
-- [ ] **Step 1 : audit statique**
+- [x] **Step 1 : audit statique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -1041,7 +1041,7 @@ for d in dupes[:3]:
 DUPES
 ```
 
-- [ ] **Step 2 : captures d'un article en 1440 et 375**
+- [x] **Step 2 : captures d'un article en 1440 et 375**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -1074,7 +1074,7 @@ Lire les quatre PNG et vérifier :
 
 Corriger tout écart dans les composants, relancer `pnpm build`, recapturer.
 
-- [ ] **Step 3 : parcours de navigation**
+- [x] **Step 3 : parcours de navigation**
 
 ```bash
 B="$HOME/.claude/skills/gstack/browse/dist/browse"
@@ -1094,7 +1094,7 @@ echo "erreurs console : $($B console --errors | grep -ci 'error')"
 Expected : la carte mène à l'article, le fil d'Ariane ramène à la liste filtrée, un article lié ouvre
 un autre article, aucune erreur console.
 
-- [ ] **Step 4 : vérification finale, statut de la spec, commit**
+- [x] **Step 4 : vérification finale, statut de la spec, commit**
 
 ```bash
 pnpm test && pnpm typecheck && pnpm lint && pnpm build

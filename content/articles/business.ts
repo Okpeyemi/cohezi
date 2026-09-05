@@ -42,7 +42,7 @@ export const businessArticles: Article[] = [
         title: 'À retenir',
         items: [
           'L’argent va au calcul, ressource devenue le vrai facteur limitant.',
-          'Le pari sectoriel évite la concurrence directe sur les modèles généralistes.',
+          'Deux fonds souverains européens entrent au capital : la levée est aussi politique.',
           'La validation viendra des contrats pluriannuels, pas de la valorisation.',
         ],
       },

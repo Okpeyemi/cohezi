@@ -32,7 +32,7 @@ export function ArticleHeader({ article, homeLabel }: ArticleHeaderProps) {
         <CategoryBadge label={category.label} tone="dark" />
       </div>
 
-      <h1 className="mx-auto mt-4 max-w-[720px] font-display text-4xl font-bold uppercase leading-[1.1] tracking-[-0.01em] text-paper md:text-5xl">
+      <h1 className="mx-auto mt-4 max-w-[720px] text-balance font-display text-4xl font-bold uppercase leading-[1.1] tracking-[-0.01em] text-paper md:text-5xl">
         {article.title}
       </h1>
       <p className="mx-auto mt-5 max-w-[620px] text-lg leading-7 text-paper/80">{article.excerpt}</p>
