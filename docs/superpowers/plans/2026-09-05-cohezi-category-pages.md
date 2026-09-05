@@ -159,7 +159,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes : `categories`, `categoryBySlug`, `Category`, `CategorySlug`, `cn`.
 - Produces : `CategoryTabs({ activeSlug: CategorySlug })`, `CategoryHero({ category: Category; articleCount: number })`.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/ui/category-tabs.test.tsx` :
 
@@ -225,7 +225,7 @@ describe('CategoryHero', () => {
 Run : `pnpm test tests/components/ui/category-tabs.test.tsx tests/components/sections/category-hero.test.tsx`
 Expected : FAIL — les deux modules n'existent pas.
 
-- [ ] **Step 2 : `components/ui/category-tabs.tsx`**
+- [x] **Step 2 : `components/ui/category-tabs.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -264,7 +264,7 @@ export function CategoryTabs({ activeSlug }: { activeSlug: CategorySlug }) {
 }
 ```
 
-- [ ] **Step 3 : `components/sections/category-hero.tsx`**
+- [x] **Step 3 : `components/sections/category-hero.tsx`**
 
 ```tsx
 import type { Category } from '@/content/types';
@@ -294,7 +294,7 @@ export function CategoryHero({ category, articleCount }: CategoryHeroProps) {
 }
 ```
 
-- [ ] **Step 4 : vérifier et commiter**
+- [x] **Step 4 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS.
