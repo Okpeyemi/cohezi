@@ -41,3 +41,17 @@ describe('ArticleBody entity links', () => {
     );
   });
 });
+
+describe('ArticleBody typography', () => {
+  it('justifies the paragraphs and lets the browser hyphenate', () => {
+    render(<ArticleBody blocks={blocks} />);
+    const paragraph = document.querySelector('[data-block="paragraph"]')!;
+    expect(paragraph.className).toContain('text-justify');
+    expect(paragraph.className).toContain('hyphens-auto');
+  });
+
+  it('leaves the quotation ranged left', () => {
+    render(<ArticleBody blocks={blocks} />);
+    expect(document.querySelector('[data-block="quote"]')!.className).not.toContain('text-justify');
+  });
+});

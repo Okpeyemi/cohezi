@@ -41,7 +41,12 @@ function Block({ block, first, segments }: { block: ArticleBlock; first: boolean
   switch (block.type) {
     case 'paragraph':
       return (
-        <p data-block="paragraph" className={cn('text-lg leading-8 text-ink/85', margin)}>
+        <p
+          data-block="paragraph"
+          // `hyphens-auto` s'appuie sur le lang="fr" du document : sans césure, une colonne
+          // étroite justifiée creuse des rivières entre les mots.
+          className={cn('text-lg leading-8 text-ink/85 text-justify hyphens-auto', margin)}
+        >
           {segments ? <Prose segments={segments} /> : block.text}
         </p>
       );
