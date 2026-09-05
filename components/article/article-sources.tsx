@@ -24,8 +24,12 @@ export function ArticleSources({ sources }: { sources: Source[] }) {
               <span className="font-semibold text-ink group-hover:text-accent">{source.outlet}</span>
               <span aria-hidden className="text-ink/40">{' · '}</span>
               <span className="text-ink/80">{source.title}</span>
-              <span aria-hidden className="text-ink/40">{' · '}</span>
-              <span className="text-ink/50">{formatDateFr(source.publishedAt)}</span>
+              {source.publishedAt ? (
+                <>
+                  <span aria-hidden className="text-ink/40">{' · '}</span>
+                  <span className="text-ink/50">{formatDateFr(source.publishedAt)}</span>
+                </>
+              ) : null}
             </a>
           </li>
         ))}

@@ -37,6 +37,23 @@ describe('ArticleSources', () => {
     expect(screen.getAllByText('1 septembre 2026')).toHaveLength(2);
   });
 
+  it('omits the date when the source does not display one', () => {
+    render(
+      <ArticleSources
+        sources={[
+          {
+            outlet: 'Stanford HAI',
+            title: 'The 2026 AI Index Report',
+            url: 'https://hai.stanford.edu/ai-index/2026-ai-index-report',
+          },
+        ]}
+      />,
+    );
+    const section = within(screen.getByRole('region', { name: 'Sources' }));
+    expect(section.getByRole('link')).toHaveTextContent('Stanford HAI · The 2026 AI Index Report');
+    expect(section.queryByText(/\d{4}$/)).toBeNull();
+  });
+
   it('renders nothing when there is no source', () => {
     const { container } = render(<ArticleSources sources={[]} />);
     expect(container).toBeEmptyDOMElement();

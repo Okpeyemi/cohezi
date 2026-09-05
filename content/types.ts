@@ -38,8 +38,8 @@ export type Source = {
   /** Titre exact de la page consultée. */
   title: string;
   url: string;
-  /** Date de publication de la source (AAAA-MM-JJ). */
-  publishedAt: string;
+  /** Date de publication de la source (AAAA-MM-JJ). Absente si la source n'en affiche aucune. */
+  publishedAt?: string;
 };
 
 export type Article = {
