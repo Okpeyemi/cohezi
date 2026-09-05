@@ -75,6 +75,17 @@ export type NewsletterCopy = {
   microCopy: string;
 };
 
+export type ArticlesPageCopy = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  searchLabel: string;
+  searchPlaceholder: string;
+  allLabel: string;
+  emptyTitle: string;
+  emptyAction: string;
+};
+
 export type SiteConfig = {
   name: string;
   tagline: string;

@@ -607,7 +607,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - `type ArticlesPageCopy` est défini en Task 4 ; pour cette tâche, le composant l'importe depuis
     `@/content/types`, donc **le type doit être ajouté ici**, avant son usage : voir Step 2.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/sections/section-hero.test.tsx` :
 
@@ -748,7 +748,7 @@ describe('ArticleBrowser', () => {
 Run : `pnpm test tests/components/sections/section-hero.test.tsx tests/components/sections/article-browser.test.tsx`
 Expected : FAIL — les deux modules et le type `ArticlesPageCopy` n'existent pas.
 
-- [ ] **Step 2 : `content/types.ts` — ajouter `ArticlesPageCopy`**
+- [x] **Step 2 : `content/types.ts` — ajouter `ArticlesPageCopy`**
 
 Après le type `NewsletterCopy`, ajouter :
 
@@ -767,7 +767,7 @@ export type ArticlesPageCopy = {
 
 Le champ correspondant dans `SiteConfig` est ajouté en Task 4 ; le type seul suffit ici.
 
-- [ ] **Step 3 : `components/sections/section-hero.tsx`**
+- [x] **Step 3 : `components/sections/section-hero.tsx`**
 
 ```tsx
 type SectionHeroProps = {
@@ -800,7 +800,7 @@ export function SectionHero({ eyebrow, title, description, articleCount }: Secti
 }
 ```
 
-- [ ] **Step 4 : `components/sections/article-browser.tsx`**
+- [x] **Step 4 : `components/sections/article-browser.tsx`**
 
 ```tsx
 'use client';
@@ -921,7 +921,7 @@ export function ArticleBrowser({ articles, copy }: ArticleBrowserProps) {
 }
 ```
 
-- [ ] **Step 5 : basculer `category-page.tsx` sur `SectionHero` et supprimer l'ancien bandeau**
+- [x] **Step 5 : basculer `category-page.tsx` sur `SectionHero` et supprimer l'ancien bandeau**
 
 Dans `components/sections/category-page.tsx`, remplacer l'import
 ```tsx
@@ -950,7 +950,7 @@ cd /home/darellchooks/Documents/cohezi
 git rm -q components/sections/category-hero.tsx tests/components/sections/category-hero.test.tsx
 ```
 
-- [ ] **Step 6 : vérifier et commiter**
+- [x] **Step 6 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS.

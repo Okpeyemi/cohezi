@@ -2,7 +2,7 @@ import { ArticleCard } from '@/components/cards/article-card';
 import { HeroLightSwitch } from '@/components/layout/hero-light-switch';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
-import { CategoryHero } from '@/components/sections/category-hero';
+import { SectionHero } from '@/components/sections/section-hero';
 import { NewsletterCta } from '@/components/sections/newsletter-cta';
 import { CategoryTabs } from '@/components/ui/category-tabs';
 import { articles } from '@/content/articles';
@@ -29,7 +29,12 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
       />
       <main className="flex-1">
         <div className="page-dark bg-ink">
-          <CategoryHero category={category} articleCount={list.length} />
+          <SectionHero
+            eyebrow={category.eyebrow}
+            title={category.title}
+            description={category.description}
+            articleCount={list.length}
+          />
           <div className="px-2 md:px-5">
             <div className="mx-auto rounded-sheet bg-paper px-5 py-16 md:py-20">
               <div className="flex justify-center">
