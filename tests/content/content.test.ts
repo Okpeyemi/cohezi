@@ -110,3 +110,10 @@ describe('articles page copy', () => {
     expect(site.sections.societe.viewAllHref).toBe('/articles?categorie=societe');
   });
 });
+
+describe('article page copy', () => {
+  it('carries the breadcrumb and related-articles labels', () => {
+    expect(site.article.homeLabel).toBe('Accueil');
+    expect(site.article.relatedTitle.length).toBeGreaterThan(0);
+  });
+});

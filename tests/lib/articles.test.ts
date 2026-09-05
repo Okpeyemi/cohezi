@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Article } from '@/content/types';
-import { byCategory, deepDive, latest, pickFeatured, sortByDate } from '@/lib/articles';
+import { byCategory, deepDive, findArticle, latest, pickFeatured, relatedArticles, sortByDate } from '@/lib/articles';
 
 const make = (slug: string, publishedAt: string, extra: Partial<Article> = {}): Article => ({
   slug,
@@ -10,6 +10,7 @@ const make = (slug: string, publishedAt: string, extra: Partial<Article> = {}): 
   publishedAt,
   readingMinutes: 5,
   image: { alt: slug },
+  body: [{ type: 'paragraph', text: 'Un paragraphe.' }],
   ...extra,
 });
 
@@ -65,5 +66,53 @@ describe('pickFeatured', () => {
 
   it('handles an empty list', () => {
     expect(pickFeatured([])).toEqual({ featured: undefined, rest: [] });
+  });
+});
+
+describe('findArticle', () => {
+  it('finds an article by its URL segment and slug', () => {
+    expect(findArticle(all, 'business', 'b')).toBe(b);
+    expect(findArticle(all, 'actualite', 'a')).toBe(a);
+  });
+
+  it('matches the plural URL segment of the analyse category', () => {
+    expect(findArticle(all, 'analyses', 'd')).toBe(d);
+    expect(findArticle(all, 'analyse', 'd')).toBeUndefined();
+  });
+
+  it('returns undefined for an unknown segment, an unknown slug or a mismatched pair', () => {
+    expect(findArticle(all, 'nimportequoi', 'a')).toBeUndefined();
+    expect(findArticle(all, 'actualite', 'inconnu')).toBeUndefined();
+    expect(findArticle(all, 'business', 'a')).toBeUndefined();
+  });
+});
+
+describe('relatedArticles', () => {
+  it('returns articles of the same category, newest first, excluding the current one', () => {
+    const business = [
+      make('b1', '2026-09-05', { category: 'business' }),
+      make('b2', '2026-09-04', { category: 'business' }),
+      make('b3', '2026-09-03', { category: 'business' }),
+      make('b4', '2026-09-02', { category: 'business' }),
+    ];
+    const [current] = business;
+    expect(relatedArticles(business, current!).map((x) => x.slug)).toEqual(['b2', 'b3', 'b4']);
+  });
+
+  it('tops up with other categories when the category is too small', () => {
+    const result = relatedArticles(all, d);
+    expect(result).toHaveLength(3);
+    expect(result).not.toContain(d);
+    expect(result[0]!.category).not.toBe('analyse');
+  });
+
+  it('honours the count argument', () => {
+    expect(relatedArticles(all, a, 1)).toHaveLength(1);
+  });
+
+  it('never returns the current article', () => {
+    for (const article of all) {
+      expect(relatedArticles(all, article)).not.toContain(article);
+    }
   });
 });
