@@ -17,10 +17,10 @@ describe('NewsletterForm', () => {
   it('shows a local error and skips the network for an invalid email', async () => {
     const user = userEvent.setup();
     render(<NewsletterForm />);
-    await user.type(screen.getByLabelText('Email address'), 'nope');
-    await user.click(screen.getByRole('button', { name: /subscribe/i }));
+    await user.type(screen.getByLabelText('Adresse e-mail'), 'nope');
+    await user.click(screen.getByRole('button', { name: /S’inscrire/ }));
     expect(screen.getByRole('status')).toHaveTextContent(MESSAGES.invalid);
-    expect(screen.getByLabelText('Email address')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByLabelText('Adresse e-mail')).toHaveAttribute('aria-invalid', 'true');
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -28,9 +28,9 @@ describe('NewsletterForm', () => {
     fetchMock.mockResolvedValue({ ok: true, status: 200 });
     const user = userEvent.setup();
     render(<NewsletterForm />);
-    const input = screen.getByLabelText('Email address');
+    const input = screen.getByLabelText('Adresse e-mail');
     await user.type(input, ' jane@example.com ');
-    await user.click(screen.getByRole('button', { name: /subscribe/i }));
+    await user.click(screen.getByRole('button', { name: /S’inscrire/ }));
     await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent(MESSAGES.success));
     expect(fetchMock).toHaveBeenCalledWith(
       '/api/newsletter',
@@ -43,8 +43,8 @@ describe('NewsletterForm', () => {
     fetchMock.mockResolvedValue({ ok: false, status: 500 });
     const user = userEvent.setup();
     render(<NewsletterForm />);
-    await user.type(screen.getByLabelText('Email address'), 'jane@example.com');
-    await user.click(screen.getByRole('button', { name: /subscribe/i }));
+    await user.type(screen.getByLabelText('Adresse e-mail'), 'jane@example.com');
+    await user.click(screen.getByRole('button', { name: /S’inscrire/ }));
     await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent(MESSAGES.failure));
   });
 
@@ -57,17 +57,17 @@ describe('NewsletterForm', () => {
     );
     const user = userEvent.setup();
     render(<NewsletterForm />);
-    await user.type(screen.getByLabelText('Email address'), 'jane@example.com');
-    const button = screen.getByRole('button', { name: /subscribe/i });
+    await user.type(screen.getByLabelText('Adresse e-mail'), 'jane@example.com');
+    const button = screen.getByRole('button', { name: /S’inscrire/ });
     await user.click(button);
     expect(button).toBeDisabled();
     resolve({ ok: true, status: 200 });
     await waitFor(() => expect(button).toBeEnabled());
   });
 
-  it('uses the given placeholder and button label', () => {
-    render(<NewsletterForm variant="footer" placeholder="Your email" buttonLabel="Go" />);
-    expect(screen.getByPlaceholderText('Your email')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /go/i })).toBeInTheDocument();
+  it('uses the given placeholder, button label and accent tone', () => {
+    render(<NewsletterForm variant="hero" buttonTone="accent" placeholder="Votre adresse e-mail" buttonLabel="Je m’inscris" />);
+    expect(screen.getByPlaceholderText('Votre adresse e-mail')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Je m’inscris/ }).className).toContain('bg-accent');
   });
 });

@@ -2246,7 +2246,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces : `DeepDive({ copy: DeepDiveCopy; article: Article })`, `NewsletterCta({ copy: NewsletterCopy })`, `NewsletterForm({ variant?; buttonTone?: 'ink' | 'accent'; placeholder?; buttonLabel?; endpoint?; className? })`, `MESSAGES` en français.
 - État attendu : tous les tests verts sauf `tests/app/page.test.tsx` (Task 7).
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/sections/deep-dive.test.tsx` :
 ```tsx
@@ -2319,7 +2319,7 @@ describe('NewsletterCta', () => {
 Run : `pnpm test tests/components/sections/deep-dive.test.tsx tests/components/sections/newsletter-cta.test.tsx tests/components/ui/newsletter-form.test.tsx`
 Expected : FAIL — composants introuvables, libellés anglais.
 
-- [ ] **Step 2 : `components/ui/newsletter-form.tsx` (messages FR et ton du bouton)**
+- [x] **Step 2 : `components/ui/newsletter-form.tsx` (messages FR et ton du bouton)**
 
 Remplacer `MESSAGES`, le type des props et la signature :
 ```tsx
@@ -2376,7 +2376,7 @@ Remplacer la classe du message d'état (couleurs Cohezi) :
         )}
 ```
 
-- [ ] **Step 3 : `components/sections/deep-dive.tsx`**
+- [x] **Step 3 : `components/sections/deep-dive.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -2425,7 +2425,7 @@ export function DeepDive({ copy, article }: DeepDiveProps) {
 }
 ```
 
-- [ ] **Step 4 : `components/sections/newsletter-cta.tsx`**
+- [x] **Step 4 : `components/sections/newsletter-cta.tsx`**
 
 ```tsx
 import { NewsletterForm } from '@/components/ui/newsletter-form';
@@ -2461,7 +2461,7 @@ export function NewsletterCta({ copy }: { copy: NewsletterCopy }) {
 }
 ```
 
-- [ ] **Step 5 : tests et commit**
+- [x] **Step 5 : tests et commit**
 
 Run : `pnpm test tests/components`
 Expected : PASS (tous les composants).

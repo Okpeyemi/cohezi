@@ -7,15 +7,16 @@ import { Button } from './button';
 import { Icon } from './icon';
 
 export const MESSAGES = {
-  invalid: 'Enter a valid email address.',
-  success: 'Check your inbox to confirm.',
-  failure: 'Something went wrong, try again.',
+  invalid: 'Saisissez une adresse e-mail valide.',
+  success: 'Vérifiez votre boîte mail pour confirmer.',
+  failure: 'Une erreur est survenue, réessayez.',
 } as const;
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
 type NewsletterFormProps = {
   variant?: 'hero' | 'footer';
+  buttonTone?: 'ink' | 'accent';
   placeholder?: string;
   buttonLabel?: string;
   endpoint?: string;
@@ -24,8 +25,9 @@ type NewsletterFormProps = {
 
 export function NewsletterForm({
   variant = 'hero',
-  placeholder = 'Email Address',
-  buttonLabel = 'Subscribe',
+  buttonTone = 'ink',
+  placeholder = 'Votre adresse e-mail',
+  buttonLabel = 'S’inscrire',
   endpoint = '/api/newsletter',
   className,
 }: NewsletterFormProps) {
@@ -67,7 +69,7 @@ export function NewsletterForm({
     <form onSubmit={handleSubmit} noValidate className={cn('w-full', isHero ? 'max-w-[512px]' : 'max-w-[320px]', className)}>
       <div className={cn('flex items-center gap-2 rounded-xl bg-paper p-1.5 ring-1 ring-ink/10', isHero && 'shadow-lg')}>
         <label htmlFor={inputId} className="sr-only">
-          Email address
+          Adresse e-mail
         </label>
         <input
           id={inputId}
@@ -85,7 +87,13 @@ export function NewsletterForm({
             isHero ? 'h-11 text-base' : 'h-9 text-sm',
           )}
         />
-        <Button type="submit" size={isHero ? 'md' : 'sm'} disabled={sending} className={cn(!isHero && 'h-9 px-3 text-sm')}>
+        <Button
+          type="submit"
+          variant={buttonTone}
+          size={isHero ? 'md' : 'sm'}
+          disabled={sending}
+          className={cn(!isHero && 'h-9 px-3 text-sm')}
+        >
           {buttonLabel}
           <Icon name="send" size={16} />
         </Button>
