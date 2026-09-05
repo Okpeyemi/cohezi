@@ -51,7 +51,7 @@
 **Interfaces:**
 - Produces : `Category { slug: CategorySlug; label: string; href: string; eyebrow: string; description: string }` ; les quatre entrées de `categories` renseignées.
 
-- [ ] **Step 1 : test qui échoue**
+- [x] **Step 1 : test qui échoue**
 
 Ajouter ce `describe` à la fin de `tests/content/content.test.ts` (le fichier importe déjà `categories` et `categoryBySlug`) :
 
@@ -75,7 +75,7 @@ describe('category metadata', () => {
 Run : `pnpm test tests/content/content.test.ts`
 Expected : FAIL — `eyebrow` et `description` n'existent pas sur `Category`.
 
-- [ ] **Step 2 : `content/types.ts`**
+- [x] **Step 2 : `content/types.ts`**
 
 Remplacer la ligne du type `Category` par :
 
@@ -91,7 +91,7 @@ export type Category = {
 };
 ```
 
-- [ ] **Step 3 : `content/categories.ts` (contenu complet)**
+- [x] **Step 3 : `content/categories.ts` (contenu complet)**
 
 ```ts
 import type { Category, CategorySlug } from './types';
@@ -133,7 +133,7 @@ export const categoryBySlug = Object.fromEntries(categories.map((category) => [c
 >;
 ```
 
-- [ ] **Step 4 : vérifier et commiter**
+- [x] **Step 4 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS.

@@ -57,3 +57,18 @@ describe('content integrity', () => {
     expect(site.headerCta.href).toBe('#newsletter');
   });
 });
+
+describe('category metadata', () => {
+  it('gives every category an eyebrow and a description', () => {
+    for (const category of categories) {
+      expect(category.eyebrow, category.slug).toMatch(/^Cohezi \/ /);
+      expect(category.description.length, category.slug).toBeGreaterThan(40);
+      expect(category.description.endsWith('.'), category.slug).toBe(true);
+    }
+  });
+
+  it('reuses the home page wording for Business and Société', () => {
+    expect(categoryBySlug.business.description).toBe(site.sections.business.subtitle);
+    expect(categoryBySlug.societe.description).toBe(site.sections.societe.subtitle);
+  });
+});
