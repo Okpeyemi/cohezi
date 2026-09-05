@@ -228,7 +228,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
   - `Pagination({ page: number; pageCount: number; buildHref: (page: number) => string })`
   - `CategoryTabs({ activeSlug: CategorySlug | 'all'; allLabel: string; buildHref: (slug: CategorySlug | 'all') => string })`
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/components/ui/search-field.test.tsx` :
 
@@ -365,7 +365,7 @@ describe('CategoryTabs', () => {
 Run : `pnpm test tests/components/ui/search-field.test.tsx tests/components/ui/pagination.test.tsx tests/components/ui/category-tabs.test.tsx`
 Expected : FAIL — `search-field` et `pagination` introuvables, `CategoryTabs` n'accepte pas encore `allLabel` ni `buildHref`.
 
-- [ ] **Step 2 : `components/ui/search-field.tsx`**
+- [x] **Step 2 : `components/ui/search-field.tsx`**
 
 ```tsx
 'use client';
@@ -414,7 +414,7 @@ export function SearchField({ label, placeholder, value, onChange, clearLabel = 
 }
 ```
 
-- [ ] **Step 3 : `components/ui/pagination.tsx`**
+- [x] **Step 3 : `components/ui/pagination.tsx`**
 
 ```tsx
 import Link from 'next/link';
@@ -495,7 +495,7 @@ export function Pagination({ page, pageCount, buildHref }: PaginationProps) {
 }
 ```
 
-- [ ] **Step 4 : `components/ui/category-tabs.tsx` (contenu complet)**
+- [x] **Step 4 : `components/ui/category-tabs.tsx` (contenu complet)**
 
 ```tsx
 import Link from 'next/link';
@@ -548,7 +548,7 @@ export function CategoryTabs({ activeSlug, allLabel, buildHref }: CategoryTabsPr
 }
 ```
 
-- [ ] **Step 5 : vérifier et commiter**
+- [x] **Step 5 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : les tests des trois primitives passent. `tests/components/sections/category-page.test.tsx`

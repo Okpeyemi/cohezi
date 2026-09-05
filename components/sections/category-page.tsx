@@ -33,7 +33,11 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
           <div className="px-2 md:px-5">
             <div className="mx-auto rounded-sheet bg-paper px-5 py-16 md:py-20">
               <div className="flex justify-center">
-                <CategoryTabs activeSlug={slug} />
+                <CategoryTabs
+                  activeSlug={slug}
+                  allLabel="Toutes"
+                  buildHref={(tab) => (tab === 'all' ? '/articles' : `/articles?categorie=${tab}`)}
+                />
               </div>
               {featured ? (
                 <div className="mx-auto mt-12 max-w-6xl">
