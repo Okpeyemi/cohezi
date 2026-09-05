@@ -1,7 +1,12 @@
 # Spec — Pages de catégorie Cohezi
 
 - Date : 2026-09-05
-- Statut : validé en brainstorming, en attente de relecture avant plan
+- Statut : **implémenté le 2026-09-05** (branche `feat/cohezi-category-pages`, plan
+  `docs/superpowers/plans/2026-09-05-cohezi-category-pages.md`). Deux écarts par rapport à la spec,
+  décidés en QA : `Category` gagne un champ `title` (nom de rubrique au pluriel, « Analyses ») distinct
+  de `label` (libellé singulier du badge d'article), utilisé pour le titre de page, les onglets et les
+  métadonnées ; les onglets sont compactés sous 768 px (`px-2.5 text-sm`) pour éviter un débordement
+  horizontal de 4 px. Les pages d'article restent en « bientôt disponible ».
 - Base : site Cohezi issu de la refonte (`docs/superpowers/specs/2026-09-04-cohezi-rebrand-design.md`), `main` à `c2d660d`
 - Guide de marque : `cohezi-homepage-spec-corrige.md`
 

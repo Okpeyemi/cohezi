@@ -16,7 +16,7 @@ export function CategoryHero({ category, articleCount }: CategoryHeroProps) {
         id="category-title"
         className="mx-auto mt-6 max-w-4xl font-display text-[32px] font-bold uppercase leading-[1.05] tracking-[-0.01em] text-paper md:text-5xl"
       >
-        {category.label}
+        {category.title}
       </h1>
       <p className="mx-auto mt-5 max-w-[560px] text-lg leading-7 text-paper/80">{category.description}</p>
       <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper/60">{countLabel}</p>

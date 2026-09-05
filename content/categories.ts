@@ -3,6 +3,7 @@ import type { Category, CategorySlug } from './types';
 export const categories: Category[] = [
   {
     slug: 'actualite',
+    title: 'Actualité',
     label: 'Actualité',
     href: '/actualite',
     eyebrow: 'Cohezi / Actualité',
@@ -10,6 +11,7 @@ export const categories: Category[] = [
   },
   {
     slug: 'business',
+    title: 'Business',
     label: 'Business',
     href: '/business',
     eyebrow: 'Cohezi / Business',
@@ -17,6 +19,7 @@ export const categories: Category[] = [
   },
   {
     slug: 'societe',
+    title: 'Société',
     label: 'Société',
     href: '/societe',
     eyebrow: 'Cohezi / Société',
@@ -24,6 +27,7 @@ export const categories: Category[] = [
   },
   {
     slug: 'analyse',
+    title: 'Analyses',
     label: 'Analyse',
     href: '/analyses',
     eyebrow: 'Cohezi / Analyses',

@@ -8,7 +8,7 @@ describe('CategoryHero', () => {
     const category = categoryBySlug.business;
     render(<CategoryHero category={category} articleCount={8} />);
     expect(screen.getByText(category.eyebrow)).toBeInTheDocument();
-    const heading = screen.getByRole('heading', { level: 1, name: category.label });
+    const heading = screen.getByRole('heading', { level: 1, name: category.title });
     expect(heading.className).toContain('font-display');
     expect(heading.className).toContain('uppercase');
     expect(screen.getByText(category.description)).toBeInTheDocument();

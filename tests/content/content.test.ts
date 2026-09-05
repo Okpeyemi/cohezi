@@ -67,6 +67,12 @@ describe('category metadata', () => {
     }
   });
 
+  it('keeps a plural section title distinct from the singular badge label', () => {
+    expect(categoryBySlug.analyse.title).toBe('Analyses');
+    expect(categoryBySlug.analyse.label).toBe('Analyse');
+    for (const category of categories) expect(category.title.length).toBeGreaterThan(0);
+  });
+
   it('reuses the home page wording for Business and Société', () => {
     expect(categoryBySlug.business.description).toBe(site.sections.business.subtitle);
     expect(categoryBySlug.societe.description).toBe(site.sections.societe.subtitle);

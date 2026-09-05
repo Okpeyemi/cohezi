@@ -16,12 +16,12 @@ const routes = [
 describe('category routes', () => {
   for (const route of routes) {
     it(`renders and describes the ${route.name} page`, () => {
-      expect(route.metadata.title).toBe(`${route.category.label} — Cohezi`);
+      expect(route.metadata.title).toBe(`${route.category.title} — Cohezi`);
       expect(route.metadata.description).toBe(route.category.description);
       render(<route.Page />);
-      expect(screen.getByRole('heading', { level: 1, name: route.category.label })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 1, name: route.category.title })).toBeInTheDocument();
       const tabs = within(screen.getByRole('navigation', { name: 'Catégories' }));
-      expect(tabs.getByRole('link', { name: route.category.label })).toHaveAttribute('aria-current', 'page');
+      expect(tabs.getByRole('link', { name: route.category.title })).toHaveAttribute('aria-current', 'page');
     });
   }
 });

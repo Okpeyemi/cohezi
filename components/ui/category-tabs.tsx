@@ -21,11 +21,11 @@ export function CategoryTabs({ activeSlug }: { activeSlug: CategorySlug }) {
             href={category.href}
             aria-current={isActive ? 'page' : undefined}
             className={cn(
-              'flex h-[33px] items-center rounded-lg px-4 font-sans text-[15px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+              'flex h-[33px] items-center rounded-lg px-2.5 font-sans text-sm leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:px-4 md:text-[15px]',
               isActive ? 'bg-ink text-paper' : 'text-ink hover:bg-line/60',
             )}
           >
-            {category.label}
+            {category.title}
           </Link>
         );
       })}

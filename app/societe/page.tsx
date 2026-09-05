@@ -5,7 +5,7 @@ import { categoryBySlug } from '@/content/categories';
 const category = categoryBySlug.societe;
 
 export const metadata: Metadata = {
-  title: `${category.label} — Cohezi`,
+  title: `${category.title} — Cohezi`,
   description: category.description,
 };
 

@@ -742,7 +742,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Interfaces:** aucune nouvelle.
 
-- [ ] **Step 1 : audit statique**
+- [x] **Step 1 : audit statique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -752,7 +752,7 @@ echo "--- un seul h1 par page de rubrique ---"
 grep -rn "<h1" components/sections/category-hero.tsx components/sections/category-page.tsx | wc -l   # attendu : 1
 ```
 
-- [ ] **Step 2 : captures des quatre pages en 1440 et 375**
+- [x] **Step 2 : captures des quatre pages en 1440 et 375**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -783,7 +783,7 @@ Lire les huit PNG et vérifier :
 
 Corriger tout écart dans les composants, relancer `pnpm build` et recapturer.
 
-- [ ] **Step 3 : parcours de navigation**
+- [x] **Step 3 : parcours de navigation**
 
 ```bash
 B="$HOME/.claude/skills/gstack/browse/dist/browse"
@@ -800,7 +800,7 @@ echo "clic sur une carte : $($B js "document.querySelector('main h1').textConten
 Expected : « Business », puis « Société » avec l'onglet Société actif, puis la page « bientôt
 disponible » de la rubrique de l'article cliqué.
 
-- [ ] **Step 4 : vérification finale, statut de la spec, commit**
+- [x] **Step 4 : vérification finale, statut de la spec, commit**
 
 ```bash
 pnpm test && pnpm typecheck && pnpm lint && pnpm build

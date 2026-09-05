@@ -9,7 +9,7 @@ describe('CategoryTabs', () => {
     const nav = screen.getByRole('navigation', { name: 'Catégories' });
     expect(within(nav).getAllByRole('link')).toHaveLength(4);
     for (const category of categories) {
-      expect(within(nav).getByRole('link', { name: category.label })).toHaveAttribute('href', category.href);
+      expect(within(nav).getByRole('link', { name: category.title })).toHaveAttribute('href', category.href);
     }
   });
 

@@ -11,6 +11,8 @@ export type Category = {
   slug: CategorySlug;
   label: string;
   href: string;
+  /** Nom de la rubrique tel qu'affiché en titre de page et dans les onglets (« Analyses »). */
+  title: string;
   /** Intitulé de l'eyebrow du bandeau, ex. « Cohezi / Business ». */
   eyebrow: string;
   /** Chapô de la rubrique, affiché sous le titre du bandeau. */
