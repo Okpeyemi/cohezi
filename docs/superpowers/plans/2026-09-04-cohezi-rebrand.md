@@ -471,7 +471,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Produces (composants) : `CategoryBadge({ label; tone?: 'light' | 'dark'; className? })`, `ArticleCard({ article; variant: 'featured' | 'compact' | 'grid' })`, `FilterableGrid<T>({ items; categories: readonly { slug: string; label: string }[]; getCategories; renderItems; filterLabel; emptyLabel?; allLabel? })` (onglets uniquement).
 - État attendu en fin de tâche : `pnpm test` vert **sauf** `hero`, `latest-articles`, `site-header`, `site-footer`, `page`, `newsletter-form` (contenus Rundown encore attendus, corrigés Tasks 3–6) ; `pnpm typecheck` **rouge** sur `hero.tsx`, `latest-articles.tsx`, `site-footer.tsx`, `site-header.tsx`, `app/page.tsx` (corrigés Tasks 3–7).
 
-- [ ] **Step 1 : `content/types.ts` (contenu complet)**
+- [x] **Step 1 : `content/types.ts` (contenu complet)**
 
 ```ts
 export type IconName = 'menu' | 'close' | 'arrow-right' | 'send' | 'search' | 'instagram' | 'linkedin' | 'tiktok';
@@ -564,7 +564,7 @@ export type SiteConfig = {
 };
 ```
 
-- [ ] **Step 2 : tests qui échouent (contenu, sélecteurs, date, placeholder, badge, carte, grille, icônes)**
+- [x] **Step 2 : tests qui échouent (contenu, sélecteurs, date, placeholder, badge, carte, grille, icônes)**
 
 `tests/content/content.test.ts` (contenu complet) :
 ```ts
@@ -870,7 +870,7 @@ describe('FilterableGrid', () => {
 Run : `pnpm test tests/content tests/lib tests/components/ui/category-badge.test.tsx tests/components/cards/article-card.test.tsx tests/components/ui/filterable-grid.test.tsx tests/components/ui/placeholder-image.test.tsx tests/components/ui/icon.test.tsx`
 Expected : FAIL — modules `format-date`, `category-badge` introuvables ; contenu, sélecteurs, palette, cartes, grille et icônes incohérents avec les nouveaux tests.
 
-- [ ] **Step 3 : `lib/icons.ts`, `lib/articles.ts`, `lib/format-date.ts`, `lib/placeholder.ts`**
+- [x] **Step 3 : `lib/icons.ts`, `lib/articles.ts`, `lib/format-date.ts`, `lib/placeholder.ts`**
 
 `lib/icons.ts` :
 ```ts
@@ -969,7 +969,7 @@ export function hashToGradient(seed: string): Gradient {
 ```
 (`hashString` et `truncateLabel` inchangés.)
 
-- [ ] **Step 4 : `content/categories.ts` et `content/site.ts`**
+- [x] **Step 4 : `content/categories.ts` et `content/site.ts`**
 
 `content/categories.ts` :
 ```ts
@@ -1098,7 +1098,7 @@ export const site: SiteConfig = {
 ```
 Les majuscules (eyebrows, titres, promesse, en-têtes du footer) sont appliquées par CSS `uppercase` dans les composants : le contenu reste en casse naturelle.
 
-- [ ] **Step 5 : `content/articles.ts` (24 articles)**
+- [x] **Step 5 : `content/articles.ts` (24 articles)**
 
 ```ts
 import type { Article } from './types';
@@ -1359,7 +1359,7 @@ export const articles: Article[] = [
 ];
 ```
 
-- [ ] **Step 6 : `components/ui/category-badge.tsx`, `components/cards/card-frame.tsx`, `components/cards/article-card.tsx`**
+- [x] **Step 6 : `components/ui/category-badge.tsx`, `components/cards/card-frame.tsx`, `components/cards/article-card.tsx`**
 
 `components/ui/category-badge.tsx` :
 ```tsx
@@ -1472,7 +1472,7 @@ export function ArticleCard({ article, variant }: ArticleCardProps) {
 }
 ```
 
-- [ ] **Step 7 : `components/ui/placeholder-image.tsx` et `components/ui/filterable-grid.tsx`**
+- [x] **Step 7 : `components/ui/placeholder-image.tsx` et `components/ui/filterable-grid.tsx`**
 
 `components/ui/placeholder-image.tsx` : remplacer le bloc `<svg>` retourné par :
 ```tsx
@@ -1557,7 +1557,7 @@ export function FilterableGrid<T>({
 }
 ```
 
-- [ ] **Step 8 : suppressions**
+- [x] **Step 8 : suppressions**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -1568,7 +1568,7 @@ git rm -q content/guides.ts content/tools.ts content/podcast.ts content/universi
   tests/components/cards/guide-card.test.tsx tests/components/cards/tool-card.test.tsx tests/components/ui/chip.test.tsx
 ```
 
-- [ ] **Step 9 : tests de la tâche, état attendu, commit**
+- [x] **Step 9 : tests de la tâche, état attendu, commit**
 
 Run : `pnpm test tests/content tests/lib tests/components/ui tests/components/cards tests/app/api`
 Expected : PASS sauf `tests/components/ui/newsletter-form.test.tsx` (libellés encore anglais, corrigé Task 6).

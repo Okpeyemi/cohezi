@@ -14,12 +14,12 @@ describe('hashString', () => {
 });
 
 describe('hashToGradient', () => {
-  it('returns two hsl colours 40 degrees apart and a 135deg angle', () => {
+  it('returns two neutral dark tones sharing the seed hue', () => {
     const g = hashToGradient('Rowan');
     const hue = hashString('Rowan') % 360;
     expect(g).toEqual({
-      from: `hsl(${hue} 55% 45%)`,
-      to: `hsl(${(hue + 40) % 360} 55% 60%)`,
+      from: `hsl(${hue} 6% 12%)`,
+      to: `hsl(${hue} 6% 22%)`,
       angle: 135,
     });
   });

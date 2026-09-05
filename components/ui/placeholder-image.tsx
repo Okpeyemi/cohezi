@@ -46,15 +46,16 @@ export function PlaceholderImage({
       </defs>
       <rect width="320" height="180" fill={`url(#${id})`} />
       <rect width="320" height="180" fill={`url(#${id}-lines)`} />
+      <rect x="16" y="16" width="10" height="10" fill="#7cff6b" />
       <text
         x="160"
-        y="95"
+        y="97"
         textAnchor="middle"
         fill="#f7f7f4"
         fillOpacity="0.92"
-        fontSize="16"
+        fontSize="15"
         fontWeight="600"
-        fontFamily="var(--font-sans), system-ui, sans-serif"
+        fontFamily="var(--font-display), var(--font-sans), system-ui, sans-serif"
       >
         {truncateLabel(label)}
       </text>

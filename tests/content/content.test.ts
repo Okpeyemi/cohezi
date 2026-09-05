@@ -1,66 +1,59 @@
 import { describe, expect, it } from 'vitest';
 import { articles } from '@/content/articles';
-import { guideCategories, toolCategories } from '@/content/categories';
-import { guides } from '@/content/guides';
-import { podcast } from '@/content/podcast';
+import { categories, categoryBySlug } from '@/content/categories';
 import { site } from '@/content/site';
-import { tools } from '@/content/tools';
-import { university } from '@/content/university';
 import { icons } from '@/lib/icons';
+import { latest } from '@/lib/articles';
 
 const unique = <T>(values: T[]) => new Set(values).size === values.length;
+const count = (slug: string) => articles.filter((a) => a.category === slug).length;
 
 describe('content integrity', () => {
   it('has the expected collection sizes', () => {
-    expect(articles).toHaveLength(5);
-    expect(guides).toHaveLength(8);
-    expect(tools).toHaveLength(12);
-    expect(guideCategories).toHaveLength(17);
-    expect(toolCategories).toHaveLength(20);
-    expect(university.features).toHaveLength(4);
-    expect(site.nav).toHaveLength(7);
-    expect(site.footer.columns.map((c) => c.links.length)).toEqual([3, 2, 5]);
+    expect(articles).toHaveLength(24);
+    expect(count('business')).toBe(8);
+    expect(count('societe')).toBe(8);
+    expect(count('actualite')).toBe(5);
+    expect(count('analyse')).toBe(3);
+    expect(categories).toHaveLength(4);
+    expect(site.nav).toHaveLength(4);
+    expect(site.footer.columns.map((c) => c.links.length)).toEqual([3, 3, 3]);
+    expect(site.footer.social).toHaveLength(3);
   });
 
-  it('uses unique slugs everywhere', () => {
+  it('uses unique slugs and valid ISO dates', () => {
     expect(unique(articles.map((a) => a.slug))).toBe(true);
-    expect(unique(guides.map((g) => g.slug))).toBe(true);
-    expect(unique(tools.map((t) => t.slug))).toBe(true);
-    expect(unique(guideCategories.map((c) => c.slug))).toBe(true);
-    expect(unique(toolCategories.map((c) => c.slug))).toBe(true);
+    expect(unique(categories.map((c) => c.slug))).toBe(true);
+    for (const article of articles) {
+      expect(article.publishedAt, article.slug).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Number.isNaN(Date.parse(article.publishedAt)), article.slug).toBe(false);
+      expect(article.readingMinutes).toBeGreaterThan(0);
+      expect(article.excerpt.length, article.slug).toBeGreaterThan(40);
+    }
   });
 
-  it('flags exactly one featured article', () => {
+  it('flags exactly one featured article and one deep dive', () => {
     expect(articles.filter((a) => a.featured)).toHaveLength(1);
+    expect(articles.filter((a) => a.deepDive)).toHaveLength(1);
+    expect(articles.find((a) => a.deepDive)?.category).toBe('analyse');
   });
 
-  it('only references existing categories', () => {
-    const guideSlugs = new Set(guideCategories.map((c) => c.slug));
-    const toolSlugs = new Set(toolCategories.map((c) => c.slug));
-    for (const guide of guides) {
-      expect(guide.categories.length).toBeGreaterThan(0);
-      for (const slug of guide.categories) expect(guideSlugs.has(slug), `${guide.slug} → ${slug}`).toBe(true);
-    }
-    for (const tool of tools) {
-      expect(tool.categories.length).toBeGreaterThan(0);
-      for (const slug of tool.categories) expect(toolSlugs.has(slug), `${tool.slug} → ${slug}`).toBe(true);
-    }
+  it('only references known categories and resolves category metadata', () => {
+    for (const article of articles) expect(categoryBySlug[article.category], article.slug).toBeDefined();
+    expect(categoryBySlug.analyse.href).toBe('/analyses');
   });
 
-  it('resolves every icon name to an icon', () => {
-    const names = [
-      ...guideCategories.map((c) => c.icon),
-      ...toolCategories.map((c) => c.icon),
-      ...tools.map((t) => t.badgeIcon),
-      ...university.features.map((f) => f.icon),
-      ...site.footer.social.map((s) => s.icon),
-      ...podcast.listenLinks.map((l) => l.icon),
-    ];
-    for (const name of names) expect(icons[name], name).toBeDefined();
+  it('puts the featured article first in the front page and covers every category', () => {
+    const front = latest(articles);
+    expect(front).toHaveLength(5);
+    expect(front[0]?.featured).toBe(true);
+    expect(new Set(front.map((a) => a.category)).size).toBe(4);
   });
 
-  it('keeps every trusted-by company and coming-soon slug non-empty', () => {
-    expect(site.hero.trustedBy).toHaveLength(7);
-    expect(site.comingSoonSlugs.every((s) => s.length > 0)).toBe(true);
+  it('resolves every icon name used by the site config', () => {
+    for (const social of site.footer.social) expect(icons[social.icon], social.label).toBeDefined();
+    expect(site.comingSoon).toHaveLength(7);
+    expect(site.comingSoon.every((page) => page.slug.length > 0 && page.label.length > 0)).toBe(true);
+    expect(site.headerCta.href).toBe('#newsletter');
   });
 });

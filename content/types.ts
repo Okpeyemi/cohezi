@@ -1,99 +1,43 @@
-export type IconName =
-  | 'menu'
-  | 'close'
-  | 'arrow-right'
-  | 'send'
-  | 'play'
-  | 'more'
-  | 'podcast'
-  | 'spotify'
-  | 'apple'
-  | 'x'
-  | 'instagram'
-  | 'linkedin'
-  | 'all'
-  | 'coding'
-  | 'marketing'
-  | 'content-creator'
-  | 'educator'
-  | 'sales'
-  | 'design'
-  | 'data-analysis'
-  | 'project-management'
-  | 'consulting'
-  | 'finance'
-  | 'government'
-  | 'healthcare'
-  | 'legal'
-  | 'recruiting-hr'
-  | 'student'
-  | 'general'
-  | 'business-operations'
-  | 'agents'
-  | 'consumer'
-  | 'miscellaneous'
-  | 'science'
-  | 'courses'
-  | 'daily-guides'
-  | 'workshops'
-  | 'community';
+export type IconName = 'menu' | 'close' | 'arrow-right' | 'send' | 'search' | 'instagram' | 'linkedin' | 'tiktok';
 
 /** Sans `src`, le composant PlaceholderImage génère un visuel. */
 export type ImageRef = { src?: string; alt: string };
 
 export type NavItem = { label: string; href: string };
 
-export type Category = { slug: string; label: string; icon: IconName };
+export type CategorySlug = 'actualite' | 'business' | 'societe' | 'analyse';
 
-export type ArticleTag = 'ai' | 'tech' | 'robotics';
+export type Category = { slug: CategorySlug; label: string; href: string };
 
 export type Article = {
   slug: string;
   title: string;
-  subtitle?: string;
-  author: string;
+  excerpt: string;
+  category: CategorySlug;
+  /** Date de publication ISO 8601 (AAAA-MM-JJ). */
+  publishedAt: string;
   readingMinutes: number;
-  tag: ArticleTag;
   image: ImageRef;
   featured?: boolean;
+  deepDive?: boolean;
 };
-
-export type Guide = {
-  slug: string;
-  title: string;
-  /** Slugs de `guideCategories`. Attribués d'après le titre (non visibles sur le site). */
-  categories: string[];
-  image: ImageRef;
-};
-
-export type Tool = {
-  slug: string;
-  name: string;
-  description: string;
-  /** Slugs de `toolCategories`. */
-  categories: string[];
-  /** Icône du badge en haut à gauche du visuel. */
-  badgeIcon: IconName;
-  image: ImageRef;
-};
-
-export type UniversityFeature = { title: string; description: string; icon: IconName };
 
 export type SocialLink = { label: string; href: string; icon: IconName };
 
 export type FooterColumn = { heading: string; links: NavItem[] };
 
+/** Page annoncée mais pas encore écrite : premier segment d'URL et libellé affiché. */
+export type ComingSoonPage = { slug: string; label: string };
+
 export type HeroContent = {
-  titleStart: string;
-  titleAccent: string;
-  titleEnd: string;
-  subtitle: string;
+  eyebrow: string;
+  titleLine1: string;
+  titleLine2: string;
+  description: string;
   emailPlaceholder: string;
   subscribeLabel: string;
-  trustedByPrefix: string;
-  trustedByCount: string;
-  trustedBySuffix: string;
-  trustedBy: string[];
+  microCopy: string;
+  promise: string;
 };
 
 export type SectionCopy = {
@@ -103,44 +47,42 @@ export type SectionCopy = {
   viewAllHref: string;
 };
 
+export type DeepDiveCopy = {
+  eyebrow: string;
+  number: string;
+  /** Suffixe du temps de lecture, ex. « min de lecture ». */
+  readLabel: string;
+  ctaLabel: string;
+};
+
+export type NewsletterCopy = {
+  eyebrow: string;
+  titleLine1: string;
+  titleLine2: string;
+  description: string;
+  emailPlaceholder: string;
+  buttonLabel: string;
+  microCopy: string;
+};
+
 export type SiteConfig = {
   name: string;
+  tagline: string;
   nav: NavItem[];
   headerCta: NavItem;
+  searchHref: string;
+  searchLabel: string;
   hero: HeroContent;
-  sections: { articles: SectionCopy; guides: SectionCopy; tools: SectionCopy };
+  sections: { latest: SectionCopy; business: SectionCopy; societe: SectionCopy };
+  deepDive: DeepDiveCopy;
+  newsletter: NewsletterCopy;
   footer: {
-    description: string;
+    /** Une entrée par ligne affichée. */
+    tagline: string[];
     columns: FooterColumn[];
     copyright: string;
     social: SocialLink[];
   };
-  /** Premiers segments d'URL servis par la page « coming soon ». */
-  comingSoonSlugs: string[];
-};
-
-export type PodcastContent = {
-  title: string;
-  description: string;
-  listenLinks: { label: string; href: string; icon: IconName }[];
-  card: {
-    platformLabel: string;
-    title: string;
-    meta: string;
-    description: string;
-    ctaLabel: string;
-    ctaHref: string;
-    footnote: string;
-    artworkAlt: string;
-  };
-};
-
-export type UniversityContent = {
-  brandName: string;
-  brandAccent: string;
-  title: string;
-  subtitle: string;
-  primaryCta: NavItem;
-  secondaryCta: NavItem;
-  features: UniversityFeature[];
+  /** Pages servies par la route attrape-tout, dans l'ordre de pré-rendu. */
+  comingSoon: ComingSoonPage[];
 };

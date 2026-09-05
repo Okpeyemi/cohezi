@@ -8,6 +8,7 @@ describe('PlaceholderImage', () => {
     const img = screen.getByRole('img', { name: 'Muse Spark artwork' });
     expect(img.tagName.toLowerCase()).toBe('svg');
     expect(img).toHaveTextContent('Muse Spark 1.3');
+    expect(img.querySelector('rect[fill="#7cff6b"]')).not.toBeNull();
   });
 
   it('is deterministic: the same label yields the same gradient stops', () => {

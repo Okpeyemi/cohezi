@@ -13,8 +13,8 @@ export function hashString(seed: string): number {
 export function hashToGradient(seed: string): Gradient {
   const hue = hashString(seed) % 360;
   return {
-    from: `hsl(${hue} 55% 45%)`,
-    to: `hsl(${(hue + 40) % 360} 55% 60%)`,
+    from: `hsl(${hue} 6% 12%)`,
+    to: `hsl(${hue} 6% 22%)`,
     angle: 135,
   };
 }

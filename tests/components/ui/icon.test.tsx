@@ -13,7 +13,7 @@ describe('Icon', () => {
   });
 
   it('becomes an accessible image when a label is given', () => {
-    render(<Icon name="spotify" label="Spotify" size={16} />);
-    expect(screen.getByRole('img', { name: 'Spotify' })).toHaveAttribute('width', '16');
+    render(<Icon name="tiktok" label="TikTok" size={16} />);
+    expect(screen.getByRole('img', { name: 'TikTok' })).toHaveAttribute('width', '16');
   });
 });
