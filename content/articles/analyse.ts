@@ -47,6 +47,14 @@ export const analyseArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'les-agents-ia-vont-ils-faire-disparaitre-les-applications',
@@ -89,6 +97,14 @@ export const analyseArticles: Article[] = [
           'La question centrale est le contrôle de la recommandation, pas la survie des interfaces.',
           'Les acteurs qui possèdent l’agent hériteront du pouvoir de prescription.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -136,6 +152,14 @@ export const analyseArticles: Article[] = [
           'Les trois mécanismes sont à l’œuvre dans l’IA, avec la même trajectoire.',
           'La diffusion des poids est le seul contrepoids structurel à cette concentration.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },

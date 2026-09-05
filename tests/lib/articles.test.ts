@@ -11,6 +11,9 @@ const make = (slug: string, publishedAt: string, extra: Partial<Article> = {}): 
   readingMinutes: 5,
   image: { alt: slug },
   body: [{ type: 'paragraph', text: 'Un paragraphe.' }],
+  sources: [
+    { outlet: 'Next', title: 'Un titre de source.', url: 'https://next.ink/1/', publishedAt: '2026-09-01' },
+  ],
   ...extra,
 });
 

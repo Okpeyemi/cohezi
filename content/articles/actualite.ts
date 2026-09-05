@@ -48,6 +48,14 @@ export const actualiteArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'ai-act-entre-en-application-ce-qui-devient-obligatoire',
@@ -90,6 +98,14 @@ export const actualiteArticles: Article[] = [
           'C’est l’usage qui classe un système, pas sa nature technique.',
           'Les premières décisions d’autorité fixeront l’interprétation réelle du texte.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -139,6 +155,14 @@ export const actualiteArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'google-fusionne-search-et-gemini',
@@ -186,6 +210,14 @@ export const actualiteArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'nvidia-devoile-ses-puces-rubin',
@@ -228,6 +260,14 @@ export const actualiteArticles: Article[] = [
           'Accueillir ces cartes suppose de reconstruire l’infrastructure électrique et de refroidissement.',
           'L’accès au matériel, réservé jusqu’en 2028, sélectionne les acteurs capables de rivaliser.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },

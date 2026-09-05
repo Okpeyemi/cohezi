@@ -47,6 +47,14 @@ export const businessArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'microsoft-facture-les-agents-a-la-tache',
@@ -89,6 +97,14 @@ export const businessArticles: Article[] = [
           'L’imprévisibilité budgétaire devient le principal frein à l’adoption.',
           'La définition contractuelle de la tâche facturable est le point à négocier.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -138,6 +154,14 @@ export const businessArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'le-cout-de-l-inference-a-chute-de-80-pour-cent-en-un-an',
@@ -185,6 +209,14 @@ export const businessArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'tsmc-samsung-intel-la-guerre-des-fonderies',
@@ -227,6 +259,14 @@ export const businessArticles: Article[] = [
           'Sans contrat d’approvisionnement, un acteur loue son calcul à ses concurrents.',
           'La diversification géographique ne produira d’effet qu’à partir de 2029.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -276,6 +316,14 @@ export const businessArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'pourquoi-les-banques-adoptent-l-ia-plus-vite-que-les-hopitaux',
@@ -323,6 +371,14 @@ export const businessArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'startups-ia-le-retour-des-valorisations-raisonnables',
@@ -368,6 +424,14 @@ export const businessArticles: Article[] = [
           'Marge brute et rétention ont remplacé la démonstration technique.',
           'Les rachats à prix cassés diront l’ampleur réelle de la correction.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },

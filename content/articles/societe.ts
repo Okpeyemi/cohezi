@@ -44,6 +44,14 @@ export const societeArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'radiologie-l-ia-detecte-mieux-mais-qui-est-responsable',
@@ -89,6 +97,14 @@ export const societeArticles: Article[] = [
           'La non-utilisation d’un outil disponible devient un risque juridique nouveau.',
           'La traçabilité des écarts est aujourd’hui la seule protection des praticiens.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -138,6 +154,14 @@ export const societeArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'deepfakes-en-campagne-comment-la-france-prepare-les-municipales',
@@ -180,6 +204,14 @@ export const societeArticles: Article[] = [
           'Le délai de retrait intervient après le pic de diffusion.',
           'Les scrutins locaux peu couverts sont les plus vulnérables.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -229,6 +261,14 @@ export const societeArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'vos-photos-entrainent-des-modeles-le-nouveau-consentement',
@@ -276,6 +316,14 @@ export const societeArticles: Article[] = [
         ],
       },
     ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
+      },
+    ],
   },
   {
     slug: 'assistants-vocaux-a-l-ecole-primaire-l-experimentation-qui-divise',
@@ -318,6 +366,14 @@ export const societeArticles: Article[] = [
           'Les effets à long terme sur la motivation restent inconnus.',
           'Le traitement des enregistrements de voix décidera de l’acceptabilité.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },
@@ -365,6 +421,14 @@ export const societeArticles: Article[] = [
           'C’est le rythme du travail qui change, pas son contenu.',
           'La négociation porte désormais sur la charge, pas sur les outils.',
         ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Cohezi',
+        title: 'Contenu de démonstration, en attente de sources réelles',
+        url: 'https://cohezi.example/placeholder',
+        publishedAt: '2026-09-05',
       },
     ],
   },

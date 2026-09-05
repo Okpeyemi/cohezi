@@ -31,6 +31,17 @@ export type ArticleBlock =
   /** Encadré « À retenir » : les points clés de l'article. */
   | { type: 'takeaway'; title: string; items: string[] };
 
+/** Page consultée pour établir les faits d'un article. */
+export type Source = {
+  /** Média ou organisme, tel qu'on le nomme dans la prose : « Next », « CNIL ». */
+  outlet: string;
+  /** Titre exact de la page consultée. */
+  title: string;
+  url: string;
+  /** Date de publication de la source (AAAA-MM-JJ). */
+  publishedAt: string;
+};
+
 export type Article = {
   slug: string;
   title: string;
@@ -44,6 +55,8 @@ export type Article = {
   deepDive?: boolean;
   /** Corps de l'article, 5 à 8 blocs. */
   body: ArticleBlock[];
+  /** Sources consultées, 1 à 4 par article. Obligatoire : pas d'article sans source. */
+  sources: Source[];
 };
 
 export type SocialLink = { label: string; href: string; icon: IconName };

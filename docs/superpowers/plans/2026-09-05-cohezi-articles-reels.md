@@ -55,7 +55,7 @@
 
 Cette tâche rend le champ obligatoire **avant** d'avoir le vrai contenu. Les 24 articles fictifs reçoivent donc une source provisoire, remplacée dans les tâches 2 à 5. C'est volontaire : le compilateur garde la contrainte active pendant toute la réécriture.
 
-- [ ] **Step 1 : écrire le test du composant, qui échoue**
+- [x] **Step 1 : écrire le test du composant, qui échoue**
 
 `tests/components/article/article-sources.test.tsx` :
 
@@ -106,12 +106,12 @@ describe('ArticleSources', () => {
 });
 ```
 
-- [ ] **Step 2 : lancer le test pour vérifier qu'il échoue**
+- [x] **Step 2 : lancer le test pour vérifier qu'il échoue**
 
 Run : `pnpm test tests/components/article/article-sources.test.tsx`
 Expected : FAIL — « Failed to resolve import "@/components/article/article-sources" ».
 
-- [ ] **Step 3 : ajouter le type `Source` et rendre `sources` obligatoire**
+- [x] **Step 3 : ajouter le type `Source` et rendre `sources` obligatoire**
 
 Dans `content/types.ts`, ajouter juste avant `export type Article` :
 
@@ -135,7 +135,7 @@ Puis, dans `export type Article`, après le champ `body` :
   sources: Source[];
 ```
 
-- [ ] **Step 4 : écrire le composant**
+- [x] **Step 4 : écrire le composant**
 
 `components/article/article-sources.tsx` :
 
@@ -175,7 +175,7 @@ export function ArticleSources({ sources }: { sources: Source[] }) {
 }
 ```
 
-- [ ] **Step 5 : brancher le composant dans la page d'article**
+- [x] **Step 5 : brancher le composant dans la page d'article**
 
 Dans `app/[categorie]/[slug]/page.tsx`, ajouter l'import :
 
@@ -196,7 +196,7 @@ puis, à l'intérieur de l'élément `<article>`, après `<ArticleBody …/>` :
 
 La largeur de 680 px reprend celle du corps, définie dans `ArticleBody`.
 
-- [ ] **Step 6 : donner une source provisoire aux 24 articles fictifs**
+- [x] **Step 6 : donner une source provisoire aux 24 articles fictifs**
 
 Le compilateur refuse maintenant les articles existants. Ajouter à chaque objet article des quatre fichiers de `content/articles/`, juste après le tableau `body`, ce bloc **identique** — il sera remplacé aux tâches 2 à 5 :
 
@@ -211,7 +211,7 @@ Le compilateur refuse maintenant les articles existants. Ajouter à chaque objet
     ],
 ```
 
-- [ ] **Step 7 : ajouter `sources` aux deux fabriques de test**
+- [x] **Step 7 : ajouter `sources` aux deux fabriques de test**
 
 Dans `tests/lib/articles.test.ts` et `tests/lib/search.test.ts`, la fabrique `make` construit un `Article`. Ajouter après la ligne `body: [{ type: 'paragraph', text: 'Un paragraphe.' }],` :
 
@@ -221,12 +221,12 @@ Dans `tests/lib/articles.test.ts` et `tests/lib/search.test.ts`, la fabrique `ma
   ],
 ```
 
-- [ ] **Step 8 : lancer la suite complète**
+- [x] **Step 8 : lancer la suite complète**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS. Si `typecheck` signale un `Article` sans `sources`, c'est un objet oublié au Step 6 : le message donne le fichier et la ligne.
 
-- [ ] **Step 9 : commit**
+- [x] **Step 9 : commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -395,7 +395,7 @@ Corriger chaque ligne `FIX` en alignant `readingMinutes` sur la valeur calculée
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS. Le test de comptage par rubrique est ajusté à la Task 6 ; s'il échoue ici en annonçant `expected 6 to be 5`, c'est normal et attendu — passer à l'étape suivante.
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -481,7 +481,7 @@ Corriger chaque ligne `FIX`.
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : `typecheck` et `lint` PASS ; le seul échec toléré est le comptage par rubrique dans `content.test.ts`, ajusté à la Task 6.
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -566,7 +566,7 @@ Corriger chaque ligne `FIX`.
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : `typecheck` et `lint` PASS.
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -644,7 +644,7 @@ Corriger chaque ligne `FIX`.
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
