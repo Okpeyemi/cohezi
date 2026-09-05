@@ -1263,7 +1263,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Interfaces:** aucune nouvelle.
 
-- [ ] **Step 1 : audit statique**
+- [x] **Step 1 : audit statique**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -1276,7 +1276,7 @@ echo "--- anciennes adresses résiduelles dans le contenu ---"
 grep -rnE "href: '/(actualite|business|societe|analyses|recherche)'" content || echo "  OK"
 ```
 
-- [ ] **Step 2 : captures et mesures**
+- [x] **Step 2 : captures et mesures**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -1308,7 +1308,7 @@ Lire les six PNG et vérifier :
 
 Corriger tout écart, relancer `pnpm build`, recapturer.
 
-- [ ] **Step 3 : parcours fonctionnels**
+- [x] **Step 3 : parcours fonctionnels**
 
 ```bash
 B="$HOME/.claude/skills/gstack/browse/dist/browse"
@@ -1332,7 +1332,7 @@ Expected : la recherche réduit les cartes et écrit `?q=mistral` dans l'URL ; l
 conserve la recherche ; la page 2 change les cartes et l'URL ; « zzzz » affiche l'état vide ; le menu
 mène à `/articles?categorie=business` avec l'onglet Business actif.
 
-- [ ] **Step 4 : vérification finale, statut de la spec, commit**
+- [x] **Step 4 : vérification finale, statut de la spec, commit**
 
 ```bash
 pnpm test && pnpm typecheck && pnpm lint && pnpm build

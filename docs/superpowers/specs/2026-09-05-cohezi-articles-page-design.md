@@ -1,7 +1,13 @@
 # Spec — Page d'articles unique, avec recherche et pagination
 
 - Date : 2026-09-05
-- Statut : validé en brainstorming, en attente de relecture avant plan
+- Statut : **implémenté le 2026-09-05** (branche `feat/cohezi-articles-page`, plan
+  `docs/superpowers/plans/2026-09-05-cohezi-articles-page.md`). Trois écarts décidés en cours de route :
+  `/recherche` quitte `site.comingSoon` puisqu'il redirige désormais, sinon on pré-rendait une page
+  inatteignable ; les onglets défilent horizontalement sous 768 px, la barre à cinq entrées débordait
+  de 21 px ; cinq assertions de tests figeaient les anciennes adresses et dérivent maintenant du
+  contenu. Le décompte du bandeau et la ligne de résultats affichent tous deux « 24 articles » sans
+  filtre : redondance assumée, les deux divergent dès qu'un filtre s'applique.
 - Base : `main` à `7adb5ee` (pages de rubrique fusionnées par la PR #1)
 - Specs précédentes : `2026-09-04-cohezi-rebrand-design.md`, `2026-09-05-cohezi-category-pages-design.md`
 - Guide de marque : `cohezi-homepage-spec-corrige.md`

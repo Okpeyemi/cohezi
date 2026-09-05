@@ -23,26 +23,30 @@ export function CategoryTabs({ activeSlug, allLabel, buildHref }: CategoryTabsPr
   ];
 
   return (
-    <nav
-      aria-label="Catégories"
-      className="inline-flex items-center gap-1 rounded-xl border border-line bg-paper p-1"
-    >
-      {tabs.map((tab) => {
-        const isActive = tab.slug === activeSlug;
-        return (
-          <Link
-            key={tab.slug}
-            href={buildHref(tab.slug)}
-            aria-current={isActive ? 'page' : undefined}
-            className={cn(
-              'flex h-[33px] items-center rounded-lg px-2.5 font-sans text-sm leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:px-4 md:text-[15px]',
-              isActive ? 'bg-ink text-paper' : 'text-ink hover:bg-line/60',
-            )}
-          >
-            {tab.label}
-          </Link>
-        );
-      })}
-    </nav>
+    // Sous md, la barre défile horizontalement : elle reste utilisable quel que soit
+    // le nombre de rubriques, sans déborder de la fenêtre.
+    <div className="-mx-5 flex justify-start overflow-x-auto px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:justify-center md:overflow-visible md:px-0">
+      <nav
+        aria-label="Catégories"
+        className="inline-flex w-max shrink-0 items-center gap-1 rounded-xl border border-line bg-paper p-1"
+      >
+        {tabs.map((tab) => {
+          const isActive = tab.slug === activeSlug;
+          return (
+            <Link
+              key={tab.slug}
+              href={buildHref(tab.slug)}
+              aria-current={isActive ? 'page' : undefined}
+              className={cn(
+                'flex h-[33px] shrink-0 items-center rounded-lg px-2.5 font-sans text-sm leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:px-4 md:text-[15px]',
+                isActive ? 'bg-ink text-paper' : 'text-ink hover:bg-line/60',
+              )}
+            >
+              {tab.label}
+            </Link>
+          );
+        })}
+      </nav>
+    </div>
   );
 }
