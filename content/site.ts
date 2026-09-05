@@ -68,6 +68,10 @@ export const site: SiteConfig = {
     emptyTitle: 'Aucun article ne correspond.',
     emptyAction: 'Réinitialiser les filtres',
   },
+  article: {
+    homeLabel: 'Accueil',
+    relatedTitle: 'À lire ensuite',
+  },
   footer: {
     tagline: ['Comprendre l’IA.', 'Comprendre ce qui change.'],
     columns: [

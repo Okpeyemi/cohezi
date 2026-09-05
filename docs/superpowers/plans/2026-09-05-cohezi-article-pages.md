@@ -58,7 +58,7 @@
 - Produces (fonctions) : `findArticle(articles, categorySegment, slug): Article | undefined`, `relatedArticles(articles, current, count = 3): Article[]`.
 - État attendu : `pnpm typecheck` **rouge** sur `content/articles.ts`, dont les 24 articles n'ont pas encore de `body` (corrigé en Task 2). Les tests de cette tâche passent ; la suite complète est rouge sur le fichier de contenu.
 
-- [ ] **Step 1 : `content/types.ts`**
+- [x] **Step 1 : `content/types.ts`**
 
 Avant le type `Article`, ajouter l'union de blocs :
 
@@ -94,7 +94,7 @@ Dans `SiteConfig`, après `articles: ArticlesPageCopy;`, ajouter :
   article: ArticlePageCopy;
 ```
 
-- [ ] **Step 2 : tests des deux sélecteurs, qui échouent**
+- [x] **Step 2 : tests des deux sélecteurs, qui échouent**
 
 Ajouter à la fin de `tests/lib/articles.test.ts` (le fichier définit déjà `make`, `a`, `b`, `c`, `d`,
 `e`, `f` et `all` ; `make` doit gagner un `body` puisque le champ devient obligatoire) :
@@ -172,7 +172,7 @@ Ajouter `findArticle` et `relatedArticles` à l'import en tête de fichier.
 Run : `pnpm test tests/lib/articles.test.ts`
 Expected : FAIL — `findArticle` et `relatedArticles` ne sont pas exportés.
 
-- [ ] **Step 3 : `lib/articles.ts` — les deux sélecteurs**
+- [x] **Step 3 : `lib/articles.ts` — les deux sélecteurs**
 
 Ajouter en tête l'import des catégories, puis les deux fonctions à la fin du fichier :
 
@@ -211,7 +211,7 @@ export function relatedArticles(
 Run : `pnpm test tests/lib/articles.test.ts`
 Expected : PASS.
 
-- [ ] **Step 4 : `content/site.ts` — bloc `article`**
+- [x] **Step 4 : `content/site.ts` — bloc `article`**
 
 Après le bloc `articles: { … },`, ajouter :
 
@@ -222,7 +222,7 @@ Après le bloc `articles: { … },`, ajouter :
   },
 ```
 
-- [ ] **Step 5 : test de contenu, puis vérification partielle**
+- [x] **Step 5 : test de contenu, puis vérification partielle**
 
 Ajouter à la fin de `tests/content/content.test.ts` :
 
@@ -242,7 +242,7 @@ Run : `pnpm typecheck`
 Expected : **ÉCHEC attendu**, une erreur par article dans `content/articles.ts` : « Property 'body'
 is missing ». C'est le point de départ de la Task 2. Ne pas tenter de corriger ici.
 
-- [ ] **Step 6 : commit**
+- [x] **Step 6 : commit**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi

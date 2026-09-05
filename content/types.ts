@@ -23,6 +23,14 @@ export type Category = {
   description: string;
 };
 
+export type ArticleBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'quote'; text: string; author?: string }
+  | { type: 'list'; items: string[] }
+  /** Encadré « À retenir » : les points clés de l'article. */
+  | { type: 'takeaway'; title: string; items: string[] };
+
 export type Article = {
   slug: string;
   title: string;
@@ -34,6 +42,8 @@ export type Article = {
   image: ImageRef;
   featured?: boolean;
   deepDive?: boolean;
+  /** Corps de l'article, 5 à 8 blocs. */
+  body: ArticleBlock[];
 };
 
 export type SocialLink = { label: string; href: string; icon: IconName };
@@ -90,6 +100,11 @@ export type ArticlesPageCopy = {
   emptyAction: string;
 };
 
+export type ArticlePageCopy = {
+  homeLabel: string;
+  relatedTitle: string;
+};
+
 export type SiteConfig = {
   name: string;
   tagline: string;
@@ -102,6 +117,7 @@ export type SiteConfig = {
   deepDive: DeepDiveCopy;
   newsletter: NewsletterCopy;
   articles: ArticlesPageCopy;
+  article: ArticlePageCopy;
   footer: {
     /** Une entrée par ligne affichée. */
     tagline: string[];
