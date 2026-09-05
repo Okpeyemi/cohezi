@@ -52,7 +52,7 @@ describe('content integrity', () => {
 
   it('resolves every icon name used by the site config', () => {
     for (const social of site.footer.social) expect(icons[social.icon], social.label).toBeDefined();
-    expect(site.comingSoon).toHaveLength(7);
+    expect(site.comingSoon).toHaveLength(3);
     expect(site.comingSoon.every((page) => page.slug.length > 0 && page.label.length > 0)).toBe(true);
     expect(site.headerCta.href).toBe('#newsletter');
   });

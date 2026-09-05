@@ -472,7 +472,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes : `CategoryPage`, `categories`, `categoryBySlug`, `site.comingSoon`.
 - Produces : `isKnownSection(segment: string | undefined): boolean` depuis `@/lib/routes` ; quatre routes exportant `metadata` et un composant par défaut.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/lib/routes.test.ts` :
 
@@ -554,7 +554,7 @@ Supprimer l'ancien test « accepts a deeper path under a known section », rempl
 Run : `pnpm test tests/lib/routes.test.ts tests/app`
 Expected : FAIL — `@/lib/routes` et les quatre routes n'existent pas, `comingSoon` en contient encore sept.
 
-- [ ] **Step 2 : `lib/routes.ts`**
+- [x] **Step 2 : `lib/routes.ts`**
 
 ```ts
 import { categories } from '@/content/categories';
@@ -577,7 +577,7 @@ export function isKnownSection(segment: string | undefined): boolean {
 Note : `href` vaut `/analyses` pour la rubrique de slug `analyse` ; c'est bien le segment d'URL,
 et non le slug de catégorie, qui doit être accepté.
 
-- [ ] **Step 3 : `content/site.ts` — retirer les catégories de `comingSoon`**
+- [x] **Step 3 : `content/site.ts` — retirer les catégories de `comingSoon`**
 
 Remplacer le bloc `comingSoon` par :
 
@@ -589,7 +589,7 @@ Remplacer le bloc `comingSoon` par :
   ],
 ```
 
-- [ ] **Step 4 : `app/[...slug]/page.tsx` — accepter les catégories comme premier segment**
+- [x] **Step 4 : `app/[...slug]/page.tsx` — accepter les catégories comme premier segment**
 
 Remplacer les imports et la fonction `findPage` par :
 
@@ -637,7 +637,7 @@ export default async function ComingSoonPage({ params }: ComingSoonPageProps) {
 
 Le reste du composant est inchangé, à ceci près que `{page.label}` devient `{label}` dans le `h1`.
 
-- [ ] **Step 5 : les quatre routes**
+- [x] **Step 5 : les quatre routes**
 
 `app/actualite/page.tsx` :
 ```tsx
@@ -711,7 +711,7 @@ export default function Page() {
 }
 ```
 
-- [ ] **Step 6 : vérification complète et routes servies**
+- [x] **Step 6 : vérification complète et routes servies**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint && pnpm build`
 Expected : tests verts, build listant `/`, `/actualite`, `/analyses`, `/business`, `/societe`, `/_not-found`, `/api/newsletter` et `/[...slug]` avec 3 chemins pré-rendus.
@@ -724,7 +724,7 @@ for p in / /actualite /business /societe /analyses /business/un-article /a-propo
 ```
 Expected : tout en 200 sauf `/inconnu` en 404.
 
-- [ ] **Step 7 : commit**
+- [x] **Step 7 : commit**
 
 ```bash
 git add -A app lib content tests docs/superpowers/plans/
