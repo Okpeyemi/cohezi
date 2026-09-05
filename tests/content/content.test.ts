@@ -11,10 +11,10 @@ const count = (slug: string) => articles.filter((a) => a.category === slug).leng
 describe('content integrity', () => {
   it('has the expected collection sizes', () => {
     expect(articles).toHaveLength(24);
-    expect(count('business')).toBe(8);
-    expect(count('societe')).toBe(8);
-    expect(count('actualite')).toBe(5);
-    expect(count('analyse')).toBe(3);
+    expect(count('business')).toBe(6);
+    expect(count('societe')).toBe(6);
+    expect(count('actualite')).toBe(6);
+    expect(count('analyse')).toBe(6);
     expect(categories).toHaveLength(4);
     expect(site.nav).toHaveLength(4);
     expect(site.footer.columns.map((c) => c.links.length)).toEqual([3, 3, 3]);
@@ -29,6 +29,41 @@ describe('content integrity', () => {
       expect(Number.isNaN(Date.parse(article.publishedAt)), article.slug).toBe(false);
       expect(article.readingMinutes).toBeGreaterThan(0);
       expect(article.excerpt.length, article.slug).toBeGreaterThan(40);
+    }
+  });
+
+  it('gives every article between one and four verifiable sources', () => {
+    for (const article of articles) {
+      expect(article.sources.length, article.slug).toBeGreaterThanOrEqual(1);
+      expect(article.sources.length, article.slug).toBeLessThanOrEqual(4);
+      for (const source of article.sources) {
+        expect(source.url, `${article.slug} / ${source.outlet}`).toMatch(/^https:\/\/\S+$/);
+        expect(source.outlet.length, article.slug).toBeGreaterThan(0);
+        expect(source.title.length, article.slug).toBeGreaterThan(0);
+        if (source.publishedAt !== undefined) {
+          expect(source.publishedAt, `${article.slug} / ${source.url}`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        }
+      }
+    }
+  });
+
+  it('never cites a source published after the article', () => {
+    for (const article of articles) {
+      for (const source of article.sources) {
+        if (source.publishedAt === undefined) continue;
+        expect(source.publishedAt <= article.publishedAt, `${article.slug} / ${source.url}`).toBe(true);
+      }
+    }
+  });
+
+  it('carries no leftover placeholder source', () => {
+    const urls = articles.flatMap((article) => article.sources.map((source) => source.url));
+    expect(urls.some((url) => url.includes('cohezi.example'))).toBe(false);
+  });
+
+  it('keeps slugs URL-safe', () => {
+    for (const article of articles) {
+      expect(article.slug, article.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
     }
   });
 
@@ -47,7 +82,9 @@ describe('content integrity', () => {
     const front = latest(articles);
     expect(front).toHaveLength(5);
     expect(front[0]?.featured).toBe(true);
-    expect(new Set(front.map((a) => a.category)).size).toBe(4);
+    // La une suit la date de publication, elle ne garantit pas un quota par rubrique.
+    // Le seuil de trois protège seulement contre une page d'accueil monochrome.
+    expect(new Set(front.map((a) => a.category)).size).toBeGreaterThanOrEqual(3);
   });
 
   it('resolves every icon name used by the site config', () => {

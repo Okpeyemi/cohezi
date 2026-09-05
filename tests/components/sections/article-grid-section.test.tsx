@@ -8,11 +8,11 @@ import { byCategory } from '@/lib/articles';
 const business = byCategory(articles, 'business');
 
 describe('ArticleGridSection', () => {
-  it('renders the heading, the eight cards and the view-all link', () => {
+  it('renders the heading, one card per article and the view-all link', () => {
     render(<ArticleGridSection id="business" copy={site.sections.business} articles={business} />);
     expect(screen.getByRole('heading', { level: 2, name: 'Business' })).toHaveAttribute('id', 'business-title');
-    expect(screen.getAllByRole('listitem')).toHaveLength(8);
-    expect(screen.getAllByRole('article')).toHaveLength(8);
+    expect(screen.getAllByRole('listitem')).toHaveLength(business.length);
+    expect(screen.getAllByRole('article')).toHaveLength(business.length);
     expect(screen.getByRole('link', { name: /Voir tout le business/ })).toHaveAttribute('href', site.sections.business.viewAllHref);
   });
 

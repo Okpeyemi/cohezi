@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { ArticleCard } from '@/components/cards/article-card';
 import { articles } from '@/content/articles';
+import { categoryBySlug } from '@/content/categories';
+import { formatDateFr } from '@/lib/format-date';
 
 const featured = articles.find((a) => a.featured)!;
 const business = articles.find((a) => a.category === 'business')!;
@@ -9,12 +11,13 @@ const business = articles.find((a) => a.category === 'business')!;
 describe('ArticleCard', () => {
   it('renders the featured variant with badge, excerpt and French meta', () => {
     render(<ArticleCard article={featured} variant="featured" />);
-    expect(screen.getByRole('link')).toHaveAttribute('href', `/actualite/${featured.slug}`);
-    expect(screen.getByText('Actualité')).toBeInTheDocument();
+    const category = categoryBySlug[featured.category];
+    expect(screen.getByRole('link')).toHaveAttribute('href', `${category.href}/${featured.slug}`);
+    expect(screen.getByText(category.label)).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: featured.title })).toBeInTheDocument();
     expect(screen.getByText(featured.excerpt)).toBeInTheDocument();
     expect(
-      screen.getByText(`2 septembre 2026 · ${featured.readingMinutes} min de lecture`),
+      screen.getByText(`${formatDateFr(featured.publishedAt)} · ${featured.readingMinutes} min de lecture`),
     ).toBeInTheDocument();
     expect(screen.getByRole('img', { name: featured.image.alt })).toBeInTheDocument();
   });

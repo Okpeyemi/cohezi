@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArticleBody } from '@/components/article/article-body';
 import { ArticleHeader } from '@/components/article/article-header';
+import { ArticleSources } from '@/components/article/article-sources';
 import { RelatedArticles } from '@/components/article/related-articles';
 import { HeroLightSwitch } from '@/components/layout/hero-light-switch';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -53,6 +54,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               {/* La suite de lecture est voisine de l'article, pas une partie de son corps. */}
               <article>
                 <ArticleBody blocks={article.body} />
+                <div className="mx-auto max-w-[680px]">
+                  <ArticleSources sources={article.sources} />
+                </div>
               </article>
               <RelatedArticles articles={related} title={site.article.relatedTitle} />
             </div>

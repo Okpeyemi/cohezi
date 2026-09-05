@@ -46,8 +46,9 @@ describe('ArticleBrowser', () => {
 
   it('reads the active category from the URL and says so in the result line', () => {
     setup('categorie=business');
-    expect(screen.getAllByRole('article')).toHaveLength(8);
-    expect(screen.getByText('8 articles dans Business')).toBeInTheDocument();
+    const businessCount = articles.filter((article) => article.category === 'business').length;
+    expect(screen.getAllByRole('article')).toHaveLength(businessCount);
+    expect(screen.getByText(`${businessCount} articles dans Business`)).toBeInTheDocument();
     const tabs = within(screen.getByRole('navigation', { name: 'Catégories' }));
     expect(tabs.getByRole('link', { name: 'Business' })).toHaveAttribute('aria-current', 'page');
   });
