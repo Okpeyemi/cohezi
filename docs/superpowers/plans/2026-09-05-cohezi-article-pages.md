@@ -760,7 +760,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Consumes : `ArticleHeader`, `ArticleBody`, `RelatedArticles`, `findArticle`, `relatedArticles`, `articles`, `site`, `categories`.
 - Produces : route `/[categorie]/[slug]` avec `generateStaticParams` (24 entrées) et `generateMetadata` ; `ComingSoon({ label })` ; routes `/a-propos` et `/contact`.
 
-- [ ] **Step 1 : tests qui échouent**
+- [x] **Step 1 : tests qui échouent**
 
 `tests/app/article-page.test.tsx` :
 
@@ -830,7 +830,7 @@ describe('pages still to come', () => {
 Run : `pnpm test tests/app/article-page.test.tsx tests/app/static-pages.test.tsx`
 Expected : FAIL — les routes n'existent pas.
 
-- [ ] **Step 2 : `components/sections/coming-soon.tsx`**
+- [x] **Step 2 : `components/sections/coming-soon.tsx`**
 
 ```tsx
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -868,7 +868,7 @@ export function ComingSoon({ label }: { label: string }) {
 }
 ```
 
-- [ ] **Step 3 : les deux routes en attente**
+- [x] **Step 3 : les deux routes en attente**
 
 `app/a-propos/page.tsx` :
 ```tsx
@@ -900,7 +900,7 @@ export default function Page() {
 }
 ```
 
-- [ ] **Step 4 : `app/[categorie]/[slug]/page.tsx`**
+- [x] **Step 4 : `app/[categorie]/[slug]/page.tsx`**
 
 ```tsx
 import type { Metadata } from 'next';
@@ -968,7 +968,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 }
 ```
 
-- [ ] **Step 5 : supprimer l'attrape-tout et son helper**
+- [x] **Step 5 : supprimer l'attrape-tout et son helper**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -977,7 +977,7 @@ git rm -q lib/routes.ts tests/lib/routes.test.ts tests/app/coming-soon.test.tsx
 grep -rn "isKnownSection\|@/lib/routes" app components lib tests --include='*.ts' --include='*.tsx' || echo "aucune référence résiduelle"
 ```
 
-- [ ] **Step 6 : vérification complète et routes servies**
+- [x] **Step 6 : vérification complète et routes servies**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint && pnpm build`
 Expected : tests verts ; build listant `/`, `/articles`, `/a-propos`, `/contact`, `/_not-found`,
@@ -996,7 +996,7 @@ kill -TERM -- "-$(cat /tmp/cohezi-art.pgid)" 2>/dev/null; rm -f /tmp/cohezi-art.
 Expected : `/`, `/articles`, les deux articles, `/a-propos` et `/contact` en 200 ;
 `/business/inconnu` et `/inconnu` en **404**.
 
-- [ ] **Step 7 : commit**
+- [x] **Step 7 : commit**
 
 ```bash
 git add -A app components lib tests docs/superpowers/plans/
