@@ -10,6 +10,7 @@ const make = (slug: string, title: string, excerpt: string): Article => ({
   publishedAt: '2026-09-01',
   readingMinutes: 5,
   image: { alt: slug },
+  body: [{ type: 'paragraph', text: 'Un paragraphe.' }],
 });
 
 const corpus = [

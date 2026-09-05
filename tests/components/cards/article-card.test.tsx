@@ -13,7 +13,9 @@ describe('ArticleCard', () => {
     expect(screen.getByText('Actualité')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: featured.title })).toBeInTheDocument();
     expect(screen.getByText(featured.excerpt)).toBeInTheDocument();
-    expect(screen.getByText('2 septembre 2026 · 6 min de lecture')).toBeInTheDocument();
+    expect(
+      screen.getByText(`2 septembre 2026 · ${featured.readingMinutes} min de lecture`),
+    ).toBeInTheDocument();
     expect(screen.getByRole('img', { name: featured.image.alt })).toBeInTheDocument();
   });
 

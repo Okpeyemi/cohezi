@@ -270,7 +270,7 @@ Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
 - Produces : `articles: Article[]` (24) exporté par `content/articles/index.ts`, donc toujours importable via `@/content/articles`. Chaque fichier de rubrique exporte un tableau nommé : `actualiteArticles`, `businessArticles`, `societeArticles`, `analyseArticles`.
 - État attendu : `pnpm typecheck` **vert** à nouveau ; suite complète verte.
 
-- [ ] **Step 1 : test de cohérence du contenu, qui échoue**
+- [x] **Step 1 : test de cohérence du contenu, qui échoue**
 
 Ajouter à la fin de `tests/content/content.test.ts` :
 
@@ -333,7 +333,7 @@ describe('article bodies', () => {
 Run : `pnpm test tests/content/content.test.ts`
 Expected : FAIL — les articles n'ont pas de `body`.
 
-- [ ] **Step 2 : créer les quatre fichiers de rubrique**
+- [x] **Step 2 : créer les quatre fichiers de rubrique**
 
 Créer `content/articles/actualite.ts`, `business.ts`, `societe.ts` et `analyse.ts`. Chacun commence par :
 
@@ -415,7 +415,7 @@ dont `readingMinutes` dépasse 4, **ajuster `readingMinutes` à une valeur cohé
 écrit** (3, 4 ou 5 selon la longueur), plutôt que d'allonger artificiellement le texte. C'est la
 seule modification autorisée aux métadonnées existantes.
 
-- [ ] **Step 3 : `content/articles/index.ts`**
+- [x] **Step 3 : `content/articles/index.ts`**
 
 ```ts
 import type { Article } from '../types';
@@ -439,7 +439,7 @@ export const articles: Article[] = [
 ];
 ```
 
-- [ ] **Step 4 : supprimer l'ancien fichier et vérifier**
+- [x] **Step 4 : supprimer l'ancien fichier et vérifier**
 
 ```bash
 cd /home/darellchooks/Documents/cohezi
@@ -452,7 +452,7 @@ Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS. Si le test du temps de lecture échoue, ajuster `readingMinutes` de l'article
 signalé, pas la tolérance du test.
 
-- [ ] **Step 5 : commit**
+- [x] **Step 5 : commit**
 
 ```bash
 git add -A content tests docs/superpowers/plans/
