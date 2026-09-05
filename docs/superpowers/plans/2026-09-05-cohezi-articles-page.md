@@ -63,7 +63,7 @@
   - `type Page<T> = { items: T[]; page: number; pageCount: number; total: number }`
   - `paginate<T>(items: readonly T[], page: number, perPage: number): Page<T>`
 
-- [ ] **Step 1 : test qui échoue**
+- [x] **Step 1 : test qui échoue**
 
 `tests/lib/search.test.ts` :
 
@@ -154,7 +154,7 @@ describe('paginate', () => {
 Run : `pnpm test tests/lib/search.test.ts`
 Expected : FAIL — module `@/lib/search` introuvable.
 
-- [ ] **Step 2 : `lib/search.ts`**
+- [x] **Step 2 : `lib/search.ts`**
 
 ```ts
 import type { Article } from '@/content/types';
@@ -198,7 +198,7 @@ export function paginate<T>(items: readonly T[], page: number, perPage: number):
 
 Note : `Math.trunc(page) || 1` ramène `NaN` et `0` à 1 avant le bornage.
 
-- [ ] **Step 3 : vérifier et commiter**
+- [x] **Step 3 : vérifier et commiter**
 
 Run : `pnpm test && pnpm typecheck && pnpm lint`
 Expected : PASS.
