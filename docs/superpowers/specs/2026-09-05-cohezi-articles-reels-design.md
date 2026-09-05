@@ -64,7 +64,7 @@ export type Source = {
 ```ts
 export type Article = {
   // …champs existants inchangés…
-  /** Sources consultées, 2 à 4 par article. Obligatoire : pas d'article sans source. */
+  /** Sources consultées, 1 à 4 par article. Obligatoire : pas d'article sans source. */
   sources: Source[];
 };
 ```
@@ -93,7 +93,9 @@ article.
 2. **Aucun fait ne provient d'une portion non lue.** Deux articles de Next sont payants
    au-delà d'un extrait ; seules les parties visibles sont exploitables.
 3. **Deux sources indépendantes** pour tout chiffre financier ou score de benchmark, quand
-   elles existent. À défaut, la source unique est nommée dans la prose.
+   elles existent. À défaut, la source unique est **obligatoirement nommée dans la prose**,
+   afin que le lecteur sache que l'information ne repose que sur elle. Six des vingt-quatre
+   articles sont dans ce cas.
 4. **Les contradictions sont rapportées, pas arbitrées.** Voir §7.
 5. **Une projection n'est pas un chiffre d'affaires.** Les montants prévisionnels sont
    qualifiés comme tels dans le texte.
@@ -268,7 +270,7 @@ ne casse, aucune redirection n'est nécessaire.
 
 ## 11. Tests
 
-- `content.test.ts` : chaque article a entre 2 et 4 sources ; chaque source a un `url`
+- `content.test.ts` : chaque article a entre 1 et 4 sources ; chaque source a un `url`
   absolu en `https://`, un `outlet` non vide, un `publishedAt` au format ISO ; la date de
   la source n'est pas postérieure à celle de l'article de plus d'un jour.
 - `content.test.ts` : les 24 slugs sont uniques et en minuscules sans accent.
