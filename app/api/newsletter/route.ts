@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 import { isValidEmail, maskEmail, normalizeEmail } from '@/lib/validate-email';
-import { notifySubscription } from '@/lib/newsletter-mail';
+import { subscribeToNewsletter } from '@/lib/brevo';
 import { createRateLimiter } from '@/lib/rate-limit';
 
-// L'envoi SMTP a besoin des API Node : on fixe le runtime explicitement.
 export const runtime = 'nodejs';
 
 /**
@@ -54,19 +53,19 @@ export async function POST(request: Request) {
   const email = normalizeEmail(readField(body, 'email'));
   if (!isValidEmail(email)) return invalid();
 
-  const result = await notifySubscription(email, process.env);
+  const result = await subscribeToNewsletter(email, process.env);
 
-  if (!result.delivered && result.reason === 'send_failed') {
-    // L'inscription n'a été enregistrée nulle part : le dire plutôt que de faire semblant.
-    console.error(`[newsletter] delivery failed for ${maskEmail(email)}`);
-    return NextResponse.json({ ok: false, error: 'delivery_failed' }, { status: 502 });
+  if (result.status === 'pending') {
+    console.info(`[newsletter] confirmation demandée pour ${maskEmail(email)}`);
+    return NextResponse.json({ ok: true });
   }
 
-  if (!result.delivered) {
-    console.warn(`[newsletter] SMTP non configuré, inscription non transmise : ${maskEmail(email)}`);
-  } else {
-    console.info(`[newsletter] subscription forwarded for ${maskEmail(email)}`);
+  // Rien n'a été enregistré : le dire, plutôt que de laisser croire à une inscription.
+  if (result.status === 'not_configured') {
+    console.error('[newsletter] Brevo non configuré : BREVO_API_KEY, BREVO_LIST_ID ou BREVO_DOI_TEMPLATE_ID manquant');
+    return NextResponse.json({ ok: false, error: 'unavailable' }, { status: 503 });
   }
 
-  return NextResponse.json({ ok: true });
+  console.error(`[newsletter] échec Brevo pour ${maskEmail(email)} : ${result.reason}`);
+  return NextResponse.json({ ok: false, error: 'delivery_failed' }, { status: 502 });
 }

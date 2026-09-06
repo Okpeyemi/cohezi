@@ -72,7 +72,7 @@ export const privacyPolicy: LegalPage = {
   title: 'Politique de confidentialité',
   intro:
     'Ce que devient votre adresse e-mail si vous vous inscrivez à la newsletter, et comment reprendre la main dessus.',
-  updatedAt: '2026-09-06',
+  updatedAt: '2026-09-07',
   sections: [
     {
       heading: 'En résumé',
@@ -92,7 +92,7 @@ export const privacyPolicy: LegalPage = {
         },
         {
           type: 'paragraph',
-          text: 'La base légale de ce traitement est votre consentement, au sens de l’article 6.1.a du règlement général sur la protection des données. Vous le donnez en saisissant votre adresse, et vous pouvez le retirer à tout moment.',
+          text: 'La base légale de ce traitement est votre consentement, au sens de l’article 6.1.a du règlement général sur la protection des données. Ce consentement passe par une double confirmation : après avoir saisi votre adresse, vous recevez un courriel et devez cliquer sur le lien qu’il contient. Sans ce clic, aucune inscription n’est enregistrée et votre adresse n’est pas conservée. Vous pouvez retirer votre consentement à tout moment.',
         },
       ],
     },
@@ -105,13 +105,14 @@ export const privacyPolicy: LegalPage = {
         },
         {
           type: 'paragraph',
-          text: 'Deux prestataires interviennent techniquement, en qualité de sous-traitants :',
+          text: 'Trois prestataires interviennent techniquement, en qualité de sous-traitants :',
         },
         {
           type: 'list',
           items: [
-            'Hostinger, pour la messagerie qui reçoit et achemine les inscriptions. Ses serveurs sont situés dans l’Union européenne.',
+            'Brevo, pour la gestion de la liste d’abonnés et l’envoi de la newsletter. Cette société est française et ses serveurs sont situés dans l’Union européenne.',
             `${host.name}, pour l’hébergement du site. Cette société est établie aux États-Unis : la consultation du site implique donc un transfert de données hors de l’Union européenne, encadré par les clauses contractuelles types de la Commission européenne.`,
+            `Hostinger, pour la messagerie du domaine. Elle n’intervient pas dans la newsletter, mais reçoit les courriels que vous adressez à ${contactEmail}. Ses serveurs sont situés dans l’Union européenne.`,
           ],
         },
       ],
@@ -121,7 +122,7 @@ export const privacyPolicy: LegalPage = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'Votre adresse est conservée tant que vous restez inscrit. Elle est supprimée dans le mois qui suit votre désinscription ou votre demande d’effacement. Si la newsletter cessait de paraître, l’ensemble des adresses serait supprimé.',
+          text: 'Votre adresse est conservée tant que vous restez inscrit. Chaque newsletter porte un lien de désinscription : un clic suffit. Votre adresse est supprimée dans le mois qui suit votre désinscription ou votre demande d’effacement. Si la newsletter cessait de paraître, l’ensemble des adresses serait supprimé.',
         },
       ],
     },
