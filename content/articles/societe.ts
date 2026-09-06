@@ -9,7 +9,7 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-09-05',
     readingMinutes: 2,
-    image: { alt: 'Un tableau d’affichage couvert de messages anonymes' },
+    image: { src: '/images/articles/openai-german-wiki.webp', alt: 'Un ancien wiki couvert de traces de messages automatisés' },
     body: [
       {
         type: 'paragraph',
@@ -71,7 +71,7 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
-    image: { alt: 'Un compte rendu médical annoté à la main' },
+    image: { src: '/images/articles/medical-ai-scribes.webp', alt: 'Un compte rendu médical annoté à la main' },
     body: [
       {
         type: 'paragraph',
@@ -127,7 +127,7 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-09-01',
     readingMinutes: 2,
-    image: { alt: 'Une bibliographie dont les lignes s’effacent' },
+    image: { src: '/images/articles/australian-parliament-citations.webp', alt: 'Une bibliographie dont les lignes s’effacent' },
     body: [
       {
         type: 'paragraph',
@@ -172,13 +172,13 @@ export const societeArticles: Article[] = [
   },
   {
     slug: 'dispositifs-medicaux-ia-beaucoup-d-autorisations-peu-d-essais',
-    title: '1 614 dispositifs médicaux à IA autorisés, 2,4 % appuyés sur un essai randomisé.',
+    title: 'La FDA recense 1 614 dispositifs médicaux à IA ; les essais randomisés restent rares.',
     excerpt:
-      'La FDA en recense 1 614 au 5 septembre 2026, et précise elle-même que sa liste n’est pas exhaustive. La plupart passent par des voies qui n’exigent aucun nouvel essai clinique.',
+      'La liste de la FDA atteint 1 614 entrées au 5 septembre 2026, tandis que l’AI Index mesure 2,4 % d’essais randomisés sur un corpus antérieur. Ces deux chiffres ne portent pas sur le même périmètre.',
     category: 'societe',
     publishedAt: '2026-09-05',
     readingMinutes: 2,
-    image: { alt: 'Un tampon d’autorisation sur un dossier épais' },
+    image: { src: '/images/articles/fda-ai-medical-devices.webp', alt: 'Des dispositifs médicaux devant une zone de validation' },
     body: [
       {
         type: 'paragraph',
@@ -192,7 +192,7 @@ export const societeArticles: Article[] = [
       { type: 'heading', text: 'Le chiffre qui compte n’est pas le nombre' },
       {
         type: 'paragraph',
-        text: 'Le rapport 2026 de l’AI Index de Stanford donne l’autre bout de la mesure. La FDA a autorisé 258 dispositifs à IA en 2025, et l’immense majorité est passée par des voies de modification de dispositif, qui s’appuient sur des preuves de sécurité et d’efficacité déjà existantes plutôt que sur de nouveaux essais. Parmi les dispositifs assortis d’études cliniques, 2,4 % seulement reposent sur des données d’essai randomisé.',
+        text: 'Le rapport 2026 de l’AI Index de Stanford donne l’autre bout de la mesure. La FDA a autorisé 258 dispositifs à IA en 2025, et l’immense majorité est passée par des voies de modification de dispositif, qui s’appuient sur des preuves de sécurité et d’efficacité déjà existantes plutôt que sur de nouveaux essais. Parmi les dispositifs de ce corpus assortis d’études cliniques, 2,4 % seulement reposent sur des données d’essai randomisé. Ce pourcentage ne doit donc pas être appliqué mécaniquement aux 1 614 entrées recensées en septembre 2026.',
       },
       {
         type: 'paragraph',
@@ -208,7 +208,7 @@ export const societeArticles: Article[] = [
         items: [
           '1 614 dispositifs listés, mais la FDA dit que le recensement est incomplet.',
           '258 autorisations en 2025, majoritairement sans nouvel essai clinique.',
-          'Seuls 2,4 % des dispositifs étudiés cliniquement le sont par essai randomisé.',
+          'Dans le corpus étudié par Stanford, 2,4 % des dispositifs avec études cliniques reposent sur un essai randomisé.',
         ],
       },
     ],
@@ -233,7 +233,7 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-05-05',
     readingMinutes: 2,
-    image: { alt: 'Une conversation nocturne sur un écran de téléphone' },
+    image: { src: '/images/articles/young-people-ai-chatbots.webp', alt: 'Une conversation nocturne sur un écran de téléphone' },
     body: [
       {
         type: 'paragraph',
@@ -284,7 +284,7 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-04-01',
     readingMinutes: 2,
-    image: { alt: 'Une porte d’entrée plus étroite que le couloir qui la suit' },
+    image: { src: '/images/articles/junior-developer-employment.webp', alt: 'Une porte d’entrée plus étroite que le couloir qui la suit' },
     body: [
       {
         type: 'paragraph',
