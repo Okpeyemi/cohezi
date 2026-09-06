@@ -40,7 +40,7 @@ describe('MobileMenu', () => {
     await user.click(trigger);
     expect(screen.getByRole('button', { name: 'Fermer le menu' })).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('dialog', { name: 'Menu' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Société' })).toHaveAttribute('href', site.nav[2]!.href);
+    expect(screen.getByRole('link', { name: 'Articles' })).toHaveAttribute('href', site.nav[0]!.href);
     expect(screen.getByRole('link', { name: 'Rechercher' })).toHaveAttribute('href', site.searchHref);
     expect(document.body.style.overflow).toBe('hidden');
   });
@@ -59,7 +59,7 @@ describe('MobileMenu', () => {
     const user = userEvent.setup();
     render(<MobileMenu {...props} />);
     await user.click(screen.getByRole('button', { name: 'Ouvrir le menu' }));
-    await user.click(screen.getByRole('link', { name: 'Business' }));
+    await user.click(screen.getByRole('link', { name: 'Articles' }));
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 });

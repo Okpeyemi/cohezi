@@ -16,11 +16,11 @@ function renderHeader() {
 }
 
 describe('SiteHeader', () => {
-  it('renders the Cohezi logo link, the four editorial sections, search and the subscribe CTA', () => {
+  it('renders the Cohezi logo link, the single Articles entry, search and the subscribe CTA', () => {
     renderHeader();
     expect(screen.getByRole('link', { name: 'Cohezi, accueil' })).toHaveAttribute('href', '/');
     const nav = screen.getByRole('navigation', { name: 'Navigation principale' });
-    expect(within(nav).getAllByRole('link')).toHaveLength(4);
+    expect(within(nav).getAllByRole('link')).toHaveLength(site.nav.length);
     for (const item of site.nav) {
       expect(within(nav).getByRole('link', { name: item.label })).toHaveAttribute('href', item.href);
     }
