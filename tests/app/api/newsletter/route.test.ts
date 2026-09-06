@@ -1,10 +1,10 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { POST } from '@/app/api/newsletter/route';
-import { notifySubscription } from '@/lib/newsletter-mail';
+import { subscribeToNewsletter } from '@/lib/brevo';
 
-vi.mock('@/lib/newsletter-mail', () => ({
-  notifySubscription: vi.fn(async () => ({ delivered: false, reason: 'not_configured' })),
+vi.mock('@/lib/brevo', () => ({
+  subscribeToNewsletter: vi.fn(async () => ({ status: 'pending' })),
 }));
 
 /** Chaque test part d'un compteur neuf : sinon l'ordre d'exécution deviendrait signifiant. */
@@ -26,22 +26,29 @@ describe('POST /api/newsletter', () => {
     vi.spyOn(console, 'info').mockImplementation(() => undefined);
     vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     vi.spyOn(console, 'error').mockImplementation(() => undefined);
-    vi.mocked(notifySubscription).mockResolvedValue({ delivered: false, reason: 'not_configured' });
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ status: 'pending' });
   });
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
-  it('accepts a valid email (trimmed) and warns when no mailbox is configured', async () => {
+  it('accepts a valid email, trimmed, and asks Brevo for a confirmation', async () => {
     const response = await post(JSON.stringify({ email: ' jane@example.com ' }));
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ ok: true });
-    expect(notifySubscription).toHaveBeenCalledWith('jane@example.com', process.env);
-    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('j***@example.com'));
+    expect(subscribeToNewsletter).toHaveBeenCalledWith('jane@example.com', process.env);
+    expect(console.info).toHaveBeenCalledWith(expect.stringContaining('j***@example.com'));
   });
 
-  it('logs the forwarding once the mailbox is configured', async () => {
-    vi.mocked(notifySubscription).mockResolvedValue({ delivered: true });
+  it('answers 503 when Brevo is not configured, rather than pretending', async () => {
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ status: 'not_configured' });
+    const response = await post(JSON.stringify({ email: 'jane@example.com' }));
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ ok: false, error: 'unavailable' });
+  });
+
+  it('logs the confirmation request', async () => {
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ status: 'pending' });
     const response = await post(JSON.stringify({ email: 'jane@example.com' }));
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ ok: true });
@@ -49,7 +56,7 @@ describe('POST /api/newsletter', () => {
   });
 
   it('answers 502 rather than pretending when the delivery fails', async () => {
-    vi.mocked(notifySubscription).mockResolvedValue({ delivered: false, reason: 'send_failed' });
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ status: 'failed', reason: 'boom' });
     const response = await post(JSON.stringify({ email: 'jane@example.com' }));
     expect(response.status).toBe(502);
     expect(await response.json()).toEqual({ ok: false, error: 'delivery_failed' });
@@ -78,7 +85,7 @@ describe('POST /api/newsletter — garde anti-abus', () => {
   beforeEach(() => {
     vi.spyOn(console, 'info').mockImplementation(() => undefined);
     vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-    vi.mocked(notifySubscription).mockResolvedValue({ delivered: true });
+    vi.mocked(subscribeToNewsletter).mockResolvedValue({ status: 'pending' });
   });
   afterEach(() => vi.restoreAllMocks());
 
@@ -86,13 +93,13 @@ describe('POST /api/newsletter — garde anti-abus', () => {
     const response = await post(JSON.stringify({ email: 'bot@example.com', site: 'https://spam.example' }), freshIp());
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ ok: true });
-    expect(notifySubscription).not.toHaveBeenCalled();
+    expect(subscribeToNewsletter).not.toHaveBeenCalled();
   });
 
   it('ignores an empty honeypot, which is what a human leaves', async () => {
     const response = await post(JSON.stringify({ email: 'jane@example.com', site: '' }), freshIp());
     expect(response.status).toBe(200);
-    expect(notifySubscription).toHaveBeenCalledOnce();
+    expect(subscribeToNewsletter).toHaveBeenCalledOnce();
   });
 
   it('answers 429 once the same address has tried too often', async () => {

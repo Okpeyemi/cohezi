@@ -12,6 +12,7 @@ export const MESSAGES = {
   success: 'Vérifiez votre boîte mail pour confirmer.',
   failure: 'Une erreur est survenue, réessayez.',
   rateLimited: 'Trop de tentatives. Réessayez dans quelques minutes.',
+  unavailable: 'Inscription momentanément indisponible. Réessayez plus tard.',
 } as const;
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
@@ -63,6 +64,11 @@ export function NewsletterForm({
       if (response.status === 429) {
         setStatus('error');
         setMessage(MESSAGES.rateLimited);
+        return;
+      }
+      if (response.status === 503) {
+        setStatus('error');
+        setMessage(MESSAGES.unavailable);
         return;
       }
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
