@@ -9,7 +9,7 @@ export const analyseArticles: Article[] = [
     category: 'analyse',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
-    image: { alt: 'Une balance dont un plateau porte un drapeau' },
+    image: { src: '/images/articles/doj-openai-new-york-times.webp', alt: 'Une balance entre une presse et une infrastructure d’IA' },
     body: [
       {
         type: 'paragraph',
@@ -65,7 +65,7 @@ export const analyseArticles: Article[] = [
     category: 'analyse',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
-    image: { alt: 'Une barrière contournée par un sentier' },
+    image: { src: '/images/articles/rsf-russian-media-chatbots.webp', alt: 'Des chemins numériques contournant une barrière médiatique' },
     body: [
       {
         type: 'paragraph',
@@ -127,7 +127,7 @@ export const analyseArticles: Article[] = [
     publishedAt: '2026-07-27',
     readingMinutes: 2,
     deepDive: true,
-    image: { alt: 'Un calendrier dont certaines pages sont arrachées' },
+    image: { src: '/images/articles/eu-ai-act-omnibus.webp', alt: 'Un calendrier réglementaire dont certaines échéances sont repoussées' },
     body: [
       {
         type: 'paragraph',
@@ -181,7 +181,7 @@ export const analyseArticles: Article[] = [
     category: 'analyse',
     publishedAt: '2025-05-25',
     readingMinutes: 2,
-    image: { alt: 'Une règle graduée dont les traits sont irréguliers' },
+    image: { src: '/images/articles/ai-benchmarks-review.webp', alt: 'Plusieurs instruments mesurant différemment un même objet' },
     body: [
       {
         type: 'paragraph',
@@ -233,7 +233,7 @@ export const analyseArticles: Article[] = [
     category: 'analyse',
     publishedAt: '2026-05-29',
     readingMinutes: 2,
-    image: { alt: 'Deux coureurs séparés de quelques foulées' },
+    image: { src: '/images/articles/open-closed-model-gap.webp', alt: 'Deux systèmes de calcul séparés de quelques foulées' },
     body: [
       {
         type: 'paragraph',
@@ -284,7 +284,7 @@ export const analyseArticles: Article[] = [
     category: 'analyse',
     publishedAt: '2026-07-09',
     readingMinutes: 2,
-    image: { alt: 'Une moissonneuse au bord d’un champ clôturé' },
+    image: { src: '/images/articles/web-scraping-rgpd.webp', alt: 'Une moissonneuse numérique au bord d’un champ protégé' },
     body: [
       {
         type: 'paragraph',

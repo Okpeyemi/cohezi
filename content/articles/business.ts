@@ -2,19 +2,125 @@ import type { Article } from '../types';
 
 export const businessArticles: Article[] = [
   {
-    slug: 'nvidia-rachete-hugging-face-pour-12-9-milliards',
-    title: 'NVIDIA rachète Hugging Face. En janvier, la startup refusait encore son argent.',
+    slug: 'hypervault-campus-ia-hyderabad-un-gigawatt',
+    title: 'TCS engage jusqu’à 7,4 milliards de dollars dans un campus IA d’un gigawatt.',
     excerpt:
-      'Douze milliards neuf cent trente millions de dollars pour la plateforme fondée par trois Français. Huit mois plus tôt, elle déclinait un investissement du même NVIDIA au nom de son indépendance.',
+      'HyperVault a sécurisé 264 acres à Hyderabad. Le projet sera construit par phases : le gigawatt, les milliers d’emplois et la neutralité hydrique restent des objectifs, pas encore des résultats.',
+    category: 'business',
+    publishedAt: '2026-09-05',
+    readingMinutes: 3,
+    image: { src: '/images/articles/hypervault-hyderabad.webp', alt: 'Un vaste campus de centres de données en construction à Hyderabad' },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'HyperVault, filiale de Tata Consultancy Services, a annoncé le 5 septembre 2026 avoir sécurisé 264 acres à Hyderabad, dans l’État indien du Telangana, pour développer un campus de centres de données consacré à l’IA. La capacité visée atteint un gigawatt et l’investissement annoncé par HyperVault et ses partenaires peut aller jusqu’à 700 milliards de roupies, soit environ 7,4 milliards de dollars.',
+      },
+      { type: 'heading', text: 'Un gigawatt est une cible de long terme' },
+      {
+        type: 'paragraph',
+        text: 'Le communiqué de TCS précise que la construction sera menée par phases, au rythme de la demande et des besoins technologiques. Il serait donc trompeur de présenter le campus comme déjà opérationnel à pleine capacité. L’entreprise vise des déploiements de GPU à haute densité pour l’entraînement, l’inférence et les charges de calcul avancées, avec refroidissement liquide direct sur puce.',
+      },
+      { type: 'heading', text: 'L’infrastructure devient le terrain de la compétition' },
+      {
+        type: 'paragraph',
+        text: 'L’annonce illustre le déplacement de la course à l’IA vers l’électricité, le foncier, le refroidissement et les réseaux. L’Inde cherche ici à héberger directement les charges des laboratoires de pointe et des hyperscalers, plutôt qu’à rester seulement un marché de services numériques.',
+      },
+      {
+        type: 'paragraph',
+        text: 'TCS promet de l’énergie verte, une conception visant la neutralité hydrique et plusieurs milliers d’emplois directs et indirects. Ces éléments sont des engagements du promoteur : leur réalisation dépendra du calendrier de construction, des contrats clients et de l’approvisionnement énergétique du site.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          '264 acres sécurisés à Hyderabad pour un campus pouvant atteindre un gigawatt.',
+          'Jusqu’à 700 milliards de roupies investies par HyperVault et ses partenaires.',
+          'La capacité, les emplois et les objectifs environnementaux seront réalisés par phases.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'TCS',
+        title: 'TCS’ HyperVault to establish large-scale AI data center campus in Telangana',
+        url: 'https://www.tcs.com/who-we-are/newsroom/press-release/tcs-hypervault-establish-large-scale-ai-data-center-campus-telangana',
+        publishedAt: '2026-09-05',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'India’s TCS unit to invest up to $7.4 billion in AI data center campus',
+        url: 'https://www.reuters.com/world/india/indias-tcs-unit-invest-up-74-billion-ai-data-center-campus-2026-09-05/',
+        publishedAt: '2026-09-05',
+      },
+    ],
+  },
+  {
+    slug: 'foxconn-record-aout-serveurs-ia',
+    title: 'La demande en serveurs IA porte Foxconn vers un nouveau record mensuel.',
+    excerpt:
+      'Le chiffre d’affaires d’août atteint 921,8 milliards de dollars taïwanais, en hausse de 51,98 % sur un an. C’est un signal industriel fort, pas une mesure directe de tout le marché de l’IA.',
+    category: 'business',
+    publishedAt: '2026-09-05',
+    readingMinutes: 2,
+    image: { src: '/images/articles/foxconn-ai-servers.webp', alt: 'Des rangées de serveurs IA en cours d’assemblage dans une usine' },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Foxconn a déclaré le 5 septembre 2026 un chiffre d’affaires d’août de 921,8 milliards de dollars taïwanais, environ 29,15 milliards de dollars américains. La progression atteint 51,98 % sur un an : un record pour un mois d’août et le deuxième mois consécutif au-dessus de 900 milliards de dollars taïwanais.',
+      },
+      { type: 'heading', text: 'Le signal vient de la chaîne de production' },
+      {
+        type: 'paragraph',
+        text: 'Foxconn est le plus grand fabricant de serveurs de NVIDIA et reste un fournisseur majeur d’Apple. Sa croissance fournit donc un indicateur concret de commandes et de livraisons liées aux infrastructures d’IA, au-delà des annonces de modèles. L’entreprise attribue l’amélioration de ses perspectives trimestrielles à la demande en produits IA et à la haute saison des équipements informatiques et télécoms.',
+      },
+      { type: 'heading', text: 'Ce que le chiffre ne dit pas' },
+      {
+        type: 'paragraph',
+        text: 'Le revenu mensuel agrège plusieurs activités et ne permet pas d’isoler à lui seul la part exacte des serveurs IA. Foxconn ne publie pas non plus de prévision chiffrée pour le trimestre. Il faut donc lire ce record comme un signal de capacité industrielle et non comme une mesure exhaustive de la demande mondiale.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La dynamique s’inscrit néanmoins dans une tendance plus longue : le bénéfice net du deuxième trimestre avait déjà progressé de 35 %, tandis que les activités cloud et réseau représentaient plus de la moitié du chiffre d’affaires trimestriel.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          '921,8 milliards de dollars taïwanais de revenus en août, +51,98 % sur un an.',
+          'La demande en serveurs IA soutient la croissance, sans être isolée dans ce total mensuel.',
+          'Foxconn anticipe un troisième trimestre supérieur aux attentes, sans donner de chiffre précis.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Reuters',
+        title: 'Foxconn says third quarter to outperform market expectations on AI strength',
+        url: 'https://www.reuters.com/world/asia-pacific/foxconn-says-third-quarter-outperform-market-expectations-ai-strength-2026-09-05/',
+        publishedAt: '2026-09-05',
+      },
+      {
+        outlet: 'Hon Hai Technology Group',
+        title: 'Hon Hai Technology Group Announces Second Quarter 2026 Financial Results',
+        url: 'https://www.honhai.com/en-us/press-center/press-releases/latest-news/2095',
+        publishedAt: '2026-08-12',
+      },
+    ],
+  },
+  {
+    slug: 'nvidia-rachete-hugging-face-pour-12-9-milliards',
+    title: 'NVIDIA va racheter Hugging Face. En janvier, la startup refusait encore son argent.',
+    excerpt:
+      'Un accord de 12,93 milliards de dollars pour la plateforme fondée par trois Français, encore soumis aux autorisations réglementaires. Huit mois plus tôt, elle déclinait un investissement du même NVIDIA au nom de son indépendance.',
     category: 'business',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
     featured: true,
-    image: { alt: 'Une poignée de main entre deux silhouettes de tailles très différentes' },
+    image: { src: '/images/articles/nvidia-hugging-face.webp', alt: 'Deux écosystèmes technologiques en cours de rapprochement' },
     body: [
       {
         type: 'paragraph',
-        text: 'NVIDIA a officialisé le jeudi 3 septembre 2026, en début d’après-midi, le rachat de Hugging Face pour 12,93 milliards de dollars. C’est la plus grosse acquisition de son histoire. La plateforme, souvent décrite comme le GitHub des modèles d’IA, a été fondée aux États-Unis par trois Français : Clément Delangue, Julien Chaumond et Thomas Wolf.',
+        text: 'NVIDIA a annoncé le jeudi 3 septembre 2026 un accord pour acquérir Hugging Face pour 12,93 milliards de dollars. L’opération reste soumise aux autorisations réglementaires et doit être finalisée en 2027 : parler d’un rachat déjà achevé serait prématuré. La plateforme, souvent décrite comme le GitHub des modèles d’IA, a été fondée aux États-Unis par trois Français : Clément Delangue, Julien Chaumond et Thomas Wolf.',
       },
       { type: 'heading', text: 'Le même acheteur, éconduit huit mois plus tôt' },
       {
@@ -45,11 +151,17 @@ export const businessArticles: Article[] = [
         items: [
           'Le refus de janvier portait sur 500 millions, l’accord de septembre sur 12,93 milliards.',
           'Les chiffres d’usage émanent du communiqué de l’acquéreur, pas d’un tiers.',
-          'La promesse de neutralité de la plateforme est désormais celle de son propriétaire.',
+          'La promesse de neutralité de la plateforme est désormais celle de son futur propriétaire.',
         ],
       },
     ],
     sources: [
+      {
+        outlet: 'NVIDIA',
+        title: 'NVIDIA to Acquire Hugging Face',
+        url: 'https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/',
+        publishedAt: '2026-09-03',
+      },
       {
         outlet: 'Next',
         title: '[MàJ] NVIDIA rachète Hugging Face pour 12,9 milliards de dollars',
@@ -66,7 +178,7 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-09-04',
     readingMinutes: 2,
-    image: { alt: 'Un bâtiment en construction avec une enseigne déjà posée' },
+    image: { src: '/images/articles/nscale-financing.webp', alt: 'Un centre de données en construction devant des projections financières' },
     body: [
       {
         type: 'paragraph',
@@ -121,7 +233,7 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-09-01',
     readingMinutes: 2,
-    image: { alt: 'Un bandeau publicitaire glissé dans une conversation' },
+    image: { src: '/images/articles/openai-advertising.webp', alt: 'Un bandeau publicitaire glissé dans une conversation' },
     body: [
       {
         type: 'paragraph',
@@ -173,7 +285,7 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2025-03-12',
     readingMinutes: 2,
-    image: { alt: 'Une courbe descendante en échelle logarithmique' },
+    image: { src: '/images/articles/inference-price.webp', alt: 'Plusieurs courbes de coût descendant à des rythmes différents' },
     body: [
       {
         type: 'paragraph',
@@ -224,7 +336,7 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-04-16',
     readingMinutes: 2,
-    image: { alt: 'Des lignes à haute tension au-dessus d’un hangar' },
+    image: { src: '/images/articles/data-centre-electricity.webp', alt: 'Des lignes à haute tension au-dessus d’un centre de données' },
     body: [
       {
         type: 'paragraph',
@@ -281,7 +393,7 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-08-24',
     readingMinutes: 2,
-    image: { alt: 'Une carte avec deux points reliés par une ligne' },
+    image: { src: '/images/articles/mistral-sovereignty.webp', alt: 'Deux campus de calcul reliés entre l’Europe et le Golfe' },
     body: [
       {
         type: 'paragraph',

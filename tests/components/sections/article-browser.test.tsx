@@ -41,7 +41,7 @@ describe('ArticleBrowser', () => {
   it('shows the first nine articles and the total by default', () => {
     setup();
     expect(screen.getAllByRole('article')).toHaveLength(9);
-    expect(screen.getByText('24 articles')).toBeInTheDocument();
+    expect(screen.getByText('26 articles')).toBeInTheDocument();
   });
 
   it('reads the active category from the URL and says so in the result line', () => {
@@ -55,14 +55,14 @@ describe('ArticleBrowser', () => {
 
   it('reads the page number from the URL', () => {
     setup('page=3');
-    expect(screen.getAllByRole('article')).toHaveLength(6);
+    expect(screen.getAllByRole('article')).toHaveLength(8);
     expect(screen.getByRole('link', { name: '3' })).toHaveAttribute('aria-current', 'page');
   });
 
   it('ignores an unknown category', () => {
     setup('categorie=nimportequoi');
     expect(screen.getAllByRole('article')).toHaveLength(9);
-    expect(screen.getByText('24 articles')).toBeInTheDocument();
+    expect(screen.getByText('26 articles')).toBeInTheDocument();
   });
 
   it('filters instantly as the user types and pushes the query into the URL', async () => {

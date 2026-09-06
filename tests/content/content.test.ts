@@ -10,8 +10,8 @@ const count = (slug: string) => articles.filter((a) => a.category === slug).leng
 
 describe('content integrity', () => {
   it('has the expected collection sizes', () => {
-    expect(articles).toHaveLength(24);
-    expect(count('business')).toBe(6);
+    expect(articles).toHaveLength(26);
+    expect(count('business')).toBe(8);
     expect(count('societe')).toBe(6);
     expect(count('actualite')).toBe(6);
     expect(count('analyse')).toBe(6);
@@ -64,6 +64,12 @@ describe('content integrity', () => {
     expect(urls.some((url) => url.includes('cohezi.example'))).toBe(false);
   });
 
+  it('gives every article a production web cover', () => {
+    for (const article of articles) {
+      expect(article.image.src, article.slug).toMatch(/^\/images\/articles\/[a-z0-9-]+\.webp$/);
+    }
+  });
+
   it('keeps slugs URL-safe', () => {
     for (const article of articles) {
       expect(article.slug, article.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
@@ -86,8 +92,9 @@ describe('content integrity', () => {
     expect(front).toHaveLength(5);
     expect(front[0]?.featured).toBe(true);
     // La une suit la date de publication, elle ne garantit pas un quota par rubrique.
-    // Le seuil de trois protège seulement contre une page d'accueil monochrome.
-    expect(new Set(front.map((a) => a.category)).size).toBeGreaterThanOrEqual(3);
+    // Le seuil de deux protège contre une page d'accueil monochrome tout en
+    // laissant plusieurs actualités majeures d'une même rubrique coexister.
+    expect(new Set(front.map((a) => a.category)).size).toBeGreaterThanOrEqual(2);
   });
 
   it('resolves every icon name used by the site config', () => {

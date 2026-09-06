@@ -9,7 +9,7 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-09-02',
     readingMinutes: 2,
-    image: { alt: 'Deux portes identiques, une seule ouverte' },
+    image: { src: '/images/articles/anthropic-fable-mythos.webp', alt: 'Deux portes identiques, une seule ouverte' },
     body: [
       {
         type: 'paragraph',
@@ -64,13 +64,13 @@ export const actualiteArticles: Article[] = [
   },
   {
     slug: 'gpt-6-astra-openai-agi-et-benchmarks-contestes',
-    title: 'OpenAI ressort le mot AGI. Le même test donne 98,6 % ou 62,7 % selon qui le mesure.',
+    title: 'OpenAI ressort le mot AGI. Le même test donne 99,9 % ou 62,7 % selon qui le mesure.',
     excerpt:
-      'GPT-6 Astra affiche des résultats spectaculaires sur ARC-AGI-3. Mais le score dépend entièrement du harnais de test employé, et l’écart entre les deux lectures est de plus de trente points.',
+      'GPT-6 Astra affiche des résultats spectaculaires sur ARC-AGI-3. Mais le score dépend entièrement du harnais de test employé, et l’écart entre les deux lectures dépasse trente-sept points.',
     category: 'actualite',
     publishedAt: '2026-09-04',
     readingMinutes: 2,
-    image: { alt: 'Deux règles graduées différemment' },
+    image: { src: '/images/articles/gpt-6-astra-benchmarks.webp', alt: 'Deux règles graduées différemment' },
     body: [
       {
         type: 'paragraph',
@@ -79,7 +79,7 @@ export const actualiteArticles: Article[] = [
       { type: 'heading', text: 'Un score, deux mesures' },
       {
         type: 'paragraph',
-        text: 'C’est sur le benchmark ARC-AGI-3 que les lectures divergent. Numerama, reprenant les chiffres publiés par OpenAI, donne 98,6 % pour Astra, contre 7,8 % pour GPT-5.6 Sol et 39,2 % pour Claude Opus 5. Next, s’appuyant sur le rapport de l’ARC Prize Foundation — l’organisation à but non lucratif cofondée par François Chollet qui publie ce test —, donne 62,7 % avec le harnais standard, et 99,9 % seulement avec un harnais adapté aux spécificités du fournisseur.',
+        text: 'C’est sur le benchmark ARC-AGI-3 que les lectures divergent. OpenAI publie un score de 99,9 % avec son adaptateur fournisseur. Next, s’appuyant sur le rapport de l’ARC Prize Foundation — l’organisation à but non lucratif cofondée par François Chollet qui publie ce test —, donne 62,7 % avec le harnais standard. Ces résultats ne sont donc pas directement comparables sans préciser le protocole.',
       },
       {
         type: 'paragraph',
@@ -99,13 +99,19 @@ export const actualiteArticles: Article[] = [
         type: 'takeaway',
         title: 'À retenir',
         items: [
-          'Le même test donne 98,6 % ou 62,7 % selon le harnais employé.',
+          'Le même test donne 99,9 % ou 62,7 % selon le harnais employé.',
           'Les auteurs du benchmark refusent eux-mêmes d’y voir une preuve d’AGI.',
           'Le score le plus élevé a coûté des dizaines de milliers de dollars d’inférence.',
         ],
       },
     ],
     sources: [
+      {
+        outlet: 'OpenAI',
+        title: 'GPT-6 Astra: A new generation of intelligence',
+        url: 'https://openai.com/index/gpt-6-astra/',
+        publishedAt: '2026-09-03',
+      },
       {
         outlet: 'Next',
         title: 'GPT-6 Astra : quand OpenAI annonce l’AGI, l’API présente la facture',
@@ -128,11 +134,11 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
-    image: { alt: 'Un compteur qui tourne plus vite' },
+    image: { src: '/images/articles/gemini-3-8-flash.webp', alt: 'Un compteur qui tourne plus vite' },
     body: [
       {
         type: 'paragraph',
-        text: 'Google a déployé le 3 septembre 2026 Gemini 3.8 Flash, troisième sortie de cette famille en six semaines après les versions 3.6 et 3.7, publiées à trois semaines d’intervalle. Flash est la gamme utilitaire de Google, censée offrir le meilleur rapport entre rapidité et coût. Cette fois, elle vient chatouiller les modèles frontière.',
+        text: 'Google a présenté le 2 septembre 2026 Gemini 3.8 Flash, troisième sortie de cette famille en six semaines après les versions 3.6 et 3.7, publiées à trois semaines d’intervalle. Flash est la gamme utilitaire de Google, censée offrir le meilleur rapport entre rapidité et coût. Cette fois, elle vient chatouiller les modèles frontière.',
       },
       { type: 'heading', text: 'À un dixième de point des meilleurs' },
       {
@@ -180,6 +186,12 @@ export const actualiteArticles: Article[] = [
     ],
     sources: [
       {
+        outlet: 'Google',
+        title: 'Introducing Gemini 3.8 Flash and 3.8 Flash Cyber',
+        url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/',
+        publishedAt: '2026-09-02',
+      },
+      {
         outlet: 'Next',
         title: 'Google lance Gemini 3.8 Flash et sa déclinaison Cyber',
         url: 'https://next.ink/brief-article/google-lance-gemini-3-8-flash-et-sa-declinaison-cyber/',
@@ -189,17 +201,17 @@ export const actualiteArticles: Article[] = [
   },
   {
     slug: 'panne-simultanee-claude-chatgpt-gemini-grok',
-    title: 'Quatre assistants tombent le même soir. Un seul acteur a expliqué pourquoi.',
+    title: 'Claude, ChatGPT et Grok tombent le même jour. Une cause commune reste à démontrer.',
     excerpt:
-      'Le 3 septembre, Claude, ChatGPT, Gemini et Grok ont connu des pannes en quelques heures. SpaceXAI s’est excusé pour son datacenter de Memphis. Les autres n’ont rien dit.',
+      'Le 3 septembre, Claude, ChatGPT et Grok ont connu des pannes qui se sont chevauchées. Chaque service a été rétabli, mais aucun élément public ne prouve une cause commune.',
     category: 'actualite',
     publishedAt: '2026-09-04',
     readingMinutes: 2,
-    image: { alt: 'Quatre rideaux de fer baissés' },
+    image: { src: '/images/articles/ai-services-outage.webp', alt: 'Trois services numériques momentanément éteints' },
     body: [
       {
         type: 'paragraph',
-        text: 'Dans la soirée du jeudi 3 septembre 2026, quatre des principaux services d’IA générative sont devenus inaccessibles à quelques heures d’intervalle. Anthropic a d’abord signalé un problème sur Claude Sonnet 5, puis un nombre d’erreurs anormal sur Mythos 5.1, Fable 5.1 et Opus 5 ; selon Numerama, la liste s’est ensuite élargie à Mythos 5, Fable 5, Opus 4.8 et Opus 4.6, avant un correctif en fin d’après-midi. OpenAI a relevé une hausse des erreurs sur ChatGPT et Codex, le statut de Grok signalait des problèmes, et les utilisateurs de Gemini remontaient des difficultés d’accès sur Downdetector.',
+        text: 'Le jeudi 3 septembre 2026, Claude, ChatGPT et Grok ont connu des perturbations qui se sont chevauchées. Anthropic a confirmé une panne partielle liée à son infrastructure, avant un rétablissement à 16 h 16 UTC. OpenAI a relevé une hausse des erreurs sur ChatGPT et Codex, tandis que le statut de Grok signalait un incident. Des utilisateurs de Gemini ont également fait remonter des difficultés, mais sans confirmation publique équivalente de Google : il ne faut donc pas le compter comme une quatrième panne établie.',
       },
       { type: 'heading', text: 'Une seule explication publique' },
       {
@@ -218,19 +230,25 @@ export const actualiteArticles: Article[] = [
       { type: 'heading', text: 'Ce qu’on ne sait pas' },
       {
         type: 'paragraph',
-        text: 'Aucune cause commune n’est établie. Wired s’est penché le 3 septembre sur cette simultanéité troublante : mise à part SpaceXAI, aucun grand fournisseur de cloud — ni Cloudflare, ni AWS, ni Microsoft Azure — n’a signalé d’incident ce jour-là. Sollicité, Anthropic a refusé de commenter, renvoyant vers sa page de statut. OpenAI a évoqué une erreur de routage. Et aucun détail technique n’a été donné sur la nature exacte de la panne de Memphis, ni sur la façon dont elle se serait propagée.',
+        text: 'Aucune cause commune n’est établie. Anthropic a parlé d’un problème d’infrastructure et OpenAI d’erreurs affectant ses services ; Grok a relié son incident à son centre de données de Memphis. Le chevauchement temporel est réel, mais il ne suffit pas à démontrer une dépendance partagée ni une propagation entre les trois plateformes.',
       },
       {
         type: 'takeaway',
         title: 'À retenir',
         items: [
-          'Quatre services indépendants, une même soirée, aucune cause commune établie.',
-          'Le datacenter Colossus loue de la capacité aux concurrents de son propriétaire.',
-          'La concentration de l’infrastructure est le vrai sujet, pas la panne elle-même.',
+          'Trois pannes confirmées se chevauchent le 3 septembre, sans cause commune établie.',
+          'Les remontées concernant Gemini ne valent pas confirmation officielle d’une panne.',
+          'Une coïncidence temporelle doit rester présentée comme telle tant que les causes diffèrent.',
         ],
       },
     ],
     sources: [
+      {
+        outlet: 'The Verge',
+        title: 'ChatGPT, Grok, and Claude all went down at the same time',
+        url: 'https://www.theverge.com/ai-artificial-intelligence/989503/chatgpt-grok-claude-outage-down',
+        publishedAt: '2026-09-03',
+      },
       {
         outlet: 'Next',
         title: 'Claude, ChatGPT, Gemini et Grok sont simultanément tombés en panne, SpaceXAI s’excuse',
@@ -254,7 +272,7 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-08-27',
     readingMinutes: 2,
-    image: { alt: 'Un bras robotisé au-dessus d’une paillasse' },
+    image: { src: '/images/articles/model-hardware-standard.webp', alt: 'Un bras robotisé au-dessus d’une paillasse' },
     body: [
       {
         type: 'paragraph',
@@ -309,7 +327,7 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-08-17',
     readingMinutes: 2,
-    image: { alt: 'Un filigrane apparaissant dans du papier tenu à la lumière' },
+    image: { src: '/images/articles/claude-text-watermark.webp', alt: 'Un filigrane apparaissant dans du papier tenu à la lumière' },
     body: [
       {
         type: 'paragraph',

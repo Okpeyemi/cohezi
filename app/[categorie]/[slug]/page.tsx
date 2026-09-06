@@ -8,6 +8,7 @@ import { HeroLightSwitch } from '@/components/layout/hero-light-switch';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
 import { NewsletterCta } from '@/components/sections/newsletter-cta';
+import { PlaceholderImage } from '@/components/ui/placeholder-image';
 import { articles } from '@/content/articles';
 import { categoryBySlug } from '@/content/categories';
 import { site } from '@/content/site';
@@ -53,6 +54,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <div className="mx-auto rounded-sheet bg-paper px-5 py-16 md:py-20">
               {/* La suite de lecture est voisine de l'article, pas une partie de son corps. */}
               <article>
+                <div className="relative mx-auto mb-12 aspect-video max-w-[1080px] overflow-hidden rounded-xl md:mb-16">
+                  <PlaceholderImage
+                    image={article.image}
+                    label={article.title}
+                    sizes="(min-width: 1120px) 1080px, calc(100vw - 40px)"
+                  />
+                </div>
                 <ArticleBody blocks={article.body} />
                 <div className="mx-auto max-w-[680px]">
                   <ArticleSources sources={article.sources} />
