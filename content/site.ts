@@ -11,12 +11,9 @@ const social: SocialLink[] = [
 export const site: SiteConfig = {
   name: 'Cohezi',
   tagline: 'L’IA change le monde. Comprenez ce qui compte.',
-  nav: [
-    { label: 'Actualité', href: '/articles?categorie=actualite' },
-    { label: 'Business', href: '/articles?categorie=business' },
-    { label: 'Société', href: '/articles?categorie=societe' },
-    { label: 'Analyses', href: '/articles?categorie=analyse' },
-  ],
+  // Les quatre rubriques menaient toutes à /articles, où des onglets refont le même
+  // filtrage : le menu doublonnait la page. Une seule entrée, le tri se fait sur place.
+  nav: [{ label: 'Articles', href: '/articles' }],
   headerCta: { label: 'S’inscrire', href: '#newsletter' },
   searchHref: '/articles',
   searchLabel: 'Rechercher',
