@@ -9,7 +9,11 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-09-02',
     readingMinutes: 2,
-    image: { src: '/images/articles/anthropic-fable-mythos.webp', alt: 'Deux portes identiques, une seule ouverte' },
+    image: {
+      src: '/images/articles/anthropic-fable-mythos.webp',
+      alt: 'Visuel officiel de Claude Fable 5.1 et Claude Mythos 5.1 dans un ciel bleu',
+      credit: { label: 'Anthropic', url: 'https://www.anthropic.com/claude-fable-and-mythos-5-1' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -70,7 +74,11 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-09-04',
     readingMinutes: 2,
-    image: { src: '/images/articles/gpt-6-astra-benchmarks.webp', alt: 'Deux règles graduées différemment' },
+    image: {
+      src: '/images/articles/gpt-6-astra-benchmarks.webp',
+      alt: 'Spirale lumineuse du visuel officiel de GPT-6 Astra',
+      credit: { label: 'OpenAI', url: 'https://openai.com/index/gpt-6-astra/' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -134,7 +142,14 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
-    image: { src: '/images/articles/gemini-3-8-flash.webp', alt: 'Un compteur qui tourne plus vite' },
+    image: {
+      src: '/images/articles/gemini-3-8-flash.webp',
+      alt: 'Visuel officiel de Gemini 3.8 Flash et Gemini 3.8 Flash Cyber',
+      credit: {
+        label: 'Google',
+        url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/',
+      },
+    },
     body: [
       {
         type: 'paragraph',
@@ -272,7 +287,11 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-08-27',
     readingMinutes: 2,
-    image: { src: '/images/articles/model-hardware-standard.webp', alt: 'Un bras robotisé au-dessus d’une paillasse' },
+    image: {
+      src: '/images/articles/model-hardware-standard.webp',
+      alt: 'Manipulation d’un instrument de laboratoire sous un microscope',
+      credit: { label: 'Anthropic', url: 'https://www.anthropic.com/news/model-hardware-standard-research-preview' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -327,7 +346,11 @@ export const actualiteArticles: Article[] = [
     category: 'actualite',
     publishedAt: '2026-08-17',
     readingMinutes: 2,
-    image: { src: '/images/articles/claude-text-watermark.webp', alt: 'Un filigrane apparaissant dans du papier tenu à la lumière' },
+    image: {
+      src: '/images/articles/claude-text-watermark.webp',
+      alt: 'Illustration officielle d’une main et d’une plume pour le filigrane de Claude',
+      credit: { label: 'Anthropic', url: 'https://www.anthropic.com/news/claude-text-watermark' },
+    },
     body: [
       {
         type: 'paragraph',

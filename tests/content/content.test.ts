@@ -67,6 +67,10 @@ describe('content integrity', () => {
   it('gives every article a production web cover', () => {
     for (const article of articles) {
       expect(article.image.src, article.slug).toMatch(/^\/images\/articles\/[a-z0-9-]+\.webp$/);
+      if (article.image.credit) {
+        expect(article.image.credit.label.length, article.slug).toBeGreaterThan(0);
+        expect(article.image.credit.url, article.slug).toMatch(/^https:\/\/\S+$/);
+      }
     }
   });
 

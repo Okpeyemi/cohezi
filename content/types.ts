@@ -10,7 +10,12 @@ export type IconName =
   | 'x';
 
 /** Sans `src`, le composant PlaceholderImage génère un visuel. */
-export type ImageRef = { src?: string; alt: string };
+export type ImageRef = {
+  src?: string;
+  alt: string;
+  /** Crédit du visuel lorsque celui-ci provient d'une source externe. */
+  credit?: { label: string; url: string };
+};
 
 export type NavItem = { label: string; href: string };
 
