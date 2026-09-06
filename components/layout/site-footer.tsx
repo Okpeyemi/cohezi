@@ -47,7 +47,18 @@ export function SiteFooter({ site }: { site: SiteConfig }) {
           ))}
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs text-ink/60">{site.footer.copyright}</p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <p className="text-xs text-ink/60">{site.footer.copyright}</p>
+            <ul aria-label="Informations légales" className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              {site.footer.legal.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-xs text-ink/60 underline-offset-2 hover:text-ink hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           <ul aria-label="Réseaux sociaux" className="flex items-center gap-3">
             {site.footer.social.map((social) => (
               <li key={social.href}>

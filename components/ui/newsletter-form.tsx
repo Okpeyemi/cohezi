@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useId, useState, type FormEvent } from 'react';
 import { cn } from '@/lib/cn';
 import { isValidEmail } from '@/lib/validate-email';
@@ -10,6 +11,7 @@ export const MESSAGES = {
   invalid: 'Saisissez une adresse e-mail valide.',
   success: 'Vérifiez votre boîte mail pour confirmer.',
   failure: 'Une erreur est survenue, réessayez.',
+  rateLimited: 'Trop de tentatives. Réessayez dans quelques minutes.',
 } as const;
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
@@ -32,10 +34,13 @@ export function NewsletterForm({
   className,
 }: NewsletterFormProps) {
   const [email, setEmail] = useState('');
+  // Champ leurre : laissé vide par un humain, rempli par les robots qui remplissent tout.
+  const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [message, setMessage] = useState('');
   const inputId = useId();
   const messageId = `${inputId}-message`;
+  const honeypotId = `${inputId}-site`;
   const isHero = variant === 'hero';
   const sending = status === 'sending';
 
@@ -53,8 +58,13 @@ export function NewsletterForm({
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed }),
+        body: JSON.stringify({ email: trimmed, site: honeypot }),
       });
+      if (response.status === 429) {
+        setStatus('error');
+        setMessage(MESSAGES.rateLimited);
+        return;
+      }
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       setStatus('success');
       setMessage(MESSAGES.success);
@@ -66,7 +76,7 @@ export function NewsletterForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className={cn('w-full', isHero ? 'max-w-[512px]' : 'max-w-[320px]', className)}>
+    <form onSubmit={handleSubmit} noValidate className={cn('relative w-full', isHero ? 'max-w-[512px]' : 'max-w-[320px]', className)}>
       <div className={cn('flex items-center gap-2 rounded-xl bg-paper p-1.5 ring-1 ring-ink/10', isHero && 'shadow-lg')}>
         <label htmlFor={inputId} className="sr-only">
           Adresse e-mail
@@ -87,6 +97,18 @@ export function NewsletterForm({
             isHero ? 'h-11 text-sm md:text-base' : 'h-9 text-sm',
           )}
         />
+        <div aria-hidden="true" className="absolute h-px w-px overflow-hidden opacity-0">
+          <label htmlFor={honeypotId}>Ne remplissez pas ce champ</label>
+          <input
+            id={honeypotId}
+            type="text"
+            name="site"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(event) => setHoneypot(event.target.value)}
+          />
+        </div>
         <Button
           type="submit"
           variant={buttonTone}
@@ -109,6 +131,16 @@ export function NewsletterForm({
         )}
       >
         {message}
+      </p>
+      <p className={cn('mt-2 text-xs', isHero ? 'text-paper/60' : 'text-ink/55')}>
+        En vous inscrivant, vous acceptez notre{' '}
+        <Link
+          href="/politique-de-confidentialite"
+          className="underline decoration-current/40 underline-offset-2 hover:decoration-current"
+        >
+          politique de confidentialité
+        </Link>
+        .
       </p>
     </form>
   );
