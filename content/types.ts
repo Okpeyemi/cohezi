@@ -40,6 +40,23 @@ export type ArticleBlock =
   /** Encadré « À retenir » : les points clés de l'article. */
   | { type: 'takeaway'; title: string; items: string[] };
 
+/** Bloc d'une page légale : un intertitre et ses paragraphes ou sa liste. */
+export type LegalBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: string[] };
+
+export type LegalSection = { heading: string; blocks: LegalBlock[] };
+
+export type LegalPage = {
+  slug: string;
+  title: string;
+  /** Chapô affiché sous le titre. */
+  intro: string;
+  /** Date de dernière mise à jour (AAAA-MM-JJ). */
+  updatedAt: string;
+  sections: LegalSection[];
+};
+
 /** Organisation citée dans les corps d'article, liée vers son site officiel. */
 export type Entity = { name: string; href: string };
 
@@ -147,6 +164,8 @@ export type SiteConfig = {
     /** Une entrée par ligne affichée. */
     tagline: string[];
     columns: FooterColumn[];
+    /** Liens légaux de la barre du bas. Dérivés des pages elles-mêmes. */
+    legal: NavItem[];
     copyright: string;
     social: SocialLink[];
   };

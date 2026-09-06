@@ -1,3 +1,4 @@
+import { legalPages } from './legal';
 import type { SiteConfig, SocialLink } from './types';
 
 /** Comptes officiels. Source unique : le pied de page les affiche en icônes et en toutes lettres. */
@@ -101,6 +102,7 @@ export const site: SiteConfig = {
         links: social.map(({ label, href }) => ({ label, href })),
       },
     ],
+    legal: legalPages.map(({ slug, title }) => ({ label: title, href: `/${slug}` })),
     copyright: '© 2026 Cohezi',
     social,
   },

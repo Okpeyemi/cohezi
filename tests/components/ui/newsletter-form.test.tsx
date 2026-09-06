@@ -34,7 +34,8 @@ describe('NewsletterForm', () => {
     await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent(MESSAGES.success));
     expect(fetchMock).toHaveBeenCalledWith(
       '/api/newsletter',
-      expect.objectContaining({ method: 'POST', body: JSON.stringify({ email: 'jane@example.com' }) }),
+      // `site` est le champ leurre, vide chez un humain.
+      expect.objectContaining({ method: 'POST', body: JSON.stringify({ email: 'jane@example.com', site: '' }) }),
     );
     expect(input).toHaveValue('');
   });
