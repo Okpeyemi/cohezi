@@ -9,7 +9,14 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-09-05',
     readingMinutes: 3,
-    image: { src: '/images/articles/hypervault-hyderabad.webp', alt: 'Un vaste campus de centres de données en construction à Hyderabad' },
+    image: {
+      src: '/images/articles/hypervault-hyderabad.webp',
+      alt: 'Un professionnel consulte une tablette dans un centre de données',
+      credit: {
+        label: 'Tata Consultancy Services',
+        url: 'https://www.tcs.com/who-we-are/newsroom/press-release/tcs-hypervault-establish-large-scale-ai-data-center-campus-telangana',
+      },
+    },
     body: [
       {
         type: 'paragraph',
@@ -62,7 +69,11 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-09-05',
     readingMinutes: 2,
-    image: { src: '/images/articles/foxconn-ai-servers.webp', alt: 'Des rangées de serveurs IA en cours d’assemblage dans une usine' },
+    image: {
+      src: '/images/articles/foxconn-ai-servers.webp',
+      alt: 'Illustration financière officielle de Foxconn montrant une courbe en hausse',
+      credit: { label: 'Hon Hai Technology Group', url: 'https://www.honhai.com/en-us/press-center/press-releases/latest-news/2095' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -116,7 +127,11 @@ export const businessArticles: Article[] = [
     publishedAt: '2026-09-03',
     readingMinutes: 2,
     featured: true,
-    image: { src: '/images/articles/nvidia-hugging-face.webp', alt: 'Deux écosystèmes technologiques en cours de rapprochement' },
+    image: {
+      src: '/images/articles/nvidia-hugging-face.webp',
+      alt: 'Visuel officiel symbolisant le rapprochement de NVIDIA et Hugging Face',
+      credit: { label: 'NVIDIA', url: 'https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -285,7 +300,11 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2025-03-12',
     readingMinutes: 2,
-    image: { src: '/images/articles/inference-price.webp', alt: 'Plusieurs courbes de coût descendant à des rythmes différents' },
+    image: {
+      src: '/images/articles/inference-price.webp',
+      alt: 'Graphique montrant la baisse inégale des prix d’inférence selon les tâches',
+      credit: { label: 'Epoch AI', url: 'https://epoch.ai/data-insights/llm-inference-price-trends' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -336,7 +355,11 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-04-16',
     readingMinutes: 2,
-    image: { src: '/images/articles/data-centre-electricity.webp', alt: 'Des lignes à haute tension au-dessus d’un centre de données' },
+    image: {
+      src: '/images/articles/data-centre-electricity.webp',
+      alt: 'Identité graphique du rapport Energy and AI',
+      credit: { label: 'Agence internationale de l’énergie', url: 'https://www.iea.org/reports/energy-and-ai/executive-summary' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -393,7 +416,11 @@ export const businessArticles: Article[] = [
     category: 'business',
     publishedAt: '2026-08-24',
     readingMinutes: 2,
-    image: { src: '/images/articles/mistral-sovereignty.webp', alt: 'Deux campus de calcul reliés entre l’Europe et le Golfe' },
+    image: {
+      src: '/images/articles/mistral-sovereignty.webp',
+      alt: 'Visuel de marque Mistral AI portant le message Frontier AI in your hands',
+      credit: { label: 'Mistral AI', url: 'https://mistral.ai/news/mistral-x-humain/' },
+    },
     body: [
       {
         type: 'paragraph',

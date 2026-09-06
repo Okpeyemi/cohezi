@@ -71,7 +71,11 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-09-03',
     readingMinutes: 2,
-    image: { src: '/images/articles/medical-ai-scribes.webp', alt: 'Un compte rendu médical annoté à la main' },
+    image: {
+      src: '/images/articles/medical-ai-scribes.webp',
+      alt: 'Couverture officielle du rapport AI Index 2026',
+      credit: { label: 'Stanford HAI', url: 'https://hai.stanford.edu/ai-index/2026-ai-index-report/medicine' },
+    },
     body: [
       {
         type: 'paragraph',
@@ -178,7 +182,14 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-09-05',
     readingMinutes: 2,
-    image: { src: '/images/articles/fda-ai-medical-devices.webp', alt: 'Des dispositifs médicaux devant une zone de validation' },
+    image: {
+      src: '/images/articles/fda-ai-medical-devices.webp',
+      alt: 'Identité visuelle officielle de la Food and Drug Administration américaine',
+      credit: {
+        label: 'U.S. Food and Drug Administration',
+        url: 'https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices',
+      },
+    },
     body: [
       {
         type: 'paragraph',
@@ -284,7 +295,11 @@ export const societeArticles: Article[] = [
     category: 'societe',
     publishedAt: '2026-04-01',
     readingMinutes: 2,
-    image: { src: '/images/articles/junior-developer-employment.webp', alt: 'Une porte d’entrée plus étroite que le couloir qui la suit' },
+    image: {
+      src: '/images/articles/junior-developer-employment.webp',
+      alt: 'Couverture officielle du rapport AI Index 2026',
+      credit: { label: 'Stanford HAI', url: 'https://hai.stanford.edu/ai-index/2026-ai-index-report/economy' },
+    },
     body: [
       {
         type: 'paragraph',

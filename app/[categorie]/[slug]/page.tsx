@@ -54,13 +54,28 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <div className="mx-auto rounded-sheet bg-paper px-5 py-16 md:py-20">
               {/* La suite de lecture est voisine de l'article, pas une partie de son corps. */}
               <article>
-                <div className="relative mx-auto mb-12 aspect-video max-w-[1080px] overflow-hidden rounded-xl md:mb-16">
-                  <PlaceholderImage
-                    image={article.image}
-                    label={article.title}
-                    sizes="(min-width: 1120px) 1080px, calc(100vw - 40px)"
-                  />
-                </div>
+                <figure className="mx-auto mb-12 max-w-[1080px] md:mb-16">
+                  <div className="relative aspect-video overflow-hidden rounded-xl">
+                    <PlaceholderImage
+                      image={article.image}
+                      label={article.title}
+                      sizes="(min-width: 1120px) 1080px, calc(100vw - 40px)"
+                    />
+                  </div>
+                  {article.image.credit ? (
+                    <figcaption className="mt-2 text-right text-xs text-muted">
+                      Image :{' '}
+                      <a
+                        className="underline decoration-current/40 underline-offset-2 hover:text-ink"
+                        href={article.image.credit.url}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {article.image.credit.label}
+                      </a>
+                    </figcaption>
+                  ) : null}
+                </figure>
                 <ArticleBody blocks={article.body} />
                 <div className="mx-auto max-w-[680px]">
                   <ArticleSources sources={article.sources} />

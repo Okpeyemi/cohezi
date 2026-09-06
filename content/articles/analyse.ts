@@ -233,7 +233,11 @@ export const analyseArticles: Article[] = [
     category: 'analyse',
     publishedAt: '2026-05-29',
     readingMinutes: 2,
-    image: { src: '/images/articles/open-closed-model-gap.webp', alt: 'Deux systèmes de calcul séparés de quelques foulées' },
+    image: {
+      src: '/images/articles/open-closed-model-gap.webp',
+      alt: 'Graphique comparant les performances des modèles ouverts et fermés',
+      credit: { label: 'Epoch AI', url: 'https://epoch.ai/data-insights/open-closed-eci-gap' },
+    },
     body: [
       {
         type: 'paragraph',
