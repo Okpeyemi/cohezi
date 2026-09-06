@@ -72,14 +72,14 @@ export const privacyPolicy: LegalPage = {
   title: 'Politique de confidentialité',
   intro:
     'Ce que devient votre adresse e-mail si vous vous inscrivez à la newsletter, et comment reprendre la main dessus.',
-  updatedAt: '2026-09-07',
+  updatedAt: '2026-09-08',
   sections: [
     {
       heading: 'En résumé',
       blocks: [
         {
           type: 'paragraph',
-          text: 'Cohezi ne collecte qu’une seule donnée, votre adresse e-mail, et uniquement si vous la saisissez vous-même dans le formulaire d’inscription à la newsletter. Aucun cookie de mesure d’audience, aucun traceur publicitaire, aucun profilage. La navigation sur le site ne demande rien et n’enregistre rien.',
+          text: 'Cohezi collecte deux choses, et rien d’autre. Votre adresse e-mail, si vous la saisissez vous-même pour vous abonner à la newsletter. Et une mesure d’audience anonyme, qui compte les pages lues sans jamais déposer de cookie ni chercher à savoir qui vous êtes. Aucun traceur publicitaire, aucun profilage, aucune revente.',
         },
       ],
     },
@@ -88,11 +88,40 @@ export const privacyPolicy: LegalPage = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'La seule donnée personnelle traitée est votre adresse e-mail. Elle sert exclusivement à vous envoyer la newsletter de Cohezi. Elle n’est ni vendue, ni louée, ni transmise à des tiers à des fins commerciales.',
+          text: 'Votre adresse e-mail est traitée dans un seul but : vous envoyer la newsletter de Cohezi. Elle n’est ni vendue, ni louée, ni transmise à des tiers à des fins commerciales.',
         },
         {
           type: 'paragraph',
           text: 'La base légale de ce traitement est votre consentement, au sens de l’article 6.1.a du règlement général sur la protection des données. Ce consentement passe par une double confirmation : après avoir saisi votre adresse, vous recevez un courriel et devez cliquer sur le lien qu’il contient. Sans ce clic, aucune inscription n’est enregistrée et votre adresse n’est pas conservée. Vous pouvez retirer votre consentement à tout moment.',
+        },
+      ],
+    },
+    {
+      heading: 'La mesure d’audience',
+      blocks: [
+        {
+          type: 'paragraph',
+          text: 'Pour savoir quels articles sont lus, Cohezi utilise la mesure d’audience de Vercel. Elle ne dépose aucun cookie et n’écrit rien sur votre appareil : chaque visite est rattachée à une empreinte calculée à partir de la requête, que Vercel abandonne au bout de vingt-quatre heures. Il est donc impossible de vous suivre d’un jour sur l’autre, ni d’un site à l’autre.',
+        },
+        {
+          type: 'paragraph',
+          text: 'Les informations enregistrées à chaque page vue sont les suivantes :',
+        },
+        {
+          type: 'list',
+          items: [
+            'la date et l’heure, l’adresse de la page consultée et celle qui vous y a menée ;',
+            'votre pays, votre région et votre ville, déduits de la connexion — jamais une adresse précise ;',
+            'votre système d’exploitation, votre navigateur et le type d’appareil.',
+          ],
+        },
+        {
+          type: 'paragraph',
+          text: 'Les termes que vous saisissez dans la recherche du site sont retirés de l’adresse avant tout envoi. Une recherche peut être intime, et elle n’apprend rien d’utile sur l’audience.',
+        },
+        {
+          type: 'paragraph',
+          text: 'La base légale de cette mesure est l’intérêt légitime : comprendre ce qui est lu pour décider quoi écrire. Comme aucune information n’est déposée ni lue sur votre appareil, votre consentement n’est pas requis et le site n’affiche aucun bandeau. Vous pouvez malgré tout vous y opposer en écrivant à ' + contactEmail + '.',
         },
       ],
     },
@@ -111,7 +140,7 @@ export const privacyPolicy: LegalPage = {
           type: 'list',
           items: [
             'Brevo, pour la gestion de la liste d’abonnés et l’envoi de la newsletter. Cette société est française et ses serveurs sont situés dans l’Union européenne.',
-            `${host.name}, pour l’hébergement du site. Cette société est établie aux États-Unis : la consultation du site implique donc un transfert de données hors de l’Union européenne, encadré par les clauses contractuelles types de la Commission européenne.`,
+            `${host.name}, pour l’hébergement du site et la mesure d’audience. Cette société est établie aux États-Unis : la consultation du site implique donc un transfert de données hors de l’Union européenne, encadré par les clauses contractuelles types de la Commission européenne.`,
             `Hostinger, pour la messagerie du domaine. Elle n’intervient pas dans la newsletter, mais reçoit les courriels que vous adressez à ${contactEmail}. Ses serveurs sont situés dans l’Union européenne.`,
           ],
         },
@@ -154,7 +183,7 @@ export const privacyPolicy: LegalPage = {
       blocks: [
         {
           type: 'paragraph',
-          text: 'Cohezi ne dépose aucun cookie de mesure d’audience ni de publicité. Aucun bandeau de consentement n’est donc nécessaire : il n’y a rien à accepter ni à refuser.',
+          text: 'Cohezi ne dépose aucun cookie, ni de mesure d’audience, ni de publicité, et n’écrit rien dans la mémoire de votre navigateur. C’est la raison pour laquelle aucun bandeau de consentement ne vous est présenté : l’obligation porte sur ce qui est déposé ou lu sur votre appareil, et il n’y a rien ici. La mesure d’audience décrite plus haut fonctionne sans rien y stocker.',
         },
       ],
     },

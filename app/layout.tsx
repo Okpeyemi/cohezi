@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SiteAnalytics } from '@/components/analytics';
 import { inter, spaceGrotesk } from './fonts';
 import './globals.css';
 
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-paper font-sans text-ink">{children}</body>
+      <body className="flex min-h-full flex-col bg-paper font-sans text-ink">
+        {children}
+        <SiteAnalytics />
+      </body>
     </html>
   );
 }
