@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     </figcaption>
                   ) : null}
                 </figure>
-                <ArticleBody blocks={article.body} />
+                <ArticleBody blocks={article.body} perspective={article.perspective} />
                 <div className="mx-auto max-w-[680px]">
                   <ArticleSources sources={article.sources} />
                 </div>

@@ -1,6 +1,6 @@
-import type { Article } from '../types';
+import type { ArticleCore } from '../types';
 
-export const businessArticles: Article[] = [
+export const businessArticles: ArticleCore[] = [
   {
     slug: 'hypervault-campus-ia-hyderabad-un-gigawatt',
     title: 'TCS engage jusqu’à 7,4 milliards de dollars dans un campus IA d’un gigawatt.',

@@ -1,5 +1,5 @@
 import { entities } from '@/content/entities';
-import type { ArticleBlock } from '@/content/types';
+import type { ArticleBlock, ArticlePerspective } from '@/content/types';
 import { cn } from '@/lib/cn';
 import { linkEntities, type TextSegment } from '@/lib/link-entities';
 
@@ -93,17 +93,40 @@ function Block({ block, first, segments }: { block: ArticleBlock; first: boolean
   }
 }
 
-export function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
+const perspectiveBlocks = (perspective: ArticlePerspective): ArticleBlock[] => [
+  { type: 'heading', text: 'Pourquoi c’est important' },
+  ...perspective.whyItMatters.map((text): ArticleBlock => ({ type: 'paragraph', text })),
+  { type: 'heading', text: 'Ce que cela change' },
+  ...perspective.whatChanges.map((text): ArticleBlock => ({ type: 'paragraph', text })),
+  { type: 'heading', text: 'Ce qu’il faut surveiller' },
+  ...perspective.watch.map((text): ArticleBlock => ({ type: 'paragraph', text })),
+  ...(perspective.africaAndFrancophonie?.length
+    ? [
+        { type: 'heading', text: 'L’angle africain et francophone' } as ArticleBlock,
+        ...perspective.africaAndFrancophonie.map((text): ArticleBlock => ({ type: 'paragraph', text })),
+      ]
+    : []),
+];
+
+export function ArticleBody({ blocks, perspective }: { blocks: ArticleBlock[]; perspective: ArticlePerspective }) {
+  // « À retenir » conclut toujours la lecture, après la couche d'explication.
+  const takeaways = blocks.filter((block) => block.type === 'takeaway');
+  const enrichedBlocks = [
+    ...blocks.filter((block) => block.type !== 'takeaway'),
+    ...perspectiveBlocks(perspective),
+    ...takeaways,
+  ];
+
   // Une seule mémoire pour tout l'article : chaque organisation n'est liée qu'une fois.
   // Le découpage est fait avant le rendu, pour ne dépendre d'aucun ordre d'exécution.
   const used = new Set<string>();
-  const prose = blocks.map((block) =>
+  const prose = enrichedBlocks.map((block) =>
     block.type === 'paragraph' ? linkEntities(block.text, entities, used) : undefined,
   );
 
   return (
     <div className="mx-auto max-w-[680px]">
-      {blocks.map((block, index) => (
+      {enrichedBlocks.map((block, index) => (
         <Block key={`${block.type}-${index}`} block={block} first={index === 0} segments={prose[index]} />
       ))}
     </div>

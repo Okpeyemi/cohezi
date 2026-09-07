@@ -9,6 +9,12 @@ const make = (slug: string, title: string, excerpt: string): Article => ({
   category: 'actualite',
   publishedAt: '2026-09-01',
   readingMinutes: 5,
+  perspective: {
+    format: 'essentiel',
+    whyItMatters: ['Pourquoi ce fait compte.'],
+    whatChanges: ['Ce que ce fait change.'],
+    watch: ['Ce qu’il faut suivre.'],
+  },
   image: { alt: slug },
   body: [{ type: 'paragraph', text: 'Un paragraphe.' }],
   sources: [

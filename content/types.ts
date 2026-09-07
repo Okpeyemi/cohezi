@@ -45,6 +45,21 @@ export type ArticleBlock =
   /** Encadré « À retenir » : les points clés de l'article. */
   | { type: 'takeaway'; title: string; items: string[] };
 
+export type EditorialFormat = 'essentiel' | 'contexte' | 'decryptage';
+
+/**
+ * Deuxième couche éditoriale COHEZI : elle transforme un fait d'actualité en
+ * compréhension durable, sans diluer l'information dans du remplissage.
+ */
+export type ArticlePerspective = {
+  format: EditorialFormat;
+  whyItMatters: string[];
+  whatChanges: string[];
+  watch: string[];
+  /** À renseigner seulement lorsque le sujet a un effet concret dans ces marchés. */
+  africaAndFrancophonie?: string[];
+};
+
 /** Bloc d'une page légale : un intertitre et ses paragraphes ou sa liste. */
 export type LegalBlock =
   | { type: 'paragraph'; text: string }
@@ -84,14 +99,18 @@ export type Article = {
   /** Date de publication ISO 8601 (AAAA-MM-JJ). */
   publishedAt: string;
   readingMinutes: number;
+  perspective: ArticlePerspective;
   image: ImageRef;
   featured?: boolean;
   deepDive?: boolean;
-  /** Corps de l'article, 5 à 8 blocs. */
+  /** Corps factuel de l'article ; sa longueur dépend du format éditorial. */
   body: ArticleBlock[];
   /** Sources consultées, 1 à 4 par article. Obligatoire : pas d'article sans source. */
   sources: Source[];
 };
+
+/** Article avant ajout de la perspective éditoriale centralisée. */
+export type ArticleCore = Omit<Article, 'perspective'>;
 
 export type SocialLink = { label: string; href: string; icon: IconName };
 
