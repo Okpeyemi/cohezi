@@ -1,11 +1,13 @@
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
 import { site } from '@/content/site';
-import type { LegalPage as LegalPageContent } from '@/content/types';
+import { ButtonLink } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
+import type { StaticPage as StaticPageContent } from '@/content/types';
 import { formatDateFr } from '@/lib/format-date';
 
-/** Page légale : bandeau sombre, puis le texte sur une feuille claire. */
-export function LegalPage({ page }: { page: LegalPageContent }) {
+/** Page de contenu : bandeau sombre, puis le texte sur une feuille claire. */
+export function StaticPage({ page }: { page: StaticPageContent }) {
   return (
     <>
       <SiteHeader
@@ -20,9 +22,11 @@ export function LegalPage({ page }: { page: LegalPageContent }) {
           <div className="mx-auto max-w-[1440px] px-5 py-16 text-center text-paper md:py-20 lg:px-24">
             <h1 className="font-display text-4xl font-bold uppercase tracking-[-0.01em] md:text-5xl">{page.title}</h1>
             <p className="mx-auto mt-4 max-w-[560px] text-lg text-paper/80">{page.intro}</p>
-            <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper/50">
-              Mise à jour le {formatDateFr(page.updatedAt)}
-            </p>
+            {page.updatedAt ? (
+              <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper/50">
+                Mise à jour le {formatDateFr(page.updatedAt)}
+              </p>
+            ) : null}
           </div>
           <div className="px-2 md:px-5">
             <div className="mx-auto rounded-sheet bg-paper px-5 py-16 md:py-20">
@@ -51,6 +55,12 @@ export function LegalPage({ page }: { page: LegalPageContent }) {
                     )}
                   </section>
                 ))}
+                {page.cta ? (
+                  <ButtonLink href={page.cta.href} variant="ink" size="md" className="mt-12">
+                    {page.cta.label}
+                    <Icon name="arrow-right" size={16} />
+                  </ButtonLink>
+                ) : null}
               </div>
             </div>
           </div>
