@@ -1,4 +1,4 @@
-import type { LegalPage } from './types';
+import type { StaticPage } from './types';
 
 /** Adresse de contact affichée publiquement. Doit être routée par le catch-all du domaine. */
 export const contactEmail = 'contact@cohezi.io';
@@ -13,7 +13,7 @@ export const host = {
   website: 'https://vercel.com',
 } as const;
 
-export const legalNotice: LegalPage = {
+export const legalNotice: StaticPage = {
   slug: 'mentions-legales',
   title: 'Mentions légales',
   intro:
@@ -67,7 +67,7 @@ export const legalNotice: LegalPage = {
   ],
 };
 
-export const privacyPolicy: LegalPage = {
+export const privacyPolicy: StaticPage = {
   slug: 'politique-de-confidentialite',
   title: 'Politique de confidentialité',
   intro:
@@ -190,4 +190,4 @@ export const privacyPolicy: LegalPage = {
   ],
 };
 
-export const legalPages: LegalPage[] = [legalNotice, privacyPolicy];
+export const legalPages: StaticPage[] = [legalNotice, privacyPolicy];

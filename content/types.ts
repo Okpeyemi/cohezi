@@ -52,14 +52,17 @@ export type LegalBlock =
 
 export type LegalSection = { heading: string; blocks: LegalBlock[] };
 
-export type LegalPage = {
+/** Page de contenu éditorial : mentions légales, à propos, contact. */
+export type StaticPage = {
   slug: string;
   title: string;
   /** Chapô affiché sous le titre. */
   intro: string;
-  /** Date de dernière mise à jour (AAAA-MM-JJ). */
-  updatedAt: string;
+  /** Date de dernière mise à jour (AAAA-MM-JJ). Réservée aux pages qui engagent. */
+  updatedAt?: string;
   sections: LegalSection[];
+  /** Bouton d'action en bas de page. */
+  cta?: NavItem;
 };
 
 /** Organisation citée dans les corps d'article, liée vers son site officiel. */
@@ -96,9 +99,6 @@ export type Article = {
 export type SocialLink = { label: string; href: string; icon: IconName };
 
 export type FooterColumn = { heading: string; links: NavItem[] };
-
-/** Page annoncée mais pas encore écrite : premier segment d'URL et libellé affiché. */
-export type ComingSoonPage = { slug: string; label: string };
 
 export type HeroContent = {
   eyebrow: string;
@@ -175,5 +175,4 @@ export type SiteConfig = {
     social: SocialLink[];
   };
   /** Pages servies par la route attrape-tout, dans l'ordre de pré-rendu. */
-  comingSoon: ComingSoonPage[];
 };

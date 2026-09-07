@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { LegalPage } from '@/components/sections/legal-page';
+import { StaticPage } from '@/components/sections/static-page';
 import { legalNotice } from '@/content/legal';
 
 export const metadata: Metadata = {
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <LegalPage page={legalNotice} />;
+  return <StaticPage page={legalNotice} />;
 }

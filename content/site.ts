@@ -106,8 +106,4 @@ export const site: SiteConfig = {
     copyright: '© 2026 Cohezi',
     social,
   },
-  comingSoon: [
-    { slug: 'a-propos', label: 'À propos' },
-    { slug: 'contact', label: 'Contact' },
-  ],
 };
