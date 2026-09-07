@@ -22,6 +22,17 @@
     scroll-behavior: smooth;
   }
 
+  /*
+   * Tailwind v4 a retiré le `cursor: pointer` que sa base donnait aux boutons.
+   * On le rétablit ici plutôt que classe par classe : sinon chaque bouton ajouté
+   * plus tard repart sans, et le défaut se réintroduit en silence. Les boutons
+   * désactivés en restent exclus — ils ne doivent pas inviter au clic.
+   */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
