@@ -13,8 +13,13 @@ export const site: SiteConfig = {
   name: 'Cohezi',
   tagline: 'L’IA change le monde. Comprenez ce qui compte.',
   // Les quatre rubriques menaient toutes à /articles, où des onglets refont le même
-  // filtrage : le menu doublonnait la page. Une seule entrée, le tri se fait sur place.
-  nav: [{ label: 'Articles', href: '/articles' }],
+  // filtrage : le menu doublonnait la page. Une seule entrée pour le tri, qui se fait
+  // sur place, puis les deux pages éditoriales — des destinations, pas des doublons.
+  nav: [
+    { label: 'Articles', href: '/articles' },
+    { label: 'À propos', href: '/a-propos' },
+    { label: 'Contact', href: '/contact' },
+  ],
   headerCta: { label: 'S’inscrire', href: '#newsletter' },
   searchHref: '/articles',
   searchLabel: 'Rechercher',

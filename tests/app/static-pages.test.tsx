@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import AProposPage, { metadata as aProposMetadata } from '@/app/a-propos/page';
@@ -40,5 +42,14 @@ describe('Contact', () => {
     render(<ContactPage />);
     const main = within(screen.getByRole('main'));
     expect(main.getAllByText(new RegExp(contactEmail)).length).toBeGreaterThan(0);
+  });
+});
+
+describe('the sheet is inset on every side', () => {
+  // L'arrondi du bas de feuille se perdait dans le pied de page clair, faute de
+  // retrait. Le test porte sur la classe parce que c'est elle qui porte le sens.
+  it('keeps a bottom inset matching the side ones', () => {
+    const source = readFileSync(resolve(process.cwd(), 'components/sections/static-page.tsx'), 'utf8');
+    expect(source).toContain('px-2 pb-2 md:px-5 md:pb-5');
   });
 });

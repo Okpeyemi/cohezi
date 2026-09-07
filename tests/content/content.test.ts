@@ -16,7 +16,7 @@ describe('content integrity', () => {
     expect(count('actualite')).toBe(6);
     expect(count('analyse')).toBe(6);
     expect(categories).toHaveLength(4);
-    expect(site.nav).toHaveLength(1);
+    expect(site.nav).toHaveLength(3);
     // La colonne « Suivre » dérive de site.footer.social : une seule source de vérité.
     expect(site.footer.columns.map((c) => c.links.length)).toEqual([3, 3, site.footer.social.length]);
     const follow = site.footer.columns.at(-1)!;
@@ -163,8 +163,13 @@ describe('articles page copy', () => {
   });
 
   it('points the navigation at the filtered articles page', () => {
-    // Une entrée unique : le filtrage par rubrique vit dans les onglets de /articles.
-    expect(site.nav).toEqual([{ label: 'Articles', href: '/articles' }]);
+    // Le filtrage par rubrique vit dans les onglets de /articles, pas dans le menu :
+    // seules des destinations distinctes y figurent.
+    expect(site.nav).toEqual([
+      { label: 'Articles', href: '/articles' },
+      { label: 'À propos', href: '/a-propos' },
+      { label: 'Contact', href: '/contact' },
+    ]);
     expect(site.searchHref).toBe('/articles');
     expect(site.sections.latest.viewAllHref).toBe('/articles?categorie=actualite');
     expect(site.sections.business.viewAllHref).toBe('/articles?categorie=business');

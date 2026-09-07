@@ -28,7 +28,9 @@ export function StaticPage({ page }: { page: StaticPageContent }) {
               </p>
             ) : null}
           </div>
-          <div className="px-2 md:px-5">
+          {/* Le retrait du bas reprend celui des côtés : sans lui, l’arrondi de la
+              feuille bute sur le pied de page clair et ne se lit plus. */}
+          <div className="px-2 pb-2 md:px-5 md:pb-5">
             <div className="mx-auto rounded-sheet bg-paper px-5 py-16 md:py-20">
               <div className="mx-auto max-w-[680px]">
                 {page.sections.map((section, index) => (
