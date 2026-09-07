@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { articles } from '@/content/articles';
+import { articles, articleWordCount } from '@/content/articles';
 import { categories, categoryBySlug } from '@/content/categories';
 import { site } from '@/content/site';
 import { icons } from '@/lib/icons';
@@ -47,6 +47,20 @@ describe('content integrity', () => {
           expect(source.publishedAt, `${article.slug} / ${source.url}`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
         }
       }
+    }
+  });
+
+  it('gives every article a complete explanatory perspective and an honest reading time', () => {
+    for (const article of articles) {
+      expect(['essentiel', 'contexte', 'decryptage']).toContain(article.perspective.format);
+      expect(article.perspective.whyItMatters.length, article.slug).toBeGreaterThan(0);
+      expect(article.perspective.whatChanges.length, article.slug).toBeGreaterThan(0);
+      expect(article.perspective.watch.length, article.slug).toBeGreaterThan(0);
+
+      const words = articleWordCount(article, article.perspective);
+      expect(article.readingMinutes, article.slug).toBe(Math.max(1, Math.ceil(words / 200)));
+      const minimumWords = { essentiel: 400, contexte: 500, decryptage: 650 }[article.perspective.format];
+      expect(words, article.slug).toBeGreaterThanOrEqual(minimumWords);
     }
   });
 

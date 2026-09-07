@@ -1,7 +1,14 @@
 import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { ArticleBody } from '@/components/article/article-body';
-import type { ArticleBlock } from '@/content/types';
+import type { ArticleBlock, ArticlePerspective } from '@/content/types';
+
+const perspective: ArticlePerspective = {
+  format: 'essentiel',
+  whyItMatters: ['La portée du fait.'],
+  whatChanges: ['La conséquence concrète.'],
+  watch: ['Le prochain signal.'],
+};
 
 const blocks: ArticleBlock[] = [
   { type: 'paragraph', text: 'NVIDIA a racheté Hugging Face.' },
@@ -12,7 +19,7 @@ const blocks: ArticleBlock[] = [
 
 describe('ArticleBody entity links', () => {
   it('links the first mention of each organisation', () => {
-    render(<ArticleBody blocks={blocks} />);
+    render(<ArticleBody blocks={blocks} perspective={perspective} />);
     const nvidia = screen.getByRole('link', { name: 'NVIDIA' });
     expect(nvidia).toHaveAttribute('href', 'https://www.nvidia.com');
     expect(nvidia).toHaveAttribute('target', '_blank');
@@ -22,12 +29,12 @@ describe('ArticleBody entity links', () => {
   });
 
   it('never links the same organisation twice in one article', () => {
-    render(<ArticleBody blocks={blocks} />);
+    render(<ArticleBody blocks={blocks} perspective={perspective} />);
     expect(screen.getAllByRole('link', { name: 'NVIDIA' })).toHaveLength(1);
   });
 
   it('leaves quotations and headings untouched', () => {
-    render(<ArticleBody blocks={blocks} />);
+    render(<ArticleBody blocks={blocks} perspective={perspective} />);
     const quote = within(document.querySelector('[data-block="quote"]')!);
     expect(quote.queryByRole('link')).toBeNull();
     const heading = within(document.querySelector('[data-block="heading"]')!);
@@ -35,7 +42,7 @@ describe('ArticleBody entity links', () => {
   });
 
   it('keeps the full sentence readable', () => {
-    render(<ArticleBody blocks={blocks} />);
+    render(<ArticleBody blocks={blocks} perspective={perspective} />);
     expect(document.querySelector('[data-block="paragraph"]')!.textContent).toBe(
       'NVIDIA a racheté Hugging Face.',
     );
@@ -44,14 +51,14 @@ describe('ArticleBody entity links', () => {
 
 describe('ArticleBody typography', () => {
   it('justifies the paragraphs and lets the browser hyphenate', () => {
-    render(<ArticleBody blocks={blocks} />);
+    render(<ArticleBody blocks={blocks} perspective={perspective} />);
     const paragraph = document.querySelector('[data-block="paragraph"]')!;
     expect(paragraph.className).toContain('text-justify');
     expect(paragraph.className).toContain('hyphens-auto');
   });
 
   it('leaves the quotation ranged left', () => {
-    render(<ArticleBody blocks={blocks} />);
+    render(<ArticleBody blocks={blocks} perspective={perspective} />);
     expect(document.querySelector('[data-block="quote"]')!.className).not.toContain('text-justify');
   });
 });

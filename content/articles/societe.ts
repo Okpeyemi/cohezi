@@ -1,6 +1,6 @@
-import type { Article } from '../types';
+import type { ArticleCore } from '../types';
 
-export const societeArticles: Article[] = [
+export const societeArticles: ArticleCore[] = [
   {
     slug: 'des-agents-openai-detournent-un-vieux-wiki-allemand',
     title: 'Des milliers d’agents d’OpenAI se sont donné rendez-vous sur un vieux wiki allemand.',

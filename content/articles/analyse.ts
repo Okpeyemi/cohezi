@@ -1,6 +1,6 @@
-import type { Article } from '../types';
+import type { ArticleCore } from '../types';
 
-export const analyseArticles: Article[] = [
+export const analyseArticles: ArticleCore[] = [
   {
     slug: 'washington-prend-le-parti-d-openai-contre-le-new-york-times',
     title: 'Le ministère américain de la Justice invoque la sécurité nationale contre le New York Times.',

@@ -9,6 +9,12 @@ const make = (slug: string, publishedAt: string, extra: Partial<Article> = {}): 
   category: 'actualite',
   publishedAt,
   readingMinutes: 5,
+  perspective: {
+    format: 'essentiel',
+    whyItMatters: ['Pourquoi ce fait compte.'],
+    whatChanges: ['Ce que ce fait change.'],
+    watch: ['Ce qu’il faut suivre.'],
+  },
   image: { alt: slug },
   body: [{ type: 'paragraph', text: 'Un paragraphe.' }],
   sources: [

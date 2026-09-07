@@ -1,6 +1,6 @@
-import type { Article } from '../types';
+import type { ArticleCore } from '../types';
 
-export const actualiteArticles: Article[] = [
+export const actualiteArticles: ArticleCore[] = [
   {
     slug: 'anthropic-lance-claude-fable-5-1-et-mythos-5-1',
     title: 'Anthropic sort deux modèles jumeaux, et un seul est ouvert à tous.',
