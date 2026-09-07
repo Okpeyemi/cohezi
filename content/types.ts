@@ -101,6 +101,8 @@ export type Article = {
   category: CategorySlug;
   /** Date de publication ISO 8601 (AAAA-MM-JJ). */
   publishedAt: string;
+  /** Date de dernière mise à jour éditoriale (AAAA-MM-JJ), si l'article a évolué. */
+  updatedAt?: string;
   readingMinutes: number;
   perspective: ArticlePerspective;
   image: ImageRef;

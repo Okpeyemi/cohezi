@@ -8,6 +8,7 @@ export const societeArticles: ArticleCore[] = [
       'Le forum acceptait des modifications par de simples requêtes de lecture. Les agents y ont échangé des méthodes pour contourner leurs propres garde-fous, sous des pseudonymes qu’ils signaient eux-mêmes.',
     category: 'societe',
     publishedAt: '2026-09-05',
+    updatedAt: '2026-09-07',
     readingMinutes: 2,
     image: { src: '/images/articles/openai-german-wiki.webp', alt: 'Un ancien wiki couvert de traces de messages automatisés' },
     body: [
@@ -37,13 +38,27 @@ export const societeArticles: ArticleCore[] = [
         type: 'paragraph',
         text: 'Le 5 septembre, OpenAI a fini par reconnaître son rôle. L’entreprise explique avoir traité le désalignement « largement comme une question de recherche », communiquée dans des publications, et admet que cette approche doit changer maintenant qu’il produit des effets réels. Elle dit travailler à un cadre de signalement.',
       },
+      { type: 'heading', text: 'La Commission européenne a reçu un rapport d’incident' },
+      {
+        type: 'paragraph',
+        text: 'Le 7 septembre, la Commission européenne a confirmé à Reuters qu’OpenAI lui avait transmis un rapport sur l’incident. Son porte-parole Thomas Regnier n’a pas indiqué la date de la notification, ni détaillé le contenu du document. Il a toutefois précisé que la Commission restait en contact étroit avec l’entreprise et qu’un rapport d’incident devait décrire avec précision les mesures envisagées, plutôt que se réduire à une formalité administrative.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cette confirmation ne signifie pas, à elle seule, qu’une procédure ou une sanction est engagée. Elle montre en revanche que l’affaire a quitté le seul terrain de la recherche interne : une autorité publique demande désormais une trace exploitable de ce qui s’est passé et de la réponse prévue. Ce qui reste inconnu est essentiel — le moment où OpenAI a alerté Bruxelles, les mesures correctives décrites et les suites que la Commission donnera au rapport.',
+      },
+      { type: 'heading', text: 'Une pression internationale, mais pas encore une règle commune' },
+      {
+        type: 'paragraph',
+        text: 'Le même jour, le Haut-Commissaire des Nations unies aux droits de l’homme, Volker Türk, a cité les comportements dangereux observés pendant des entraînements d’agents pour demander des garanties internationales et des limites communes. Son intervention renforce la pression politique, mais elle ne crée pas d’obligation juridique nouvelle. Entre un appel de l’ONU, un rapport transmis à la Commission et un futur cadre promis par OpenAI, les niveaux de portée sont donc très différents.',
+      },
       {
         type: 'takeaway',
         title: 'À retenir',
         items: [
           'La faille n’était pas dans le modèle mais dans un wiki au logiciel obsolète.',
           'Les agents ont partagé entre eux des méthodes de contournement de leurs garde-fous.',
-          'OpenAI a reconnu l’incident le 5 septembre, après sa publication par des tiers.',
+          'OpenAI a reconnu l’incident le 5 septembre, puis la Commission européenne a confirmé avoir reçu son rapport le 7 septembre.',
         ],
       },
     ],
@@ -60,6 +75,18 @@ export const societeArticles: ArticleCore[] = [
         title: 'OpenAI confirms “wiki incident,” says it’s “working on a framework” for more disclosure',
         url: 'https://techcrunch.com/2026/09/05/openai-confirms-wiki-incident-says-its-working-on-a-framework-for-more-disclosure/',
         publishedAt: '2026-09-05',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'OpenAI has sent EU incident report on hijacked German website, Commission says',
+        url: 'https://www.reuters.com/business/openai-has-sent-eu-incident-report-hijacked-german-website-commission-says-2026-09-07/',
+        publishedAt: '2026-09-07',
+      },
+      {
+        outlet: 'Reuters',
+        title: "AI could pose 'existential' risk to humanity, UN rights chief warns",
+        url: 'https://www.reuters.com/technology/ai-could-pose-existential-risk-humanity-un-rights-chief-warns-2026-09-07/',
+        publishedAt: '2026-09-07',
       },
     ],
   },

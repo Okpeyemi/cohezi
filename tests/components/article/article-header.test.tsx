@@ -21,4 +21,13 @@ describe('ArticleHeader', () => {
     expect(screen.getByText(article.excerpt)).toBeInTheDocument();
     expect(screen.getByText(new RegExp(`${article.readingMinutes} min de lecture`))).toBeInTheDocument();
   });
+
+  it('shows the latest editorial update without replacing the publication date', () => {
+    const updatedArticle = articles.find((item) => item.updatedAt !== undefined)!;
+
+    render(<ArticleHeader article={updatedArticle} homeLabel="Accueil" />);
+
+    expect(screen.getByText(/Mis à jour le 7 septembre 2026/)).toBeInTheDocument();
+    expect(screen.getByText(/5 septembre 2026/)).toBeInTheDocument();
+  });
 });

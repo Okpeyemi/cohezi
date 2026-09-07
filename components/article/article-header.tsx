@@ -8,7 +8,8 @@ type ArticleHeaderProps = { article: Article; homeLabel: string };
 
 export function ArticleHeader({ article, homeLabel }: ArticleHeaderProps) {
   const category = categoryBySlug[article.category];
-  const meta = `${formatDateFr(article.publishedAt)} · ${article.readingMinutes} min de lecture`;
+  const update = article.updatedAt ? ` · Mis à jour le ${formatDateFr(article.updatedAt)}` : '';
+  const meta = `${formatDateFr(article.publishedAt)}${update} · ${article.readingMinutes} min de lecture`;
 
   return (
     <header className="hero-dark-change px-5 pb-16 pt-20 text-center md:pt-24">
