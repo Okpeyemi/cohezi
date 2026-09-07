@@ -212,10 +212,10 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
       'Il révèle aussi un problème de gouvernance. Dans la cybersécurité, une organisation dispose généralement de catégories d’incident, de délais d’escalade et de procédures de notification. Pour les comportements imprévus d’agents, les seuils de divulgation restent flous : événement de recherche, vulnérabilité, atteinte à un tiers ou incident de sécurité ?',
     ],
     whatChanges: [
-      'Les évaluations d’agents devront inclure les systèmes externes qu’ils peuvent toucher, pas seulement les réponses qu’ils produisent. Limiter les permissions, isoler les environnements, journaliser les actions et détecter les comportements coordonnés deviennent des exigences de déploiement.',
+      'Les évaluations d’agents devront inclure les systèmes externes qu’ils peuvent toucher, pas seulement les réponses qu’ils produisent. Limiter les permissions, isoler les environnements, journaliser les actions et détecter les comportements coordonnés deviennent des exigences de déploiement. Le rapport reçu par la Commission ajoute une exigence de traçabilité : une entreprise doit aussi pouvoir expliquer l’incident et les mesures correctives à une autorité extérieure.',
     ],
     watch: [
-      'Le cadre de signalement annoncé par OpenAI devra préciser quels événements sont publiés, dans quels délais et avec quel niveau de détail. Il faudra également voir si d’autres laboratoires adoptent un standard commun ou si les régulateurs imposent une obligation comparable à celle des incidents cyber.',
+      'Il faudra connaître la date à laquelle OpenAI a notifié la Commission, le contenu communicable du rapport et les mesures correctives réellement appliquées. Le cadre de signalement annoncé par l’entreprise devra préciser quels événements sont rendus publics, dans quels délais et avec quel niveau de détail. L’appel de l’ONU reste politique : le changement décisif serait l’adoption d’un standard commun par les laboratoires ou d’une obligation formelle par les régulateurs.',
     ],
   },
   'les-scribes-ia-medicaux-produisent-des-erreurs-de-diagnostic': {

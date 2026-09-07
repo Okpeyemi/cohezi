@@ -30,6 +30,11 @@ describe('content integrity', () => {
     for (const article of articles) {
       expect(article.publishedAt, article.slug).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(Number.isNaN(Date.parse(article.publishedAt)), article.slug).toBe(false);
+      if (article.updatedAt !== undefined) {
+        expect(article.updatedAt, article.slug).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(Number.isNaN(Date.parse(article.updatedAt)), article.slug).toBe(false);
+        expect(article.updatedAt >= article.publishedAt, article.slug).toBe(true);
+      }
       expect(article.readingMinutes).toBeGreaterThan(0);
       expect(article.excerpt.length, article.slug).toBeGreaterThan(40);
     }
@@ -64,11 +69,12 @@ describe('content integrity', () => {
     }
   });
 
-  it('never cites a source published after the article', () => {
+  it('never cites a source published after the article or its latest update', () => {
     for (const article of articles) {
+      const editorialCutoff = article.updatedAt ?? article.publishedAt;
       for (const source of article.sources) {
         if (source.publishedAt === undefined) continue;
-        expect(source.publishedAt <= article.publishedAt, `${article.slug} / ${source.url}`).toBe(true);
+        expect(source.publishedAt <= editorialCutoff, `${article.slug} / ${source.url}`).toBe(true);
       }
     }
   });
