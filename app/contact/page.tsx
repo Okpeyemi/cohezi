@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { ComingSoon } from '@/components/sections/coming-soon';
-import { site } from '@/content/site';
+import { StaticPage } from '@/components/sections/static-page';
+import { contactPage } from '@/content/pages';
 
-const page = site.comingSoon.find((item) => item.slug === 'contact')!;
-
-export const metadata: Metadata = { title: `${page.label} — Bientôt disponible` };
+export const metadata: Metadata = {
+  title: `${contactPage.title} — Cohezi`,
+  description: contactPage.intro,
+};
 
 export default function Page() {
-  return <ComingSoon label={page.label} />;
+  return <StaticPage page={contactPage} />;
 }

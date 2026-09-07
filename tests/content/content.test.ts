@@ -120,9 +120,6 @@ describe('content integrity', () => {
       expect(icons[social.icon], social.label).toBeDefined();
       expect(social.href, social.label).toMatch(/^https:\/\/\S+$/);
     }
-    // « recherche » a quitté la liste : il redirige désormais vers /articles.
-    expect(site.comingSoon.map((page) => page.slug)).toEqual(['a-propos', 'contact']);
-    expect(site.comingSoon.every((page) => page.slug.length > 0 && page.label.length > 0)).toBe(true);
     expect(site.headerCta.href).toBe('#newsletter');
   });
 });
