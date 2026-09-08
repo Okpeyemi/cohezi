@@ -2,6 +2,75 @@ import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
   {
+    slug: 'openai-firmus-malaisie-capacite-calcul',
+    title: 'OpenAI choisit la Malaisie pour étendre sa puissance de calcul.',
+    excerpt:
+      'L’accord porte sur deux futurs sites de Firmus. Les 900 MW annoncés correspondent à l’ensemble des capacités contractualisées de l’opérateur, pas à OpenAI seul.',
+    category: 'business',
+    publishedAt: '2026-09-08',
+    readingMinutes: 4,
+    image: {
+      src: '/images/articles/openai-firmus-malaisie.webp',
+      alt: 'Un centre de données contemporain dans un environnement tropical évoquant la Malaisie',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Firmus a annoncé le 8 septembre 2026 un accord pluriannuel avec OpenAI. Le laboratoire américain doit obtenir une capacité de calcul dédiée dans deux futurs centres de données de l’opérateur en Malaisie et devient son client d’ancrage. Cette expression est importante : elle désigne un client dont l’engagement aide à justifier ou à financer une nouvelle capacité, mais elle ne signifie pas que les installations sont déjà construites ni opérationnelles.',
+      },
+      { type: 'heading', text: 'Ce que couvre réellement le chiffre de 900 MW' },
+      {
+        type: 'paragraph',
+        text: 'Dans son communiqué, Firmus affirme que sa capacité totale contractualisée dépasse désormais 900 mégawatts. Ce total agrège ses engagements auprès de plusieurs clients et ne correspond donc pas à la puissance réservée par OpenAI. Ni Firmus ni OpenAI ne précisent la part attribuée au laboratoire, le montant du contrat, l’emplacement exact des deux sites ou leur calendrier de mise en service. Présenter OpenAI comme ayant réservé 900 MW en Malaisie serait faux.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Firmus indique que les installations seront conçues avec l’architecture de référence NVIDIA DSX et les futurs systèmes Vera Rubin NVL72. NVIDIA, qui soutient financièrement Firmus, fournit ainsi une partie de la pile matérielle et logicielle. Il s’agit encore d’une configuration annoncée pour des centres en développement, pas d’une mesure de leur capacité effectivement livrée.',
+      },
+      { type: 'heading', text: 'Pourquoi la Malaisie attire les centres de données' },
+      {
+        type: 'paragraph',
+        text: 'La course aux modèles se double d’une course aux infrastructures. En sécurisant du calcul en Asie du Sud-Est, OpenAI diversifie ses implantations potentielles et se rapproche de marchés asiatiques en forte croissance. Pour Firmus, disposer d’un client mondialement connu renforce la crédibilité commerciale de projets qui exigent d’importants financements avant de produire le premier kilowattheure de calcul.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Reuters décrit la Malaisie comme le marché des centres de données à la croissance la plus rapide d’Asie du Sud-Est. Le pays combine disponibilité foncière, proximité de Singapour et ambitions numériques. Cette attractivité a toutefois un coût local : les autorités et opérateurs de réseau doivent arbitrer entre nouveaux raccordements, disponibilité électrique et consommation d’eau. Un contrat de capacité ne répond pas, à lui seul, à ces contraintes.',
+      },
+      { type: 'heading', text: 'Qui gagne, et qui porte le risque' },
+      {
+        type: 'paragraph',
+        text: 'OpenAI gagne une option supplémentaire pour alimenter ses services et ses futurs modèles. Firmus gagne un client d’ancrage susceptible de faciliter le financement de ses sites. NVIDIA bénéficie de la demande en systèmes de calcul et de l’adoption de son architecture. La Malaisie peut attirer des investissements, des compétences et des recettes, mais assume aussi le risque de voir des projets très énergivores peser sur le réseau ou l’eau avant que leurs bénéfices économiques ne soient démontrés.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le principal risque industriel reste celui de l’exécution. Entre une capacité contractualisée, une capacité raccordée et une capacité réellement utilisée, plusieurs étapes subsistent : autorisations, financement, construction, livraison des accélérateurs, refroidissement et accès durable à l’électricité. Le communiqué décrit une trajectoire commerciale ; il ne prouve pas encore que les deux sites malaisiens fonctionneront à la puissance prévue.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'OpenAI a signé un accord pluriannuel portant sur du calcul dédié dans deux futurs sites de Firmus en Malaisie.',
+          'Les 900 MW représentent tous les contrats de Firmus, et non la seule capacité réservée par OpenAI.',
+          'Le montant, la puissance attribuée à OpenAI, les lieux précis et les dates d’ouverture ne sont pas publics.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Firmus',
+        title: 'Firmus surpasses 900 MW contracted capacity, adds OpenAI as anchor customer and expands into Malaysia',
+        url: 'https://firmus.co/newsroom/firmus-surpasses-900-mw-contracted-capacity-adds-openai-as-anchor-customer-and-expands-into-malaysia',
+        publishedAt: '2026-09-08',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Nvidia-backed Firmus signs deal with OpenAI for Malaysia data centre capacity',
+        url: 'https://www.reuters.com/world/asia-pacific/nvidia-backed-firmus-signs-deal-with-openai-malaysia-data-centre-capacity-2026-09-08/',
+        publishedAt: '2026-09-08',
+      },
+    ],
+  },
+  {
     slug: 'hypervault-campus-ia-hyderabad-un-gigawatt',
     title: 'TCS engage jusqu’à 7,4 milliards de dollars dans un campus IA d’un gigawatt.',
     excerpt:

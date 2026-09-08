@@ -5,6 +5,19 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'openai-firmus-malaisie-capacite-calcul': {
+    format: 'contexte',
+    whyItMatters: [
+      'L’accord montre que l’avantage compétitif d’un laboratoire dépend autant de sa capacité à réserver de l’électricité, des bâtiments et des accélérateurs que de la qualité de ses modèles. Une annonce de capacité doit cependant être lue avec précision : les 900 MW cités par Firmus couvrent l’ensemble de ses contrats, tandis que la part d’OpenAI reste inconnue.',
+      'Le choix de la Malaisie confirme aussi le déplacement d’une partie de l’infrastructure IA vers l’Asie du Sud-Est. Cette géographie rapproche le calcul de nouveaux marchés, mais déplace également les contraintes énergétiques et hydriques vers les territoires qui accueillent les installations.',
+    ],
+    whatChanges: [
+      'Pour OpenAI, le contrat ajoute une source potentielle de calcul dans la région. Pour Firmus, le statut de client d’ancrage peut faciliter le financement et la construction. À court terme, rien ne change encore pour les utilisateurs : aucune date d’ouverture, puissance livrée ou nouvelle offre locale n’a été annoncée.',
+    ],
+    watch: [
+      'Il faudra connaître la puissance réellement réservée par OpenAI, les sites choisis, le calendrier de raccordement et les conditions financières. Les engagements sur l’approvisionnement électrique, l’eau, le refroidissement et les autorisations locales permettront ensuite de distinguer une réservation commerciale d’une capacité effectivement disponible.',
+    ],
+  },
   'anthropic-lance-claude-fable-5-1-et-mythos-5-1': {
     format: 'contexte',
     whyItMatters: [
