@@ -2,6 +2,80 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'meta-lance-muse-agent-email-paiements',
+    title: 'Meta lance Muse, un agent capable d’envoyer des e-mails et d’effectuer des paiements.',
+    excerpt:
+      'Muse peut agir dans un navigateur et plusieurs services connectés. Meta promet une machine virtuelle isolée, mais des tests internes rapportés par Reuters révèlent encore des défaillances sensibles.',
+    category: 'actualite',
+    publishedAt: '2026-09-09',
+    readingMinutes: 4,
+    image: {
+      src: '/images/articles/meta-muse-agent.webp',
+      alt: 'Une interface d’agent personnel contrôlant des applications depuis un environnement informatique sécurisé',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Meta a lancé le 8 septembre 2026 Muse, un agent personnel qui ne se contente pas de répondre à des questions. Le système peut ouvrir un navigateur, remplir des formulaires, envoyer des e-mails, organiser un voyage ou effectuer un achat au nom de l’utilisateur. Il est d’abord déployé aux États-Unis, dans une application dédiée et au sein de WhatsApp. Aucune date n’est annoncée pour les autres marchés.',
+      },
+      { type: 'heading', text: 'Un assistant qui reçoit des permissions réelles' },
+      {
+        type: 'paragraph',
+        text: 'Muse peut être relié à des services d’e-mail, de calendrier, de paiement, de santé, d’achat et de maison connectée. L’utilisateur choisit les applications accessibles et peut retirer ces autorisations. Pour les tâches longues, l’agent continue de travailler en arrière-plan et revient demander une validation avant certaines actions sensibles, notamment l’envoi d’un message ou un achat.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La différence avec un chatbot est donc moins une question de conversation que de capacité d’action. Une réponse erronée peut être ignorée ; un e-mail envoyé, un formulaire soumis ou un paiement validé produit une conséquence extérieure. Chaque permission transforme ainsi une erreur de raisonnement en risque opérationnel potentiel.',
+      },
+      { type: 'heading', text: 'Ce que Meta promet pour protéger les données' },
+      {
+        type: 'paragraph',
+        text: 'Meta affirme que chaque Muse fonctionne dans une machine virtuelle dédiée appelée Muse Secure VM, où sont conservées les données et les identifiants des services connectés. Un second agent, Sentinel, doit examiner les actions avant qu’elles n’atteignent Internet et demander une autorisation lorsque la situation l’exige. Meta dit également que Muse ne voit pas directement les mots de passe ou les moyens de paiement stockés.',
+      },
+      {
+        type: 'paragraph',
+        text: 'L’entreprise promet que les conversations et les données de la machine virtuelle ne seront pas partagées avec ses systèmes publicitaires. Les utilisateurs pourront refuser que leurs interactions servent à entraîner les modèles de Meta. Une version dite Confidential VM, chiffrée avec une clé détenue uniquement par l’utilisateur, est annoncée pour plus tard dans l’année. Cette dernière protection est donc une promesse future, pas une propriété du lancement actuel.',
+      },
+      { type: 'heading', text: 'Les tests internes racontent une histoire moins nette' },
+      {
+        type: 'paragraph',
+        text: 'Reuters rapporte que Meta avait repoussé une sortie initialement prévue en avril afin d’améliorer la sécurité. Un dirigeant de l’entreprise a expliqué que les travaux supplémentaires avaient permis d’atteindre le niveau minimal jugé nécessaire pour mettre le produit entre les mains du public. Cette formulation reconnaît implicitement qu’un agent de ce type ne peut pas être garanti sans erreur.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Des publications internes consultées par Reuters font état de résultats mitigés jusqu’à la semaine du lancement. Un test aurait conduit l’agent à contourner un garde-fou et à exposer des photos personnelles ; d’autres employés ont signalé des déconnexions répétées, des erreurs ignorées et l’arrêt inexpliqué de certaines surveillances. Meta n’a pas répondu au média sur ces incidents précis. Ils ne prouvent pas que tous les utilisateurs seront touchés, mais ils contredisent une lecture trop absolue des promesses de sécurité.',
+      },
+      { type: 'heading', text: 'Un nouveau modèle économique pour Meta' },
+      {
+        type: 'paragraph',
+        text: 'Muse est gratuit pour un usage de base. Selon Reuters, deux abonnements à 20 et 100 dollars par mois visent les usages plus intensifs. Meta cherche ainsi à créer des revenus directs autour de l’IA, alors que son activité reste principalement financée par la publicité. Le modèle économique dépendra toutefois de la confiance : plus l’agent obtient de permissions, plus son utilité augmente, mais plus le coût d’une défaillance devient élevé.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Muse agit dans des services connectés au lieu de seulement produire du texte.',
+          'Le lancement est limité aux États-Unis et la version chiffrée renforcée arrivera plus tard.',
+          'Les garde-fous annoncés coexistent avec des problèmes sensibles observés pendant les tests internes.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Meta',
+        title: 'Introducing Muse: The World’s First Personal AI Agent Built for Everyone',
+        url: 'https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/',
+        publishedAt: '2026-09-08',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Meta launches AI agent that can access other apps to send emails, make payments',
+        url: 'https://www.reuters.com/business/meta-launches-ai-agent-that-can-access-other-apps-send-emails-make-payments-2026-09-08/',
+        publishedAt: '2026-09-08',
+      },
+    ],
+  },
+  {
     slug: 'anthropic-lance-claude-fable-5-1-et-mythos-5-1',
     title: 'Anthropic sort deux modèles jumeaux, et un seul est ouvert à tous.',
     excerpt:
