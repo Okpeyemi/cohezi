@@ -5,6 +5,19 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'google-finlande-13-milliards-ia-nucleaire': {
+    format: 'contexte',
+    whyItMatters: [
+      'Le contrat relie directement l’expansion de l’IA à une source d’électricité pilotable sur plus de vingt ans. Les laboratoires ne se différencient plus seulement par leurs modèles et leurs puces : ils doivent aussi réserver des mégawatts, financer les raccordements et réduire l’incertitude énergétique de leurs futurs centres de données.',
+      'L’annonce oblige aussi à séparer engagement et résultat. Les 13 milliards d’euros constituent un programme d’investissement annoncé pour 2027 et 2028 ; les 37 000 emplois et les 3,6 milliards d’euros de PIB annuel sont des projections de Google, tandis que les nouvelles capacités nucléaires et la batterie restent à livrer.',
+    ],
+    whatChanges: [
+      'Pour Google, la Finlande devient un ancrage européen associant calcul, nucléaire, éolien et stockage. Pour Fortum, le contrat sécurise une partie de la demande nécessaire à la prolongation de Loviisa. Pour les autorités finlandaises, l’enjeu se déplace vers l’exécution : raccordements, disponibilité du réseau, retombées locales et équilibre entre grands consommateurs et autres usagers.',
+    ],
+    watch: [
+      'Il faudra suivre la ventilation réelle des 13 milliards d’euros, les autorisations et dates de mise en service des sites, ainsi que la quantité d’électricité effectivement livrée à Google. Les indicateurs les plus utiles seront les emplois permanents, les mégawatts raccordés, l’évolution des prix locaux et les décisions finales concernant les 700 millions d’euros de travaux encore non engagés à Loviisa.',
+    ],
+  },
   'meta-lance-muse-agent-email-paiements': {
     format: 'contexte',
     whyItMatters: [
