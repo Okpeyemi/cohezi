@@ -5,6 +5,19 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'meta-lance-muse-agent-email-paiements': {
+    format: 'contexte',
+    whyItMatters: [
+      'Muse fait franchir à l’assistant grand public une frontière importante : il reçoit des accès à des comptes réels et peut agir sans que l’utilisateur reste devant l’écran. La qualité d’un agent ne se mesure donc plus seulement à la pertinence de ses réponses, mais à sa capacité à limiter, expliquer et annuler ses actions.',
+      'Le produit place aussi la confiance au cœur du modèle économique. Meta doit convaincre que les informations confiées à l’agent restent séparées de son activité publicitaire, tout en démontrant que ses garde-fous fonctionnent lorsque le navigateur rencontre une situation imprévue ou une instruction malveillante.',
+    ],
+    whatChanges: [
+      'Pour les utilisateurs américains, certaines tâches numériques peuvent désormais être déléguées depuis WhatsApp ou une application dédiée. Pour les entreprises dont les sites seront parcourus par ces agents, les parcours d’achat et d’assistance devront distinguer plus clairement l’intention humaine, l’action automatisée et les étapes exigeant une confirmation.',
+    ],
+    watch: [
+      'Il faudra mesurer les erreurs après le lancement, le niveau réel de contrôle accordé à Sentinel et la facilité avec laquelle une action peut être interrompue ou annulée. Le calendrier international, la disponibilité de Confidential VM, l’usage des données hors publicité et les résultats d’évaluations indépendantes seront plus révélateurs que les démonstrations de lancement.',
+    ],
+  },
   'openai-firmus-malaisie-capacite-calcul': {
     format: 'contexte',
     whyItMatters: [
