@@ -2,6 +2,94 @@ import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
   {
+    slug: 'google-finlande-13-milliards-ia-nucleaire',
+    title: 'Google investit 13 milliards d’euros en Finlande et sécurise 22 ans de nucléaire.',
+    excerpt:
+      'Le groupe veut financer des infrastructures d’IA et d’énergie entre 2027 et 2028. Son accord avec Fortum peut mobiliser jusqu’à la moitié de la centrale de Loviisa, mais plusieurs retombées restent des projections.',
+    category: 'business',
+    publishedAt: '2026-09-09',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/google-finlande-ia-nucleaire.webp',
+      alt: 'Annonce de l’investissement de Google en Finlande sur une scène à Helsinki',
+      credit: {
+        label: 'Google',
+        url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-ai-commitment-to-finland/',
+      },
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Google a annoncé le 9 septembre 2026 qu’il investirait au moins 13 milliards d’euros en Finlande en 2027 et 2028. Le programme doit financer des infrastructures numériques et d’IA, des contrats d’énergie propre et des partenariats locaux autour de Hamina, Kajaani, Muhos et Vaala. L’entreprise présente cette enveloppe comme son plus important investissement unique en Europe. Il s’agit d’un engagement sur deux années futures, pas de dépenses déjà réalisées.',
+      },
+      { type: 'heading', text: 'Un investissement réel, des retombées encore projetées' },
+      {
+        type: 'paragraph',
+        text: 'Le montant de 13 milliards d’euros est l’information centrale et vérifiable de l’annonce. Sa ventilation détaillée entre centres de données, énergie, réseaux et programmes locaux n’est toutefois pas publiée. Google estime que la première phase de construction soutiendra plus de 37 000 emplois et ajoutera 3,6 milliards d’euros par an au produit intérieur brut finlandais. Ces chiffres proviennent de l’entreprise et décrivent un impact attendu : ils ne mesurent pas encore des emplois créés ou une richesse constatée.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Google promet également 31 millions d’euros d’investissements communautaires sur quatre ans, la formation de 4 400 travailleurs aux usages de l’IA et un parcours vers les métiers des centres de données pour 100 étudiants. Ces programmes donnent une dimension locale au projet, mais leur portée devra être jugée sur les bénéficiaires effectivement formés, les emplois durables et les marchés attribués aux entreprises finlandaises.',
+      },
+      { type: 'heading', text: 'Pourquoi Google signe un contrat nucléaire de 22 ans' },
+      {
+        type: 'paragraph',
+        text: 'Le même jour, Fortum et Google ont signé un contrat d’achat d’électricité nucléaire portant sur la centrale de Loviisa. La fourniture doit commencer à capacité réduite en 2028, puis atteindre jusqu’à 50 % de la production de la centrale entre 2030 et 2049. Selon Fortum, Loviisa produit environ 10 % de l’électricité consommée en Finlande. Reuters présente cet accord comme le premier contrat nucléaire de Google conclu hors des États-Unis.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le contrat répond à une contrainte stratégique : un centre de données d’IA a besoin d’électricité disponible en continu, alors que les capacités de calcul se construisent sur plusieurs années. Pour Fortum, un acheteur de long terme améliore la visibilité nécessaire au programme d’environ un milliard d’euros destiné à prolonger l’exploitation de Loviisa. L’électricien précise qu’environ 700 millions d’euros et 80 % des projets de ce programme restent encore soumis à des décisions d’investissement.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le contrat doit aussi soutenir une hausse de puissance supplémentaire de 10 mégawatts, en plus d’une amélioration de 38 mégawatts déjà planifiée pour 2028. Ces capacités sont annoncées, non encore livrées. Parallèlement, Google dit avoir contractualisé 629 mégawatts de nouveaux parcs éoliens terrestres en Finlande et prévoit une batterie de 94 mégawatts près de son futur site de Kajaani, attendue fin 2027 et optimisée par Fortum.',
+      },
+      { type: 'heading', text: 'Qui gagne, qui prend le risque' },
+      {
+        type: 'paragraph',
+        text: 'Google sécurise une électricité stable pour développer son calcul européen. Fortum obtient un client de long terme pour une centrale dont la poursuite après 2030 exige des investissements. La Finlande gagne une demande industrielle, des chantiers et une place plus visible dans la géographie européenne de l’IA. Après l’annonce, l’action Fortum a progressé d’environ 10 %, selon Reuters, signe que le marché attribue déjà de la valeur au contrat.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le risque est partagé. Google doit transformer une enveloppe annoncée en sites raccordés et utilisés. Fortum doit exécuter ses travaux de prolongation et maintenir la disponibilité de la centrale. Pour les pouvoirs publics, l’enjeu est de vérifier que l’arrivée de grands consommateurs n’augmente pas les contraintes du réseau ou les prix pour les autres usagers. Un protocole d’accord prévoit d’explorer de nouveaux projets nucléaires, renouvelables et de flexibilité, mais il ne constitue pas encore une décision de construction.',
+      },
+      { type: 'heading', text: 'Ce que l’annonce dit de la course à l’IA' },
+      {
+        type: 'paragraph',
+        text: 'L’interprétation la plus solide dépasse la Finlande : la compétition entre fournisseurs d’IA se joue désormais dans les contrats d’électricité, les raccordements, les batteries et les engagements de plusieurs décennies. La fraîcheur du climat finlandais réduit certains besoins de refroidissement, tandis que la combinaison du nucléaire, de l’éolien et du stockage offre à Google une alimentation plus prévisible. Cela ne prouve pas que chaque euro investi produira davantage d’IA, mais montre que l’énergie est devenue une composante directe de la stratégie technologique.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Google annonce au moins 13 milliards d’euros d’investissements en Finlande pour 2027 et 2028, sans publier leur ventilation complète.',
+          'Le contrat avec Fortum pourra couvrir jusqu’à la moitié de la production de Loviisa entre 2030 et 2049.',
+          'Les emplois, le PIB et plusieurs capacités énergétiques cités sont des projections ou des projets, pas encore des résultats.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Google',
+        title: 'Google deepens its commitment to Finland with a €13 billion investment in AI infrastructure',
+        url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-ai-commitment-to-finland/',
+        publishedAt: '2026-09-09',
+      },
+      {
+        outlet: 'Fortum',
+        title: 'Fortum and Google partner to drive sustainable growth in Finland and sign nuclear power purchase agreement',
+        url: 'https://www.fortum.com/en/media/2026/09/inside-information-fortum-and-google-partner-drive-sustainable-growth-finland-sign-nuclear-power-purchase-agreement',
+        publishedAt: '2026-09-09',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Google to invest $15 billion in AI infrastructure in Finland',
+        url: 'https://www.reuters.com/business/media-telecom/google-invest-15-billion-ai-infrastructure-finland-2026-09-09/',
+        publishedAt: '2026-09-09',
+      },
+    ],
+  },
+  {
     slug: 'openai-firmus-malaisie-capacite-calcul',
     title: 'OpenAI choisit la Malaisie pour étendre sa puissance de calcul.',
     excerpt:
