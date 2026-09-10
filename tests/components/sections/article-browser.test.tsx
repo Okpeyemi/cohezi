@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ArticleBrowser } from '@/components/sections/article-browser';
 import { articles } from '@/content/articles';
 import type { ArticlesPageCopy } from '@/content/types';
+import { ARTICLES_PER_PAGE, paginate } from '@/lib/search';
 
 const replace = vi.fn();
 let params = new URLSearchParams();
@@ -41,13 +42,13 @@ describe('ArticleBrowser', () => {
   it('shows the first nine articles and the total by default', () => {
     setup();
     expect(screen.getAllByRole('article')).toHaveLength(9);
-    expect(screen.getByText('26 articles')).toBeInTheDocument();
+    expect(screen.getByText(`${articles.length} articles`)).toBeInTheDocument();
   });
 
   it('reads the active category from the URL and says so in the result line', () => {
     setup('categorie=business');
     const businessCount = articles.filter((article) => article.category === 'business').length;
-    expect(screen.getAllByRole('article')).toHaveLength(businessCount);
+    expect(screen.getAllByRole('article')).toHaveLength(Math.min(businessCount, ARTICLES_PER_PAGE));
     expect(screen.getByText(`${businessCount} articles dans Business`)).toBeInTheDocument();
     const tabs = within(screen.getByRole('navigation', { name: 'Catégories' }));
     expect(tabs.getByRole('link', { name: 'Business' })).toHaveAttribute('aria-current', 'page');
@@ -55,14 +56,14 @@ describe('ArticleBrowser', () => {
 
   it('reads the page number from the URL', () => {
     setup('page=3');
-    expect(screen.getAllByRole('article')).toHaveLength(8);
+    expect(screen.getAllByRole('article')).toHaveLength(paginate(articles, 3, ARTICLES_PER_PAGE).items.length);
     expect(screen.getByRole('link', { name: '3' })).toHaveAttribute('aria-current', 'page');
   });
 
   it('ignores an unknown category', () => {
     setup('categorie=nimportequoi');
     expect(screen.getAllByRole('article')).toHaveLength(9);
-    expect(screen.getByText('26 articles')).toBeInTheDocument();
+    expect(screen.getByText(`${articles.length} articles`)).toBeInTheDocument();
   });
 
   it('filters instantly as the user types and pushes the query into the URL', async () => {
