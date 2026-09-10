@@ -25,7 +25,9 @@ describe('HomePage', () => {
   it('shows the front-page cards plus one card per business and société article', () => {
     render(<HomePage />);
     const perCategory = (slug: string) => articles.filter((article) => article.category === slug).length;
-    expect(screen.getAllByRole('article')).toHaveLength(5 + perCategory('business') + perCategory('societe'));
+    expect(screen.getAllByRole('article')).toHaveLength(
+      5 + Math.min(8, perCategory('business')) + Math.min(8, perCategory('societe')),
+    );
     const main = screen.getByRole('main');
     expect(within(main).getAllByRole('link', { name: /Voir tout/ })).toHaveLength(3);
   });

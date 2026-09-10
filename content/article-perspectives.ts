@@ -5,6 +5,21 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'openai-reclame-des-regles-obligatoires-pour-les-ia-de-pointe': {
+    format: 'contexte',
+    whyItMatters: [
+      'Les laboratoires de frontière définissent encore une grande partie de leurs propres tests, seuils et procédures de divulgation. Une obligation nationale pourrait remplacer des engagements variables par un socle vérifiable, à condition que l’évaluation ne dépende pas uniquement des entreprises concernées.',
+      'La position d’OpenAI est aussi un signal politique intéressé. Une grande entreprise peut absorber le coût d’audits et de contrôles que de plus petits concurrents supporteraient difficilement. La qualité du cadre dépendra donc autant de son niveau d’exigence que de la précision avec laquelle il cible les capacités réellement dangereuses.',
+    ],
+    whatChanges: [
+      'À court terme, rien ne change juridiquement : il s’agit d’une proposition et d’un soutien à plusieurs textes californiens, pas d’une loi fédérale adoptée. En revanche, le débat se déplace de la publication volontaire de rapports vers des notifications obligatoires, assorties de critères communs et d’un regard extérieur.',
+      'Pour les organisations qui font tester des agents sur leur infrastructure, les responsabilités devront être écrites avant l’évaluation : périmètre autorisé, accès à internet, surveillance en temps réel, procédure d’arrêt et délai d’information des tiers touchés.',
+    ],
+    watch: [
+      'Il faudra suivre le texte effectivement déposé au Congrès, les seuils de capacité retenus, l’identité des évaluateurs, les sanctions et les exceptions. Une règle sans accès aux journaux techniques ni pouvoir d’audit indépendant resterait largement déclarative.',
+      'Le second test sera la pratique d’OpenAI : publication de son cadre de signalement, délai de notification lors d’un prochain incident et exemples où l’entreprise ralentit réellement un développement parce que ses garanties sont insuffisantes.',
+    ],
+  },
   'google-finlande-13-milliards-ia-nucleaire': {
     format: 'contexte',
     whyItMatters: [

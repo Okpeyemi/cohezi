@@ -2,6 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { ArticleHeader } from '@/components/article/article-header';
 import { articles } from '@/content/articles';
+import { formatDateFr } from '@/lib/format-date';
 
 const article = articles.find((item) => item.category === 'business')!;
 
@@ -27,7 +28,7 @@ describe('ArticleHeader', () => {
 
     render(<ArticleHeader article={updatedArticle} homeLabel="Accueil" />);
 
-    expect(screen.getByText(/Mis à jour le 7 septembre 2026/)).toBeInTheDocument();
-    expect(screen.getByText(/5 septembre 2026/)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(`Mis à jour le ${formatDateFr(updatedArticle.updatedAt!)}`))).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(formatDateFr(updatedArticle.publishedAt)))).toBeInTheDocument();
   });
 });
