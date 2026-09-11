@@ -5,6 +5,27 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'anthropic-claude-orchestrateur-cyberattaques': {
+    format: 'decryptage',
+    whyItMatters: [
+      'Le seuil décisif est franchi lorsque l’IA ne se contente plus de fournir une réponse, mais coordonne une suite d’actions dans des systèmes réels.',
+      'Le rapport donne aux régulateurs un matériau concret pour définir ce qu’un laboratoire doit détecter, conserver et déclarer.',
+    ],
+    whatChanges: [
+      'La sécurité doit porter sur la trajectoire complète d’un agent, ses outils, ses comptes et ses transferts de données — pas uniquement sur le texte qu’il produit.',
+      'Les laboratoires deviennent des acteurs du renseignement sur les menaces, ce qui rend le contrôle indépendant de leurs affirmations plus important.',
+    ],
+    watch: [
+      'Une confirmation indépendante de l’incident nord-africain, du pays touché et des volumes de données concernés.',
+      'Les réponses d’Alibaba, Moonshot, DeepSeek et Xiaomi aux accusations d’Anthropic.',
+      'L’adoption de délais et de formats obligatoires pour notifier les victimes et les autorités.',
+      'La persistance — ou non — de ces usages sur Fable et Mythos après une période d’observation plus longue.',
+    ],
+    africaAndFrancophonie: [
+      'L’incident attribué à une autorité technologique nord-africaine montre que le continent est déjà une cible opérationnelle, pas un simple spectateur du débat sur la sécurité des modèles.',
+      'Les administrations et entreprises africaines ont intérêt à renforcer la protection des accès distants, l’inventaire des identifiants et la détection comportementale, même lorsqu’elles n’utilisent pas directement Claude.',
+    ],
+  },
   'openai-reclame-des-regles-obligatoires-pour-les-ia-de-pointe': {
     format: 'contexte',
     whyItMatters: [

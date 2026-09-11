@@ -2,6 +2,109 @@ import type { ArticleCore } from '../types';
 
 export const analyseArticles: ArticleCore[] = [
   {
+    slug: 'anthropic-claude-orchestrateur-cyberattaques',
+    title: 'Anthropic documente le passage de Claude de l’assistant à l’orchestrateur de cyberattaques.',
+    excerpt:
+      'Le nouveau rapport d’Anthropic décrit des opérations où l’IA exécute une grande partie de la chaîne d’attaque. Une autorité technologique nord-africaine figure parmi les victimes, mais le document reste une enquête de l’entreprise sur ses propres systèmes.',
+    category: 'analyse',
+    publishedAt: '2026-09-11',
+    readingMinutes: 7,
+    image: {
+      src: '/images/articles/anthropic-cyber-threat-report.webp',
+      alt: 'Une salle de supervision informatique sombre où des analystes surveillent une activité réseau mondiale',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Anthropic a publié le 10 septembre 2026 un rapport de 154 pages consacré aux usages malveillants observés sur Claude entre décembre 2025 et août 2026. L’entreprise dit avoir interrompu des opérations relevant de sept catégories : cyberattaques, influence, surveillance, fraude, recherche biologique à double usage, développement d’armes conventionnelles et extraction non autorisée de capacités de ses modèles. Le constat le plus important n’est pas le nombre de cas. C’est le changement de rôle attribué à l’IA : dans plusieurs opérations, Claude ne servait plus seulement à conseiller un humain, mais à exécuter ou coordonner une grande partie du travail.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Il faut immédiatement distinguer trois niveaux de preuve. La publication du rapport, les catégories étudiées et les mesures annoncées sont des faits vérifiables. Les descriptions techniques et les volumes d’activité proviennent des journaux internes d’Anthropic. L’attribution de certaines campagnes à des groupes liés à des États ou à des entreprises chinoises reste, elle, l’évaluation d’une partie intéressée. Reuters et Associated Press ont confirmé la publication et demandé des réactions aux organisations citées, mais n’ont pas audité les données brutes. Le rapport doit donc être lu comme une source primaire substantielle, pas comme une décision judiciaire.',
+      },
+      { type: 'heading', text: 'Du copilote à la chaîne d’exécution' },
+      {
+        type: 'paragraph',
+        text: 'Dans les précédents rapports de menace, l’usage de Claude ressemblait souvent à une assistance : écrire un message, analyser du code ou traduire un document. Anthropic affirme désormais avoir observé des cadres multi-agents capables d’enchaîner reconnaissance, préparation de l’infrastructure, exploitation, collecte et exfiltration de données. L’humain fixe les objectifs, choisit les cibles et examine les résultats ; des agents exécutent le travail intermédiaire. Cette évolution réduit le besoin de compétences spécialisées et permet à une petite équipe — parfois à une personne seule — de maintenir une opération plus rapide et plus large.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le cas attribué à un acteur dont les méthodes correspondent au groupe russe Midnight Blizzard illustre cette automatisation. Selon Anthropic, l’opérateur utilisait des workflows pilotés par IA pour modifier ses outils lorsqu’ils étaient détectés, préparer des campagnes d’hameçonnage et organiser les informations collectées. Le rapport parle de plus de vingt organisations visées dans la planification ou l’exécution. Microsoft et les autorités américaines ont déjà documenté séparément certaines méthodes et l’existence du groupe, ce qui apporte du contexte à l’attribution. Cela ne vérifie toutefois pas chaque action décrite par Anthropic.',
+      },
+      { type: 'heading', text: 'Une victime nord-africaine, et des chiffres qui exigent de la prudence' },
+      {
+        type: 'paragraph',
+        text: 'Le rapport affirme que le même acteur a compromis une autorité technologique gouvernementale en Afrique du Nord. Des identifiants liés à un accès distant auraient permis de prendre le contrôle d’un serveur central, puis d’exfiltrer plus de 300 000 dossiers d’identité nationale et les données du registre commercial de plus d’un demi-million d’entreprises. Anthropic ne nomme ni le pays ni l’institution, afin de ne pas exposer davantage la victime. Cette retenue protège l’organisation concernée, mais empêche aussi une confirmation publique indépendante des volumes et de la chronologie.',
+      },
+      {
+        type: 'paragraph',
+        text: 'L’angle africain n’est donc pas décoratif. Il montre qu’une opération assistée par un modèle américain, attribuée à un acteur lié à la Russie, peut toucher une infrastructure administrative du continent et des bases de données utilisées par des citoyens comme par des entreprises. Pour les administrations africaines, la question ne se limite plus à adopter ou non des outils d’IA. Elle concerne aussi la sécurité des accès distants, la rotation des identifiants, la détection des comportements anormaux et la capacité à répondre à un adversaire dont le logiciel s’adapte plus vite.',
+      },
+      { type: 'heading', text: 'Les laboratoires d’IA sont à la fois fournisseurs, cibles et arbitres' },
+      {
+        type: 'paragraph',
+        text: 'Anthropic décrit également des campagnes d’extraction de capacités qu’elle attribue à sept laboratoires chinois. Alibaba aurait généré plus de 151 millions d’échanges entre mai et juillet 2026. Moonshot et DeepSeek auraient, selon l’entreprise, relayé des conversations de leurs propres utilisateurs vers Claude tout en conservant une partie des réponses pour l’entraînement. Ces accusations sont lourdes : elles concernent à la fois la propriété intellectuelle, le respect des conditions d’utilisation et la confidentialité de personnes qui pensaient interagir uniquement avec un autre service. Les entreprises citées n’avaient pas toutes répondu au moment de la publication de Reuters.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Ce volet révèle un conflit d’intérêts structurel. Anthropic possède les journaux qui lui permettent de détecter les abus et les compétences nécessaires pour les interpréter. Elle a aussi intérêt à présenter l’extraction de ses modèles comme une menace industrielle et géopolitique. Une régulation crédible devra préserver la capacité des laboratoires à bloquer rapidement un compte sans leur laisser le monopole du récit. Des formats communs de signalement, des audits indépendants et des mécanismes permettant aux organisations mises en cause de répondre deviennent nécessaires.',
+      },
+      { type: 'heading', text: 'Ce que le rapport ne permet pas de conclure' },
+      {
+        type: 'paragraph',
+        text: 'Anthropic précise que les cas publiés ne sont ni typiques ni représentatifs de l’ensemble des usages de Claude. Ils ont été sélectionnés parce qu’ils étaient nouveaux ou particulièrement sensibles. Le rapport ne fournit donc pas de taux d’incident, ne compare pas Claude à des outils concurrents et ne mesure pas combien d’attaques auraient réussi sans IA. L’entreprise emploie le terme « uplift » pour estimer le gain de vitesse, d’échelle ou de profondeur, mais cette mesure demeure qualitative dans plusieurs études de cas.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Autre nuance essentielle : à l’exception d’un cas d’extraction de capacités, Anthropic dit n’avoir observé aucun des abus décrits sur les nouveaux modèles Fable ou Mythos. Les opérations concernaient surtout des versions Haiku, Sonnet et Opus. Cela peut indiquer que les garde-fous récents fonctionnent mieux ; cela peut aussi refléter leur disponibilité plus récente et un temps d’observation plus court. La promesse de sécurité ne peut être évaluée qu’avec des données suivies dans le temps et, idéalement, examinées hors de l’entreprise.',
+      },
+      { type: 'heading', text: 'Pourquoi ce rapport arrive maintenant' },
+      {
+        type: 'paragraph',
+        text: 'Les modèles savent désormais utiliser des outils, écrire puis exécuter du code et poursuivre une tâche en plusieurs étapes. Dans le même temps, les laboratoires subissent une pression croissante pour déclarer les incidents impliquant leurs agents. OpenAI vient de réclamer des obligations nationales de tests, d’audits et de notification. Anthropic fournit ici un exemple de ce que pourrait contenir une telle transparence : des tendances, des cas, des limites et les mesures prises. Mais publier volontairement après plusieurs mois ne remplace pas un délai légal de notification lorsqu’une organisation est directement touchée.',
+      },
+      { type: 'heading', text: 'Qui gagne, qui perd, qui prend le risque' },
+      {
+        type: 'paragraph',
+        text: 'Les attaquants peu nombreux gagnent en vitesse et en capacité d’adaptation. Les défenseurs bénéficient eux aussi de l’IA pour trier des alertes et analyser du code, mais ils doivent protéger des systèmes réels, respecter des procédures et éviter les faux positifs. Les laboratoires gagnent un rôle central dans le renseignement sur les menaces, tout en assumant un risque juridique et réputationnel. Les utilisateurs et les organisations victimes restent les moins bien informés : ils dépendent de ce que la plateforme détecte, choisit de publier et accepte de partager.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le changement concret est donc organisationnel autant que technique. Bloquer une réponse dangereuse ne suffit plus lorsqu’un agent peut combiner des actions apparemment banales en une opération complète. Il faut surveiller les trajectoires, les outils connectés, les comptes intermédiaires et les transferts de données. La prochaine étape ne sera pas seulement un modèle plus sûr, mais une chaîne de responsabilité capable de dire qui détecte, qui informe la victime, qui conserve les preuves et qui contrôle la version publique des faits.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Anthropic décrit des opérations où l’IA exécute ou coordonne une grande partie de la chaîne d’attaque.',
+          'Une autorité technologique nord-africaine aurait perdu plus de 300 000 dossiers d’identité et les données de plus de 500 000 entreprises.',
+          'Les faits techniques reposent principalement sur les données d’Anthropic ; les attributions et les volumes n’ont pas tous été vérifiés indépendamment.',
+          'La réponse durable passe par la surveillance des actions, la notification rapide et un contrôle extérieur des rapports d’incident.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Anthropic',
+        title: 'Detecting and countering misuse of AI: September 2026',
+        url: 'https://www.anthropic.com/threat-intelligence-report-september-2026',
+        publishedAt: '2026-09-10',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Anthropic disrupts Russian, Chinese AI campaigns targeting its Claude models',
+        url: 'https://www.reuters.com/legal/litigation/anthropic-disrupts-russian-chinese-ai-campaigns-targeting-its-claude-models-2026-09-10/',
+        publishedAt: '2026-09-10',
+      },
+      {
+        outlet: 'Associated Press',
+        title: 'Anthropic says it blocked misuse of its AI that could have supported biological weapons',
+        url: 'https://apnews.com/article/anthropic-ai-threat-bioweapon-russia-00266dca90e4f8853f669648998d3bda',
+        publishedAt: '2026-09-10',
+      },
+    ],
+  },
+  {
     slug: 'washington-prend-le-parti-d-openai-contre-le-new-york-times',
     title: 'Le ministère américain de la Justice invoque la sécurité nationale contre le New York Times.',
     excerpt:
