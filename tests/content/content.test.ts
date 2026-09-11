@@ -10,11 +10,11 @@ const count = (slug: string) => articles.filter((a) => a.category === slug).leng
 
 describe('content integrity', () => {
   it('has the expected collection sizes', () => {
-    expect(articles).toHaveLength(30);
+    expect(articles).toHaveLength(31);
     expect(count('business')).toBe(10);
     expect(count('societe')).toBe(7);
     expect(count('actualite')).toBe(7);
-    expect(count('analyse')).toBe(6);
+    expect(count('analyse')).toBe(7);
     expect(categories).toHaveLength(4);
     expect(site.nav).toHaveLength(3);
     // La colonne « Suivre » dérive de site.footer.social : une seule source de vérité.
