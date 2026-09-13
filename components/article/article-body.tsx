@@ -43,9 +43,7 @@ function Block({ block, first, segments }: { block: ArticleBlock; first: boolean
       return (
         <p
           data-block="paragraph"
-          // `hyphens-auto` s'appuie sur le lang="fr" du document : sans césure, une colonne
-          // étroite justifiée creuse des rivières entre les mots.
-          className={cn('text-lg leading-8 text-ink/85 text-justify hyphens-auto', margin)}
+          className={cn('text-left text-lg leading-8 text-ink/85', margin)}
         >
           {segments ? <Prose segments={segments} /> : block.text}
         </p>
@@ -76,10 +74,13 @@ function Block({ block, first, segments }: { block: ArticleBlock; first: boolean
       );
     case 'takeaway':
       return (
-        <aside data-block="takeaway" className={cn('rounded-2xl border border-line bg-ink/[0.03] p-6', margin)}>
+        <aside
+          data-block="takeaway"
+          className={cn('rounded-2xl border border-line bg-ink/[0.03] p-6 md:p-7', margin)}
+        >
           <p className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-ink">
             <span aria-hidden className="h-1.5 w-1.5 bg-accent" />
-            {block.title}
+            L’essentiel en 30 secondes
           </p>
           <ul className="mt-4 space-y-2">
             {block.items.map((item) => (
@@ -93,42 +94,82 @@ function Block({ block, first, segments }: { block: ArticleBlock; first: boolean
   }
 }
 
-const perspectiveBlocks = (perspective: ArticlePerspective): ArticleBlock[] => [
-  { type: 'heading', text: 'Pourquoi c’est important' },
-  ...perspective.whyItMatters.map((text): ArticleBlock => ({ type: 'paragraph', text })),
-  { type: 'heading', text: 'Ce que cela change' },
-  ...perspective.whatChanges.map((text): ArticleBlock => ({ type: 'paragraph', text })),
-  { type: 'heading', text: 'Ce qu’il faut surveiller' },
-  ...perspective.watch.map((text): ArticleBlock => ({ type: 'paragraph', text })),
-  ...(perspective.africaAndFrancophonie?.length
-    ? [
-        { type: 'heading', text: 'L’angle africain et francophone' } as ArticleBlock,
-        ...perspective.africaAndFrancophonie.map((text): ArticleBlock => ({ type: 'paragraph', text })),
-      ]
-    : []),
-];
+type PerspectiveSectionProps = {
+  title: string;
+  items: string[];
+};
+
+function PerspectiveSection({ title, items }: PerspectiveSectionProps) {
+  return (
+    <section data-block="perspective" className="border-t border-line pt-6 first:border-t-0 first:pt-0">
+      <h2 className="font-display text-xl font-semibold text-ink md:text-2xl">{title}</h2>
+      <ul className="mt-4 space-y-3">
+        {items.map((item) => (
+          <li key={item} className="flex gap-3 text-base leading-7 text-ink/80">
+            <span aria-hidden className="mt-[11px] h-1.5 w-1.5 shrink-0 bg-accent" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function ArticlePerspectivePanel({ perspective }: { perspective: ArticlePerspective }) {
+  return (
+    <aside aria-labelledby="cohezi-perspective" className="mt-14 rounded-2xl border border-line bg-ink/[0.025] p-6 md:p-8">
+      <p
+        id="cohezi-perspective"
+        className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/55"
+      >
+        Le regard COHEZI
+      </p>
+      <div className="mt-6 space-y-7">
+        <PerspectiveSection title="Pourquoi ça compte" items={perspective.whyItMatters} />
+        <PerspectiveSection title="Concrètement, qu’est-ce qui change ?" items={perspective.whatChanges} />
+        <PerspectiveSection title="La suite à surveiller" items={perspective.watch} />
+        {perspective.africaAndFrancophonie?.length ? (
+          <PerspectiveSection title="En Afrique et dans la francophonie" items={perspective.africaAndFrancophonie} />
+        ) : null}
+      </div>
+    </aside>
+  );
+}
 
 export function ArticleBody({ blocks, perspective }: { blocks: ArticleBlock[]; perspective: ArticlePerspective }) {
-  // « À retenir » conclut toujours la lecture, après la couche d'explication.
+  // Le résumé doit donner la valeur de l'article avant la lecture longue.
   const takeaways = blocks.filter((block) => block.type === 'takeaway');
-  const enrichedBlocks = [
-    ...blocks.filter((block) => block.type !== 'takeaway'),
-    ...perspectiveBlocks(perspective),
-    ...takeaways,
-  ];
+  const factualBlocks = blocks.filter((block) => block.type !== 'takeaway');
+  const visibleBlocks = [...takeaways, ...factualBlocks];
 
   // Une seule mémoire pour tout l'article : chaque organisation n'est liée qu'une fois.
   // Le découpage est fait avant le rendu, pour ne dépendre d'aucun ordre d'exécution.
   const used = new Set<string>();
-  const prose = enrichedBlocks.map((block) =>
+  const prose = visibleBlocks.map((block) =>
     block.type === 'paragraph' ? linkEntities(block.text, entities, used) : undefined,
   );
 
   return (
     <div className="mx-auto max-w-[680px]">
-      {enrichedBlocks.map((block, index) => (
-        <Block key={`${block.type}-${index}`} block={block} first={index === 0} segments={prose[index]} />
-      ))}
+      {takeaways.length ? (
+        <div className="mb-14">
+          {takeaways.map((block, index) => (
+            <Block key={`takeaway-${index}`} block={block} first={index === 0} />
+          ))}
+        </div>
+      ) : null}
+      {factualBlocks.map((block, index) => {
+        const visibleIndex = takeaways.length + index;
+        return (
+          <Block
+            key={`${block.type}-${index}`}
+            block={block}
+            first={index === 0}
+            segments={prose[visibleIndex]}
+          />
+        );
+      })}
+      <ArticlePerspectivePanel perspective={perspective} />
     </div>
   );
 }

@@ -2,6 +2,99 @@ import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
   {
+    slug: 'openai-ipo-2026-altman-ralentir-course-ia',
+    title: 'OpenAI écarte une entrée en Bourse en 2026 pendant que les laboratoires parlent de ralentir.',
+    excerpt:
+      'Sam Altman juge le moment mal choisi pour une IPO. Anthropic propose de son côté des évaluateurs externes permanents : un signal fort, mais pas encore un accord de ralentissement.',
+    category: 'business',
+    publishedAt: '2026-09-13',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/openai-ipo-2026-ralentir-ia.webp',
+      alt: 'Une réunion stratégique face à un centre de calcul, symbole du choix entre croissance financière et prudence',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Sam Altman a déclaré à Fortune qu’OpenAI n’entrerait pas en Bourse en 2026. Le dirigeant juge le moment mal choisi alors que les questions de contrôle et de sécurité deviennent plus pressantes. Cette déclaration fixe une intention publique du directeur général ; elle n’équivaut ni au retrait d’un dossier annoncé par l’entreprise, ni à l’abandon définitif d’une introduction en Bourse.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le même week-end, Dario Amodei a demandé aux laboratoires de ralentir le rythme d’amélioration de leurs modèles les plus avancés. Le patron d’Anthropic ne propose pas d’arrêter la recherche. Il veut que les capacités progressent à une vitesse compatible avec l’évaluation, la sécurité opérationnelle et le contrôle extérieur. Le rapprochement entre les deux prises de parole révèle une tension devenue centrale : comment financer une course très coûteuse tout en acceptant de lever le pied lorsque les garanties ne suivent plus ?',
+      },
+      { type: 'heading', text: 'Ce qui s’est réellement passé' },
+      {
+        type: 'paragraph',
+        text: 'Dans l’entretien publié le 12 septembre, Altman écarte une IPO cette année et se dit ouvert à un accord avec d’autres acteurs pour ralentir le développement des systèmes de frontière. Reuters rapporte qu’il partage aussi l’idée d’un accès renforcé pour des évaluateurs indépendants. Aucun calendrier de cotation ultérieur, texte d’accord, partenaire signataire ou seuil technique de ralentissement n’a cependant été rendu public.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Amodei va plus loin sur un point vérifiable. Dans un essai publié sur son site, il engage Anthropic à accueillir une équipe extérieure disposant d’un accès proche de celui de salariés chargés de l’évaluation des risques. Ces spécialistes pourraient examiner les pratiques, documenter des incidents et publier leurs conclusions sans contrôle éditorial d’Anthropic, sous réserve de suppressions limitées pour la sécurité, le droit et les informations confidentielles. L’identité de l’équipe et la date de son installation restent à annoncer.',
+      },
+      { type: 'heading', text: 'Pourquoi ce débat arrive maintenant' },
+      {
+        type: 'paragraph',
+        text: 'Les laboratoires relient leur changement de ton à l’accélération des capacités et à plusieurs incidents observés pendant des évaluations d’agents. Leur diagnostic est intéressé mais cohérent : des systèmes qui utilisent des outils, ouvrent des comptes ou agissent sur des services extérieurs créent des risques différents d’un simple chatbot. La surveillance doit alors porter sur toute la trajectoire de l’agent, pas seulement sur sa dernière réponse.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le calendrier financier compte aussi. En Bourse, une entreprise doit rendre davantage d’informations publiques et répondre à des actionnaires attentifs à la croissance. Altman estime que cette pression serait mal alignée avec une période où OpenAI pourrait devoir consacrer plus de temps et de ressources aux garde-fous. C’est son interprétation, pas une preuve qu’une société cotée ne peut pas ralentir. Une IPO apporterait aussi des capitaux pour financer la recherche et les infrastructures dont OpenAI a besoin.',
+      },
+      { type: 'heading', text: 'Qui gagne, qui attend et qui prend le risque' },
+      {
+        type: 'paragraph',
+        text: 'OpenAI conserve plus de liberté stratégique en restant privée, mais repousse un accès direct aux marchés publics et une partie des obligations de transparence associées. Les investisseurs et salariés qui espéraient une liquidité rapide doivent attendre. Anthropic, en promettant un regard extérieur permanent, peut renforcer sa crédibilité ; il s’expose en retour à des conclusions défavorables qu’il affirme ne pas vouloir censurer.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Pour le secteur, une coordination peut éviter qu’un laboratoire prudent perde immédiatement du terrain face à un concurrent plus rapide. Elle peut aussi devenir une barrière à l’entrée si les plus grands acteurs définissent des normes coûteuses à leur avantage. Toute coopération sur la vitesse de développement devra donc articuler sécurité, concurrence et contrôle public. Un engagement entre entreprises ne remplace ni une règle commune ni une autorité capable de vérifier son application.',
+      },
+      { type: 'heading', text: 'Ce que cela change concrètement' },
+      {
+        type: 'paragraph',
+        text: 'À court terme, la décision la plus concrète est celle d’Anthropic sur les évaluateurs intégrés. Elle crée un test observable : l’équipe aura-t-elle réellement accès aux modèles, aux environnements d’entraînement, aux incidents et aux décisions de déploiement ? Pour OpenAI, l’effet immédiat est surtout financier et politique : pas de cotation en 2026 selon son dirigeant, et une ouverture affichée à un mécanisme collectif dont les modalités n’existent pas encore publiquement.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le mot « ralentir » doit enfin être mesuré par des actes. Il peut signifier retarder un entraînement, limiter un déploiement, ajouter des évaluations ou conditionner une nouvelle capacité à un niveau de protection précis. Tant que les laboratoires ne publient pas ces seuils et les cas où ils les appliquent, la différence entre prudence opérationnelle, promesse de communication et véritable réduction de vitesse restera difficile à établir.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Sam Altman exclut une entrée en Bourse d’OpenAI en 2026, sans annoncer l’abandon définitif du projet.',
+          'Anthropic promet des évaluateurs externes permanents ; c’est l’engagement le plus concret annoncé à ce stade.',
+          'Aucun accord commun de ralentissement n’est encore signé, publié ou assorti de seuils vérifiables.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Fortune',
+        title: 'Sam Altman confirms OpenAI won’t go public this year, saying an IPO now would come at an ill-advised moment given AI safety concerns',
+        url: 'https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/',
+        publishedAt: '2026-09-12',
+      },
+      {
+        outlet: 'Dario Amodei',
+        title: 'We Must Pace the Frontier',
+        url: 'https://darioamodei.com/post/we-must-pace-the-frontier',
+      },
+      {
+        outlet: 'Reuters',
+        title: "OpenAI's Altman won't do IPO this year, calls AI extinction risk unacceptable",
+        url: 'https://www.reuters.com/legal/litigation/openai-ipo-will-not-happen-2026-amid-ai-safety-fears-altman-says-2026-09-12/',
+        publishedAt: '2026-09-12',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Anthropic CEO urges AI companies to slow model development',
+        url: 'https://www.reuters.com/business/anthropic-ceo-urges-ai-companies-slow-model-development-2026-09-12/',
+        publishedAt: '2026-09-12',
+      },
+    ],
+  },
+  {
     slug: 'google-finlande-13-milliards-ia-nucleaire',
     title: 'Google investit 13 milliards d’euros en Finlande et sécurise 22 ans de nucléaire.',
     excerpt:

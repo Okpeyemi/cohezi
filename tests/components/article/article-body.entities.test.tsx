@@ -50,11 +50,11 @@ describe('ArticleBody entity links', () => {
 });
 
 describe('ArticleBody typography', () => {
-  it('justifies the paragraphs and lets the browser hyphenate', () => {
+  it('ranges paragraphs left for more even mobile reading', () => {
     render(<ArticleBody blocks={blocks} perspective={perspective} />);
     const paragraph = document.querySelector('[data-block="paragraph"]')!;
-    expect(paragraph.className).toContain('text-justify');
-    expect(paragraph.className).toContain('hyphens-auto');
+    expect(paragraph.className).toContain('text-left');
+    expect(paragraph.className).not.toContain('text-justify');
   });
 
   it('leaves the quotation ranged left', () => {

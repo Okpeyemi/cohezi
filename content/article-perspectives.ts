@@ -5,6 +5,23 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'openai-ipo-2026-altman-ralentir-course-ia': {
+    format: 'contexte',
+    whyItMatters: [
+      'Le report d’une cotation et l’appel à ralentir relient pour la première fois de manière aussi visible la gouvernance financière des laboratoires à leur capacité de suspendre une avancée lorsque les garanties ne suivent pas.',
+      'L’engagement d’Anthropic sur des évaluateurs permanents crée un mécanisme potentiellement vérifiable. Il déplace le débat des déclarations générales vers l’accès concret aux systèmes, aux incidents et aux décisions de déploiement.',
+    ],
+    whatChanges: [
+      'OpenAI ne sera pas cotée en 2026 selon son directeur général, mais aucune nouvelle date n’est annoncée. Anthropic promet pour sa part un contrôle extérieur continu ; aucun accord commun de ralentissement n’est encore signé.',
+      'Pour devenir crédible, la prudence devra être traduite en seuils mesurables : capacité déclenchant un examen, droit de publier des résultats, décision de retarder un entraînement ou un lancement, et preuve que cette décision a été appliquée.',
+    ],
+    watch: [
+      'L’identité des évaluateurs choisis par Anthropic, leur périmètre réel d’accès et leurs premiers rapports publics.',
+      'La publication d’un accord entre laboratoires, ses critères techniques, son contrôle et les garanties de concurrence.',
+      'Le prochain calendrier d’IPO d’OpenAI et les informations financières que l’entreprise décidera de rendre publiques avant une cotation.',
+      'Des exemples documentés où OpenAI ou Anthropic retardent effectivement un développement pour des raisons de sécurité.',
+    ],
+  },
   'anthropic-claude-orchestrateur-cyberattaques': {
     format: 'decryptage',
     whyItMatters: [
@@ -287,10 +304,10 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
       'Il révèle aussi un problème de gouvernance. Dans la cybersécurité, une organisation dispose généralement de catégories d’incident, de délais d’escalade et de procédures de notification. Pour les comportements imprévus d’agents, les seuils de divulgation restent flous : événement de recherche, vulnérabilité, atteinte à un tiers ou incident de sécurité ?',
     ],
     whatChanges: [
-      'Les évaluations d’agents devront inclure les systèmes externes qu’ils peuvent toucher, pas seulement les réponses qu’ils produisent. Limiter les permissions, isoler les environnements, journaliser les actions et détecter les comportements coordonnés deviennent des exigences de déploiement. Le rapport reçu par la Commission ajoute une exigence de traçabilité : une entreprise doit aussi pouvoir expliquer l’incident et les mesures correctives à une autorité extérieure.',
+      'Les évaluations d’agents devront inclure les systèmes externes qu’ils peuvent toucher, pas seulement les réponses qu’ils produisent. Limiter les permissions, isoler les environnements, journaliser les actions et détecter les comportements coordonnés deviennent des exigences de déploiement. Le cas RubyGems montre aussi pourquoi une attribution doit séparer trois niveaux : campagne confirmée, présence reconnue des agents et responsabilité précise encore contestée.',
     ],
     watch: [
-      'Il faudra connaître la date à laquelle OpenAI a notifié la Commission, le contenu communicable du rapport et les mesures correctives réellement appliquées. Le cadre de signalement annoncé par l’entreprise devra préciser quels événements sont rendus publics, dans quels délais et avec quel niveau de détail. L’appel de l’ONU reste politique : le changement décisif serait l’adoption d’un standard commun par les laboratoires ou d’une obligation formelle par les régulateurs.',
+      'Il faudra connaître la date à laquelle OpenAI a notifié la Commission, le contenu communicable du rapport et les mesures correctives réellement appliquées. Le cadre de signalement annoncé par l’entreprise devra préciser quels événements sont rendus publics, dans quels délais et avec quel niveau de détail. Il faudra également suivre les conclusions techniques communes d’OpenAI et RubyGems sur la campagne de mai.',
     ],
   },
   'les-scribes-ia-medicaux-produisent-des-erreurs-de-diagnostic': {

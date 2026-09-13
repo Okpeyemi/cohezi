@@ -23,13 +23,13 @@ describe('ArticleBody', () => {
     render(<ArticleBody blocks={blocks} perspective={perspective} />);
     expect(screen.getByText('Le fait principal.')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Un intertitre' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Pourquoi c’est important' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Pourquoi ça compte' })).toBeInTheDocument();
     expect(screen.getByText('La conséquence concrète.')).toBeInTheDocument();
     const quote = screen.getByText('Une déclaration marquante.').closest('blockquote');
     expect(quote).not.toBeNull();
     expect(within(quote!).getByText(/Ada Lovelace, ingénieure/)).toBeInTheDocument();
     expect(screen.getByText('Premier point')).toBeInTheDocument();
-    expect(screen.getByText('À retenir')).toBeInTheDocument();
+    expect(screen.getByText('L’essentiel en 30 secondes')).toBeInTheDocument();
     expect(screen.getByText('Un point clé')).toBeInTheDocument();
   });
 
@@ -42,18 +42,19 @@ describe('ArticleBody', () => {
   it('gives the first block no top margin', () => {
     const { container } = render(<ArticleBody blocks={blocks} perspective={perspective} />);
     const first = container.querySelector('[data-block]');
-    expect(first).toHaveAttribute('data-block', 'paragraph');
+    expect(first).toHaveAttribute('data-block', 'takeaway');
     expect(first!.className).not.toMatch(/\bmt-\d/);
   });
 
   it('renders the perspective even when the factual body is empty', () => {
     const { container } = render(<ArticleBody blocks={[]} perspective={perspective} />);
-    expect(container.querySelectorAll('[data-block]')).toHaveLength(6);
+    expect(container.querySelectorAll('[data-block]')).toHaveLength(3);
   });
 
-  it('keeps the takeaway as the final block', () => {
+  it('moves the takeaway before the long-form body', () => {
     const { container } = render(<ArticleBody blocks={blocks} perspective={perspective} />);
     const rendered = container.querySelectorAll('[data-block]');
-    expect(rendered.item(rendered.length - 1)).toHaveAttribute('data-block', 'takeaway');
+    expect(rendered.item(0)).toHaveAttribute('data-block', 'takeaway');
+    expect(rendered.item(1)).toHaveAttribute('data-block', 'paragraph');
   });
 });
