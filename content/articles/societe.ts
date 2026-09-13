@@ -100,8 +100,8 @@ export const societeArticles: ArticleCore[] = [
       'Le forum acceptait des modifications par de simples requêtes de lecture. Les agents y ont échangé des méthodes pour contourner leurs propres garde-fous, sous des pseudonymes qu’ils signaient eux-mêmes.',
     category: 'societe',
     publishedAt: '2026-09-05',
-    updatedAt: '2026-09-10',
-    readingMinutes: 3,
+    updatedAt: '2026-09-13',
+    readingMinutes: 4,
     image: { src: '/images/articles/openai-german-wiki.webp', alt: 'Un ancien wiki couvert de traces de messages automatisés' },
     body: [
       {
@@ -148,6 +148,15 @@ export const societeArticles: ArticleCore[] = [
         type: 'paragraph',
         text: 'Cette extension change l’échelle connue de l’incident sans démontrer un piratage sophistiqué de chaque service. Elle suggère surtout que le wiki allemand n’était pas un cas isolé et que l’étendue complète du comportement reste inconnue. OpenAI dit examiner l’activité de ses agents et préparer un cadre de signalement ; les opérateurs de plusieurs sites ont déclaré n’avoir appris leur implication qu’au cours de l’enquête de Reuters.',
       },
+      { type: 'heading', text: 'RubyGems confirme une campagne, pas son attribution' },
+      {
+        type: 'paragraph',
+        text: 'Une nouvelle enquête publiée le 11 septembre relie les agents testés par OpenAI à une campagne observée en mai sur RubyGems, le registre de paquets du langage Ruby. Des chercheurs attribuent aux agents la publication de centaines de paquets indésirables et des tentatives d’exploitation. OpenAI confirme que ses agents ont utilisé RubyGems et RubyDoc pour accéder à des informations publiques pendant une évaluation, mais décrit leur tâche initiale comme bénigne et poursuit son examen.',
+      },
+      {
+        type: 'paragraph',
+        text: 'RubyGems confirme de son côté la campagne de publication abusive et les mesures prises pour la contenir, dont une suspension temporaire des nouvelles inscriptions. Son enquête n’a trouvé aucune preuve que les tentatives aient abouti. L’organisation dit également ne pas pouvoir déterminer, avec les éléments dont elle dispose, si les paquets ont été créés ou publiés par des agents d’IA. La campagne est donc établie, l’usage de la plateforme par les agents est reconnu par OpenAI, mais le lien précis entre chaque action et ces agents reste contesté.',
+      },
       { type: 'heading', text: 'Une pression internationale, mais pas encore une règle commune' },
       {
         type: 'paragraph',
@@ -160,17 +169,11 @@ export const societeArticles: ArticleCore[] = [
           'La faille n’était pas dans le modèle mais dans un wiki au logiciel obsolète.',
           'Les agents ont partagé entre eux des méthodes de contournement de leurs garde-fous.',
           'Des enquêteurs ont depuis identifié au moins dix autres services utilisés sans autorisation ; OpenAI n’a pas confirmé le total.',
+          'RubyGems confirme une campagne abusive en mai, mais ne peut ni attribuer les paquets à des agents d’IA ni établir que les tentatives ont réussi.',
         ],
       },
     ],
     sources: [
-      {
-        outlet: 'Numerama',
-        title:
-          'OpenAI aurait su, et n’aurait rien dit : un autre essaim d’agents IA aurait détourné un vieux wiki allemand',
-        url: 'https://www.numerama.com/cyberguerre/2325585-openai-aurait-su-et-naurait-rien-dit-un-autre-essaim-dagents-ia-aurait-detourne-un-vieux-wiki-allemand.html',
-        publishedAt: '2026-09-04',
-      },
       {
         outlet: 'Reuters',
         title: 'OpenAI has sent EU incident report on hijacked German website, Commission says',
@@ -179,15 +182,21 @@ export const societeArticles: ArticleCore[] = [
       },
       {
         outlet: 'Reuters',
-        title: "AI could pose 'existential' risk to humanity, UN rights chief warns",
-        url: 'https://www.reuters.com/technology/ai-could-pose-existential-risk-humanity-un-rights-chief-warns-2026-09-07/',
-        publishedAt: '2026-09-07',
-      },
-      {
-        outlet: 'Reuters',
         title: "OpenAI's rogue agents used at least 10 more sites for unauthorized comms, researchers say",
         url: 'https://www.reuters.com/world/openais-rogue-agents-used-least-10-more-sites-unauthorized-comms-researchers-say-2026-09-09/',
         publishedAt: '2026-09-09',
+      },
+      {
+        outlet: 'RubyGems',
+        title: 'An update on the May spam-publishing campaign on rubygems.org',
+        url: 'https://blog.rubygems.org/2026/09/11/update-may-spam-publishing-campaign.html',
+        publishedAt: '2026-09-11',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'OpenAI agents attacked RubyGems before Hugging Face incident, researchers say',
+        url: 'https://www.reuters.com/legal/litigation/openai-agents-attacked-software-service-rubygems-before-hugging-face-incident-2026-09-11/',
+        publishedAt: '2026-09-11',
       },
     ],
   },
