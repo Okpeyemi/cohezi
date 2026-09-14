@@ -8,6 +8,7 @@ export const businessArticles: ArticleCore[] = [
       'Sam Altman juge le moment mal choisi pour une IPO. Anthropic propose de son côté des évaluateurs externes permanents : un signal fort, mais pas encore un accord de ralentissement.',
     category: 'business',
     publishedAt: '2026-09-13',
+    updatedAt: '2026-09-14',
     readingMinutes: 5,
     image: {
       src: '/images/articles/openai-ipo-2026-ralentir-ia.webp',
@@ -58,6 +59,15 @@ export const businessArticles: ArticleCore[] = [
         type: 'paragraph',
         text: 'Le mot « ralentir » doit enfin être mesuré par des actes. Il peut signifier retarder un entraînement, limiter un déploiement, ajouter des évaluations ou conditionner une nouvelle capacité à un niveau de protection précis. Tant que les laboratoires ne publient pas ces seuils et les cas où ils les appliquent, la différence entre prudence opérationnelle, promesse de communication et véritable réduction de vitesse restera difficile à établir.',
       },
+      { type: 'heading', text: 'Le premier test est venu des marchés' },
+      {
+        type: 'paragraph',
+        text: 'Le 14 septembre, plusieurs valeurs asiatiques liées à l’IA ont fortement reculé après les appels au ralentissement. Reuters a relevé une baisse de 13,2 % pour SoftBank, très exposé à OpenAI, de 9,8 % pour Kioxia et de 5,3 % pour SK Hynix. Le Financial Times a également constaté un mouvement de vente sur les fabricants de puces et les groupes associés au financement de l’IA. Cette réaction montre que les investisseurs ont commencé à traduire le débat de sécurité en risque financier : un développement plus lent peut retarder les revenus attendus et rendre plus difficile la justification des valorisations élevées.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Il serait toutefois excessif d’attribuer toute la baisse à une seule déclaration. Les marchés asiatiques étaient aussi sous pression en raison de la hausse du pétrole, des tensions géopolitiques et des attentes de relèvement des taux. Le lien le plus solide est donc celui-ci : les prises de parole d’Altman et d’Amodei ont constitué un facteur supplémentaire de vente sur un secteur déjà vulnérable aux doutes sur ses dépenses, ses délais et sa rentabilité. Une séance ne prouve pas un retournement durable, mais elle rend visible le coût économique potentiel d’un véritable ralentissement.',
+      },
       {
         type: 'takeaway',
         title: 'À retenir',
@@ -65,16 +75,11 @@ export const businessArticles: ArticleCore[] = [
           'Sam Altman exclut une entrée en Bourse d’OpenAI en 2026, sans annoncer l’abandon définitif du projet.',
           'Anthropic promet des évaluateurs externes permanents ; c’est l’engagement le plus concret annoncé à ce stade.',
           'Aucun accord commun de ralentissement n’est encore signé, publié ou assorti de seuils vérifiables.',
+          'La baisse des valeurs IA asiatiques montre que les marchés commencent à intégrer le ralentissement comme un risque financier, sans permettre d’en faire l’unique cause du recul.',
         ],
       },
     ],
     sources: [
-      {
-        outlet: 'Fortune',
-        title: 'Sam Altman confirms OpenAI won’t go public this year, saying an IPO now would come at an ill-advised moment given AI safety concerns',
-        url: 'https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/',
-        publishedAt: '2026-09-12',
-      },
       {
         outlet: 'Dario Amodei',
         title: 'We Must Pace the Frontier',
@@ -88,9 +93,15 @@ export const businessArticles: ArticleCore[] = [
       },
       {
         outlet: 'Reuters',
-        title: 'Anthropic CEO urges AI companies to slow model development',
-        url: 'https://www.reuters.com/business/anthropic-ceo-urges-ai-companies-slow-model-development-2026-09-12/',
-        publishedAt: '2026-09-12',
+        title: "AI-linked Asian stocks slump after top lab CEOs call for slowing down technology's development",
+        url: 'https://www.reuters.com/world/china/ai-linked-asian-stocks-slump-after-top-lab-ceos-call-slowing-down-technologys-2026-09-14/',
+        publishedAt: '2026-09-14',
+      },
+      {
+        outlet: 'Financial Times',
+        title: 'Global AI stocks slip on concerns over risks',
+        url: 'https://www.ft.com/content/aa8a1be7-abe0-44b7-bcd3-31fd0a44de08',
+        publishedAt: '2026-09-14',
       },
     ],
   },
