@@ -14,12 +14,14 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
     whatChanges: [
       'OpenAI ne sera pas cotée en 2026 selon son directeur général, mais aucune nouvelle date n’est annoncée. Anthropic promet pour sa part un contrôle extérieur continu ; aucun accord commun de ralentissement n’est encore signé.',
       'Pour devenir crédible, la prudence devra être traduite en seuils mesurables : capacité déclenchant un examen, droit de publier des résultats, décision de retarder un entraînement ou un lancement, et preuve que cette décision a été appliquée.',
+      'La réaction boursière du 14 septembre ajoute une contrainte concrète : si un ralentissement réduit les revenus attendus, les laboratoires et leurs investisseurs devront arbitrer entre sécurité, calendrier commercial et valorisations.',
     ],
     watch: [
       'L’identité des évaluateurs choisis par Anthropic, leur périmètre réel d’accès et leurs premiers rapports publics.',
       'La publication d’un accord entre laboratoires, ses critères techniques, son contrôle et les garanties de concurrence.',
       'Le prochain calendrier d’IPO d’OpenAI et les informations financières que l’entreprise décidera de rendre publiques avant une cotation.',
       'Des exemples documentés où OpenAI ou Anthropic retardent effectivement un développement pour des raisons de sécurité.',
+      'La durée de la correction des valeurs IA : une séance de baisse ne suffit pas à établir que les investisseurs ont durablement réévalué le secteur.',
     ],
   },
   'anthropic-claude-orchestrateur-cyberattaques': {
