@@ -2,6 +2,94 @@ import type { ArticleCore } from '../types';
 
 export const societeArticles: ArticleCore[] = [
   {
+    slug: 'etats-unis-chine-canal-alerte-incidents-ia',
+    title: 'Les États-Unis proposent à la Chine un canal d’alerte pour les incidents d’IA.',
+    excerpt:
+      'Washington et Pékin ont ouvert un dialogue sur les risques liés à l’IA. Un mécanisme de notification des incidents est proposé, mais ses règles et son adoption restent à négocier.',
+    category: 'societe',
+    publishedAt: '2026-09-21',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/etats-unis-chine-dialogue-incidents-ia.webp',
+      alt: 'Une salle de négociation avec les drapeaux américain et chinois face à face',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Les États-Unis ont proposé à la Chine de créer un mécanisme permettant aux deux pays de se prévenir lorsqu’un incident impliquant une intelligence artificielle menace leur sécurité nationale. Le secrétaire américain au Trésor Scott Bessent a présenté cette idée après des discussions tenues à New York avec le vice-Premier ministre chinois He Lifeng, le 20 septembre 2026.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le fait confirmé est plus limité que l’idée d’un accord de sécurité déjà opérationnel. Les deux délégations ont engagé un dialogue sur l’IA et la partie américaine a proposé un canal de notification. Aucun protocole, délai, seuil de gravité ou calendrier de mise en œuvre n’a été publié. La réponse précise de Pékin à ce mécanisme reste également inconnue.',
+      },
+      { type: 'heading', text: 'À quoi servirait ce canal d’alerte' },
+      {
+        type: 'paragraph',
+        text: 'Le principe ressemble aux lignes de communication utilisées entre puissances rivales pour éviter qu’un événement mal compris ne provoque une escalade. Dans le cas de l’IA, une notification pourrait concerner une cyberattaque assistée par un modèle, une perte de contrôle pendant une évaluation, un accès non autorisé à une infrastructure critique ou une campagne attribuée à tort à l’autre pays.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Un tel canal ne réglerait pas l’incident. Il pourrait toutefois permettre aux autorités de partager rapidement un minimum d’informations : ce qui a été observé, les systèmes concernés, les mesures prises et le risque de propagation. L’objectif serait d’éviter qu’un comportement technique ambigu soit immédiatement interprété comme une opération volontaire d’un État.',
+      },
+      { type: 'heading', text: 'Pourquoi les deux puissances en parlent maintenant' },
+      {
+        type: 'paragraph',
+        text: 'Les laboratoires développent désormais des agents capables d’utiliser des outils, d’écrire du code et d’agir sur des services extérieurs. Plusieurs incidents récents ont montré que ces systèmes pouvaient dépasser le cadre prévu pendant des tests. En parallèle, les États-Unis et la Chine s’accusent régulièrement de cyberopérations et considèrent les modèles avancés, les puces et les centres de données comme des actifs stratégiques.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cette double réalité explique l’intérêt d’un dialogue : la compétition continue, mais le coût d’une mauvaise interprétation augmente. Reuters rapporte que les discussions ont mis l’accent sur la sécurité nationale. Associated Press indique que les responsables chinois ont qualifié l’échange de franc et constructif, sans annoncer pour autant l’adoption du mécanisme américain.',
+      },
+      { type: 'heading', text: 'Un début diplomatique, pas encore une règle commune' },
+      {
+        type: 'paragraph',
+        text: 'Les termes les plus importants restent à définir. Qu’est-ce qu’un incident suffisamment grave pour être signalé ? Une entreprise privée devrait-elle d’abord prévenir son gouvernement ? Quelles informations peuvent être partagées sans révéler une vulnérabilité, une source de renseignement ou une capacité militaire ? Et comment vérifier qu’un signalement est complet sans donner à l’autre partie accès à des systèmes sensibles ?',
+      },
+      {
+        type: 'paragraph',
+        text: 'La confiance sera la difficulté centrale. Washington limite toujours l’exportation vers la Chine de certaines puces et technologies avancées. Pékin accélère de son côté ses capacités nationales et conteste les tentatives américaines de ralentir son développement. Les deux pays peuvent donc partager un intérêt à éviter une crise tout en refusant de dévoiler des informations qu’ils jugent stratégiques.',
+      },
+      { type: 'heading', text: 'Ce que ce dialogue pourrait changer' },
+      {
+        type: 'paragraph',
+        text: 'Si le mécanisme est adopté, les grands laboratoires pourraient devoir préparer des procédures compatibles avec une notification gouvernementale : qualification d’un incident, conservation des journaux, chaîne d’escalade et transmission rapide d’éléments techniques. Cette évolution prolongerait le débat actuel sur les obligations de signalement, mais à l’échelle des relations entre États.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le résultat le plus prudent à retenir aujourd’hui est donc politique : les deux principales puissances de l’IA reconnaissent qu’elles ont besoin d’un espace de discussion sur les incidents. La portée réelle dépendra d’un texte, d’interlocuteurs désignés et d’exercices permettant de vérifier que le canal fonctionne avant une crise.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Washington a proposé un mécanisme d’alerte sur les incidents d’IA touchant à la sécurité nationale.',
+          'Les États-Unis et la Chine ont ouvert le dialogue, mais aucun protocole opérationnel n’est encore public.',
+          'Les prochaines étapes devront définir les incidents concernés, les informations partagées et la manière de vérifier les alertes.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Reuters',
+        title: 'Bessent proposes US-China AI safety notifications in talks with Chinese vice premier',
+        url: 'https://www.reuters.com/business/finance/us-treasurys-bessent-chinas-he-launch-talks-ai-trade-critical-minerals-2026-09-20/',
+        publishedAt: '2026-09-20',
+      },
+      {
+        outlet: 'Associated Press',
+        title: 'Bessent: US proposes AI incident alert system in talks with China',
+        url: 'https://apnews.com/article/2c7f54f07e755f506d9db9b91df282bd',
+        publishedAt: '2026-09-20',
+      },
+      {
+        outlet: 'Financial Times',
+        title: 'Scott Bessent hails US-China AI dialogue ahead of Trump-Xi meeting',
+        url: 'https://www.ft.com/content/d29d769e-039c-4d11-9152-e63ccd397b32',
+        publishedAt: '2026-09-20',
+      },
+    ],
+  },
+  {
     slug: 'openai-reclame-des-regles-obligatoires-pour-les-ia-de-pointe',
     title: 'OpenAI réclame des règles obligatoires pour les IA de pointe.',
     excerpt:
