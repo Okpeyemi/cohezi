@@ -3,11 +3,12 @@ import type { ArticleCore } from '../types';
 export const societeArticles: ArticleCore[] = [
   {
     slug: 'etats-unis-chine-canal-alerte-incidents-ia',
-    title: 'Les États-Unis proposent à la Chine un canal d’alerte pour les incidents d’IA.',
+    title: 'Les États-Unis et la Chine formalisent un dialogue sur les incidents d’IA.',
     excerpt:
-      'Washington et Pékin ont ouvert un dialogue sur les risques liés à l’IA. Un mécanisme de notification des incidents est proposé, mais ses règles et son adoption restent à négocier.',
+      'Washington et Pékin ont convenu d’un dialogue formalisé sur les risques liés à l’IA. Une prochaine réunion est prévue à Shenzhen, mais les règles du canal d’incident restent à négocier.',
     category: 'societe',
     publishedAt: '2026-09-21',
+    updatedAt: '2026-09-21',
     readingMinutes: 5,
     image: {
       src: '/images/articles/etats-unis-chine-dialogue-incidents-ia.webp',
@@ -16,11 +17,11 @@ export const societeArticles: ArticleCore[] = [
     body: [
       {
         type: 'paragraph',
-        text: 'Les États-Unis ont proposé à la Chine de créer un mécanisme permettant aux deux pays de se prévenir lorsqu’un incident impliquant une intelligence artificielle menace leur sécurité nationale. Le secrétaire américain au Trésor Scott Bessent a présenté cette idée après des discussions tenues à New York avec le vice-Premier ministre chinois He Lifeng, le 20 septembre 2026.',
+        text: 'Les États-Unis et la Chine ont convenu de formaliser un dialogue sur les risques liés à l’intelligence artificielle, comprenant une « ligne d’incident » destinée aux communications en cas de problème de sécurité. Le secrétaire américain au Trésor Scott Bessent l’a annoncé après des discussions tenues à New York avec le vice-Premier ministre chinois He Lifeng, le 20 septembre 2026.',
       },
       {
         type: 'paragraph',
-        text: 'Le fait confirmé est plus limité que l’idée d’un accord de sécurité déjà opérationnel. Les deux délégations ont engagé un dialogue sur l’IA et la partie américaine a proposé un canal de notification. Aucun protocole, délai, seuil de gravité ou calendrier de mise en œuvre n’a été publié. La réponse précise de Pékin à ce mécanisme reste également inconnue.',
+        text: 'Le fait confirmé est plus limité que l’idée d’un accord de sécurité déjà opérationnel. Les deux délégations ont accepté le principe d’un dialogue formalisé et doivent se retrouver dans environ deux mois à Shenzhen. Aucun protocole, seuil de gravité, délai de notification ou interlocuteur permanent n’a cependant été rendu public. L’accord politique ouvre donc la négociation ; il ne met pas encore un canal technique en service.',
       },
       { type: 'heading', text: 'À quoi servirait ce canal d’alerte' },
       {
@@ -43,6 +44,10 @@ export const societeArticles: ArticleCore[] = [
       { type: 'heading', text: 'Un début diplomatique, pas encore une règle commune' },
       {
         type: 'paragraph',
+        text: 'L’annonce d’une prochaine réunion à Shenzhen donne désormais un calendrier au processus. D’après Reuters, les discussions devront porter sur les dangers attribués aux systèmes d’IA et sur les protocoles de communication à utiliser lorsqu’un incident survient. Le Financial Times confirme l’accord sur un mécanisme de dialogue, sans faire état d’un texte commun déjà adopté.',
+      },
+      {
+        type: 'paragraph',
         text: 'Les termes les plus importants restent à définir. Qu’est-ce qu’un incident suffisamment grave pour être signalé ? Une entreprise privée devrait-elle d’abord prévenir son gouvernement ? Quelles informations peuvent être partagées sans révéler une vulnérabilité, une source de renseignement ou une capacité militaire ? Et comment vérifier qu’un signalement est complet sans donner à l’autre partie accès à des systèmes sensibles ?',
       },
       {
@@ -56,14 +61,14 @@ export const societeArticles: ArticleCore[] = [
       },
       {
         type: 'paragraph',
-        text: 'Le résultat le plus prudent à retenir aujourd’hui est donc politique : les deux principales puissances de l’IA reconnaissent qu’elles ont besoin d’un espace de discussion sur les incidents. La portée réelle dépendra d’un texte, d’interlocuteurs désignés et d’exercices permettant de vérifier que le canal fonctionne avant une crise.',
+        text: 'Le résultat le plus prudent à retenir aujourd’hui est donc politique : les deux principales puissances de l’IA reconnaissent qu’elles ont besoin d’un espace structuré de discussion sur les incidents et ont prévu une étape suivante. La portée réelle dépendra encore d’un texte, d’interlocuteurs désignés et d’exercices permettant de vérifier que le canal fonctionne avant une crise.',
       },
       {
         type: 'takeaway',
         title: 'À retenir',
         items: [
-          'Washington a proposé un mécanisme d’alerte sur les incidents d’IA touchant à la sécurité nationale.',
-          'Les États-Unis et la Chine ont ouvert le dialogue, mais aucun protocole opérationnel n’est encore public.',
+          'Washington et Pékin ont convenu de formaliser un dialogue comprenant une ligne de communication sur les incidents d’IA.',
+          'Une nouvelle réunion est annoncée dans environ deux mois à Shenzhen, mais aucun protocole opérationnel n’est encore public.',
           'Les prochaines étapes devront définir les incidents concernés, les informations partagées et la manière de vérifier les alertes.',
         ],
       },
@@ -71,9 +76,9 @@ export const societeArticles: ArticleCore[] = [
     sources: [
       {
         outlet: 'Reuters',
-        title: 'Bessent proposes US-China AI safety notifications in talks with Chinese vice premier',
-        url: 'https://www.reuters.com/business/finance/us-treasurys-bessent-chinas-he-launch-talks-ai-trade-critical-minerals-2026-09-20/',
-        publishedAt: '2026-09-20',
+        title: 'US, China to meet again on AI safety in two months in Shenzhen, Bessent says',
+        url: 'https://www.reuters.com/world/asia-pacific/us-china-meet-again-ai-safety-two-months-shenzhen-bessent-says-2026-09-21/',
+        publishedAt: '2026-09-21',
       },
       {
         outlet: 'Associated Press',
