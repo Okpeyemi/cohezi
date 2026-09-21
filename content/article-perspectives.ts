@@ -5,6 +5,22 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'etats-unis-chine-canal-alerte-incidents-ia': {
+    format: 'contexte',
+    whyItMatters: [
+      'Un incident d’IA peut être difficile à attribuer : comportement imprévu d’un modèle, action d’un groupe privé ou opération soutenue par un État. Un canal direct peut réduire le risque qu’une mauvaise interprétation devienne une crise diplomatique.',
+      'La proposition fait aussi passer la notification des incidents du niveau des entreprises à celui des relations entre puissances. Elle reconnaît que certains effets de l’IA dépassent désormais le périmètre d’un laboratoire ou d’un régulateur national.',
+    ],
+    whatChanges: [
+      'Rien ne change encore juridiquement ou techniquement : aucun mécanisme public n’est en service. Si les deux pays l’adoptent, les laboratoires et autorités devront définir une chaîne d’alerte, conserver les preuves utiles et décider quelles informations peuvent être partagées rapidement.',
+      'Pour les autres pays, le dispositif pourrait devenir un précédent. Mais un dialogue bilatéral entre Washington et Pékin ne remplace pas un cadre international auquel les États africains, européens et les puissances émergentes pourraient participer.',
+    ],
+    watch: [
+      'La confirmation officielle d’un accord, la désignation des interlocuteurs et la date de la prochaine réunion.',
+      'La définition d’un incident notifiable, les délais, les informations minimales et les protections contre les alertes incomplètes ou trompeuses.',
+      'Des exercices communs ou un premier cas réel montrant que le canal peut fonctionner malgré les tensions sur les puces, la cybersécurité et la concurrence technologique.',
+    ],
+  },
   'openai-ipo-2026-altman-ralentir-course-ia': {
     format: 'contexte',
     whyItMatters: [
