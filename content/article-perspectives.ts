@@ -5,6 +5,23 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'microsoft-copilot-home-code-autopilot': {
+    format: 'contexte',
+    whyItMatters: [
+      'Microsoft ne présente plus Copilot comme une fonction ajoutée à chaque logiciel, mais comme le point de départ du travail. Réunir conversation, documents, création d’applications et agents persistants dans la même interface peut simplifier les usages, tout en concentrant davantage de données et de décisions dans une seule plateforme.',
+      'Autopilot fait aussi franchir un seuil opérationnel : l’agent possède une identité, une mémoire et un environnement de travail, puis poursuit une mission sans attendre une nouvelle invite. Les contrôles d’accès, les journaux et la possibilité d’arrêter une action deviennent donc aussi importants que la qualité du modèle.',
+    ],
+    whatChanges: [
+      'À court terme, le changement concerne surtout les participants aux programmes Frontier et aux aperçus privés. Pour les organisations qui y accèdent, la gouvernance doit couvrir les applications générées par Code, les permissions d’Autopilot et le budget consommé par chaque tâche agentique.',
+      'La facturation à l’usage rapproche le déploiement de l’IA d’un service cloud classique : une entreprise ne peut plus seulement compter ses licences, elle doit suivre les missions exécutées, les modèles choisis et la valeur produite. Les équipes métiers gagnent en autonomie, tandis que l’informatique doit éviter la création d’outils sans propriétaire ni maintenance.',
+    ],
+    watch: [
+      'Les dates de disponibilité générale de Home, Code et Autopilot, ainsi que les pays, langues et offres réellement couverts.',
+      'Les limites d’action d’Autopilot, les confirmations humaines, la qualité des journaux d’audit et les incidents observés pendant les aperçus.',
+      'Le coût réel des tâches longues et la capacité de FinOps for AI à relier les crédits consommés à un résultat mesurable.',
+      'La maintenance, la sécurité et la portabilité des applications créées avec Code lorsque leur auteur change d’équipe ou que le besoin évolue.',
+    ],
+  },
   'etats-unis-chine-canal-alerte-incidents-ia': {
     format: 'contexte',
     whyItMatters: [

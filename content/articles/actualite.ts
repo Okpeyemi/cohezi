@@ -2,6 +2,92 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'microsoft-copilot-home-code-autopilot',
+    title: 'Microsoft transforme Copilot en hub de travail avec Home, Code et Autopilot.',
+    excerpt:
+      'Copilot réunit désormais conversation, création d’applications et agents persistants. Mais le déploiement commence par des programmes d’accès anticipé, tandis que les tâches longues seront facturées à l’usage.',
+    category: 'actualite',
+    publishedAt: '2026-09-26',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/microsoft-copilot-home-code-autopilot.webp',
+      alt: 'Visuel officiel du nouveau Microsoft Copilot présentant les espaces Home, Code et Autopilot',
+      credit: {
+        label: 'Microsoft',
+        url: 'https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/',
+      },
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Microsoft a présenté le 25 septembre 2026 une nouvelle organisation de Copilot autour de trois espaces : Home pour converser et déléguer, Code pour créer des applications, et Autopilot pour confier des tâches récurrentes à un agent qui continue de travailler dans le cloud. L’annonce marque un changement de positionnement : Copilot ne veut plus être seulement un assistant intégré à Office, mais l’interface depuis laquelle une entreprise demande, construit et automatise du travail.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Il faut toutefois distinguer le produit présenté de ce qui est immédiatement disponible. Home et Code doivent commencer à arriver dans le programme d’accès anticipé Frontier au cours des prochaines semaines. Autopilot entrera en aperçu privé à la fin du mois. Code est annoncé en préversion pour les abonnés Microsoft 365 Premium et Pro plus tard dans l’année. La refonte est donc lancée, mais toutes ses fonctions ne sont pas encore ouvertes à l’ensemble des clients.',
+      },
+      { type: 'heading', text: 'Home rassemble la conversation, Office et les tâches déléguées' },
+      {
+        type: 'paragraph',
+        text: 'Home devient le point de départ de Copilot. Il réunit Chat, pour les demandes rapides, et Cowork, pour les missions plus longues exécutées de bout en bout. Microsoft cite la préparation d’une réponse à un appel d’offres, d’un dossier client ou d’un kit de lancement. Word, Excel et PowerPoint doivent aussi fonctionner directement dans l’interface : l’utilisateur pourra demander un document, un budget ou une présentation, puis continuer à les modifier avec son équipe sans recréer le contexte dans une autre application.',
+      },
+      { type: 'heading', text: 'Code veut faire de chaque employé un créateur d’applications' },
+      {
+        type: 'paragraph',
+        text: 'Avec Code, un utilisateur décrit en langage naturel une application, un tableau de bord, un suivi ou une automatisation. Copilot choisit une méthode, construit la solution et peut la rendre accessible à des collègues. La fonction reprend la technologie de GitHub Copilot, mais vise des personnes qui ne développent pas au quotidien. Le code s’exécute dans un environnement isolé et peut être hébergé dans le tenant Microsoft 365 de l’entreprise.',
+      },
+      { type: 'heading', text: 'Autopilot travaille sans attendre une nouvelle consigne' },
+      {
+        type: 'paragraph',
+        text: 'Autopilot, auparavant appelé Scout, est la partie la plus autonome de l’annonce. L’agent reçoit un nom, un rôle et un objectif, puis peut surveiller des canaux, relancer des participants, exécuter un travail récurrent et reprendre un projet plusieurs jours plus tard. Il dispose dans le cloud de sa propre identité, d’une mémoire, d’un ordinateur et d’un espace de travail. Microsoft promet des permissions, des journaux d’audit et des règles de gouvernance comparables à celles d’un compte de l’organisation.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cette persistance rend l’agent plus utile, mais augmente aussi le coût d’une mauvaise instruction ou d’un accès trop large. Un chatbot se trompe dans une réponse ; un agent actif pendant plusieurs jours peut répéter la même erreur, contacter des collègues ou consommer des crédits. Les mécanismes importants seront donc moins spectaculaires que les démonstrations : limites d’action, confirmations humaines, alertes, possibilité d’interrompre une mission et historique compréhensible des décisions.',
+      },
+      { type: 'heading', text: 'Un Copilot à deux modes de facturation' },
+      {
+        type: 'paragraph',
+        text: 'Microsoft sépare désormais les usages courants et les tâches agentiques. La licence par utilisateur couvre Chat et Copilot dans Word, Excel, PowerPoint, Outlook et Teams. Le système Auto choisit un modèle selon la qualité, la vitesse et le coût. Cowork, Code, Autopilot et les modèles de frontière sont, eux, facturés selon l’usage. Les administrateurs pourront définir les familles de modèles accessibles, imposer des politiques de dépense et suivre les crédits consommés.',
+      },
+      { type: 'heading', text: 'Pourquoi Microsoft refond encore Copilot' },
+      {
+        type: 'paragraph',
+        text: 'Microsoft avait déjà commencé en août à réunir ses applications Copilot grand public et professionnelles. La nouvelle interface achève ce rapprochement tout en recentrant le produit sur le travail en entreprise. The Verge note que Microsoft dispose d’un avantage difficile à reproduire : Copilot peut s’appuyer sur Office, Teams, Outlook et l’identité Microsoft Entra déjà présents dans de nombreuses organisations. Mais cet avantage devient une dépendance supplémentaire si la conversation, les fichiers, les applications internes et les agents passent tous par la même plateforme.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Le nouveau Copilot réunit Home, Code et Autopilot dans une même interface orientée vers le travail.',
+          'Le lancement commence par Frontier et des aperçus privés : plusieurs fonctions restent à venir.',
+          'Les tâches longues et agentiques seront facturées à l’usage, avec des outils FinOps destinés à contrôler les dépenses.',
+          'L’autonomie d’Autopilot rend essentiels les permissions, les journaux, les confirmations et l’arrêt d’une mission.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Microsoft',
+        title: 'Introducing the new Copilot with Home, Code and Autopilot',
+        url: 'https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/',
+        publishedAt: '2026-09-25',
+      },
+      {
+        outlet: 'Microsoft',
+        title: 'Evolution of the Copilot pricing model',
+        url: 'https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/evolution-of-the-copilot-pricing-model/4559416',
+        publishedAt: '2026-09-25',
+      },
+      {
+        outlet: 'The Verge',
+        title: 'Microsoft thinks its new Copilot “super app” will be as influential as Office',
+        url: 'https://www.theverge.com/news/802732/microsoft-copilot-home-code-autopilot-ai-super-app',
+        publishedAt: '2026-09-25',
+      },
+    ],
+  },
+  {
     slug: 'meta-lance-muse-agent-email-paiements',
     title: 'Meta lance Muse, un agent capable d’envoyer des e-mails et d’effectuer des paiements.',
     excerpt:
