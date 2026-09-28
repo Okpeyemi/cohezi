@@ -2,6 +2,96 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'nvidia-open-agent-safety-platform-agents-ia',
+    title: 'NVIDIA place les garde-fous des agents IA en dehors du modèle.',
+    excerpt:
+      'OpenShell limite les accès d’un agent, tandis que Sentry promet de le surveiller depuis une puce séparée. Une défense plus difficile à contourner, mais encore à éprouver hors des démonstrations de NVIDIA.',
+    category: 'actualite',
+    publishedAt: '2026-09-28',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/nvidia-open-agent-safety-platform.webp',
+      alt: 'Un serveur isolé dans un centre de données sombre, sous la surveillance de systèmes de sécurité distincts',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'NVIDIA a lancé le 28 septembre 2026 Open Agent Safety Platform, un ensemble destiné à encadrer les agents d’intelligence artificielle pendant leurs tests puis leur utilisation réelle. L’idée centrale est simple : un agent ne devrait pas pouvoir modifier les règles qui le surveillent. La plateforme associe OpenShell, un logiciel libre qui délimite ses accès, à Sentry, un système de contrôle fonctionnant sur une puce distincte du processeur qui exécute l’agent.',
+      },
+      { type: 'heading', text: 'OpenShell donne seulement les permissions nécessaires' },
+      {
+        type: 'paragraph',
+        text: 'Un agent peut lire des fichiers, appeler des services en ligne, utiliser des identifiants ou lancer du code. OpenShell place chaque agent dans un environnement isolé et applique une règle de refus par défaut : l’accès est accordé uniquement lorsqu’il correspond à la tâche déclarée. Les restrictions portent notamment sur les fichiers, le réseau et les services externes. Elles continuent de s’appliquer si l’agent génère un programme ou crée un nouveau processus.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le logiciel conserve aussi les véritables identifiants hors de l’environnement de travail. Il peut, par exemple, autoriser la lecture d’un calendrier tout en refusant sa modification. Un outil de vérification formelle analyse les politiques avant leur activation et signale une permission qui dépasserait les limites fixées. Selon la documentation publique, OpenShell 0.1.2 est disponible et peut fonctionner avec des modèles ouverts ou propriétaires. NVIDIA affirme qu’il est optimisé pour ses processeurs Vera, mais qu’il peut être étendu aux plateformes d’Arm et d’Intel.',
+      },
+      { type: 'heading', text: 'Sentry surveille l’agent depuis une autre couche' },
+      {
+        type: 'paragraph',
+        text: 'Sentry ajoute un second niveau de défense sur les processeurs réseau BlueField-4 de NVIDIA. Ce contrôleur observe les requêtes et les réponses, vérifie l’identité de l’agent et applique des règles d’accès sans fonctionner dans le même environnement que lui. NVIDIA promet qu’il peut mettre en quarantaine un agent en quelques millisecondes lorsqu’il tente de sortir de ses limites.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cette séparation répond à une faiblesse connue des garde-fous placés uniquement dans les instructions du modèle ou dans l’application. Un agent déterminé à terminer sa mission peut rencontrer une consigne malveillante, produire du code inattendu ou contourner un contrôle qu’il est capable d’observer. Déplacer la décision vers une couche extérieure ne garantit pas qu’aucune erreur ne surviendra, mais rend la règle plus difficile à influencer par le texte produit par le modèle.',
+      },
+      { type: 'heading', text: 'Une plateforme ouverte, adossée au matériel NVIDIA' },
+      {
+        type: 'paragraph',
+        text: 'NVIDIA cite plus de cent organisations travaillant avec les technologies de la plateforme, parmi lesquelles Anthropic, Microsoft, Hugging Face, SAP, Salesforce, Cisco, CrowdStrike et plusieurs groupes financiers. SpaceXAI dit déjà l’utiliser avec des agents de programmation Cursor et les modèles Grok. Ces soutiens montrent l’ampleur de l’écosystème réuni, mais ils ne constituent pas une évaluation indépendante de son efficacité.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La distinction entre les deux composants est importante. OpenShell est disponible publiquement et peut être adopté sans acheter toute la pile NVIDIA. Sentry, lui, dépend de BlueField-4. NVIDIA transforme ainsi un problème de sécurité logicielle en débouché potentiel pour son matériel. Les entreprises gagnent une architecture intégrée et un interlocuteur unique ; elles prennent aussi le risque de dépendre davantage d’un fournisseur pour une fonction critique.',
+      },
+      { type: 'heading', text: 'Ce que le lancement ne prouve pas encore' },
+      {
+        type: 'paragraph',
+        text: 'Aucun résultat comparatif public ne démontre pour l’instant que la plateforme bloque toutes les sorties de cadre, ni qu’elle le fait sans ralentissement ou faux positifs gênants. Une politique mal écrite peut rester trop permissive ; une politique trop stricte peut empêcher l’agent de travailler. La mise en quarantaine en quelques millisecondes est une affirmation de NVIDIA qui devra être reproduite dans des environnements variés et face à des attaques conçues par des tiers.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le lancement marque néanmoins un changement concret : la sécurité des agents n’est plus présentée seulement comme une qualité du modèle, mais comme une infrastructure à part entière. Pour une organisation, la question devient moins « l’agent est-il fiable ? » que « quels fichiers, services et actions lui sont accessibles, qui peut modifier ces droits, et comment l’arrêter si son comportement dévie ? ». Les prochaines preuves viendront des incidents évités, des tests indépendants et des déploiements réels, pas du nombre de partenaires annoncé.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'OpenShell isole les agents et applique leurs permissions en dehors de leur propre processus.',
+          'Sentry promet une surveillance matérielle indépendante et une mise en quarantaine rapide, mais exige BlueField-4.',
+          'La plateforme est disponible ; son efficacité réelle reste à mesurer par des tests indépendants.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'NVIDIA',
+        title: 'NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment',
+        url: 'https://nvidianews.nvidia.com/_gallery/download_pdf/6aba2cd23d6332bf9e64fbef/',
+        publishedAt: '2026-09-28',
+      },
+      {
+        outlet: 'NVIDIA',
+        title: 'NVIDIA OpenShell',
+        url: 'https://build.nvidia.com/openshell',
+        publishedAt: '2026-09-28',
+      },
+      {
+        outlet: 'NVIDIA',
+        title: 'NVIDIA OpenShell Developer Guide',
+        url: 'https://docs.nvidia.com/openshell/home',
+        publishedAt: '2026-09-28',
+      },
+      {
+        outlet: 'Associated Press',
+        title: 'Nvidia unveils security platform to stop AI agents from going rogue',
+        url: 'https://www.clickorlando.com/business/2026/09/28/nvidia-unveils-security-platform-to-stop-ai-agents-from-going-rogue/',
+        publishedAt: '2026-09-28',
+      },
+    ],
+  },
+  {
     slug: 'microsoft-copilot-home-code-autopilot',
     title: 'Microsoft transforme Copilot en hub de travail avec Home, Code et Autopilot.',
     excerpt:

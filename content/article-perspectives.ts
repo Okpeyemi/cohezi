@@ -5,6 +5,26 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'nvidia-open-agent-safety-platform-agents-ia': {
+    format: 'contexte',
+    whyItMatters: [
+      'Un agent peut agir sur des fichiers, des comptes et des services réels. Placer les règles en dehors du modèle réduit le risque qu’une instruction trompeuse ou du code généré modifie le contrôle censé limiter ses actions.',
+      'NVIDIA élargit aussi son rôle : l’entreprise ne fournit plus seulement les puces qui exécutent l’IA, mais propose la couche qui observe, autorise et arrête les agents. Cette position peut devenir aussi stratégique que le calcul lui-même.',
+    ],
+    whatChanges: [
+      'Les équipes peuvent utiliser OpenShell pour isoler un agent, limiter ses accès et conserver des traces sans dépendre de ses propres décisions. Les entreprises qui choisissent Sentry ajoutent une surveillance matérielle séparée, au prix d’une dépendance aux processeurs BlueField-4.',
+      'Pour les acheteurs, un test de modèle ne suffit plus. Il faut désormais examiner les permissions, les journaux, la procédure de quarantaine et la personne capable de modifier les politiques. La qualité de cette configuration détermine une partie du risque opérationnel.',
+    ],
+    watch: [
+      'Des évaluations indépendantes mesurant les contournements bloqués, les faux positifs, le ralentissement et la mise en quarantaine annoncée en quelques millisecondes.',
+      'Les premières intégrations réellement déployées chez les partenaires cités, au-delà des déclarations de soutien ou des expérimentations.',
+      'L’extension d’OpenShell aux plateformes Arm et Intel, ainsi que la part des fonctions de sécurité qui restera utilisable sans matériel NVIDIA.',
+      'La manière dont les organisations écrivent, contrôlent et mettent à jour les politiques : une infrastructure solide ne corrige pas automatiquement une permission trop large.',
+    ],
+    africaAndFrancophonie: [
+      'Le caractère ouvert d’OpenShell permet à des équipes disposant de moyens limités de tester une isolation logicielle sans acquérir toute la pile matérielle. En revanche, le niveau de protection promis par Sentry suppose un équipement spécialisé, ce qui crée un écart concret de coût et d’accès.',
+    ],
+  },
   'microsoft-copilot-home-code-autopilot': {
     format: 'contexte',
     whyItMatters: [
