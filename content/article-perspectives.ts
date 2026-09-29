@@ -61,20 +61,20 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
   'openai-ipo-2026-altman-ralentir-course-ia': {
     format: 'contexte',
     whyItMatters: [
-      'Le report d’une cotation et l’appel à ralentir relient pour la première fois de manière aussi visible la gouvernance financière des laboratoires à leur capacité de suspendre une avancée lorsque les garanties ne suivent pas.',
-      'L’engagement d’Anthropic sur des évaluateurs permanents crée un mécanisme potentiellement vérifiable. Il déplace le débat des déclarations générales vers l’accès concret aux systèmes, aux incidents et aux décisions de déploiement.',
+      'L’arrêt de la sortie de GPT-6.1 Astra transforme une promesse générale de prudence en décision observable : OpenAI accepte de perdre un rendez-vous produit lorsque l’autonomie du modèle progresse plus vite que ses mécanismes d’autorisation et de traçabilité.',
+      'Le cas montre aussi pourquoi les agents demandent une sécurité différente de celle d’un chatbot. Lorsqu’un système utilise des outils et poursuit une mission de bout en bout, une mauvaise interprétation peut produire une suite d’actions réelles avant que l’utilisateur ne voie le problème.',
     ],
     whatChanges: [
-      'OpenAI ne sera pas cotée en 2026 selon son directeur général, mais aucune nouvelle date n’est annoncée. Anthropic promet pour sa part un contrôle extérieur continu ; aucun accord commun de ralentissement n’est encore signé.',
-      'Pour devenir crédible, la prudence devra être traduite en seuils mesurables : capacité déclenchant un examen, droit de publier des résultats, décision de retarder un entraînement ou un lancement, et preuve que cette décision a été appliquée.',
-      'La réaction boursière du 14 septembre ajoute une contrainte concrète : si un ralentissement réduit les revenus attendus, les laboratoires et leurs investisseurs devront arbitrer entre sécurité, calendrier commercial et valorisations.',
+      'GPT-6.1 Astra ne sera pas lancé en octobre sous la forme prévue. Pour les utilisateurs de ChatGPT et de Codex, aucune nouvelle capacité n’arrive pour l’instant ; pour les développeurs, le calendrier annoncé perd sa valeur tant que les correctifs n’ont pas franchi de nouvelles évaluations.',
+      'Les organisations qui déploient des agents disposent d’une liste de contrôles très concrète : périmètre d’action explicite, confirmation avant l’usage de services externes, arrêt d’urgence et journal fidèle des opérations réellement exécutées.',
+      'La décision ne crée pas un accord collectif de ralentissement et ne suspend pas toute la recherche d’OpenAI. Elle établit seulement qu’une version précise peut être bloquée, ce qui est moins spectaculaire mais beaucoup plus vérifiable qu’une déclaration d’intention.',
     ],
     watch: [
-      'L’identité des évaluateurs choisis par Anthropic, leur périmètre réel d’accès et leurs premiers rapports publics.',
-      'La publication d’un accord entre laboratoires, ses critères techniques, son contrôle et les garanties de concurrence.',
-      'Le prochain calendrier d’IPO d’OpenAI et les informations financières que l’entreprise décidera de rendre publiques avant une cotation.',
-      'Des exemples documentés où OpenAI ou Anthropic retardent effectivement un développement pour des raisons de sécurité.',
-      'La durée de la correction des valeurs IA : une séance de baisse ne suffit pas à établir que les investisseurs ont durablement réévalué le secteur.',
+      'La publication par OpenAI d’un rapport technique donnant les scénarios testés, les taux d’échec et les correctifs exigés avant une nouvelle version.',
+      'Le retour éventuel de GPT-6.1 Astra sous le même nom, son remplacement par une autre version ou l’abandon définitif de cette branche.',
+      'L’application de la même barre de sécurité à un futur modèle lorsque le retard menace un lancement commercial majeur.',
+      'La mise en place d’évaluations extérieures et la publication d’un accord entre laboratoires avec des seuils et un contrôle identifiables.',
+      'Le prochain calendrier d’IPO d’OpenAI et la manière dont l’entreprise présente aux investisseurs le coût des lancements retardés.',
     ],
   },
   'anthropic-claude-orchestrateur-cyberattaques': {
