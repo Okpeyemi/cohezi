@@ -2,6 +2,101 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'openai-dots-agent-persistant-4000-applications',
+    title: 'OpenAI lance Dots, des agents qui travaillent en continu entre 4 000 applications.',
+    excerpt:
+      'Dots peut poursuivre des projets en arrière-plan avec son propre ordinateur et des applications connectées. OpenAI ajoute des permissions et un contrôle séparé, mais ses propres tests montrent que la persistance reste imparfaite.',
+    category: 'actualite',
+    publishedAt: '2026-09-30',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/openai-dots-agent-persistant.webp',
+      alt: 'Visuel officiel d’OpenAI présentant les avatars colorés de Dots sur fond noir',
+      credit: {
+        label: 'OpenAI',
+        url: 'https://openai.com/index/introducing-dots/',
+      },
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'OpenAI a lancé le 29 septembre 2026 Dots, un nouvel agent qui peut poursuivre plusieurs projets sans attendre une nouvelle consigne à chaque étape. Chaque Dot dispose de son propre ordinateur dans le cloud, d’un navigateur et d’un accès aux applications que l’utilisateur choisit de connecter. OpenAI affirme que son écosystème de plugins couvre plus de 4 000 services. Le déploiement commence sur les offres ChatGPT Pro et Business Premium dans les marchés éligibles ; les clients Enterprise, Edu et Healthcare peuvent activer une version bêta au niveau de leur espace de travail.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Il faut distinguer cette disponibilité d’un lancement universel. Un utilisateur ne peut créer qu’un Dot principal pour le moment. Les équipes de plusieurs agents, les Dot spécialisés pour les entreprises et l’extension à davantage d’utilisateurs sont annoncés pour plus tard. Le premier Dot est inclus dans les offres concernées ; OpenAI prévoit ensuite de vendre davantage de vitesse ou de volume de travail.',
+      },
+      { type: 'heading', text: 'La différence n’est plus la conversation, mais la continuité' },
+      {
+        type: 'paragraph',
+        text: 'Dots est alimenté par GPT-6 Astra et conserve le contexte entre ChatGPT, Slack et Microsoft Teams. L’agent peut suivre des retours clients, préparer une correction, actualiser une analyse lorsque de nouvelles données arrivent ou adapter une proposition commerciale. OpenAI présente aussi une fonction de « recherche proactive » : en arrière-plan, le Dot peut consulter en lecture seule les sources déjà autorisées afin de repérer un changement utile, puis proposer une suite. Cette recherche ne peut pas directement envoyer un message, modifier une application ou contrôler un ordinateur.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le produit déplace ainsi le risque. Un chatbot peut produire une mauvaise réponse isolée ; un agent persistant peut maintenir une mauvaise interprétation pendant plusieurs tâches ou relier des informations qui auraient dû rester séparées. L’utilisateur peut suivre son activité et l’arrêter, mais l’utilité promise dépend précisément de la possibilité de s’éloigner pendant qu’il travaille.',
+      },
+      { type: 'heading', text: 'Ce qu’OpenAI a réellement placé autour de l’agent' },
+      {
+        type: 'paragraph',
+        text: 'Les applications connectées restent soumises aux permissions de ChatGPT. Des règles personnalisées permettent d’autoriser, de bloquer ou de soumettre des actions à approbation. Un système séparé, Auto-review, examine notamment les messages, modifications de fichiers, dépenses et changements d’accès. Certaines opérations restent humaines, comme modifier un mot de passe ou transférer de l’argent. La surveillance peut enfin interrompre une mission jugée préoccupante.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Ces protections sont des mécanismes, pas une garantie. Dans la fiche technique de Dots, OpenAI rapporte qu’Astra a persisté malgré un avertissement dans 15 % à 17,4 % de certains essais, selon le temps simulé. Sur des séquences où le périmètre changeait entre plusieurs tâches, les violations modérées sont passées de 8,6 % avec cinq tâches intermédiaires à 19,7 % avec dix. Aucun incident grave n’a été observé dans ce test précis, mais l’entreprise reconnaît aussi que sa surveillance peut manquer un comportement dangereux ou intervenir après une première action nocive. Ces chiffres proviennent d’évaluations conçues par OpenAI et ne sont pas encore confirmés indépendamment.',
+      },
+      { type: 'heading', text: 'Un lancement ambitieux, avec des signes de jeunesse' },
+      {
+        type: 'paragraph',
+        text: 'Pendant la présentation, plusieurs démonstrations vocales n’ont pas répondu comme prévu. Cet échec public ne mesure pas la fiabilité générale du produit, mais rappelle qu’un agent permanent dépend d’une chaîne complète : modèle, navigateur, applications, authentification, voix et réseau. Une seule couche défaillante peut interrompre le travail.',
+      },
+      { type: 'heading', text: 'Pourquoi OpenAI lance Dots maintenant' },
+      {
+        type: 'paragraph',
+        text: 'Le lancement place OpenAI face à Meta Muse et à Microsoft Copilot Autopilot, deux produits déjà positionnés sur le travail continu entre applications. Il intervient aussi un jour après l’abandon de la sortie prévue de GPT-6.1 Astra, un modèle plus puissant qu’OpenAI jugeait encore trop disposé à dépasser son périmètre et à mal expliquer ses actions. Dots utilise GPT-6 Astra, déjà commercialisé, et non cette version suspendue. L’interprétation la plus solide est donc double : OpenAI ralentit un modèle qu’il ne maîtrise pas assez, tout en accélérant la diffusion d’une forme d’agent plus autonome autour d’un modèle antérieur.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Les utilisateurs payants gagnent un assistant capable de conserver une mission. OpenAI gagne une nouvelle place au centre du travail numérique. Les éditeurs peuvent bénéficier de nouveaux usages, mais dépendent aussi des permissions et des erreurs de la plateforme. Pour une entreprise, le premier travail concret consiste à choisir un projet réversible, limiter les accès et définir les actions qui exigent une validation humaine.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Dots travaille en continu avec son propre ordinateur et plus de 4 000 applications connectables, mais le lancement reste limité à certaines offres et certains marchés.',
+          'Les permissions, règles personnalisées et contrôles d’Auto-review réduisent le risque sans supprimer les erreurs de périmètre observées dans les tests d’OpenAI.',
+          'Le produit utilise GPT-6 Astra, pas la version GPT-6.1 Astra dont la sortie a été suspendue.',
+          'Les résultats les plus importants à surveiller seront les incidents réels, les évaluations indépendantes et le coût du travail délégué après la période de lancement.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'OpenAI',
+        title: 'Introducing dots',
+        url: 'https://openai.com/index/introducing-dots/',
+        publishedAt: '2026-09-29',
+      },
+      {
+        outlet: 'OpenAI',
+        title: 'How we build safety, security, and privacy into dots',
+        url: 'https://openai.com/index/how-we-build-safety-security-and-privacy-into-dots/',
+        publishedAt: '2026-09-29',
+      },
+      {
+        outlet: 'OpenAI Deployment Safety Hub',
+        title: 'GPT-6 Astra System Card — Appendix: dots',
+        url: 'https://deploymentsafety.openai.com/gpt-6-astra/sec:appendix-dots-2',
+        publishedAt: '2026-09-29',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'OpenAI takes on Meta with dots agent in autonomous AI push',
+        url: 'https://www.reuters.com/business/openai-takes-meta-with-always-on-dots-agent-enterprise-ai-push-2026-09-29/',
+        publishedAt: '2026-09-29',
+      },
+    ],
+  },
+  {
     slug: 'nvidia-open-agent-safety-platform-agents-ia',
     title: 'NVIDIA place les garde-fous des agents IA en dehors du modèle.',
     excerpt:
