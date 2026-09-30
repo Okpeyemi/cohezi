@@ -5,6 +5,22 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'openai-dots-agent-persistant-4000-applications': {
+    format: 'contexte',
+    whyItMatters: [
+      'Dots transforme la persistance en fonction grand public : l’agent conserve une mission et peut agir entre plusieurs applications pendant que l’utilisateur fait autre chose. Une erreur peut donc se prolonger et produire des effets externes.',
+      'La compétition se déplace du meilleur chatbot vers la plateforme qui obtient le plus de contexte, de permissions et de place dans les outils de travail.',
+    ],
+    whatChanges: [
+      'Pour les abonnés éligibles, ChatGPT peut garder un projet ouvert et revenir avec du travail sans nouvelle invite à chaque étape. Une organisation doit donc inventorier les applications connectées, écrire ses règles d’approbation et désigner la personne capable d’arrêter la mission.',
+      'Au lancement, mieux vaut confier un travail réversible, avec peu de données sensibles et un résultat facile à vérifier. Les dépenses, droits d’accès et communications externes doivent rester limités ou validés.',
+    ],
+    watch: [
+      'Les pays et forfaits couverts, le calendrier des Dot multiples et la tarification du travail après le lancement.',
+      'Les incidents en production, les évaluations indépendantes d’Auto-review et les transferts de contexte entre tâches distinctes.',
+      'La qualité de l’historique, la rapidité d’arrêt et la possibilité d’annuler une action déjà exécutée.',
+    ],
+  },
   'nvidia-open-agent-safety-platform-agents-ia': {
     format: 'contexte',
     whyItMatters: [
