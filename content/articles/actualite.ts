@@ -2,6 +2,99 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'google-gemini-4-argon-cyberdefenseurs',
+    title: 'Google réserve Gemini 4 Argon aux cyberdéfenseurs avant un lancement plus large.',
+    excerpt:
+      'Argon promet un million de tokens en sortie et des agents capables de corriger des vulnérabilités. Google commence pourtant par un cercle restreint, signe que la puissance cyber et l’autonomie du modèle restent difficiles à encadrer.',
+    category: 'actualite',
+    publishedAt: '2026-10-02',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/google-gemini-4-argon-cyberdefenseurs.webp',
+      alt: 'Une analyste en cybersécurité observe un système d’intelligence artificielle dans un centre de supervision sombre',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Google a présenté Gemini 4 Argon le 30 septembre 2026, mais ne l’ouvre pas encore aux développeurs ni au grand public. Le modèle est d’abord déployé auprès d’un groupe de cyberdéfenseurs de confiance dans le programme Fairwind. Google participe aussi au dispositif volontaire américain qui donne aux autorités un accès à certains modèles avant leur sortie. Les clients payants de l’API et les abonnés Google AI Ultra doivent être servis ensuite, sans date précise.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cette disponibilité limitée est le fait le plus important de l’annonce. Google présente Argon comme son modèle le plus capable pour les tâches longues de programmation, de finance, de droit et de cybersécurité. Pour les défenseurs admis au programme et les équipes internes de Google, il sera fourni sans les restrictions cyber appliquées au public. L’entreprise veut recueillir leurs retours avant d’élargir l’accès et renforcer entre-temps ses protections contre les usages malveillants, les injections de consignes et les actions qui dépassent l’intention de l’utilisateur.',
+      },
+      { type: 'heading', text: 'Un modèle conçu pour poursuivre une mission beaucoup plus longtemps' },
+      {
+        type: 'paragraph',
+        text: 'Argon peut produire jusqu’à un million de tokens dans une seule trajectoire, contre 64 000 auparavant selon Google. Cette limite concerne la sortie du modèle, pas seulement la quantité de documents qu’il peut lire. Elle lui permet en théorie d’enchaîner davantage d’étapes, d’appels d’outils et de corrections sans recommencer une mission. Mais un raisonnement plus long augmente aussi le coût, le temps d’exécution et le nombre d’occasions de prendre une mauvaise direction.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Google dit déjà utiliser Argon dans ses propres systèmes. Des agents auraient libéré plus de 300 tébioctets de mémoire dans ses centres de données et participent à des migrations de C et C++ vers Rust, jusqu’à plus de 800 000 lignes pour le noyau Zircon de Fuchsia. Ces exemples internes sont rapportés par Google et soumis à des audits ; ils ne constituent pas encore une mesure indépendante de fiabilité.',
+      },
+      { type: 'heading', text: 'Des records annoncés, mais pas une victoire sur toutes les tâches' },
+      {
+        type: 'paragraph',
+        text: 'Google met en avant 77,9 % sur DeepSWE v1.1, 51,3 % sur AutomationBench et 91,7 % sur LVBench. Sa note méthodologique impose toutefois de la prudence : le score DeepSWE d’Argon a été calculé par Google avec son propre harnais, tandis que plusieurs résultats concurrents viennent de classements publics ou de fiches techniques. La comparaison n’est donc pas parfaitement contrôlée.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le tableau complet nuance aussi le récit d’un modèle supérieur partout. Argon devance ses concurrents sur Vals Index, AutomationBench et DeepSWE, mais reste derrière Astra ou Opus sur FrontierSWE, Terminal-Bench, Terminal-Bench Science et OSWorld. La hiérarchie dépend donc du travail, du harnais et du budget de calcul.',
+      },
+      { type: 'heading', text: 'La cybersécurité explique le lancement en deux temps' },
+      {
+        type: 'paragraph',
+        text: 'Argon peut, selon Google, trouver, confirmer et corriger des vulnérabilités critiques. Wiz affirme que le modèle a repéré une faille exposant des données personnelles dans un logiciel de santé employé par des hôpitaux. Sur CWE-bench v1, Argon obtient 68 % et partage la première place. D’autres résultats reposent sur des tests internes non publics.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La même capacité qui aide à fermer une faille peut aider à l’exploiter. Google prévoit des refus, des tests adverses et un système qui observe le raisonnement et les actions afin d’arrêter une exécution hors périmètre. Ces mécanismes ne sont pas une garantie. Retirer les garde-fous cyber pour certains défenseurs pose aussi une question de gouvernance : qui obtient cet accès et comment ses usages sont-ils suivis ?',
+      },
+      { type: 'heading', text: 'Un prix d’appel qui doit être séparé du coût durable' },
+      {
+        type: 'paragraph',
+        text: 'Google annonce un tarif introductif de 2 dollars par million de tokens en entrée et 10 dollars en sortie. Après cette période, les prix doivent doubler. Pour une mission très longue, le coût pertinent sera celui d’une tâche terminée : raisonnement, outils, tentatives et validation humaine.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Pour les entreprises, aucun plan de migration immédiat ne s’impose : l’API générale n’est pas ouverte. Les cyberdéfenseurs admis devront isoler les tests, conserver les journaux et valider chaque modification avant la production. Google gagne du temps pour éprouver un modèle qu’il juge déjà trop sensible pour une diffusion sans précaution.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Gemini 4 Argon est annoncé, mais son accès commence par un groupe restreint de cyberdéfenseurs de confiance.',
+          'Le million de tokens en sortie permet des missions plus longues, avec davantage de coût et de risques d’erreur cumulée.',
+          'Plusieurs records proviennent de méthodes ou de harnais différents ; Argon ne domine pas toutes les évaluations publiées.',
+          'Le prix d’appel doit doubler après la période introductive, et aucune date d’ouverture générale n’est donnée.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Google',
+        title: 'Gemini 4 Argon: our next era of frontier intelligence',
+        url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/',
+        publishedAt: '2026-09-30',
+      },
+      {
+        outlet: 'Google DeepMind',
+        title: 'Gemini 4 Argon — Model evaluation',
+        url: 'https://deepmind.google/models/evals-methodology/gemini-4-argon',
+      },
+      {
+        outlet: 'Google DeepMind',
+        title: 'Gemini',
+        url: 'https://deepmind.google/models/gemini/',
+      },
+      {
+        outlet: 'The Verge',
+        title: 'Google announces Gemini 4 and says it’s so capable that only “trusted cyber defenders” can have it right now',
+        url: 'https://www.theverge.com/tech/1002980/google-gemini-4-argon',
+        publishedAt: '2026-09-30',
+      },
+    ],
+  },
+  {
     slug: 'ftc-enquete-openai-anthropic-agents-ia',
     title: 'La FTC enquête sur OpenAI et Anthropic après les dérapages d’agents IA.',
     excerpt:
