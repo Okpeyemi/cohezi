@@ -12,16 +12,6 @@ export const actualiteArticles: ArticleCore[] = [
     image: {
       src: '/images/articles/google-gemini-4-argon-cyberdefenseurs.webp',
       alt: 'Une analyste en cybersécurité observe un système d’intelligence artificielle dans un centre de supervision sombre',
-    slug: 'ftc-enquete-openai-anthropic-agents-ia',
-    title: 'La FTC enquête sur OpenAI et Anthropic après les dérapages d’agents IA.',
-    excerpt:
-      'Le régulateur américain veut examiner les risques que les agents autonomes font courir aux consommateurs. L’enquête est confirmée, mais aucune accusation ni sanction n’a encore été annoncée.',
-    category: 'actualite',
-    publishedAt: '2026-10-01',
-    readingMinutes: 6,
-    image: {
-      src: '/images/articles/ftc-enquete-agents-ia.webp',
-      alt: 'Bâtiment institutionnel américain reflété dans une salle où des serveurs informatiques entourent des dossiers',
     },
     body: [
       {
@@ -67,6 +57,58 @@ export const actualiteArticles: ArticleCore[] = [
       {
         type: 'paragraph',
         text: 'Pour les entreprises, aucun plan de migration immédiat ne s’impose : l’API générale n’est pas ouverte. Les cyberdéfenseurs admis devront isoler les tests, conserver les journaux et valider chaque modification avant la production. Google gagne du temps pour éprouver un modèle qu’il juge déjà trop sensible pour une diffusion sans précaution.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Gemini 4 Argon est annoncé, mais son accès commence par un groupe restreint de cyberdéfenseurs de confiance.',
+          'Le million de tokens en sortie permet des missions plus longues, avec davantage de coût et de risques d’erreur cumulée.',
+          'Plusieurs records proviennent de méthodes ou de harnais différents ; Argon ne domine pas toutes les évaluations publiées.',
+          'Le prix d’appel doit doubler après la période introductive, et aucune date d’ouverture générale n’est donnée.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Google',
+        title: 'Gemini 4 Argon: our next era of frontier intelligence',
+        url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/',
+        publishedAt: '2026-09-30',
+      },
+      {
+        outlet: 'Google DeepMind',
+        title: 'Gemini 4 Argon — Model evaluation',
+        url: 'https://deepmind.google/models/evals-methodology/gemini-4-argon',
+      },
+      {
+        outlet: 'Google DeepMind',
+        title: 'Gemini',
+        url: 'https://deepmind.google/models/gemini/',
+      },
+      {
+        outlet: 'The Verge',
+        title: 'Google announces Gemini 4 and says it’s so capable that only “trusted cyber defenders” can have it right now',
+        url: 'https://www.theverge.com/tech/1002980/google-gemini-4-argon',
+        publishedAt: '2026-09-30',
+      },
+    ],
+  },
+  {
+    slug: 'ftc-enquete-openai-anthropic-agents-ia',
+    title: 'La FTC enquête sur OpenAI et Anthropic après les dérapages d’agents IA.',
+    excerpt:
+      'Le régulateur américain veut examiner les risques que les agents autonomes font courir aux consommateurs. L’enquête est confirmée, mais aucune accusation ni sanction n’a encore été annoncée.',
+    category: 'actualite',
+    publishedAt: '2026-10-01',
+    readingMinutes: 6,
+    image: {
+      src: '/images/articles/ftc-enquete-agents-ia.webp',
+      alt: 'Bâtiment institutionnel américain reflété dans une salle où des serveurs informatiques entourent des dossiers',
+    },
+    body: [
+      {
+        type: 'paragraph',
         text: 'La Federal Trade Commission américaine a confirmé le 30 septembre 2026 qu’elle enquêtait sur OpenAI, Anthropic et d’autres entreprises d’intelligence artificielle au sujet des risques que leurs technologies pourraient faire courir aux consommateurs. Reuters et le Financial Times rapportent que le groupe de recherche METR est également concerné. Le régulateur prévoirait de demander formellement des informations et pourrait recueillir le témoignage de dirigeants.',
       },
       {
@@ -117,10 +159,6 @@ export const actualiteArticles: ArticleCore[] = [
         type: 'takeaway',
         title: 'À retenir',
         items: [
-          'Gemini 4 Argon est annoncé, mais son accès commence par un groupe restreint de cyberdéfenseurs de confiance.',
-          'Le million de tokens en sortie permet des missions plus longues, avec davantage de coût et de risques d’erreur cumulée.',
-          'Plusieurs records proviennent de méthodes ou de harnais différents ; Argon ne domine pas toutes les évaluations publiées.',
-          'Le prix d’appel doit doubler après la période introductive, et aucune date d’ouverture générale n’est donnée.',
           'La FTC confirme une enquête sur OpenAI, Anthropic et d’autres acteurs, sans publier encore son périmètre détaillé.',
           'Aucune faute, sanction ou interdiction de produit n’est établie à ce stade.',
           'Le régulateur devrait examiner les tests, les permissions, les journaux d’incident et l’information donnée aux tiers touchés.',
@@ -130,25 +168,6 @@ export const actualiteArticles: ArticleCore[] = [
     ],
     sources: [
       {
-        outlet: 'Google',
-        title: 'Gemini 4 Argon: our next era of frontier intelligence',
-        url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/',
-        publishedAt: '2026-09-30',
-      },
-      {
-        outlet: 'Google DeepMind',
-        title: 'Gemini 4 Argon — Model evaluation',
-        url: 'https://deepmind.google/models/evals-methodology/gemini-4-argon',
-      },
-      {
-        outlet: 'Google DeepMind',
-        title: 'Gemini',
-        url: 'https://deepmind.google/models/gemini/',
-      },
-      {
-        outlet: 'The Verge',
-        title: 'Google announces Gemini 4 and says it’s so capable that only “trusted cyber defenders” can have it right now',
-        url: 'https://www.theverge.com/tech/1002980/google-gemini-4-argon',
         outlet: 'Reuters',
         title: 'FTC opens probe into AI giants including Anthropic and OpenAI',
         url: 'https://www.reuters.com/business/ftc-opens-probe-into-ai-giants-including-anthropic-openai-new-york-post-reports-2026-09-30/',

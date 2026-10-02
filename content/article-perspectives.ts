@@ -20,6 +20,8 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
       'Des évaluations indépendantes avec le même harnais, le même budget de calcul et le même nombre de tentatives pour tous les modèles.',
       'Les incidents de mésusage, les contournements par injection de consignes et l’efficacité réelle du système qui arrête les actions hors périmètre.',
       'Le coût par mission après le doublement du tarif introductif, notamment lorsque la sortie s’approche de centaines de milliers de tokens.',
+    ],
+  },
   'ftc-enquete-openai-anthropic-agents-ia': {
     format: 'contexte',
     whyItMatters: [
