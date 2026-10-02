@@ -5,6 +5,23 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'google-gemini-4-argon-cyberdefenseurs': {
+    format: 'contexte',
+    whyItMatters: [
+      'La restriction d’accès est elle-même un signal. Google estime qu’Argon peut corriger des failles, mais que ce savoir-faire cyber demande encore des contrôles plus solides avant une diffusion générale.',
+      'Le million de tokens en sortie autorise une trajectoire potentiellement autonome. Plus une mission dure, plus les permissions, la surveillance et la possibilité de l’arrêter comptent autant que le score.',
+    ],
+    whatChanges: [
+      'Pour le public et la plupart des développeurs, rien ne change immédiatement : aucune API générale ni date précise. Les cyberdéfenseurs admis à Fairwind peuvent tester le modèle sans les garde-fous cyber du grand public.',
+      'Les organisations doivent évaluer le coût d’une tâche complète et les contrôles, pas seulement le prix par token. Les tests sur du code sensible doivent rester isolés, journalisés et validés avant la production.',
+    ],
+    watch: [
+      'La date, les pays et les conditions d’accès pour les clients payants de l’API et les abonnés Google AI Ultra.',
+      'Des évaluations indépendantes avec le même harnais, le même budget de calcul et le même nombre de tentatives pour tous les modèles.',
+      'Les incidents de mésusage, les contournements par injection de consignes et l’efficacité réelle du système qui arrête les actions hors périmètre.',
+      'Le coût par mission après le doublement du tarif introductif, notamment lorsque la sortie s’approche de centaines de milliers de tokens.',
+    ],
+  },
   'openai-dots-agent-persistant-4000-applications': {
     format: 'contexte',
     whyItMatters: [
