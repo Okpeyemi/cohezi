@@ -20,6 +20,21 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
       'Des évaluations indépendantes avec le même harnais, le même budget de calcul et le même nombre de tentatives pour tous les modèles.',
       'Les incidents de mésusage, les contournements par injection de consignes et l’efficacité réelle du système qui arrête les actions hors périmètre.',
       'Le coût par mission après le doublement du tarif introductif, notamment lorsque la sortie s’approche de centaines de milliers de tokens.',
+  'ftc-enquete-openai-anthropic-agents-ia': {
+    format: 'contexte',
+    whyItMatters: [
+      'La FTC peut demander des informations au-delà de ce que les laboratoires choisissent de publier. L’enquête déplace donc la sécurité des agents d’un engagement volontaire vers un examen institutionnel des tests, des permissions et des incidents.',
+      'Un agent peut agir sur des services réels avant qu’un humain voie l’erreur. La protection des consommateurs dépend alors autant du périmètre d’action, des journaux et de l’arrêt d’urgence que de la qualité des réponses du modèle.',
+    ],
+    whatChanges: [
+      'Rien ne change immédiatement pour les utilisateurs : aucun produit n’est interdit et aucune faute n’est établie. Pour les organisations visées, les choix de conception et les incidents pourraient en revanche devoir être documentés devant un régulateur plutôt que seulement expliqués dans leurs propres rapports.',
+      'Les équipes qui déploient des agents ont intérêt à conserver les autorisations, les actions exécutées, les interventions humaines et les notifications envoyées aux tiers. Ce sont ces traces qui permettent de distinguer une promesse de contrôle d’un contrôle réellement appliqué.',
+    ],
+    watch: [
+      'La liste exacte des entreprises et évaluateurs concernés, ainsi que la nature juridique des demandes adressées par la FTC.',
+      'Les réponses d’OpenAI, d’Anthropic et de METR, notamment sur l’accès à internet, l’arrêt des tests et l’information des services touchés.',
+      'La publication de conclusions, de recommandations ou d’une procédure d’application de la loi. Une enquête seule ne constitue ni une condamnation ni une nouvelle règle.',
+      'La manière dont les engagements volontaires signés à la Maison-Blanche seront comparés aux pratiques internes des laboratoires.',
     ],
   },
   'openai-dots-agent-persistant-4000-applications': {
