@@ -5,6 +5,23 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'etats-unis-super-intelligence-force-ia': {
+    format: 'contexte',
+    whyItMatters: [
+      'Les décisions américaines influencent directement les grands laboratoires, les fournisseurs de cloud et les standards techniques utilisés bien au-delà des États-Unis. Réunir renseignement, défense, protection des consommateurs et administration peut donc orienter la manière dont les incidents sont évalués et partagés.',
+      'La nomination du directeur du renseignement montre que la politique IA est désormais traitée autant comme un enjeu de sécurité nationale que comme un sujet économique ou de protection du public.',
+    ],
+    whatChanges: [
+      'Aucune règle nouvelle ne s’applique immédiatement aux utilisateurs ou aux entreprises. Le changement est d’abord institutionnel : quatre administrations doivent construire une lecture commune et remettre des recommandations sous 120 jours.',
+      'Les laboratoires peuvent obtenir un interlocuteur fédéral plus centralisé, mais devront potentiellement expliquer les mêmes incidents à des acteurs chargés de la concurrence, du renseignement, de la défense et de l’administration publique.',
+    ],
+    watch: [
+      'La publication de la charte complète et du rapport attendu sous 120 jours, ainsi que les critères utilisés pour définir un incident significatif.',
+      'Les propositions sur les audits externes, les signalements d’incidents, l’accès gouvernemental aux modèles et la réponse aux risques cyber ou biologiques.',
+      'L’équilibre réel entre sécurité nationale, protection des consommateurs et volonté de ne pas ralentir les entreprises américaines.',
+      'La transparence du groupe : consultations publiées, documents accessibles et mécanismes de contrôle de ses recommandations.',
+    ],
+  },
   'google-gemini-4-argon-cyberdefenseurs': {
     format: 'contexte',
     whyItMatters: [
