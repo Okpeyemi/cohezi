@@ -2,6 +2,95 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'etats-unis-super-intelligence-force-ia',
+    title: 'Les États-Unis créent une force fédérale pour coordonner leur politique IA.',
+    excerpt:
+      'La « Super Intelligence Force » réunira renseignement, défense, protection des consommateurs et administration. Elle dispose de 120 jours pour évaluer les risques de l’IA et préciser le rôle de l’État fédéral.',
+    category: 'actualite',
+    publishedAt: '2026-10-05',
+    readingMinutes: 4,
+    image: {
+      src: '/images/articles/etats-unis-super-intelligence-force-ia.webp',
+      alt: 'Quatre responsables anonymes réunis dans une salle gouvernementale sombre face à des cartes de réseaux numériques',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Le président américain Donald Trump a annoncé le 4 octobre 2026 la création d’une « Super Intelligence Force », chargée de coordonner l’action du gouvernement fédéral sur l’intelligence artificielle. Le groupe sera dirigé par Jay Clayton, directeur du renseignement national. Il réunira aussi Andrew Ferguson, président de la Federal Trade Commission, Emil Michael, responsable technologique du Pentagone, et Scott Kupor, directeur de l’Office of Personnel Management.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le fait vérifiable est la création du groupe et la désignation de ses dirigeants, annoncées dans un message public du président puis confirmées par Reuters et Associated Press. Selon Jay Clayton et la charte consultée par le Wall Street Journal, la force dispose de 120 jours pour remettre un rapport sur les risques et les opportunités de l’IA, le rôle du gouvernement fédéral et les moyens de renforcer la réponse aux incidents. Aucun nouveau pouvoir réglementaire, budget dédié ou obligation pour les entreprises n’a encore été annoncé.',
+      },
+      { type: 'heading', text: 'Un même groupe pour quatre administrations aux intérêts différents' },
+      {
+        type: 'paragraph',
+        text: 'La composition donne une indication plus concrète que le nom. Le renseignement apporte la lecture géopolitique et cyber ; le Pentagone traite les usages militaires et les infrastructures sensibles ; la FTC protège les consommateurs et enquête déjà sur les pratiques de plusieurs laboratoires ; l’administration fédérale représente enfin les effets de l’IA sur le travail public et les compétences. Le groupe doit aussi consulter des entreprises, des fournisseurs d’infrastructures, des associations, des organisations religieuses et des consommateurs.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Cette diversité peut rapprocher des informations aujourd’hui dispersées. Elle crée aussi un risque de priorités contradictoires : aller plus vite face à la Chine, limiter les usages dangereux, protéger les consommateurs et transformer les services publics ne conduisent pas toujours aux mêmes décisions. Le choix de placer le directeur du renseignement à la tête du dispositif montre que la sécurité nationale pèsera fortement dans l’arbitrage.',
+      },
+      { type: 'heading', text: 'Pourquoi cette force arrive maintenant' },
+      {
+        type: 'paragraph',
+        text: 'L’annonce suit une semaine de décisions rapprochées. Six grands acteurs — OpenAI, Anthropic, Google, Meta, xAI et NVIDIA — ont signé à la Maison-Blanche un accord volontaire prévoyant notamment des contrôles internes, des évaluations externes et une information des dirigeants sur certains risques. Parallèlement, la FTC a confirmé une enquête sur les agents d’OpenAI, d’Anthropic et d’autres organisations. Des modèles plus autonomes sont aussi lancés ou retenus lorsque leurs capacités cyber deviennent difficiles à encadrer.',
+      },
+      {
+        type: 'paragraph',
+        text: 'L’administration défend jusqu’ici une supervision légère afin de ne pas ralentir les entreprises américaines. La nouvelle force ne renverse pas cette ligne : sa mission est d’abord de coordonner, consulter et recommander. Elle reconnaît cependant qu’un système reposant seulement sur les engagements de chaque laboratoire laisse des questions sans réponse lorsque surviennent une intrusion, un contournement de garde-fou, une fuite de données ou un incident impliquant une infrastructure critique.',
+      },
+      { type: 'heading', text: 'Ce que cela change concrètement — et ce que cela ne change pas' },
+      {
+        type: 'paragraph',
+        text: 'À court terme, rien ne change pour un utilisateur de ChatGPT, Claude, Gemini ou Meta AI. La force n’est ni une nouvelle agence de contrôle ni une autorité qui délivre des autorisations de mise sur le marché. Les entreprises ne reçoivent pas non plus une règle technique supplémentaire. Le premier effet attendu est institutionnel : quatre administrations devront partager leurs informations, organiser les consultations et proposer une réponse fédérale commune.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Les laboratoires américains peuvent gagner un interlocuteur central et une politique plus prévisible. Ils prennent aussi le risque de voir leurs incidents, leurs évaluations et leurs promesses comparés entre plusieurs administrations. La FTC et les défenseurs des consommateurs gagnent un accès direct aux discussions stratégiques, mais pourraient peser moins lourd que les impératifs de sécurité nationale et de compétition internationale. Les fournisseurs étrangers, eux, peuvent faire face à des critères d’accès ou d’audit plus liés à la souveraineté américaine.',
+      },
+      { type: 'heading', text: 'Un nom ambitieux, mais un résultat encore à démontrer' },
+      {
+        type: 'paragraph',
+        text: 'Donald Trump préfère l’expression « super intelligence » à « intelligence artificielle » et présente la course technologique comme plus importante que la révolution industrielle ou internet. Cette formulation est une promesse politique, pas une description technique d’un système déjà existant. Aucun élément publié ne montre que la force développera elle-même un modèle, évaluera directement chaque lancement ou remplacera les compétences actuelles de la FTC, du Pentagone ou des agences de renseignement.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La mesure décisive sera donc le rapport attendu sous 120 jours : définition des incidents à signaler, partage d’informations entre entreprises et État, procédure d’urgence, responsabilités des agences et éventuelles propositions de règles. Il faudra aussi vérifier si des documents publics permettent d’évaluer le travail du groupe. Pour l’instant, la création de la force marque une centralisation politique importante ; son efficacité, son indépendance et ses conséquences restent des projections.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'La Maison-Blanche crée une force fédérale sur l’IA dirigée par le directeur du renseignement national, avec la FTC, le Pentagone et l’administration fédérale.',
+          'Le groupe a 120 jours pour évaluer les risques et opportunités de l’IA et recommander le rôle du gouvernement.',
+          'Aucune nouvelle règle, sanction ou obligation technique n’entre immédiatement en vigueur.',
+          'Le point décisif sera le contenu du rapport, notamment sur les incidents, les audits et le partage d’informations.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Associated Press',
+        title: 'Trump names national intelligence director Jay Clayton to lead a new federal AI task force',
+        url: 'https://apnews.com/article/trump-jay-clayton-artificial-intelligence-task-force-b8689ea07de9102a52bd1cd2049b5901',
+        publishedAt: '2026-10-04',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Trump names intelligence chief Clayton as AI czar, to head task force',
+        url: 'https://www.reuters.com/world/us/jay-clayton-lead-trumps-ai-task-force-deliver-report-120-days-wsj-reports-2026-10-03/',
+        publishedAt: '2026-10-03',
+      },
+      {
+        outlet: 'The Washington Post',
+        title: 'Trump launches ‘Super Intelligence Force’ after calls for AI slowdown',
+        url: 'https://www.washingtonpost.com/politics/2026/10/04/trump-launches-super-intelligence-force-after-calls-ai-slowdown/',
+        publishedAt: '2026-10-04',
+      },
+    ],
+  },
+  {
     slug: 'google-gemini-4-argon-cyberdefenseurs',
     title: 'Google réserve Gemini 4 Argon aux cyberdéfenseurs avant un lancement plus large.',
     excerpt:
