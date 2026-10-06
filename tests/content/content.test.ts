@@ -10,10 +10,10 @@ const count = (slug: string) => articles.filter((a) => a.category === slug).leng
 
 describe('content integrity', () => {
   it('has the expected collection sizes', () => {
-    expect(articles).toHaveLength(39);
+    expect(articles).toHaveLength(40);
     expect(count('business')).toBe(11);
     expect(count('societe')).toBe(8);
-    expect(count('actualite')).toBe(13);
+    expect(count('actualite')).toBe(14);
     expect(count('analyse')).toBe(7);
     expect(categories).toHaveLength(4);
     expect(site.nav).toHaveLength(3);

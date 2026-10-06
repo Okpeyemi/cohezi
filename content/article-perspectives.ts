@@ -5,6 +5,21 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'claude-cowork-cloud-obligatoire-pro-max': {
+    format: 'essentiel',
+    whyItMatters: [
+      'Le lieu d’exécution détermine qui reçoit les fichiers, le contexte et les traces d’une tâche. Retirer le mode local n’est donc pas un simple changement d’interface : il modifie le compromis entre continuité du service et contrôle des données.',
+    ],
+    whatChanges: [
+      'Les nouvelles tâches Pro et Max ne peuvent plus être lancées uniquement sur l’ordinateur. Les utilisateurs doivent considérer toute nouvelle session Cowork comme un traitement cloud et limiter les dossiers, connecteurs et permissions à ce qui est nécessaire.',
+      'Les tâches locales déjà commencées ne sont pas migrées. Pour Team et Enterprise, les administrateurs conservent des réglages permettant d’encadrer ou de désactiver les sessions cloud.',
+    ],
+    watch: [
+      'La clarté des avertissements affichés au moment où un utilisateur ouvre un fichier local dans une session cloud.',
+      'Les options de résidence des données, les durées de conservation et les journaux d’audit proposés aux différentes offres.',
+      'Les incidents liés aux injections de consignes ou aux actions inattendues, ainsi que l’efficacité des trois modes de permission de Cowork.',
+    ],
+  },
   'etats-unis-super-intelligence-force-ia': {
     format: 'contexte',
     whyItMatters: [

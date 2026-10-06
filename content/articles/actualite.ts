@@ -2,6 +2,76 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+    slug: 'claude-cowork-cloud-obligatoire-pro-max',
+    title: 'Claude Cowork impose désormais le cloud aux abonnés Pro et Max.',
+    excerpt:
+      'Depuis le 6 octobre, les nouvelles tâches Cowork des offres Pro et Max s’exécutent sur les serveurs d’Anthropic. Les tâches locales déjà lancées restent accessibles, mais l’option « uniquement sur votre ordinateur » disparaît.',
+    category: 'actualite',
+    publishedAt: '2026-10-06',
+    readingMinutes: 3,
+    image: {
+      src: '/images/articles/claude-cowork-cloud-obligatoire-pro-max.webp',
+      alt: 'Un ordinateur fermé dans un bureau sombre face à un centre de données éclairé au loin',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Anthropic modifie le lieu d’exécution de Claude Cowork pour ses abonnés Pro et Max. Depuis le 6 octobre 2026, toute nouvelle tâche Cowork s’exécute dans le cloud et le réglage « uniquement sur votre ordinateur » disparaît des paramètres. Les tâches locales déjà commencées ne sont pas déplacées : elles continuent de fonctionner là où elles ont été créées.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le changement est confirmé dans la documentation d’assistance d’Anthropic, mise à jour le jour de l’entrée en vigueur. Il ne concerne pas l’ensemble de Claude ni toutes les organisations de la même manière. Cowork reste une fonction des offres payantes, et les administrateurs Team et Enterprise disposent de contrôles séparés pour autoriser ou désactiver les sessions cloud.',
+      },
+      { type: 'heading', text: 'La continuité entre appareils passe par les serveurs d’Anthropic' },
+      {
+        type: 'paragraph',
+        text: 'Cowork permet à Claude d’exécuter une mission en plusieurs étapes, d’utiliser des connecteurs et de poursuivre son travail lorsque l’appareil de l’utilisateur est hors ligne. Cette continuité explique le basculement : une tâche locale s’arrête avec l’ordinateur, tandis qu’une session cloud peut continuer depuis le web ou le mobile. Anthropic avait déjà fait du cloud le mode par défaut lors de l’ouverture de Cowork à ces interfaces ; l’entreprise retire maintenant le choix local pour les nouvelles tâches Pro et Max.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Selon l’architecture publiée par Anthropic, chaque session cloud tourne dans un environnement isolé et temporaire. Les sorties vers internet passent par un proxy et les identifiants utilisés par les connecteurs sont de courte durée. Ce sont des protections annoncées par l’entreprise, pas une garantie d’absence d’incident. Anthropic rappelle elle-même que les injections de consignes et les actions inattendues restent possibles.',
+      },
+      { type: 'heading', text: 'Le gain de mobilité retire un choix de confidentialité' },
+      {
+        type: 'paragraph',
+        text: 'Pour un abonné qui utilisait Cowork uniquement en ligne, le changement sera presque invisible. Pour celui qui choisissait l’exécution locale afin de garder le traitement sur sa machine, il est concret : une nouvelle mission ne pourra plus rester entièrement sur l’ordinateur. Même lorsqu’un dossier local est ouvert depuis Claude Desktop, Anthropic précise que son contenu est traité sur ses serveurs pendant la session cloud.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le compromis devient donc explicite. Les utilisateurs gagnent des tâches persistantes, accessibles sur plusieurs appareils et capables de continuer hors ligne. Ils perdent en revanche une option simple pour limiter l’envoi de fichiers et de contexte vers l’infrastructure d’Anthropic. Avant de confier un dossier sensible à Cowork, il faut vérifier les autorisations, les connecteurs actifs et la nécessité réelle d’un traitement cloud.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Depuis le 6 octobre, toute nouvelle tâche Cowork Pro ou Max s’exécute dans le cloud.',
+          'Les tâches déjà lancées localement restent locales et continuent de fonctionner.',
+          'Le cloud permet la poursuite des tâches hors ligne et entre appareils, mais retire le choix d’une exécution uniquement sur l’ordinateur.',
+          'Les fichiers locaux ouverts dans une session cloud sont traités sur les serveurs d’Anthropic.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Anthropic',
+        title: 'Get started with Claude Cowork',
+        url: 'https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork',
+        publishedAt: '2026-10-06',
+      },
+      {
+        outlet: 'Anthropic',
+        title: 'Claude Cowork architecture overview',
+        url: 'https://support.claude.com/en/articles/14479288-claude-cowork-architecture-overview',
+      },
+      {
+        outlet: 'The Verge',
+        title: 'Anthropic’s Claude Cowork can now run in the cloud',
+        url: 'https://www.theverge.com/ai-artificial-intelligence/961978/anthropic-claude-cowork-mobile-web',
+        publishedAt: '2026-07-07',
+      },
+    ],
+  },
+  {
     slug: 'etats-unis-super-intelligence-force-ia',
     title: 'Les États-Unis créent une force fédérale pour coordonner leur politique IA.',
     excerpt:
