@@ -1,6 +1,213 @@
 import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
+{
+  "slug": "anthropic-cyber-verification-trois-niveaux",
+  "title": "Anthropic ouvre davantage ses modèles aux cyberdéfenseurs, sous conditions.",
+  "excerpt": "Le nouveau Cyber Verification Program réunit trois niveaux d’accès. Il élargit les usages autorisés de Claude, tout en imposant une vérification des bénéficiaires et des contrôles sur leurs données et leurs comptes.",
+  "category": "actualite",
+  "publishedAt": "2026-10-07",
+  "readingMinutes": 4,
+  "image": {
+    "src": "/images/articles/anthropic-cyber-verification-trois-niveaux.webp",
+    "alt": "Illustration générée par IA : un analyste en cybersécurité travaille derrière une porte à accès contrôlé"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Anthropic a annoncé le 6 octobre 2026 une refonte de son Cyber Verification Program. Le dispositif rassemble les anciens accès cyber vérifiés et Project Glasswing dans trois niveaux : Defense, Red Team et Specialized. Les professionnels acceptés peuvent utiliser Claude Opus 5.5, Sonnet 5.5 et Mythos 5.1 avec des restrictions adaptées à leur activité. Il s’agit d’un changement des conditions d’accès, pas de la sortie d’un nouveau modèle."
+    },
+    {
+      "type": "heading",
+      "text": "Des permissions différentes selon le travail"
+    },
+    {
+      "type": "paragraph",
+      "text": "Defense couvre notamment la réponse aux incidents et l’analyse de logiciels malveillants. Red Team ajoute les tests d’intrusion autorisés pour des organisations. Specialized concerne un cercle restreint pouvant intervenir sur des systèmes dont la défaillance aurait des conséquences physiques ou collectives importantes. Anthropic examine ce dernier niveau avec le gouvernement américain. Réduire les blocages ne signifie donc ni supprimer tous les contrôles ni autoriser une intervention sur n’importe quel système."
+    },
+    {
+      "type": "paragraph",
+      "text": "L’explication donnée par Anthropic est celle du double usage : une capacité utile pour découvrir une faille peut aussi servir à l’exploiter. L’entreprise cherche à rendre ses outils plus utilisables par les défenseurs sans ouvrir les mêmes possibilités à tous. Cette segmentation est vérifiable dans les documents publiés ; son efficacité contre les abus reste à apprécier dans la durée."
+    },
+    {
+      "type": "heading",
+      "text": "Un bilan impressionnant, dont il faut lire les limites"
+    },
+    {
+      "type": "paragraph",
+      "text": "Reuters rapporte le bilan avancé par Anthropic : les partenaires de Glasswing auraient identifié au moins 129 000 vulnérabilités vérifiées entre avril et juillet. Le bilan global annoncé comprend plus de 33 000 failles critiques ou graves. Ce sont des chiffres issus des déclarations des participants, pas un audit indépendant de Reuters. Une faille identifiée n’est pas nécessairement corrigée : ce bilan ne mesure donc pas à lui seul la réduction du risque pour les utilisateurs."
+    },
+    {
+      "type": "heading",
+      "text": "Pour une petite équipe, l’accès reste une démarche"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le centre d’aide prévoit une candidature par organisation, avec description du travail et attestation des contrôles de sécurité. Les chercheurs indépendants peuvent demander Defense Access sur une offre payante. L’approbation ne suffit pas toujours : des droits doivent être attribués dans les espaces concernés, et l’accès à Mythos chez certains fournisseurs cloud peut suivre avec plusieurs jours de décalage. Les conditions dépendent aussi de la possibilité de vérifier le demandeur et du risque de détournement."
+    },
+    {
+      "type": "paragraph",
+      "text": "Un point opérationnel mérite attention : la documentation fixe au 15 décembre 2026 l’échéance donnée aux bénéficiaires Defense pour adopter une authentification multifacteur résistante à l’hameçonnage et abandonner les clés API. Jusqu’alors, une authentification multifacteur reste requise et les clés expirent après sept jours. Il faut donc prévoir un travail d’administration, au-delà du simple choix du modèle."
+    },
+    {
+      "type": "heading",
+      "text": "La surveillance des usages pose la question des données"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le programme exige par défaut la conservation de données pour surveiller les abus, avec des exceptions transitoires pour certaines organisations déjà exemptées. Anthropic propose une évolution avec Enterprise Frontier Safeguards, annoncée en septembre et attendue progressivement à l’automne. Les traces pourraient être stockées dans le compte cloud du client, sous ses clés et ses règles d’accès, avec les alertes transmises à ses équipes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cette architecture constitue une promesse de déploiement, pas une option à supposer disponible pour chaque candidat aujourd’hui. Anthropic indique ne pas facturer EFS, mais le stockage et les opérations cloud resteraient à la charge du client. Conserver les journaux chez soi ne supprime d’ailleurs pas le besoin de les protéger : cela déplace une partie de la responsabilité vers l’organisation qui les héberge et les examine."
+    },
+    {
+      "type": "heading",
+      "text": "Qui gagne, et qui supporte le travail supplémentaire ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre lecture : les équipes déjà capables de gérer des accès sensibles sont les mieux placées pour profiter rapidement de cette ouverture. Les petites structures peuvent aussi y gagner, mais devront dégager du temps pour la candidature, les identités et la supervision. Anthropic gagne une présence plus forte dans les opérations de sécurité et conserve la décision d’accès. Les mainteneurs des logiciels examinés, eux, doivent pouvoir absorber les signalements et livrer les correctifs."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "Le CVP distingue désormais défense, tests d’intrusion autorisés et interventions spécialisées.",
+        "Les gains annoncés par Anthropic ne constituent pas un audit indépendant des corrections réalisées.",
+        "Les conditions de données et d’authentification comptent autant que les capacités du modèle."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Anthropic",
+      "title": "Expanding the Cyber Verification Program",
+      "url": "https://www.anthropic.com/news/cyber-verification-program",
+      "publishedAt": "2026-10-06"
+    },
+    {
+      "outlet": "Anthropic",
+      "title": "Cyber Verification Program",
+      "url": "https://support.claude.com/en/articles/14604842-cyber-verification-program"
+    },
+    {
+      "outlet": "Anthropic",
+      "title": "Developing Enterprise Frontier Safeguards with our customers",
+      "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
+      "publishedAt": "2026-09-01"
+    },
+    {
+      "outlet": "Reuters",
+      "title": "Anthropic opens its most powerful AI models to more security teams",
+      "url": "https://www.reuters.com/legal/litigation/anthropic-opens-its-most-powerful-ai-models-more-security-teams-2026-10-06/",
+      "publishedAt": "2026-10-06"
+    }
+  ]
+},
+{
+  "slug": "openai-mathematiques-722-manuscrits-verification",
+  "title": "OpenAI publie 722 manuscrits mathématiques. Leur vérification reste un travail à part entière.",
+  "excerpt": "Le laboratoire rend accessibles des résultats produits par un modèle interne, avec des preuves formalisées pour une partie du corpus. Publier ces documents ne signifie pas que chaque résultat a déjà été validé et compris par la communauté.",
+  "category": "actualite",
+  "publishedAt": "2026-10-07",
+  "readingMinutes": 5,
+  "image": {
+    "src": "/images/articles/openai-mathematiques-722-manuscrits.webp",
+    "alt": "Illustration générée par IA : une main examine des manuscrits mathématiques à côté d’un ordinateur"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "OpenAI a publié le 6 octobre 2026 un ensemble de résultats mathématiques produits par un modèle interne. Le dépôt public consulté le 7 octobre recense 722 manuscrits, organisés en 372 familles. Une famille peut réunir un résultat principal, des arguments complémentaires ou des variantes : compter les documents ne revient donc pas à compter autant de découvertes indépendantes. Le fait établi est la mise à disposition du corpus et de ses documents de vérification."
+    },
+    {
+      "type": "heading",
+      "text": "Un dépôt public, des niveaux de preuve différents"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le README du dépôt précise que tous les résultats n’ont pas le même degré de vérification et que certains textes non formalisés pourraient contenir des problèmes. OpenAI promet des corrections versionnées et d’autres formalismes à venir. Le modèle utilisé reste interne. Cette publication ouvre donc l’examen des résultats sans donner aux chercheurs un accès équivalent à l’outil qui les a produits."
+    },
+    {
+      "type": "paragraph",
+      "text": "Selon le laboratoire, environ 4 000 problèmes ont été proposés au modèle. Les manuscrits ont ensuite été regroupés et sélectionnés selon leur importance. On ne peut pas diviser mécaniquement 372 par 4 000 pour annoncer un taux de réussite : ces nombres décrivent des unités différentes, et les familles réunissent parfois plusieurs textes liés. Cette distinction évite de transformer un catalogue en classement de performance."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi Lean compte, et ce qu’il ne remplace pas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Une partie des preuves est accompagnée de fichiers Lean. Lean est un langage et un assistant de preuve qui permet de formaliser les raisonnements mathématiques pour les contrôler par ordinateur. Le texte habituel expose l’argument à un lecteur ; sa formalisation précise les objets, les hypothèses et les étapes logiques dans un système vérifiable. C’est un niveau de contrôle différent d’une réponse de chatbot qui paraît convaincante."
+    },
+    {
+      "type": "paragraph",
+      "text": "Il reste nécessaire d’examiner ce qui a exactement été formalisé. Une preuve contrôlée porte sur un énoncé précis et ses hypothèses ; le lecteur doit comprendre leur rapport avec le problème annoncé. La nouveauté du résultat, sa place dans les travaux antérieurs et l’intérêt de sa méthode appellent aussi un jugement scientifique. COHEZI n’a pas exécuté l’ensemble des preuves : cet article décrit leur publication, pas une certification de leur validité."
+    },
+    {
+      "type": "heading",
+      "text": "Le comité consulté ne donne pas un blanc-seing"
+    },
+    {
+      "type": "paragraph",
+      "text": "OpenAI explique avoir consulté le groupe indépendant sur les mathématiques et l’IA de l’Institute for Advanced Study. Ses recommandations, publiées le 29 septembre, sont pourtant critiques : le groupe demande aux laboratoires de cesser de tester des problèmes mathématiques avancés sur des modèles propriétaires inaccessibles à la communauté. Il veut également que les résultats soient déposés dans des espaces scientifiques indépendants des laboratoires."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le groupe insiste sur une responsabilité souvent absente des annonces : financer et faciliter la compréhension humaine des travaux produits. Il recommande une présentation lisible, une attribution correcte des idées antérieures et une traçabilité des révisions. OpenAI annonce de son côté vouloir financer des ateliers et des rencontres, et explorer des dépôts communautaires. Ce sont des engagements à suivre ; consulter le groupe ne signifie pas obtenir son approbation de toute la démarche."
+    },
+    {
+      "type": "heading",
+      "text": "La capacité de produire avance plus vite que celle d’examiner"
+    },
+    {
+      "type": "paragraph",
+      "text": "OpenAI situe ces travaux dans l’évaluation de ses modèles, après saturation de ses anciens tests mathématiques. La publication permet de montrer des résultats au-delà d’un score de benchmark. Notre lecture est qu’elle déplace aussi la question : une fois les documents accessibles, qui prend le temps de les lire, de les expliquer, de repérer les dépendances et de vérifier les références ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Les chercheurs gagnent des matériaux nouveaux à explorer. Ils prennent aussi en charge un travail de vérification qui demande de l’expertise et du temps. Le laboratoire peut renforcer sa réputation scientifique, mais s’expose désormais à des critiques précises sur les textes rendus publics. L’écart d’accès au modèle reste un déséquilibre : examiner une sortie ne permet pas forcément de reproduire le processus de recherche ni de poursuivre librement une piste avec le même outil."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour le lecteur, la bonne unité de suivi est donc le résultat identifié, avec sa version, sa preuve et les commentaires d’experts. Une correction documentée peut être plus instructive qu’un total de manuscrits. Il faudra regarder lesquels sont confirmés, lesquels sont reformulés et quelles méthodes deviennent réellement utilisables par d’autres mathématiciens."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "722 manuscrits ne signifient pas 722 découvertes indépendantes déjà validées.",
+        "Des formalismes Lean sont fournis pour une partie du corpus, pas pour tous les textes.",
+        "L’accès aux résultats, leur contrôle et leur compréhension sont trois étapes distinctes."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "OpenAI",
+      "title": "Sharing AI progress in mathematics",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "publishedAt": "2026-10-06"
+    },
+    {
+      "outlet": "OpenAI — GitHub",
+      "title": "Mathematical manuscripts and supporting proof artifacts",
+      "url": "https://github.com/openai/math"
+    },
+    {
+      "outlet": "Advisory Group on Mathematics and Artificial Intelligence",
+      "title": "Responsible Release of AI-Generated Mathematics",
+      "url": "https://agmai.org/general-sep29/",
+      "publishedAt": "2026-09-29"
+    },
+    {
+      "outlet": "Lean",
+      "title": "Learn Lean",
+      "url": "https://lean-lang.org/learn/"
+    }
+  ]
+},
   {
     slug: 'claude-cowork-cloud-obligatoire-pro-max',
     title: 'Claude Cowork impose désormais le cloud aux abonnés Pro et Max.',
