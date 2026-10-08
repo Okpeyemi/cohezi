@@ -5,6 +5,23 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'manus-leve-500-millions-apres-meta': {
+    format: 'contexte',
+    whyItMatters: [
+      'Cette levée ne finance pas seulement une startup : elle reconstruit une entreprise d’agents après l’annulation politique d’une acquisition internationale. Elle montre que la géopolitique peut désormais modifier directement la propriété, le financement et la trajectoire d’un produit d’IA.',
+      'Plus de 500 millions de dollars donnent à Manus les moyens de rester dans la course face à des plateformes beaucoup plus grandes. Le montant ne garantit toutefois ni une avance technique durable ni un modèle économique rentable.',
+    ],
+    whatChanges: [
+      'Manus peut financer son infrastructure, ses recrutements et le déploiement de Manus 2.0 et de Cue sans dépendre de Meta. Aucun nouveau produit, tarif ou engagement de sécurité n’accompagne pour l’instant l’annonce.',
+      'Pour les utilisateurs professionnels, le retour à l’indépendance impose de réévaluer l’entité contractuelle, la localisation des données, les connecteurs autorisés et les mécanismes d’arrêt des agents.',
+    ],
+    watch: [
+      'La valorisation finale et les droits accordés aux nouveaux investisseurs, que Butterfly Effect n’a pas rendus publics.',
+      'La répartition précise des fonds entre calcul, produits, commercialisation et éventuelle expansion en Chine.',
+      'Les revenus vérifiables, le coût d’exécution des agents et la rétention des utilisateurs face à OpenAI, Meta, Google et Anthropic.',
+      'Les conséquences durables de la séparation sur les données, la gouvernance et les futurs partenariats internationaux de Manus.',
+    ],
+  },
 "anthropic-cyber-verification-trois-niveaux": {
   "format": "contexte",
   "whyItMatters": [
