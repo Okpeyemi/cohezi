@@ -5,6 +5,59 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  "chatgpt-gpt-6-intelligent-ui": {
+  "format": "contexte",
+  "whyItMatters": [
+    "L’interface peut réduire les allers-retours nécessaires pour comprendre ou comparer. Sa valeur devra se mesurer au temps réellement gagné et à la compréhension obtenue."
+  ],
+  "whatChanges": [
+    "Pour un premier essai, choisir un calcul ou une comparaison déjà maîtrisés, puis observer si l’interactivité aide effectivement à décider."
+  ],
+  "watch": [
+    "La concordance entre l’annonce, l’aide et l’accès réel sur Free et Go.",
+    "L’accessibilité au clavier, la lecture sur petit écran et la conservation des éléments saisis."
+  ]
+},
+  "claude-haiku-5-5-prix-api": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Une réduction des coûts variables peut rendre viable un usage fréquent auparavant trop cher. Elle ne résout pas les coûts d’intégration, de contrôle ou de maintenance."
+  ],
+  "whatChanges": [
+    "Mesurer les requêtes réelles, leurs dépassements de palier et le taux de reprises avant de recalculer un budget."
+  ],
+  "watch": [
+    "Les performances sur un échantillon stable de tâches et de langues, puis la facture réellement constatée.",
+    "Les écarts de prix et de disponibilité entre la plateforme directe et les clouds partenaires."
+  ]
+},
+  "windows-mxc-limites-agents-ia": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Limiter les droits d’un agent peut réduire l’étendue d’une erreur. La protection dépend cependant des permissions choisies et du niveau d’isolation effectivement utilisé."
+  ],
+  "whatChanges": [
+    "Avant un pilote, choisir un dossier sans données sensibles et vérifier qu’un accès non autorisé échoue réellement. Documenter ensuite les exceptions nécessaires."
+  ],
+  "watch": [
+    "Le passage des fonctions annoncées en préversion à une disponibilité stable.",
+    "Les permissions accordées par défaut, les contournements corrigés et la capacité à comprendre un échec sans ouvrir davantage de droits."
+  ]
+},
+  "google-synthid-detector-ouverture-public": {
+  "format": "essentiel",
+  "whyItMatters": [
+    "Un outil plus accessible peut aider à repérer l’origine de certains médias sans compétences spécialisées. Sa portée dépend du marquage et de sa bonne interprétation."
+  ],
+  "whatChanges": [
+    "Ajouter le contrôle de filigrane à la recherche de la source et du contexte, sans transformer un résultat négatif en certificat de vérité."
+  ],
+  "watch": [
+    "La couverture effective des outils partenaires et les limites expliquées au public.",
+    "Les évaluations indépendantes sur des fichiers retouchés, compressés ou republiés."
+  ]
+},
+
   'claude-cowork-cloud-obligatoire-pro-max': {
     format: 'essentiel',
     whyItMatters: [

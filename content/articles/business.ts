@@ -2,6 +2,104 @@ import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
   {
+  "slug": "claude-haiku-5-5-prix-api",
+  "title": "Claude Haiku 5.5 baisse ses tarifs : ce que cela change pour une application IA.",
+  "excerpt": "Anthropic lance Haiku 5.5 pour les tâches fréquentes et sensibles au coût. La grille tarifaire baisse fortement, mais la longueur des requêtes, le nouveau comptage des tokens et les reprises restent déterminants pour la facture.",
+  "category": "business",
+  "publishedAt": "2026-10-08",
+  "readingMinutes": 4,
+  "image": {
+    "src": "/images/articles/claude-haiku-5-5-prix-api.webp",
+    "alt": "Une personne examine une facture près d’un ordinateur et d’une calculatrice — illustration éditoriale générée par IA"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Anthropic a lancé Claude Haiku 5.5 le 7 octobre 2026. Le modèle vise notamment le tri, l’extraction d’informations et les petites tâches répétées à grande échelle. L’entreprise annonce un coût d’exécution moyen environ 75 % inférieur à celui de Haiku 4.5. Il s’agit de son estimation sur des usages, pas d’une remise uniforme garantie à chaque client."
+    },
+    {
+      "type": "paragraph",
+      "text": "La sortie s’accompagne d’une baisse des lectures de cache de Sonnet 5.5, passées de 0,20 à 0,10 dollar par million de tokens. Anthropic estime que cela réduit d’environ 20 % le coût de nombreux travaux d’agents. Le cache permet de réutiliser une partie déjà traitée d’une requête : son poids dans les échanges explique pourquoi cette réduction ne se traduit pas de la même manière pour tous les usages."
+    },
+    {
+      "type": "heading",
+      "text": "Deux paliers à ne pas confondre"
+    },
+    {
+      "type": "paragraph",
+      "text": "La grille publiée indique, pour Haiku 5.5, 0,10 dollar par million de tokens en entrée et 0,50 dollar en sortie lorsque la requête ne dépasse pas 100 000 tokens. Au-delà, les tarifs affichés sont respectivement de 0,50 et 2,50 dollars. Ces montants sont en dollars américains et concernent la consommation API, pas le prix d’un abonnement individuel à Claude."
+    },
+    {
+      "type": "paragraph",
+      "text": "La documentation technique confirme une fenêtre de contexte allant jusqu’à un million de tokens et une capacité de raisonnement dont l’effort est réglable. Mais elle signale aussi un changement facile à manquer : à texte identique, le nouveau découpage produit environ 30 % de tokens de plus que Haiku 4.5. Comparer seulement le prix d’un million de tokens ne suffit donc pas pour chiffrer une migration."
+    },
+    {
+      "type": "heading",
+      "text": "Le coût utile se mesure par tâche réussie"
+    },
+    {
+      "type": "paragraph",
+      "text": "Prenons un exemple pédagogique, sans le présenter comme un test du modèle. Si une application utilise au total dix millions de tokens d’entrée et un million de sortie, répartis sur des requêtes restant toutes dans le petit palier, la grille donne 1,50 dollar hors autres frais. Avec les tarifs Haiku 4.5 de 1 et 5 dollars, le même volume facturé donne 15 dollars. Le calcul montre l’écart nominal ; il ne prédit pas le volume que produira réellement chaque modèle."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour une équipe, le bon dénominateur est le dossier traité correctement. Un système moins cher à l’appel peut devenir coûteux s’il relance la même demande, oublie un champ ou impose une relecture systématique. À l’inverse, une petite amélioration sur une tâche très fréquente peut faire une différence sensible. Il faut donc relever ensemble la facture, les erreurs, le délai et le travail humain restant."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi Anthropic pousse les petites tâches"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre interprétation : un service qui automatise plusieurs étapes n’a pas nécessairement besoin du modèle le plus puissant à chacune d’elles. Séparer la recherche d’un montant, le classement d’un message et la rédaction d’une synthèse ouvre un arbitrage entre coût et capacité. Cette organisation n’est utile que si les échanges entre étapes ne mangent pas l’économie recherchée et si les résultats intermédiaires restent contrôlables."
+    },
+    {
+      "type": "paragraph",
+      "text": "Anthropic positionne précisément Haiku comme auxiliaire de modèles plus puissants et réserve les travaux complexes de programmation plutôt à Sonnet et Opus. Les comparaisons de performances et les témoignages clients publiés au lancement sont des éléments choisis par le fournisseur. Ils orientent les premiers essais, mais ne démontrent pas la qualité d’un traitement sur les propres documents d’une entreprise."
+    },
+    {
+      "type": "heading",
+      "text": "Une migration reste un changement de comportement"
+    },
+    {
+      "type": "paragraph",
+      "text": "La fiche technique liste l’accès par la plateforme Claude ainsi que les principaux clouds partenaires. Cela ne signifie pas qu’un contrat existant bascule automatiquement vers les mêmes prix ou les mêmes paramètres. Une équipe peut commencer par un lot de demandes représentatif, conserver les résultats de l’ancien système et comparer les deux sans modifier immédiatement le parcours des utilisateurs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Les petites structures développant un service en français peuvent bénéficier du même mécanisme économique : une baisse du coût variable laisse plus de marge pour tester ou servir des demandes. Rien dans les sources consultées ne prouve toutefois une progression uniforme en français ou dans les langues africaines. Un test sur les langues, documents et expressions effectivement utilisés vaut mieux qu’une conclusion tirée d’un score général."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "Les tarifs API de Haiku 5.5 dépendent de la taille de la requête.",
+        "Le changement de comptage des tokens complique les comparaisons à volume de texte égal.",
+        "Le bon indicateur reste le coût d’une tâche correcte, en incluant reprises et validation humaine."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Anthropic",
+      "title": "Introducing Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "outlet": "Claude Platform Docs",
+      "title": "Claude Haiku 5.5",
+      "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview"
+    },
+    {
+      "outlet": "Claude Platform Docs",
+      "title": "Pricing",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+    }
+  ]
+},
+
+  {
     slug: 'openai-ipo-2026-altman-ralentir-course-ia',
     title: 'OpenAI arrête la sortie de GPT-6.1 Astra après des tests de sécurité.',
     excerpt:

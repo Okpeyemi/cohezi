@@ -2,6 +2,85 @@ import type { ArticleCore } from '../types';
 
 export const societeArticles: ArticleCore[] = [
   {
+  "slug": "google-synthid-detector-ouverture-public",
+  "title": "SynthID s’ouvre au public : détecter un filigrane IA ne prouve pas le vrai.",
+  "excerpt": "Google ouvre son détecteur aux images, vidéos et sons issus de ses outils et de partenaires. C’est un indice utile sur l’origine d’un fichier, avec une limite à garder en tête : l’absence de signal ne certifie pas son authenticité.",
+  "category": "societe",
+  "publishedAt": "2026-10-08",
+  "readingMinutes": 3,
+  "image": {
+    "src": "/images/articles/google-synthid-detector-ouverture-public.webp",
+    "alt": "Des mains examinent deux tirages photographiques d’une rue sur une table de rédaction — illustration éditoriale générée par IA"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Google a ouvert SynthID Detector au public le 7 octobre 2026, avec une disponibilité mondiale en anglais. Le portail recherche un filigrane dans les images, vidéos et fichiers audio. Google cite ses propres outils et des partenaires, dont OpenAI, NVIDIA et Kakao ; Apple est annoncé pour plus tard. L’ouverture concerne donc un écosystème de contenus marqués, pas une certification universelle de tout ce qui circule en ligne."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cette annonce fait évoluer l’accès à un outil déjà présenté en mai 2025 pour les professionnels des médias. À l’époque, le portail permettait aux premiers testeurs d’examiner les fichiers et de localiser des portions susceptibles de porter le marquage. La nouveauté du 7 octobre est l’ouverture au public et le périmètre de partenaires annoncé, plutôt que l’invention du filigrane."
+    },
+    {
+      "type": "heading",
+      "text": "Un indice ajouté lors de la création"
+    },
+    {
+      "type": "paragraph",
+      "text": "La documentation de DeepMind explique que SynthID insère une marque imperceptible dans le contenu généré. La détection recherche cette marque. Pour les images et les vidéos, Google affirme qu’elle est conçue pour résister à des transformations courantes, comme le recadrage ou la compression. Cette description du fournisseur ne permet pas de garantir la détection après n’importe quelle modification."
+    },
+    {
+      "type": "paragraph",
+      "text": "La conséquence logique est importante : un résultat négatif répond à la recherche de ce marquage, pas à la question générale « cette scène a-t-elle réellement eu lieu ? ». Un fichier peut provenir d’un autre outil. Une vraie photographie peut aussi être accompagnée d’une fausse date ou d’une légende trompeuse. À l’inverse, une illustration marquée comme générée peut être présentée honnêtement et servir une explication légitime."
+    },
+    {
+      "type": "heading",
+      "text": "Comment s’en servir sans lui donner trop de pouvoir"
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour un média, un enseignant ou une personne qui reçoit une vidéo suspecte, notre proposition est d’ajouter ce contrôle à une vérification existante. Retrouver la publication d’origine, examiner sa date et comparer avec d’autres sources restent utiles. Le résultat du détecteur doit être conservé avec le fichier examiné : une copie différente ne correspond pas forcément au même objet de vérification."
+    },
+    {
+      "type": "paragraph",
+      "text": "L’ouverture peut faciliter ce premier contrôle pour les lecteurs francophones, à condition de comprendre les messages d’une interface annoncée en anglais. Aucun effet local particulier n’est établi pour un pays africain. Le mécanisme concret est l’accès plus large à un indice technique ; sa valeur dépend ensuite des contenus reçus et de la manière dont la personne interprète la réponse."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre lecture : Google gagne aussi une place dans les habitudes de vérification. Les utilisateurs disposent d’un outil supplémentaire, mais risquent de déléguer à son résultat une confiance qu’il ne peut pas fournir. La question à suivre est donc autant pédagogique que technique : l’interface explique-t-elle clairement ce qu’elle détecte, ce qu’elle ignore et ce qu’un résultat négatif permet réellement de conclure ?"
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "L’ouverture publique de SynthID Detector date du 7 octobre 2026.",
+        "Le détecteur recherche une marque d’origine ; il ne vérifie pas toute l’histoire racontée par un fichier.",
+        "Une absence de filigrane ne constitue pas une preuve d’authenticité."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Google",
+      "title": "We’re making it easier to identify AI-generated content globally.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "outlet": "Google DeepMind",
+      "title": "Google SynthID",
+      "url": "https://deepmind.google/models/synthid/"
+    },
+    {
+      "outlet": "Google",
+      "title": "SynthID Detector — a new portal to help identify AI-generated content",
+      "url": "https://blog.google/innovation-and-ai/products/google-synthid-ai-content-detector/",
+      "publishedAt": "2025-05-20"
+    }
+  ]
+},
+
+  {
     slug: 'etats-unis-chine-canal-alerte-incidents-ia',
     title: 'Les États-Unis et la Chine formalisent un dialogue sur les incidents d’IA.',
     excerpt:
