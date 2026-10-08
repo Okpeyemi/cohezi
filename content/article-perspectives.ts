@@ -5,6 +5,34 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+"anthropic-cyber-verification-trois-niveaux": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Le modèle seul ne détermine pas le travail possible : les permissions, l’identité du demandeur et les contrôles de son organisation deviennent des conditions centrales d’utilisation."
+  ],
+  "whatChanges": [
+    "Une équipe doit choisir un périmètre de travail, faire vérifier son accès et organiser la supervision. L’intérêt concret sera de terminer davantage de missions légitimes sans multiplier les interventions manuelles."
+  ],
+  "watch": [
+    "La rapidité réelle des admissions, les refus erronés et les incidents malgré les contrôles.",
+    "La part des vulnérabilités effectivement corrigées, ainsi que le temps demandé aux mainteneurs pour traiter les signalements.",
+    "La disponibilité effective d’EFS et le coût complet de stockage et de supervision chez le client."
+  ]
+},
+"openai-mathematiques-722-manuscrits-verification": {
+  "format": "contexte",
+  "whyItMatters": [
+    "La production de textes scientifiques peut accélérer sans que leur assimilation suive au même rythme. La valeur durable viendra des idées que d’autres chercheurs pourront contrôler, expliquer et réutiliser."
+  ],
+  "whatChanges": [
+    "Le corpus est désormais consultable et peut faire l’objet d’une discussion précise. Pour une équipe de recherche, il offre des pistes de lecture ; il ne dispense pas d’examiner chaque énoncé et son état de vérification."
+  ],
+  "watch": [
+    "Les corrections publiques et les validations indépendantes, résultat par résultat.",
+    "La couverture réelle des preuves formalisées et la disponibilité des financements promis pour la compréhension humaine.",
+    "L’accès futur au modèle et l’éventuel transfert des publications vers un dépôt scientifique indépendant."
+  ]
+},
   "chatgpt-gpt-6-intelligent-ui": {
   "format": "contexte",
   "whyItMatters": [
