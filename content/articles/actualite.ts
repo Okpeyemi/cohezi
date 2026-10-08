@@ -2,6 +2,209 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
   {
+  "slug": "chatgpt-gpt-6-intelligent-ui",
+  "title": "ChatGPT déploie GPT-6 et des réponses que l’on peut manipuler.",
+  "excerpt": "OpenAI lance Intelligent UI dans ChatGPT : graphiques, formulaires et outils interactifs accompagnent les réponses. L’ouverture aux comptes gratuits est annoncée pour le 8 octobre, avec un déploiement progressif et des limites selon les modes.",
+  "category": "actualite",
+  "publishedAt": "2026-10-08",
+  "readingMinutes": 4,
+  "image": {
+    "src": "/images/articles/chatgpt-gpt-6-intelligent-ui.webp",
+    "alt": "Un ordinateur portable affiche des graphiques et des formulaires abstraits sur un bureau sombre — illustration éditoriale générée par IA"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "OpenAI a annoncé le 7 octobre 2026 le déploiement de GPT-6 avec Intelligent UI dans ChatGPT. La nouveauté transforme certaines réponses en interfaces utilisables : on peut agir sur un graphique, remplir un formulaire ou explorer une explication directement dans la conversation. Le lancement commence avec les offres Plus, Pro, Business et Enterprise ; l’extension à Free et Go est annoncée à partir du 8 octobre."
+    },
+    {
+      "type": "paragraph",
+      "text": "L’annonce concerne l’onglet Chat. Elle ne change pas les modèles de Work et de Codex. OpenAI présente aussi une amélioration de la rapidité : sur ses évaluations internes de questions nécessitant une recherche web, GPT-6 Instant commence à répondre 44 % plus tôt que GPT-5.6 Instant. Ce chiffre mesure le début de la réponse, pas le temps nécessaire pour terminer une tâche, et ne constitue pas un test indépendant."
+    },
+    {
+      "type": "heading",
+      "text": "Une réponse devient un petit outil"
+    },
+    {
+      "type": "paragraph",
+      "text": "La documentation d’Intelligent UI décrit un mélange de texte, de visuels et d’éléments interactifs choisi en fonction de la question. Une réponse courte peut rester entièrement textuelle. Les interfaces sont prises en charge d’Instant à Extra High ; le mode de raisonnement Pro, fondé sur Astra, n’en bénéficie pas. Voice et Work ne proposent pas cette fonction. Ces distinctions évitent de confondre le nom de l’abonnement Pro avec celui d’un réglage de raisonnement."
+    },
+    {
+      "type": "paragraph",
+      "text": "La même documentation précise que certaines listes peuvent conserver leur état après un rafraîchissement, mais pas entre deux conversations. Un réglage de présentation simplifiée réduit les éléments visuels sans forcément les supprimer tous. Pour une personne qui utilise le chat comme carnet de travail, cela invite à vérifier ce qui est réellement conservé avant d’y organiser un suivi important."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi ce changement compte maintenant"
+    },
+    {
+      "type": "paragraph",
+      "text": "La lecture de COHEZI : le gain recherché porte autant sur la manipulation de l’information que sur sa production. Pour comparer deux scénarios de budget, un curseur peut éviter de réécrire plusieurs demandes. Pour apprendre, modifier une variable permet de voir une conséquence. Dans ces exemples, l’intérêt ne vient pas d’un texte plus long, mais d’une boucle plus courte entre question, essai et compréhension."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cette évolution peut aussi déplacer une partie des petits usages habituellement confiés à un tableur ou à une application dédiée. Cela reste une possibilité, pas la preuve que ces outils deviennent inutiles. Un calcul ponctuel et un système partagé par une équipe n’ont pas les mêmes exigences de conservation, d’export, de contrôle des formules ou de reproductibilité."
+    },
+    {
+      "type": "heading",
+      "text": "Une disponibilité encore à vérifier compte par compte"
+    },
+    {
+      "type": "paragraph",
+      "text": "Les sources officielles ne sont pas complètement synchronisées. L’annonce et la fiche dédiée à Intelligent UI indiquent GPT-6 Luna pour Free et Go. Au moment de cette veille, la page générale sur les modèles mentionne encore GPT-5.6 Luna pour ces offres. Nous retenons donc la date annoncée du 8 octobre comme début d’extension, sans affirmer que tous les comptes gratuits ont déjà basculé."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cette page générale confirme par ailleurs le caractère progressif du déploiement, les permissions des espaces gérés et le maintien de limites liées aux offres et aux outils. L’apparition d’une interface plus riche ne signifie pas un accès illimité. Si GPT-6 n’apparaît pas encore, l’absence peut tenir au déploiement ou aux paramètres de l’espace plutôt qu’à une erreur de manipulation."
+    },
+    {
+      "type": "heading",
+      "text": "Le risque : prendre la présentation pour une validation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Une interface soignée peut rendre une réponse plus facile à comprendre et plus convaincante. Elle ne vérifie pas, à elle seule, les données utilisées. Un graphique reste trompeur si son unité est mauvaise ; un simulateur reste fragile si une hypothèse manque. Notre conseil éditorial est de commencer par un cas simple dont on connaît le résultat, puis de demander les hypothèses et la source des chiffres."
+    },
+    {
+      "type": "paragraph",
+      "text": "Les utilisateurs peuvent gagner en autonomie sur des tâches ponctuelles. OpenAI peut, de son côté, garder davantage d’activités dans la conversation. Pour les concepteurs de logiciels, l’enjeu est d’identifier ce qu’une interface improvisée ne remplace pas : un processus stable, un historique exploitable et des responsabilités claires. Il faudra observer les usages réels avant de parler d’un changement général dans la façon de travailler."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "Intelligent UI ajoute des éléments manipulables à certaines réponses de ChatGPT.",
+        "La disponibilité dépend du compte et du mode ; l’ouverture gratuite est un déploiement annoncé.",
+        "Une meilleure présentation ne dispense pas de vérifier les calculs et les sources."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "OpenAI",
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "url": "https://openai.com/index/gpt-6-for-everyone/",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "outlet": "OpenAI Help Center",
+      "title": "Intelligent UI in ChatGPT",
+      "url": "https://help.openai.com/en/articles/20001598-intelligent-ui-in-chatgpt"
+    },
+    {
+      "outlet": "OpenAI Help Center",
+      "title": "GPT-6 and other models in ChatGPT",
+      "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt"
+    }
+  ]
+},
+  {
+  "slug": "windows-mxc-limites-agents-ia",
+  "title": "Windows ajoute des limites d’accès pour les agents IA avec MXC.",
+  "excerpt": "Microsoft rend ses conteneurs d’exécution disponibles et GitHub les intègre à Copilot. L’enjeu est concret : autoriser un agent à travailler dans un projet sans lui ouvrir tous les fichiers et toutes les connexions du poste.",
+  "category": "actualite",
+  "publishedAt": "2026-10-08",
+  "readingMinutes": 4,
+  "image": {
+    "src": "/images/articles/windows-mxc-limites-agents-ia.webp",
+    "alt": "Un ordinateur dans un espace de travail séparé par une cloison vitrée — illustration éditoriale générée par IA"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Microsoft a annoncé le 7 octobre 2026 la disponibilité générale de Microsoft Execution Containers, ou MXC, sur Windows 11. Cette couche d’exécution permet d’appliquer des règles d’accès aux fichiers et au réseau autour d’un agent. Le changement porte sur les moyens dont dispose le logiciel pour agir : une consigne adressée au modèle et une permission imposée par le système ne jouent pas le même rôle."
+    },
+    {
+      "type": "paragraph",
+      "text": "L’annonce s’inscrit dans une stratégie plus large d’IA hybride, entre ordinateur et cloud. Mais toutes les fonctions présentées ce jour-là ne sont pas disponibles au même stade. Microsoft prévoit notamment une préversion expérimentale du routage local de GitHub HydraFusion plus tard en octobre. La disponibilité générale de MXC ne doit donc pas être étendue par raccourci à toute la feuille de route Windows."
+    },
+    {
+      "type": "heading",
+      "text": "Fixer les permissions en dehors de l’agent"
+    },
+    {
+      "type": "paragraph",
+      "text": "La documentation Microsoft décrit une politique définie par le développeur ou l’organisation, puis appliquée pendant l’exécution. L’agent n’est pas censé pouvoir élargir lui-même cette politique. Plusieurs formes d’isolation existent, avec des propriétés différentes ; les MicroVM restent expérimentales. L’intégration de l’identité via Entra et certains contrôles Intune sont, eux, annoncés comme à venir."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le choix du mode est décisif. En mode Enforcement, les accès non accordés sont bloqués. Learning les bloque également, tout en les enregistrant pour aider à ajuster les règles. Permissive les enregistre mais laisse l’opération continuer, sous réserve des autres restrictions applicables. Observer un agent dans ce dernier mode ne revient donc pas à lui imposer toutes les limites décrites dans la politique."
+    },
+    {
+      "type": "heading",
+      "text": "Un premier usage concret dans Copilot"
+    },
+    {
+      "type": "paragraph",
+      "text": "GitHub confirme séparément la disponibilité générale des bacs à sable locaux dans Copilot CLI, l’application Copilot et les sessions VS Code utilisant Agent Host. L’isolation s’appuie sur MXC et concerne notamment les fichiers, les connexions et les identifiants. GitHub indique qu’elle est incluse sans coût supplémentaire dans Copilot et que des règles d’entreprise peuvent empêcher un utilisateur d’affaiblir les protections."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le changelog précise un point souvent brouillé par le vocabulaire : le lieu d’exécution du modèle et l’isolation des outils sont deux sujets distincts. Un outil peut être enfermé dans un environnement local alors que le raisonnement est réalisé par un service distant. Installer un bac à sable ne suffit donc pas à conclure que toutes les données restent sur l’ordinateur."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi cela devient nécessaire"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre analyse : à mesure qu’un assistant passe de la suggestion à l’action, l’erreur change de nature. Une mauvaise réponse peut être corrigée avant usage ; une commande exécutée peut déjà avoir modifié un fichier. Définir un périmètre réduit les conséquences possibles, même lorsque l’action paraît cohérente au modèle. Cela n’exige pas de supposer une intention malveillante : une interprétation trop large de la tâche suffit."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour une petite équipe, on peut imaginer un agent autorisé à préparer un dossier de démonstration mais incapable d’ouvrir les documents des clients. Ce scénario est une illustration, pas une configuration livrée par défaut. Il reste à décider quels répertoires sont nécessaires, quelles connexions sont justifiées et qui peut approuver une exception. Accorder tous les accès pour faire disparaître les erreurs retirerait une grande partie de l’intérêt du dispositif."
+    },
+    {
+      "type": "heading",
+      "text": "Le matériel local ne règle pas tout"
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA accompagne cette séquence avec RTX Spark et DGX Station pour Windows. Son annonce distingue des machines grand public et des stations destinées aux charges lourdes. Elle éclaire l’ambition d’exécuter davantage de calcul près de l’utilisateur, mais ne démontre ni la rentabilité d’un achat pour chaque équipe ni l’absence de transfert vers le cloud dans une application donnée."
+    },
+    {
+      "type": "paragraph",
+      "text": "Les développeurs gagnent une manière plus cohérente d’encadrer leurs outils. Les responsables informatiques gagnent des points de contrôle, mais prennent aussi en charge la qualité des règles. Microsoft renforce la place de Windows comme environnement d’exécution des agents. Les promesses de sécurité doivent être examinées à travers des essais de refus d’accès et des incidents documentés, pas seulement à travers la liste des partenaires."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "MXC encadre ce qu’un agent peut atteindre pendant son exécution.",
+        "Les modes d’observation et de blocage ne sont pas équivalents.",
+        "Isolation locale, modèle local et confidentialité des données doivent être vérifiés séparément."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Microsoft",
+      "title": "Building Windows for hybrid intelligence",
+      "url": "https://blogs.windows.com/windowsexperience/2026/10/07/building-windows-for-hybrid-intelligence/",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "outlet": "Microsoft",
+      "title": "Microsoft Execution Containers: Policy-driven containment for AI agents",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "outlet": "GitHub",
+      "title": "Local sandboxing for GitHub Copilot now generally available",
+      "url": "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available/",
+      "publishedAt": "2026-10-07"
+    },
+    {
+      "outlet": "NVIDIA",
+      "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
+      "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/",
+      "publishedAt": "2026-10-07"
+    }
+  ]
+},
+
+  {
     slug: 'claude-cowork-cloud-obligatoire-pro-max',
     title: 'Claude Cowork impose désormais le cloud aux abonnés Pro et Max.',
     excerpt:
