@@ -2,6 +2,101 @@ import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
   {
+    slug: 'manus-leve-500-millions-apres-meta',
+    title: 'Manus lève plus de 500 millions de dollars après sa séparation de Meta.',
+    excerpt:
+      'Butterfly Effect finance le retour à l’indépendance de son agent d’IA après l’abandon d’une acquisition de plus de 2 milliards de dollars. Le montant est confirmé, mais la valorisation et l’usage précis des fonds ne le sont pas.',
+    category: 'business',
+    publishedAt: '2026-10-08',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/manus-levee-500-millions.webp',
+      alt: 'Un papillon numérique émerge devant des serveurs, image symbolisant le retour à l’indépendance de Manus',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Butterfly Effect, la maison mère de l’agent d’intelligence artificielle Manus, a annoncé le 8 octobre avoir bouclé un financement de plus de 500 millions de dollars. Boyu Capital et IDG Capital ont codirigé l’opération. Les investisseurs déjà présents Tencent, HSG — anciennement Sequoia China — et ZhenFund y ont aussi participé. Cette levée accompagne le retour de Manus à l’indépendance après l’abandon de son acquisition par Meta, initialement valorisée à plus de 2 milliards de dollars.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le montant et les participants sont les faits confirmés par l’entreprise et rapportés par Reuters. En revanche, Butterfly Effect n’a pas communiqué la valorisation obtenue ni l’usage détaillé des fonds. Des médias évoquent une valorisation proche de 4 milliards de dollars, mais ce chiffre n’est pas confirmé dans l’annonce. Il doit donc rester présenté comme une estimation, pas comme une donnée acquise.',
+      },
+      { type: 'heading', text: 'Une acquisition défaite par la géopolitique' },
+      {
+        type: 'paragraph',
+        text: 'Meta avait annoncé l’achat de Manus à la fin de 2025. En avril, les autorités chinoises ont ordonné le démantèlement de l’opération, dans un contexte de contrôle renforcé des investissements américains dans les entreprises chinoises développant des technologies d’IA avancées. Les fondateurs et investisseurs historiques ont ensuite repris les titres détenus par Meta. Manus, fondée en Chine et installée à Singapour, a officiellement annoncé le 1er septembre qu’elle recommençait à fonctionner comme entreprise indépendante, toujours conduite par son équipe fondatrice.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La séparation n’a pas été purement administrative. Manus a demandé à une partie de ses utilisateurs de sauvegarder puis de restaurer leurs données, avec une interruption temporaire d’accès. L’entreprise promet désormais de continuer à développer des agents capables de mener des tâches complexes avec peu d’intervention humaine. Sa version 2.0, lancée fin septembre, ajoute notamment des automatisations déclenchées par des événements, un ordinateur dans le cloud et Cue, une application où plusieurs agents peuvent se répartir un objectif.',
+      },
+      { type: 'heading', text: 'Pourquoi cet argent arrive maintenant' },
+      {
+        type: 'paragraph',
+        text: 'La levée remplit d’abord un besoin évident : remplacer le financement et l’accès industriel qu’aurait apportés Meta. Elle donne aussi à Butterfly Effect des moyens pour relancer ses produits au moment où les agents deviennent un terrain de concurrence directe entre OpenAI, Anthropic, Google, Meta et de nombreuses startups. Ces systèmes coûtent cher à exploiter : ils enchaînent des appels à des modèles, utilisent des ordinateurs distants et peuvent rester actifs en continu.',
+      },
+      {
+        type: 'paragraph',
+        text: 'L’opération montre également que certains investisseurs restent prêts à financer une entreprise revenue d’un accord annulé pour des raisons politiques. Ce capital ne prouve cependant ni la rentabilité de Manus ni la solidité de son avance technique. Reuters indique qu’un média spécialisé estimait en juin son revenu annualisé autour de 500 millions de dollars, contre 100 millions au moment de l’accord avec Meta. Ce chiffre n’a pas été publié dans des comptes audités accessibles au public.',
+      },
+      { type: 'heading', text: 'Qui gagne, qui prend un risque' },
+      {
+        type: 'paragraph',
+        text: 'Manus gagne du temps, de la capacité d’investissement et la possibilité de poursuivre seule sa feuille de route. Les investisseurs historiques protègent un actif qu’ils avaient dû racheter à Meta et peuvent bénéficier d’une valorisation supérieure si la croissance annoncée se poursuit. Boyu et IDG entrent, eux, dans l’un des segments les plus disputés de l’IA : celui des assistants qui n’attendent plus seulement une question, mais agissent dans des applications et sur des services réels.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le risque est double. D’un côté, la concurrence peut réduire rapidement la différence entre Manus et les agents intégrés aux grands écosystèmes. De l’autre, les tensions entre la Chine et les États-Unis ont déjà changé la propriété de l’entreprise une fois. Son implantation singapourienne n’efface pas automatiquement les questions sur le contrôle du capital, la circulation des données et les autorisations nécessaires à une future cotation ou à un partenariat international.',
+      },
+      { type: 'heading', text: 'Ce que cela change concrètement' },
+      {
+        type: 'paragraph',
+        text: 'Pour les utilisateurs, il n’y a pas de nouveau produit ni de baisse de prix annoncée avec cette levée. L’effet immédiat est financier : Manus dispose de ressources pour faire fonctionner ses infrastructures, recruter, commercialiser Manus 2.0 et développer Cue. Les organisations qui utilisent déjà le service doivent continuer à examiner séparément la sécurité des connecteurs, les permissions accordées aux agents, la localisation des données et les possibilités d’arrêter ou d’annuler une action.',
+      },
+      {
+        type: 'paragraph',
+        text: 'La suite permettra de mesurer si cette indépendance est durable. Il faudra surveiller la valorisation finale si elle devient publique, l’identité exacte des détenteurs du capital, la destination des 500 millions de dollars et l’évolution des revenus. Les premières preuves utiles seront moins les démonstrations spectaculaires que le coût réel d’une tâche, la fidélité des agents aux autorisations et la capacité de Manus à conserver des utilisateurs face aux plateformes déjà installées.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'Butterfly Effect a levé plus de 500 millions de dollars, avec Boyu Capital et IDG Capital comme chefs de file.',
+          'Le financement suit l’abandon de l’acquisition de Manus par Meta, évaluée à plus de 2 milliards de dollars.',
+          'La valorisation proche de 4 milliards évoquée ailleurs n’est pas confirmée par l’entreprise.',
+          'Aucun changement immédiat de produit, de prix ou de conditions d’utilisation n’a été annoncé avec la levée.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Reuters',
+        title: 'Manus raises more than $500 million after Meta exit',
+        url: 'https://www.reuters.com/world/china/manus-raises-more-than-500-million-after-meta-exit-2026-10-08/',
+        publishedAt: '2026-10-08',
+      },
+      {
+        outlet: 'Manus',
+        title: 'Manus Resumes Independent Operations',
+        url: 'https://manus.im/blog/manus-resumes-independent-operations',
+        publishedAt: '2026-09-01',
+      },
+      {
+        outlet: 'Manus',
+        title: 'Introducing Manus 2.0',
+        url: 'https://manus.im/blog/introducing-manus-2-0',
+        publishedAt: '2026-09-28',
+      },
+      {
+        outlet: 'TechNode',
+        title: 'Manus parent Butterfly Effect completes more than $500 million funding round',
+        url: 'https://technode.com/2026/10/08/manus-parent-butterfly-effect-completes-more-than-500-million-funding-round/',
+        publishedAt: '2026-10-08',
+      },
+    ],
+  },
+  {
   "slug": "claude-haiku-5-5-prix-api",
   "title": "Claude Haiku 5.5 baisse ses tarifs : ce que cela change pour une application IA.",
   "excerpt": "Anthropic lance Haiku 5.5 pour les tâches fréquentes et sensibles au coût. La grille tarifaire baisse fortement, mais la longueur des requêtes, le nouveau comptage des tokens et les reprises restent déterminants pour la facture.",
