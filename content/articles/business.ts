@@ -1,6 +1,99 @@
 import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
+{
+  "slug": "google-gemini-agent-travail-acces-anticipe",
+  "title": "Google présente un agent Gemini pour déléguer du travail, encore en accès anticipé.",
+  "excerpt": "Gemini agent réunit tâches, outils et modèles dans un même environnement. L’annonce concerne aussi les permissions et les budgets ; elle ne garantit pas encore une disponibilité générale ni un gain de temps pour chaque entreprise.",
+  "category": "business",
+  "publishedAt": "2026-10-09",
+  "readingMinutes": 5,
+  "image": {
+    "src": "/images/articles/google-gemini-agent-travail-acces-anticipe.webp",
+    "alt": "Illustration générée par IA : un ordinateur reste ouvert sur un bureau inoccupé"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Google Cloud a présenté Gemini agent le 8 octobre 2026. Selon son annonce, cet agent peut traiter des documents et exécuter des tâches dans le cloud, même lorsque son utilisateur ferme son ordinateur. Un agent doté d’un rôle durable peut disposer de sa propre adresse de messagerie et recevoir les documents partagés avec lui. Google décrit également des identités distinctes, des permissions et des traces permettant d’attribuer les actions. Il s’agit d’une offre de travail délégué, dont les résultats restent à évaluer en situation réelle."
+    },
+    {
+      "type": "heading",
+      "text": "Une disponibilité à lire avec précision"
+    },
+    {
+      "type": "paragraph",
+      "text": "La publication destinée aux petites et moyennes entreprises précise que Gemini agent est en accès anticipé auprès de clients PME et promet une ouverture à tous prochainement, sans date ferme. Elle annonce des connexions avec des outils de travail existants, dont Slack, Shopify et GitHub. Gemini désigne ici l’agent : les modèles qui exécutent ses tâches peuvent appartenir à la famille Gemini ou à Claude. Le soutien d’autres modèles est présenté comme une évolution future."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cette différence compte avant de décider un essai. Une annonce publique ne donne pas automatiquement accès au service dans son compte. Il faut obtenir une confirmation portant sur son offre, son pays et les outils concernés. Un connecteur disponible ne garantit pas davantage que toutes les fonctions de l’application soient utilisables. Par exemple, consulter une commande, préparer un message et envoyer ce message sont trois autorisations différentes. On peut accepter la première et garder la dernière entre les mains d’une personne."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi maintenant : donner un cadre aux agents"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le journal technique de Gemini Enterprise Agent Platform montre que cette infrastructure évoluait déjà avant l’annonce : le 30 septembre, l’intégration d’Agent Gateway avec Cloud Trace est entrée en préversion. Elle permet de suivre le parcours des requêtes entre agents, outils et serveurs MCP. Ce jalon documenté concerne la supervision de la plateforme ; il ne prouve pas que toutes les fonctions du nouvel agent soient généralement disponibles."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre lecture : quand une équipe délègue plusieurs étapes, elle doit pouvoir comprendre où le travail s’est arrêté. Un résultat manquant peut venir d’une permission refusée, d’un outil indisponible ou d’une consigne ambiguë. Sans cette distinction, elle risque de relancer toute la tâche et de payer plusieurs fois un travail partiellement terminé. Le suivi devient donc une condition pratique de la délégation, et pas seulement une fonction réservée aux administrateurs."
+    },
+    {
+      "type": "heading",
+      "text": "Le coût ne se limite pas au choix du modèle"
+    },
+    {
+      "type": "paragraph",
+      "text": "Google annonce des plafonds de dépenses par projet, capables de mettre l’agent en pause, et un routage entre modèles pour maîtriser le coût des tâches. Ces mécanismes sont des fonctionnalités décrites par le fournisseur, pas une démonstration indépendante d’économies. Le tarif complet de son propre usage doit encore être confirmé."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour un premier test, notre conseil est de choisir une tâche répétitive dont le résultat est facile à contrôler. Une équipe pourrait demander un brouillon de compte rendu à partir de documents déjà partagés, puis comparer le temps de préparation et de correction avec sa méthode habituelle. Elle compterait aussi les reprises et les informations oubliées. Ce protocole fournit un repère utile : un brouillon produit rapidement peut demander davantage de relecture qu’un document préparé à la main."
+    },
+    {
+      "type": "heading",
+      "text": "Qui profite de cette évolution, et qui prend le risque ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "À notre avis, une équipe dont les documents sont rangés et les responsabilités claires pourra expérimenter plus facilement. Une organisation qui échange surtout des fichiers sans version ou des consignes dispersées devra d’abord clarifier sa façon de travailler. L’agent ne résout pas à lui seul une contradiction entre deux tableaux, ni une responsabilité que personne n’a définie. Google renforce sa place dans l’environnement de travail ; le client conserve le coût des erreurs et des décisions prises à partir des résultats."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour un salarié, le changement concret peut être un déplacement du temps consacré au travail : moins de collecte, davantage de cadrage et de vérification. Ce déplacement reste une hypothèse, pas une suppression d’emploi démontrée par l’annonce. Le bon point de départ consiste à nommer la personne qui valide chaque résultat et à préciser comment interrompre une tâche. Ces décisions permettent de tester un usage limité avant de confier une chaîne de travail entière."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "Gemini agent est annoncé ; les PME citées sont encore en accès anticipé.",
+        "Les accès, les reprises et la facture doivent être vérifiés lors d’un essai limité."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Google Cloud",
+      "title": "Welcome to Gemini at Work 2026: Introducing the Gemini agent",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
+      "publishedAt": "2026-10-08"
+    },
+    {
+      "outlet": "Google Cloud",
+      "title": "Empowering SMBs to do more with Gemini",
+      "url": "https://cloud.google.com/blog/topics/startups/how-to-grow-your-small-business-using-google-gemini",
+      "publishedAt": "2026-10-08"
+    },
+    {
+      "outlet": "Google Cloud Documentation",
+      "title": "Gemini Enterprise Agent Platform release notes",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes"
+    }
+  ]
+},
   {
     slug: 'manus-leve-500-millions-apres-meta',
     title: 'Manus lève plus de 500 millions de dollars après sa séparation de Meta.',
