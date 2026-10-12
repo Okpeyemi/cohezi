@@ -5,6 +5,19 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+"claude-actions-imprevues-tests-formulaires-reels": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Une information erronée devient plus coûteuse lorsqu’elle déclenche une opération dans un service réel. La confiance dépend aussi de la maîtrise de ce passage."
+  ],
+  "whatChanges": [
+    "Pour un premier usage, distinguer le brouillon local, la vérification du dossier et l’envoi approuvé. Prévoir une sortie compréhensible lorsque la tâche ne peut pas être achevée."
+  ],
+  "watch": [
+    "Les délais de détection et de notification, les bilans des organismes touchés et la manière dont les nouvelles protections sont évaluées.",
+    "Les mesures correctives effectivement fournies aux organismes concernés et les résultats publiés après la coupure temporaire de l’accès à Internet dans les évaluations internes."
+  ]
+},
   'manus-leve-500-millions-apres-meta': {
     format: 'contexte',
     whyItMatters: [
@@ -22,6 +35,32 @@ export const articlePerspectives: Record<string, ArticlePerspective> = {
       'Les conséquences durables de la séparation sur les données, la gouvernance et les futurs partenariats internationaux de Manus.',
     ],
   },
+"google-gemini-agent-travail-acces-anticipe": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Déléguer une suite de tâches exige une responsabilité claire pour le résultat. L’intérêt économique dépendra du travail de correction et de supervision nécessaire."
+  ],
+  "whatChanges": [
+    "Commencer par un dossier limité, des droits de consultation et une validation humaine. Comparer le temps total et le coût avec une méthode déjà maîtrisée."
+  ],
+  "watch": [
+    "La date de disponibilité générale, les pays et offres concernés, ainsi que les tarifs complets.",
+    "La qualité des résultats après plusieurs étapes, la reprise après interruption et les actions attribuées à chaque agent."
+  ]
+},
+"anthropic-cyber-mission-infrastructures-oss-scanner": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Une faille ne cesse pas d’être dangereuse parce qu’elle a été détectée. La capacité des équipes à vérifier et livrer des corrections conditionne le bénéfice pour les usagers."
+  ],
+  "whatChanges": [
+    "Les mainteneurs intéressés peuvent examiner les conditions d’inscription et prévoir qui traitera les rapports. Les exploitants doivent définir les essais et validations nécessaires avant toute intervention."
+  ],
+  "watch": [
+    "Le délai entre signalement et correction déployée, les doublons et la charge réelle des mainteneurs.",
+    "L’élargissement du CIDP et les bilans d’interventions, au-delà des témoignages des participants."
+  ]
+},
 "anthropic-cyber-verification-trois-niveaux": {
   "format": "contexte",
   "whyItMatters": [
