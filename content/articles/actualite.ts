@@ -2,6 +2,110 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
 {
+  "slug": "meta-muse-wonder-memoire-agents-acces",
+  "title": "Meta lance Muse Wonder : une mémoire pour les agents, des accès à distinguer.",
+  "excerpt": "Deux nouveaux modèles arrivent dans Muse Code, et Muse Wonder est aussi accessible par API. Meta promet un travail plus durable ; ses évaluations ne garantissent ni la fiabilité de chaque action ni une ouverture immédiate à tous les utilisateurs de Muse.",
+  "category": "actualite",
+  "publishedAt": "2026-10-13",
+  "readingMinutes": 5,
+  "image": {
+    "src": "/images/articles/meta-muse-wonder-memoire-agents-acces.webp",
+    "alt": "Illustration générée par IA : des mains relisent des notes à côté d’un ordinateur et de dossiers de travail"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Meta a lancé le 12 octobre 2026 Muse Wonder et Muse Wonder Full, deux modèles conçus pour les agents personnels et professionnels. Le premier est proposé dans Meta Model API et Muse Code ; le second est disponible aux abonnés Muse Code. Leur intégration à l’assistant Muse est annoncée pour plus tard, avec un déploiement initial auprès des abonnés. Ce lancement ne signifie donc pas que tous les utilisateurs des applications de Meta disposent déjà de ces capacités."
+    },
+    {
+      "type": "heading",
+      "text": "La nouveauté : reprendre un travail avec son contexte"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le blog de recherche présente deux capacités : Active Memory retrouve des informations utiles entre conversations ; Active Focus vise à poursuivre une tâche difficile, essayer une autre approche et demander une précision si nécessaire. Ce sont les capacités revendiquées par Meta, pas une démonstration que chaque dossier sera correctement terminé. Elles prolongent un usage différent du simple échange de questions et réponses : un travail qui s’étale sur plusieurs étapes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Prenons un exemple fictif : une petite équipe prépare une proposition pour un client. Elle précise un budget, une échéance et les prestations exclues. Une mémoire utile éviterait de répéter ces éléments à chaque échange. Mais si le client modifie le budget, conserver l’ancienne valeur peut devenir un problème. Notre lecture : la qualité d’une mémoire dépend autant de sa capacité à actualiser une information que de sa capacité à la retrouver. Un détail retenu trop longtemps peut coûter davantage qu’un détail oublié."
+    },
+    {
+      "type": "heading",
+      "text": "Un modèle, un produit et un abonnement ne sont pas la même chose"
+    },
+    {
+      "type": "paragraph",
+      "text": "L’API sert aux développeurs qui intègrent le modèle dans leur logiciel. Muse Code est un environnement de programmation ; Muse est l’assistant destiné à d’autres usages. Avant un essai, il faut confirmer le modèle réellement accessible dans son offre, les limites d’utilisation et les fonctionnalités de mémoire présentes dans le produit. La disponibilité annoncée sur une interface ne donne pas automatiquement accès à toutes les autres."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pourquoi maintenant ? Meta présente cette sortie comme une étape d’une reconstruction de ses efforts en IA commencée quatorze mois auparavant. Le groupe cherche à proposer des agents capables de travailler sur la durée. Notre interprétation économique : la compétition porte aussi sur l’habitude d’utiliser un environnement de travail. Si les préférences, les documents et les procédures sont organisés autour d’un assistant, essayer un concurrent peut demander de reconstruire une partie de ce contexte. Cette conséquence reste à mesurer ; l’annonce ne fournit pas de données de fidélisation."
+    },
+    {
+      "type": "heading",
+      "text": "Les résultats publiés demandent une lecture attentive"
+    },
+    {
+      "type": "paragraph",
+      "text": "La fiche technique détaille des évaluations internes et des résultats venant d’organismes tiers. Elle précise que certaines comparaisons de programmation n’utilisent pas le même environnement d’agent. Des résultats obtenus avec Codex ou Claude Code ne mesurent donc pas uniquement les modèles. Elle reconnaît aussi des limites : erreurs possibles sur des tâches à plusieurs étapes, performances variables selon les outils et absence d’évaluation de toutes les langues présentes dans les données d’entraînement."
+    },
+    {
+      "type": "paragraph",
+      "text": "Un score de laboratoire apporte un repère, mais ne répond pas à la question d’une équipe : combien de dossiers correctement terminés pour combien de reprises ? Pour un essai utile, notre proposition est de comparer une tâche connue avec la méthode habituelle. On garderait les mêmes pièces, la même consigne et la même grille de vérification. On compterait les oublis, les corrections et le coût total. La réponse peut varier selon le métier ; une place dans un classement ne suffit pas à décider pour tous."
+    },
+    {
+      "type": "heading",
+      "text": "Qui gagne, et qui assume les erreurs ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Les développeurs disposent d’un choix supplémentaire pour construire leurs outils. Les équipes pourraient gagner du temps sur la collecte d’informations ou les brouillons, à condition que la relecture ne mange pas ce gain. Meta, de son côté, élargit les usages de ses produits. Ces effets sont une analyse de COHEZI, pas des résultats de productivité établis par le lancement."
+    },
+    {
+      "type": "paragraph",
+      "text": "La personne qui transmet ses documents prend aussi un risque si une préférence privée revient dans un contexte inapproprié. Une mémoire pratique demande donc des réponses concrètes : peut-on voir ce qui a été conservé, corriger une information, supprimer un souvenir et séparer deux dossiers ? Nous ne présentons pas ces contrôles comme disponibles partout : leur présence doit être vérifiée dans l’outil choisi. Pour un premier test, un dossier fictif ou peu sensible permettra de comprendre le fonctionnement avant d’y confier des pièces personnelles."
+    },
+    {
+      "type": "paragraph",
+      "text": "La fiche technique recommande elle-même des protections adaptées au système et une confirmation humaine pour les actions irréversibles. Notre conseil pratique est de commencer par un résultat que l’on peut relire avant transmission. La mémoire aide à préparer ; elle ne décide pas à elle seule qu’un ancien accord reste valable. Il faudra surveiller le déploiement dans Muse, les conditions d’accès et les retours sur les tâches longues. Le rapport de sécurité plus complet promis par Meta constituera un autre document à examiner."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "Muse Wonder est annoncé sur API et Muse Code ; Wonder Full sur Muse Code. L’arrivée dans Muse reste un déploiement annoncé.",
+        "Tester la mémoire sur des changements de consigne et mesurer le travail de correction avant de déléguer un dossier réel."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Meta Newsroom",
+      "title": "Introducing Muse Wonder and Muse Wonder Full: Frontier Models for Agents",
+      "url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+      "publishedAt": "2026-10-12"
+    },
+    {
+      "outlet": "Meta AI Research",
+      "title": "Muse Wonder: A Frontier Model For Personal & Professional AI Agents",
+      "url": "https://research.meta.ai/blog/muse-wonder",
+      "publishedAt": "2026-10-12"
+    },
+    {
+      "outlet": "Meta AI Research",
+      "title": "Muse Wonder Model Card",
+      "url": "https://research.meta.ai/static/muse-wonder-model-card",
+      "publishedAt": "2026-10-12"
+    },
+    {
+      "outlet": "Axios",
+      "title": "Meta unveils new frontier-class AI models to compete with OpenAI, Anthropic",
+      "url": "https://www.axios.com/2026/10/12/meta-new-ai-models-anthropic-openai",
+      "publishedAt": "2026-10-12"
+    }
+  ]
+},
+{
   "slug": "anthropic-cyber-verification-trois-niveaux",
   "title": "Anthropic ouvre davantage ses modèles aux cyberdéfenseurs, sous conditions.",
   "excerpt": "Le nouveau Cyber Verification Program réunit trois niveaux d’accès. Il élargit les usages autorisés de Claude, tout en imposant une vérification des bénéficiaires et des contrôles sur leurs données et leurs comptes.",
