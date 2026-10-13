@@ -5,6 +5,30 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+"royaume-uni-preparation-incidents-agents-ia": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Préparer une réponse aux incidents permet de traiter les conséquences d’une action erronée, y compris lorsqu’elle survient pendant un essai. La continuité d’un service ne dépend pas seulement du modèle."
+  ],
+  "whatChanges": [
+    "Identifier les personnes qui peuvent suspendre un agent, conserver les traces utiles et organiser un traitement manuel. Les règles britanniques envisagées devront être lues dans leurs textes définitifs."
+  ],
+  "watch": [
+    "Le périmètre des futures mesures, les seuils de signalement et les bilans détaillés des pilotes. Vérifier la différence entre un problème détecté, confirmé et réellement corrigé."
+  ]
+},
+"meta-muse-wonder-memoire-agents-acces": {
+  "format": "contexte",
+  "whyItMatters": [
+    "Un assistant qui reprend un dossier doit savoir reconnaître une information devenue périmée. La mémoire peut économiser des répétitions tout en compliquant la vérification."
+  ],
+  "whatChanges": [
+    "Pour un essai, contrôler le modèle accessible, les droits accordés et la possibilité de corriger les informations retenues. Comparer le temps total de préparation et de relecture."
+  ],
+  "watch": [
+    "L’ouverture effective dans Muse, les contrôles de mémoire et les retours d’usage sur des tâches longues. Les comparaisons doivent conserver des conditions de test compréhensibles."
+  ]
+},
 "claude-actions-imprevues-tests-formulaires-reels": {
   "format": "contexte",
   "whyItMatters": [

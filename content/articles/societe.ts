@@ -2,6 +2,107 @@ import type { ArticleCore } from '../types';
 
 export const societeArticles: ArticleCore[] = [
 {
+  "slug": "royaume-uni-preparation-incidents-agents-ia",
+  "title": "Le Royaume-Uni prépare ses services publics aux incidents d’agents IA.",
+  "excerpt": "Londres étend l’usage de l’IA en cyberdéfense et prépare la réponse aux incidents. Des protections législatives et le signalement des quasi-incidents sont envisagés ; aucune nouvelle obligation générale n’est créée par ce communiqué.",
+  "category": "societe",
+  "publishedAt": "2026-10-13",
+  "readingMinutes": 5,
+  "image": {
+    "src": "/images/articles/royaume-uni-preparation-incidents-agents-ia.webp",
+    "alt": "Illustration générée par IA : deux opérateurs examinent des écrans dans une salle de réponse aux incidents fictive"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Le gouvernement britannique a annoncé le 12 octobre 2026 plusieurs mesures pour protéger les services publics face aux risques de l’IA. Il veut étendre des pilotes de cyberdéfense, préparer la réponse à des incidents impliquant des agents autonomes et examiner des protections supplémentaires dans le cadre du Cyber Security and Resilience Bill. Le communiqué confirme également que l’AI Security Institute évalue la nouvelle génération de modèles avancés."
+    },
+    {
+      "type": "heading",
+      "text": "Des actions engagées, des règles encore envisagées"
+    },
+    {
+      "type": "paragraph",
+      "text": "La distinction est importante : le travail de préparation et les évaluations sont annoncés comme engagés. En revanche, le renforcement du cadre légal et les modalités de signalement des incidents ou quasi-incidents restent à élaborer avec les parlementaires, les experts et les opérateurs. Le communiqué ne crée pas une obligation générale nouvelle pour toutes les entreprises. Le lire comme une loi déjà applicable ferait sauter plusieurs étapes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Un quasi-incident pourrait, par exemple, être une action incorrecte arrêtée avant de toucher son destinataire. Cet exemple est une illustration de COHEZI ; la définition applicable et les seuils de déclaration restent à suivre. L’intérêt pratique est de comprendre un blocage réussi avant qu’une situation similaire produise un dommage. Encore faut-il distinguer les alertes utiles des événements bénins, pour ne pas noyer les équipes dans des déclarations qui ne les aident pas à agir."
+    },
+    {
+      "type": "heading",
+      "text": "Les pilotes fournissent un point de départ, pas une garantie générale"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le gouvernement affirme que deux pilotes ont déjà aidé à identifier et traiter plus de mille vulnérabilités potentielles. Ce bilan est fourni par les autorités : le communiqué ne détaille pas chaque cas. Il ne permet pas de calculer un taux de succès valable pour tous les systèmes ni d’attribuer chaque correction au seul modèle. Repérer une faiblesse, confirmer son exposition et déployer un correctif restent des opérations distinctes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Une étude de cas publique du 12 juin documentait déjà un travail sur des dépôts de code gouvernementaux. Elle décrivait plusieurs méthodes, dont des chaînes d’agents qui se contestent mutuellement et des outils classiques de détection associés aux modèles. L’escalade restait manuelle : une personne vérifiait les éléments avant leur transmission. Ce retour ancien éclaire la méthode, mais ne doit pas être confondu avec le nouveau bilan agrégé d’octobre."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre lecture : l’annonce prolonge une expérimentation existante en y ajoutant la préparation aux incidents. Ce passage compte pour un service public. Une équipe peut trouver une faille puis manquer de temps, de compétences ou d’un responsable clairement désigné pour la corriger. Une politique efficace doit donc organiser le chemin entre le rapport reçu et le service effectivement protégé, en tenant compte des opérations qui ne peuvent pas être interrompues à tout moment."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi les évaluations doivent aussi regarder le développement"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dans son agenda technique, l’AISI souligne que les risques peuvent apparaître pendant l’entraînement, les usages internes et les évaluations, avant même la sortie d’un modèle. Il appelle à améliorer la supervision, la détection des comportements anormaux et l’accès des évaluateurs indépendants. L’institut présente cette démarche comme un travail sur des pratiques volontaires, susceptible d’alimenter ensuite des standards ; il précise ne pas chercher à imposer lui-même des exigences aux développeurs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cette différence aide à comprendre ce qu’une évaluation peut apporter. Un laboratoire peut tester un produit avant de le livrer, mais son test constitue déjà une activité à encadrer si l’agent accède à des outils réels. Notre analyse : le contrôle du périmètre d’essai compte autant que le résultat final. Un exercice sur des données fictives et un exercice connecté à une messagerie active n’engagent pas les mêmes destinataires ni les mêmes conséquences."
+    },
+    {
+      "type": "heading",
+      "text": "Qui bénéficie de la préparation, et qui en supporte le coût ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Les usagers pourraient bénéficier de services plus résistants, si les mesures annoncées produisent des améliorations vérifiées. Les équipes informatiques doivent, elles, financer la validation, la correction et les exercices de réponse. Les fournisseurs peuvent gagner de nouveaux usages publics, tout en étant davantage questionnés sur les résultats de leurs tests. Ces effets sont des perspectives de COHEZI : l’annonce ne démontre ni une baisse chiffrée des interruptions ni une économie nette pour l’administration."
+    },
+    {
+      "type": "paragraph",
+      "text": "Concrètement, imaginons un service qui utilise un agent pour préparer des réponses aux demandes reçues. Avant une panne ou un envoi anormal, il peut déterminer qui coupe l’accès, qui examine les traces et comment les demandes seront traitées à la main. Ce scénario fictif ne décrit pas un déploiement britannique annoncé. Il montre pourquoi préparer une réponse exige une chaîne de responsabilités, au-delà du bouton permettant de suspendre un outil."
+    },
+    {
+      "type": "paragraph",
+      "text": "La suite se jugera sur des documents précis : le texte des éventuelles modifications législatives, les seuils de déclaration, les modalités de partage des informations et les bilans des pilotes étendus. Un service devrait pouvoir apprendre d’un incident sans divulguer inutilement des données d’usagers. Pour COHEZI, la nouveauté à suivre est cette organisation de la réponse ; les promesses générales de sécurité devront être confrontées aux protections et aux résultats effectivement publiés."
+    },
+    {
+      "type": "takeaway",
+      "title": "À retenir",
+      "items": [
+        "Londres annonce une extension des pilotes et une préparation aux incidents d’agents.",
+        "Les obligations de signalement et les changements législatifs sont encore des pistes à préciser, pas des règles générales déjà créées."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "Gouvernement britannique",
+      "title": "Britain steps up national defences against growing AI risks",
+      "url": "https://www.gov.uk/government/news/britain-steps-up-national-defences-against-growing-ai-risks",
+      "publishedAt": "2026-10-12"
+    },
+    {
+      "outlet": "AI Security Institute",
+      "title": "Towards technical best practice for frontier AI development",
+      "url": "https://www.aisi.gov.uk/blog/towards-technical-best-practice-for-frontier-ai-development"
+    },
+    {
+      "outlet": "DSIT et NCSC",
+      "title": "When AI Leaves the Lab: Testing Frontier Models in Government Cyber Defence",
+      "url": "https://www.gov.uk/government/case-studies/when-ai-leaves-the-lab-testing-frontier-models-in-government-cyber-defence",
+      "publishedAt": "2026-06-12"
+    }
+  ]
+},
+{
   "slug": "claude-actions-imprevues-tests-formulaires-reels",
   "title": "Claude a envoyé un faux signalement : quand un test devient une action réelle.",
   "excerpt": "Un formulaire public a reçu une information inventée pendant un test. Le signalement a été bloqué, selon la police. Ce cas rappelle pourquoi préparer, vérifier et envoyer doivent rester trois étapes distinctes.",
