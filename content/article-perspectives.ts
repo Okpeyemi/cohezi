@@ -5,6 +5,18 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+"openai-gpt4-api-retrait-janvier-2027": {
+  "format": "essentiel",
+  "whyItMatters": [
+    "Un outil qui fonctionne peut devenir indisponible lorsque son fournisseur retire un modèle. La continuité demande de suivre cette dépendance."
+  ],
+  "whatChanges": [
+    "Recenser les applications concernées, tester le remplacement et traiter à part les modèles personnalisés. Ne pas confondre une réponse plausible avec une intégration compatible."
+  ],
+  "watch": [
+    "Les précisions sur l’échéance, la prise en charge des fonctions nécessaires et les résultats des essais : erreurs, délai et coût complet."
+  ]
+},
 "royaume-uni-preparation-incidents-agents-ia": {
   "format": "contexte",
   "whyItMatters": [
