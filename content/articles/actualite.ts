@@ -2,6 +2,99 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
 {
+  "slug": "openai-gpt4-api-retrait-janvier-2027",
+  "title": "OpenAI prépare le retrait de plusieurs modèles GPT‑4 de son API.",
+  "excerpt": "L’arrêt est annoncé pour le 14 janvier 2027. Les applications concernées doivent préparer une migration ; les versions personnalisées demandent une attention particulière.",
+  "category": "actualite",
+  "publishedAt": "2026-10-14",
+  "readingMinutes": 4,
+  "image": {
+    "src": "/images/articles/openai-gpt4-api-retrait-janvier-2027.webp",
+    "alt": "Illustration générée par IA : des mains préparent une transition entre deux ordinateurs à l’aide d’une liste de vérification"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "OpenAI a annoncé le 14 octobre 2026 le retrait de plusieurs modèles de la famille GPT‑4 de son API, l’interface utilisée pour intégrer l’IA dans un logiciel. L’arrêt est prévu le 14 janvier 2027. Ce n’est pas une coupure aujourd’hui, ni une nouvelle annonce sur les modèles proposés dans ChatGPT. L’échéance concerne les applications qui appellent les versions désignées par la notice."
+    },
+    {
+      "type": "heading",
+      "text": "Quels modèles sont concernés ?"
+    },
+    {
+      "type": "list",
+      "items": [
+        "GPT‑4o : versions du 6 août et du 20 novembre 2024.",
+        "GPT‑4o mini : version du 18 juillet 2024.",
+        "GPT‑4.1 et GPT‑4.1 mini : versions du 14 avril 2025."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "La notice inclut aussi leurs versions personnalisées par entraînement, appelées modèles fine-tunés. Elle recommande GPT‑6 Luna comme remplaçant. Elle ne vise pas toute la famille GPT‑4 sans distinction : il faut comparer le modèle réellement utilisé à cette liste."
+    },
+    {
+      "type": "heading",
+      "text": "Un remplacement recommandé n’est pas une migration terminée"
+    },
+    {
+      "type": "paragraph",
+      "text": "La fiche officielle de Luna indique qu’il accepte du texte et des images en entrée et produit du texte. Elle mentionne les réponses structurées et l’appel de fonctions, c’est-à-dire la possibilité de demander une opération à un logiciel. Mais le fine-tuning n’est pas pris en charge. Une équipe qui a entraîné un modèle pour ses dossiers ne peut donc pas simplement refaire cet entraînement sur Luna."
+    },
+    {
+      "type": "paragraph",
+      "text": "Concrètement, imaginons un outil fictif qui transforme des demandes clients en fiches prêtes à traiter. Le remplacer ne consiste pas seulement à obtenir une réponse qui semble correcte. Il faut vérifier que les champs attendus sont présents, que les informations absentes ne sont pas inventées et que le logiciel sait traiter un échec. Ce sont nos recommandations de test, pas une garantie donnée par OpenAI."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi maintenant, et qui prend le risque ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "OpenAI organise le renouvellement de son catalogue, mais la notice ne donne pas de raison spécifique à ce retrait. Notre lecture : maintenir un service fondé sur une API implique de suivre le calendrier du fournisseur, même si l’application satisfait encore ses utilisateurs. Le délai disponible doit servir à préparer et vérifier la transition, pas à supposer que deux modèles se comportent de façon identique."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le fournisseur peut concentrer son offre sur d’autres modèles. Les développeurs peuvent saisir l’occasion de revoir leurs consignes et leurs tests. Ces avantages restent possibles, non établis par l’annonce. Le travail immédiat repose sur les équipes qui maintiennent les applications ; leurs clients risquent une interruption si une dépendance oubliée reste en place. Une petite automatisation rarement utilisée mérite donc aussi d’être recensée."
+    },
+    {
+      "type": "heading",
+      "text": "La vérification utile avant de basculer"
+    },
+    {
+      "type": "paragraph",
+      "text": "Commencer par un inventaire des outils concernés, y compris ceux fournis par un prestataire. Pour chacun, identifier une personne responsable et quelques exemples représentatifs : une demande normale, une demande incomplète et un cas difficile. Comparer les résultats avec le fonctionnement actuel, puis mesurer le délai de réponse, le coût total et les corrections nécessaires. Prévoir un traitement manuel pour les dossiers qui ne passent pas."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour les modèles personnalisés, il faut examiner séparément comment conserver le comportement recherché : améliorer les instructions, apporter les documents utiles ou choisir une autre solution compatible. Ce sont des pistes à évaluer, pas des équivalents assurés du modèle existant. Avant la bascule, surveiller les précisions du fournisseur, la compatibilité des fonctions utilisées et les retours des premiers essais. La date d’arrêt est une échéance d’exploitation ; elle ne dispense pas de vérifier la qualité."
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "OpenAI",
+      "title": "Deprecations",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "publishedAt": "2026-10-14"
+    },
+    {
+      "outlet": "OpenAI",
+      "title": "GPT-6 Luna Model",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-luna"
+    },
+    {
+      "outlet": "OpenAI",
+      "title": "GPT-4o Model",
+      "url": "https://developers.openai.com/api/docs/models/gpt-4o"
+    },
+    {
+      "outlet": "OpenAI",
+      "title": "GPT-4.1 Model",
+      "url": "https://developers.openai.com/api/docs/models/gpt-4.1"
+    }
+  ]
+},
+{
   "slug": "meta-muse-wonder-memoire-agents-acces",
   "title": "Meta lance Muse Wonder : une mémoire pour les agents, des accès à distinguer.",
   "excerpt": "Deux nouveaux modèles arrivent dans Muse Code, et Muse Wonder est aussi accessible par API. Meta promet un travail plus durable ; ses évaluations ne garantissent ni la fiabilité de chaque action ni une ouverture immédiate à tous les utilisateurs de Muse.",
