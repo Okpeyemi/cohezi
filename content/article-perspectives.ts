@@ -5,6 +5,18 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+"grok-voice-3-api-mise-a-jour-automatique": {
+  "format": "essentiel",
+  "whyItMatters": [
+    "Un service vocal peut recevoir un nouveau modèle par le seul changement d’un alias. La compatibilité de l’API ne remplace pas un contrôle du résultat."
+  ],
+  "whatChanges": [
+    "Identifier la version utilisée et comparer des appels représentatifs, y compris les corrections et les transferts à une personne."
+  ],
+  "watch": [
+    "Les opérations correctement terminées, le coût complet et les performances dans les conditions réelles du service, au-delà d’un classement global."
+  ]
+},
 "openai-gpt4-api-retrait-janvier-2027": {
   "format": "essentiel",
   "whyItMatters": [
