@@ -2,6 +2,96 @@ import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
 {
+  "slug": "grok-voice-3-api-mise-a-jour-automatique",
+  "title": "Grok Voice 3.0 : une mise à jour automatique pour certains agents vocaux.",
+  "excerpt": "Le nouveau modèle vocal est disponible depuis le 14 octobre. Les applications utilisant grok-voice-latest basculent automatiquement ; la compatibilité technique ne garantit pas des réponses identiques.",
+  "category": "actualite",
+  "publishedAt": "2026-10-15",
+  "readingMinutes": 4,
+  "image": {
+    "src": "/images/articles/grok-voice-3-api-mise-a-jour-automatique.webp",
+    "alt": "Illustration générée par IA : un casque de service client et un ordinateur sur un bureau, avec une main près du téléphone"
+  },
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "SpaceXSI, l’activité d’IA auparavant appelée xAI, a lancé Grok Voice 3.0 le 14 octobre 2026. Ce modèle reçoit de la parole et répond oralement ; il est proposé aux développeurs dans la Voice Agent API. Le détail opérationnel est immédiat : les sessions utilisant le nom générique grok-voice-latest passent automatiquement à cette version. Une application peut donc changer de modèle sans modification de son propre code."
+    },
+    {
+      "type": "heading",
+      "text": "Ce qui change, et ce qui reste compatible"
+    },
+    {
+      "type": "paragraph",
+      "text": "Les notes officielles confirment ce basculement et la dépréciation de Grok Voice 2.0. La documentation indique que l’interface, les paramètres de session et les événements restent les mêmes. Elle permet aussi de choisir explicitement une version. Il faut distinguer ces deux décisions : conserver une connexion qui fonctionne et vérifier le comportement de la voix qui répond."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le tarif annoncé reste de 0,08 dollar par minute, comme pour la version précédente. À ce taux, dix minutes représentent 0,80 dollar pour le modèle, par simple calcul. Ce n’est pas le budget complet d’un service téléphonique : l’intégration, les communications et le traitement des cas repris par une personne peuvent ajouter des coûts."
+    },
+    {
+      "type": "heading",
+      "text": "Les résultats mesurés ne disent pas tout d’un appel"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le tableau d’Artificial Analysis place Grok Voice 3.0 à 86,9 dans son indice global, contre 81,3 pour son prédécesseur. Il publie aussi 71,6 % sur τ-Voice, un test de scénarios de service client simulés avec des outils et des règles. Ces mesures externes donnent des repères, pas le pourcentage de clients qu’une entreprise réelle pourrait servir sans intervention."
+    },
+    {
+      "type": "paragraph",
+      "text": "L’annonce met en avant des réponses en moins d’une seconde. Artificial Analysis mesure 0,81 seconde avant le premier son dans son test, contre 0,70 pour Grok Voice 2.0. La nouvelle version ne gagne donc pas sur tous les indicateurs. Ce délai initial ne mesure ni la durée totale d’un appel ni la justesse d’un remboursement. Un meilleur indice global ne suffit pas à choisir pour chaque usage."
+    },
+    {
+      "type": "heading",
+      "text": "Pourquoi cette sortie compte maintenant"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le fournisseur vise notamment les appels d’assistance et de vente. Notre lecture : la compétition porte autant sur la capacité à terminer une demande que sur une voix agréable. Une réponse rapide pourrait réduire l’attente ; ce gain reste à mesurer dans chaque service. Les développeurs disposent d’une nouvelle option, tandis que les responsables d’un outil existant doivent vérifier si leur alias a déjà changé de cible."
+    },
+    {
+      "type": "paragraph",
+      "text": "Les clients peuvent gagner en disponibilité, mais supportent aussi les conséquences d’une demande mal comprise. Imaginons un appel fictif pour modifier une livraison : la personne corrige son adresse après avoir commencé sa phrase. Le contrôle utile porte sur l’adresse finalement enregistrée, pas seulement sur la fluidité de la conversation. Cette situation illustre notre recommandation ; elle ne décrit pas un incident observé chez le fournisseur."
+    },
+    {
+      "type": "heading",
+      "text": "Un essai limité avant d’élargir les usages"
+    },
+    {
+      "type": "paragraph",
+      "text": "Comparer quelques appels de test : une demande simple, une correction en cours de phrase, du bruit et une demande que l’outil doit transmettre à une personne. Vérifier les opérations réellement réalisées, les reprises nécessaires et le coût par dossier correctement terminé. Prévoir une sortie humaine compréhensible lorsque le résultat reste incertain."
+    },
+    {
+      "type": "paragraph",
+      "text": "À surveiller : les retours en production, les résultats dans les langues et conditions sonores du service, ainsi que les prochaines modifications de l’alias. Fixer un nom de version peut rendre les essais reproductibles ; cela ne garantit pas une disponibilité permanente. La priorité est de savoir quel modèle répond, puis de contrôler ce qu’il fait."
+    }
+  ],
+  "sources": [
+    {
+      "outlet": "SpaceXSI",
+      "title": "Introducing Grok Voice 3.0",
+      "url": "https://x.ai/news/grok-voice-3",
+      "publishedAt": "2026-10-14"
+    },
+    {
+      "outlet": "SpaceXSI Docs",
+      "title": "Release Notes",
+      "url": "https://docs.x.ai/developers/release-notes",
+      "publishedAt": "2026-10-14"
+    },
+    {
+      "outlet": "SpaceXSI Docs",
+      "title": "Speech to Speech",
+      "url": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech"
+    },
+    {
+      "outlet": "Artificial Analysis",
+      "title": "Speech to Speech AI Model & Provider Leaderboard",
+      "url": "https://artificialanalysis.ai/speech-to-speech"
+    }
+  ]
+},
+{
   "slug": "openai-gpt4-api-retrait-janvier-2027",
   "title": "OpenAI prépare le retrait de plusieurs modèles GPT‑4 de son API.",
   "excerpt": "L’arrêt est annoncé pour le 14 janvier 2027. Les applications concernées doivent préparer une migration ; les versions personnalisées demandent une attention particulière.",
