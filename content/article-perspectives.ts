@@ -5,6 +5,12 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'anthropic-metr-evaluateurs-acces-interne': {
+    format: 'contexte',
+    whyItMatters: ['Un regard extérieur peut mieux documenter les pratiques d’un laboratoire. Il ne suffit pas à garantir la fiabilité de chaque usage ni à supprimer les erreurs.'],
+    whatChanges: ['Pour choisir un fournisseur, lire le périmètre réel des évaluations et les réserves publiées, plutôt que s’arrêter au nom de l’organisme associé.'],
+    watch: ['Les premiers rapports issus du nouvel accès, leur délai de publication et les informations retirées. Vérifier aussi si METR juge ses accès suffisants et comment les désaccords sont rendus publics.'],
+  },
 "grok-voice-3-api-mise-a-jour-automatique": {
   "format": "essentiel",
   "whyItMatters": [
