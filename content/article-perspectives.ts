@@ -5,6 +5,12 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'beam-poids-ouverts-hebergement-cout': {
+    format: 'essentiel',
+    whyItMatters: ['L’accès aux poids donne davantage de choix pour héberger et adapter une IA. Il ne rend pas automatiquement son exploitation simple, économique ou sûre.'],
+    whatChanges: ['Comparer une installation propre et un service hébergé sur une tâche concrète, en comptant les corrections humaines, l’infrastructure et la maintenance.'],
+    watch: ['Les évaluations indépendantes, les coûts réels en service et les limites des différentes versions. Vérifier aussi les résultats dans la langue de travail : le modèle a été développé principalement pour l’anglais.'],
+  },
   'anthropic-metr-evaluateurs-acces-interne': {
     format: 'contexte',
     whyItMatters: ['Un regard extérieur peut mieux documenter les pratiques d’un laboratoire. Il ne suffit pas à garantir la fiabilité de chaque usage ni à supprimer les erreurs.'],
