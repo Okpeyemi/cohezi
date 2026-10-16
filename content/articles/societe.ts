@@ -1,6 +1,42 @@
 import type { ArticleCore } from '../types';
 
 export const societeArticles: ArticleCore[] = [
+  {
+    slug: 'anthropic-metr-evaluateurs-acces-interne',
+    title: 'Anthropic ouvre ses portes à METR : un regard extérieur, pas un certificat de sécurité.',
+    excerpt: 'Six évaluateurs disposent, selon Anthropic, d’un accès interne étendu et peuvent publier leurs conclusions. METR rappelle pourquoi l’accès, les informations retirées et les limites de l’examen doivent aussi être publics.',
+    category: 'societe',
+    publishedAt: '2026-10-16',
+    readingMinutes: 4,
+    image: {
+      src: '/images/articles/anthropic-metr-evaluateurs-acces-interne.webp',
+      alt: 'Illustration générée par IA : des évaluateurs fictifs examinent un ordinateur dans un bureau anonyme ; il ne s’agit pas des locaux d’Anthropic.',
+    },
+    body: [
+      { type: 'paragraph', text: 'Anthropic a annoncé le 15 octobre 2026 avoir accueilli six salariés de METR, une organisation de recherche indépendante, avec un accès proche de celui de ses équipes internes d’évaluation des risques. L’enjeu : permettre un examen extérieur plus approfondi.' },
+      { type: 'heading', text: 'Un accès étendu, mais pas illimité' },
+      { type: 'paragraph', text: 'Selon l’entreprise, ces évaluateurs reçoivent matériel, bureaux et outils internes. Certaines informations restent exclues, notamment les données des clients, les échanges protégés avec les avocats et des détails d’architecture. Anthropic affirme ne pas pouvoir bloquer la publication des analyses, tout en conservant un droit de retrait sur des catégories prédéfinies d’informations sensibles. METR peut commenter publiquement ces retraits.' },
+      { type: 'paragraph', text: 'Ce dispositif est volontaire. Il ne faut pas l’étendre à tous les partenaires : Anthropic décrit aussi des collaborations moins avancées, avec moins d’accès et parfois une publication soumise à son accord. Accueillir un évaluateur ne signifie donc pas toujours lui donner les mêmes droits.' },
+      { type: 'heading', text: 'Une promesse de septembre devient un dispositif annoncé' },
+      { type: 'paragraph', text: 'Dans son essai de septembre, Dario Amodei proposait déjà d’installer durablement des évaluateurs extérieurs dans les laboratoires. Le dirigeant estimait qu’une personne capable d’observer les méthodes de travail pourrait vérifier les engagements, rendre les pratiques plus visibles et apporter un second avis. C’était une proposition du patron d’Anthropic, pas une démonstration de son efficacité. L’annonce actuelle précise une mise en œuvre ; elle ne prouve ni que les incidents vont diminuer, ni que toute la profession adoptera cette organisation.' },
+      { type: 'heading', text: 'Ce que METR dit vouloir rendre visible' },
+      { type: 'paragraph', text: 'Le 14 octobre, METR a publié sa propre approche de ces collaborations. L’organisation veut produire des éléments publics sur les risques de perte de contrôle, et non décider à la place des entreprises de ce qu’elles doivent lancer. Elle demande que les lecteurs connaissent le périmètre, la durée, les accès accordés et les restrictions qui ont pu influencer un examen. Sans cette description, deux rapports portant la même étiquette peuvent couvrir des réalités très différentes.' },
+      { type: 'paragraph', text: 'METR explique également refuser les paiements et dons des entreprises développant les modèles les plus avancés. Cela ne supprime pas toutes les dépendances : dans un régime volontaire, l’organisation doit encore obtenir les informations et la coopération des sociétés examinées. Elle reconnaît que certaines données peuvent rester invérifiables. L’indépendance financière et la liberté de conclure sont importantes, mais elles ne rendent pas automatiquement un dossier complet.' },
+      { type: 'heading', text: 'Trois questions, plutôt qu’un simple score' },
+      { type: 'paragraph', text: 'Dans une proposition distincte, METR organise son travail autour de trois questions : les agents cherchent-ils à réaliser des actions gravement nuisibles ; les mécanismes de contrôle peuvent-ils les détecter et les arrêter ; l’automatisation de la recherche accélère-t-elle les capacités plus vite que leur maîtrise ? Ce sont des axes d’investigation, pas trois garanties déjà obtenues. L’organisation précise que les méthodes actuelles ne permettent pas de certifier avec assurance que le développement est sûr.' },
+      { type: 'paragraph', text: 'Cette proposition distingue aussi l’examen d’un modèle de celui du laboratoire qui l’entraîne. Un résultat sur une série de tâches ne décrit pas, à lui seul, les incidents internes, les alertes ignorées ou les effets d’un changement de méthode. METR envisage notamment des entretiens et l’analyse de données internes. Sa proposition générale reste limitée et ne remplace pas un audit de sécurité complet. Il faut donc lire chaque accord et chaque rapport pour savoir ce qui a réellement été observé.' },
+      { type: 'heading', text: 'Ce que cela change pour les utilisateurs' },
+      { type: 'paragraph', text: 'Notre lecture : le bénéfice possible est une meilleure information, pas une nouvelle protection automatique dans Claude. Une entreprise utilisatrice pourrait, par exemple, comparer les conclusions publiques avant de confier davantage de tâches à un agent. Mais un rapport sur le laboratoire ne vérifie pas les accès accordés dans sa propre application. Pour un outil qui prépare des commandes, le contrôle du destinataire, des quantités et de la validation humaine reste un problème local.' },
+      { type: 'paragraph', text: 'Les utilisateurs peuvent gagner des informations moins dépendantes du récit commercial. Anthropic peut gagner en crédibilité, tout en s’exposant à des conclusions défavorables. Les évaluateurs, eux, prennent un risque de réputation si leur nom est compris comme une garantie plus large que leur travail. Ce partage des intérêts explique pourquoi publier les limites compte autant que publier les résultats.' },
+      { type: 'takeaway', title: 'À retenir', items: ['L’annonce porte sur un accès d’évaluateurs extérieurs, pas sur une certification de Claude.', 'La valeur du dispositif se jugera dans les rapports publiés et leurs limites explicites.'] },
+    ],
+    sources: [
+      { outlet: 'Anthropic', title: 'An update on independent evaluators', url: 'https://www.anthropic.com/news/an-update-on-independent-evaluators', publishedAt: '2026-10-15' },
+      { outlet: 'METR', title: 'Our approach to working with AI companies', url: 'https://metr.org/blog/2026-10-14-our-approach-to-risk-assessment/', publishedAt: '2026-10-14' },
+      { outlet: 'METR', title: 'A proposal for better informing the public about loss-of-control risks from frontier AI development', url: 'https://metr.org/blog/2026-10-14-better-informing-the-public-about-loss-of-control-risks/', publishedAt: '2026-10-14' },
+      { outlet: 'Dario Amodei', title: 'We Must Pace the Frontier', url: 'https://darioamodei.com/post/we-must-pace-the-frontier' },
+    ],
+  },
 {
   "slug": "royaume-uni-preparation-incidents-agents-ia",
   "title": "Le Royaume-Uni prépare ses services publics aux incidents d’agents IA.",
