@@ -1,6 +1,62 @@
 import type { ArticleCore } from '../types';
 
 export const actualiteArticles: ArticleCore[] = [
+  {
+    slug: 'beam-poids-ouverts-hebergement-cout',
+    title: 'Beam devient téléchargeable : ouvert ne veut pas dire léger.',
+    excerpt: 'Reflection publie les poids de Beam sous licence Apache 2.0. Les équipes peuvent l’héberger et l’adapter, mais ce modèle de 501 milliards de paramètres demande une infrastructure conséquente.',
+    category: 'actualite',
+    publishedAt: '2026-10-16',
+    readingMinutes: 3,
+    image: {
+      src: '/images/articles/beam-poids-ouverts-hebergement-cout.webp',
+      alt: 'Illustration générée par IA : les mains d’une personne vérifient un serveur dans une salle informatique sombre ; scène fictive sans lien avec les installations de Reflection',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Reflection a publié le 16 octobre 2026 les poids de Beam, les fichiers contenant les paramètres appris par son modèle d’IA. Ils sont disponibles sur Hugging Face sous licence Apache 2.0. La nouveauté est cet accès effectif : le laboratoire avait présenté Beam le 5 octobre, mais réservait alors son utilisation à un groupe limité et promettait les fichiers pour plus tard dans le mois.',
+      },
+      { type: 'heading', text: 'Ce que l’on peut réellement récupérer' },
+      {
+        type: 'paragraph',
+        text: 'Beam reçoit du texte et produit du texte. Il vise notamment le développement logiciel et les agents qui enchaînent des tâches avec des outils. La fiche publiée par Reflection décrit 501 milliards de paramètres au total, dont environ 23 milliards mobilisés pour chaque morceau de texte généré. Trois versions numériques sont proposées, avec des compromis différents entre précision et place occupée.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Les poids ouverts permettent de télécharger, héberger et adapter le modèle, dans les conditions de sa licence. Cela ne signifie pas que toutes les données d’entraînement sont publiées. Pour une équipe, la différence concrète est de pouvoir exploiter sa propre copie plutôt que dépendre uniquement d’une interface distante contrôlée par le laboratoire.',
+      },
+      { type: 'heading', text: '23 milliards actifs, mais un modèle bien plus lourd' },
+      {
+        type: 'paragraph',
+        text: 'Le chiffre des paramètres actifs concerne le calcul, pas la taille totale à conserver en mémoire. Hugging Face, qui a travaillé avec Reflection sur l’intégration, précise que tous les experts du modèle restent en mémoire. Sa version BF16 représente environ un téraoctet de fichiers ; la version NVFP4 descend à environ 280 gigaoctets pour les poids, avant la mémoire nécessaire aux requêtes.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Ce n’est donc pas un petit modèle destiné à tourner simplement sur un ordinateur ordinaire. Louer un service qui l’héberge reste une autre voie. Notre lecture : l’ouverture élargit les choix de déploiement, mais ne supprime ni la facture matérielle, ni le travail de maintenance et de sécurisation.',
+      },
+      { type: 'heading', text: 'Pourquoi cette étape compte maintenant' },
+      {
+        type: 'paragraph',
+        text: 'Cette publication transforme la promesse du 5 octobre en possibilité de déploiement. Reflection accompagne les fichiers d’intégrations pour les logiciels qui font fonctionner les modèles. Les équipes disposant d’infrastructure gagnent une option personnalisable ; les hébergeurs peuvent proposer des services autour de Beam. Les petites structures doivent, elles, comparer le coût complet avec celui d’un accès hébergé avant d’envisager leur propre installation.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Reflection met en avant un raisonnement consommant moins de texte intermédiaire. C’est une affirmation du fournisseur, pas une garantie d’économie dans chaque application. Hugging Face indique que son tableau de performances reprend les résultats fournis par Reflection et présente ses propres essais limités comme des explorations, non comme des benchmarks. Nous n’avons pas exécuté Beam pour cet article.',
+      },
+      { type: 'heading', text: 'Commencer par une tâche, pas par un classement' },
+      {
+        type: 'paragraph',
+        text: 'Imaginons une petite équipe qui veut corriger les erreurs d’un logiciel interne. Un essai utile consiste à comparer quelques problèmes déjà résolus, sur une copie isolée du projet : corrections justes, temps passé à relire et coût par problème terminé. C’est une recommandation COHEZI, pas un résultat observé. Un agent ne devrait pas recevoir d’emblée les accès de production simplement parce que ses fichiers sont disponibles.',
+      },
+    ],
+    sources: [
+      { outlet: 'Reflection', title: 'Beam is now available', url: 'https://reflection.ai/blog/beam-is-available', publishedAt: '2026-10-16' },
+      { outlet: 'Reflection sur Hugging Face', title: 'reflection/Beam-1.0-501B-A23B — Model card', url: 'https://huggingface.co/reflection/Beam-1.0-501B-A23B' },
+      { outlet: 'Hugging Face', title: 'Welcome Beam: a 501B open model you can own, customize, and scale', url: 'https://huggingface.co/blog/reflection-beam', publishedAt: '2026-10-16' },
+      { outlet: 'Reflection', title: 'Introducing Beam: Reflection’s 501B open-weight model', url: 'https://reflection.ai/blog/introducing-beam', publishedAt: '2026-10-05' },
+    ],
+  },
 {
   "slug": "grok-voice-3-api-mise-a-jour-automatique",
   "title": "Grok Voice 3.0 : une mise à jour automatique pour certains agents vocaux.",
