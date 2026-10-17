@@ -1,6 +1,93 @@
 import type { ArticleCore } from '../types';
 
 export const businessArticles: ArticleCore[] = [
+  {
+    slug: 'chine-exportations-ia-enregistrement-api',
+    title: 'La Chine encadre certains transferts d’IA, sans fermer tous les accès en ligne.',
+    excerpt: 'Depuis le 16 octobre, certains transferts de technologies doivent être enregistrés avant leur exportation. Des restrictions plus larges restent en consultation ; le ministère distingue ces transferts de l’utilisation d’un service par API.',
+    category: 'business',
+    publishedAt: '2026-10-17',
+    readingMinutes: 5,
+    image: {
+      src: '/images/articles/chine-exportations-ia-enregistrement-api.webp',
+      alt: 'Illustration générée par IA : une personne examine un dossier sur un bureau devant un ordinateur et une salle informatique floue ; scène fictive sans document officiel',
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Les ministères chinois du Commerce et des Sciences et Technologies ont publié le 16 octobre 2026 un projet modifiant le catalogue des technologies interdites ou restreintes à l’exportation. Il vise notamment 23 technologies liées à l’IA. Une partie de l’annonce s’applique déjà : certains transferts doivent être enregistrés avant leur exportation. En revanche, la nouvelle liste d’interdictions et de restrictions reste soumise à consultation jusqu’au 15 novembre.',
+      },
+      { type: 'heading', text: 'Deux calendriers, pas une interdiction générale' },
+      {
+        type: 'paragraph',
+        text: 'L’avis officiel prévoit cet enregistrement pendant la période transitoire, jusqu’à l’entrée en vigueur de la révision. Il concerne aussi les exportations commencées mais non terminées. Parmi les opérations citées figurent la cession de propriété d’une technologie et l’autorisation de l’utiliser à l’étranger. Enregistrer un transfert n’équivaut donc pas à affirmer que toutes les restrictions proposées sont déjà entrées en vigueur.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le périmètre ne se résume pas à une liste de marques. Il comprend des technologies de modèles, d’agents et de calcul, selon des critères précisés dans les documents. Le nom d’un fournisseur ne suffit pas à décider si une opération est concernée. Notre lecture : le premier travail porte sur ce qui est transmis et sur les conditions du contrat, pas sur la nationalité affichée dans une application.',
+      },
+      { type: 'heading', text: 'Utiliser un service n’est pas recevoir sa technologie' },
+      {
+        type: 'paragraph',
+        text: 'Dans ses réponses officielles, le ministère distingue l’installation à l’étranger d’un modèle comportant une technologie restreinte de son utilisation à distance. Il indique que les appels par API, les interactions dans une application ou un site, et les logiciels proposés comme services ne relèveraient pas de ce contrôle des exportations de modèles. Une API est ici l’interface par laquelle un logiciel envoie une demande au modèle et reçoit sa réponse.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Le ministère prévoit aussi d’exclure les technologies déjà entrées dans le domaine public, notamment par une publication ouverte ou scientifique, et décrit des facilités pour certains autres transferts. Ces précisions appartiennent au cadre présenté : elles ne signifient ni que toute future ouverture sera sans formalité, ni que tous les usages resteront disponibles indéfiniment.',
+      },
+      { type: 'heading', text: 'Pourquoi cette annonce arrive maintenant' },
+      {
+        type: 'paragraph',
+        text: 'Le ministère invoque la prévention des usages dangereux, notamment les capacités cyber, tout en affirmant vouloir préserver les échanges technologiques. C’est sa justification, pas une efficacité déjà démontrée. Reuters replace l’annonce dans la concurrence technologique avec les États-Unis. Ce contexte éclaire les intérêts en présence ; il ne prouve pas que chaque disposition vise un pays particulier.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Ce que l’on peut vérifier aujourd’hui, ce sont les documents, leur date, le calendrier et les distinctions qu’ils formulent. On ne peut pas encore mesurer leurs effets sur les délais d’installation, les prix ou la concurrence. Le ministère est la source directe pour expliquer la règle proposée, mais aussi un acteur qui présente sa propre politique. Une promesse de formalités simples devra être confrontée à leur fonctionnement réel.',
+      },
+      { type: 'heading', text: 'Qui gagne une marge de manœuvre, qui porte le risque ?' },
+      {
+        type: 'paragraph',
+        text: 'Notre analyse : distinguer service distant et transfert peut laisser aux fournisseurs une voie pour servir des clients étrangers sans leur transmettre toute la technologie. Le client qui souhaite exploiter sa propre installation pourrait devoir anticiper davantage les modalités de livraison. Ce sont des conséquences possibles du dispositif, pas des retards constatés. Le risque pratique est de vendre ou d’acheter une autonomie que le montage technique et contractuel ne fournit pas réellement.',
+      },
+      { type: 'heading', text: 'Deux projets semblables en apparence, deux questions différentes' },
+      {
+        type: 'paragraph',
+        text: 'Imaginons une entreprise qui ajoute un assistant à son outil de gestion. Dans un premier scénario fictif, son application appelle un modèle hébergé par un fournisseur. Dans un second, elle reçoit une installation du modèle sur ses propres serveurs. Le résultat peut sembler identique à l’écran, mais ce qui circule entre les partenaires ne l’est pas. Cette comparaison aide à lire l’annonce ; elle ne tranche pas le statut juridique d’un contrat particulier.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Avant d’acheter, une question accessible consiste à demander : utilisera-t-on un service, ou recevra-t-on des fichiers et des droits permettant de l’exploiter nous-mêmes ? Puis faire préciser les responsabilités si la livraison change. Cela évite de transformer une préférence pour l’hébergement local en promesse d’indépendance automatique. Les autres questions, comme la confidentialité des dossiers ou la continuité du service, restent distinctes du contrôle des exportations.',
+      },
+      {
+        type: 'takeaway',
+        title: 'À retenir',
+        items: [
+          'L’enregistrement transitoire est déjà demandé ; les nouvelles restrictions sont encore en consultation.',
+          'Le cadre présenté distingue l’accès à un service du transfert de certaines technologies.',
+        ],
+      },
+    ],
+    sources: [
+      {
+        outlet: 'Ministères chinois du Commerce et des Sciences et Technologies',
+        title: '商务部 科技部公告2026年第48号 就修订《中国禁止出口限制出口技术目录》公开征求意见并对相关技术出口实施临时登记管理',
+        url: 'https://www.mofcom.gov.cn/zcfb/dwmygl/art/2026/art_61446ab4beee4f63973d4d0ab3097648.html',
+        publishedAt: '2026-10-16',
+      },
+      {
+        outlet: 'Ministère chinois du Commerce',
+        title: '商务部新闻发言人就修订《中国禁止出口限制出口技术目录》答记者问',
+        url: 'https://www.mofcom.gov.cn/xwfb/xwfyrth/art/2026/art_d7661dbf62794345a221404f82a25959.html',
+        publishedAt: '2026-10-16',
+      },
+      {
+        outlet: 'Reuters',
+        title: 'Beijing seeks tighter grip on AI exports amid US rivalry',
+        url: 'https://www.reuters.com/world/asia-pacific/china-proposes-adding-40-ai-biotech-solar-technologies-export-control-list-2026-10-16/',
+        publishedAt: '2026-10-16',
+      },
+    ],
+  },
 {
   "slug": "google-gemini-agent-travail-acces-anticipe",
   "title": "Google présente un agent Gemini pour déléguer du travail, encore en accès anticipé.",
