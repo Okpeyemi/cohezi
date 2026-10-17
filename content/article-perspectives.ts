@@ -5,6 +5,12 @@ import type { ArticlePerspective } from './types';
  * Toute nouvelle publication doit avoir une entrée ici avant de compiler.
  */
 export const articlePerspectives: Record<string, ArticlePerspective> = {
+  'chine-exportations-ia-enregistrement-api': {
+    format: 'contexte',
+    whyItMatters: ['L’accès à une IA dépend aussi de la manière dont sa technologie traverse les frontières. Utiliser un service et posséder une installation ne donnent pas les mêmes possibilités ni les mêmes dépendances.'],
+    whatChanges: ['Faire préciser le mode de fourniture avant un projet : service distant, fichiers du modèle ou installation sur place. Ne pas annoncer une coupure des API à partir d’un texte visant des transferts technologiques.'],
+    watch: ['Le texte final après la consultation du 15 novembre, ses critères techniques, les formalités effectivement demandées et les changements confirmés par les fournisseurs. Aucun calendrier de coupure générale n’est établi par cette annonce.'],
+  },
   'beam-poids-ouverts-hebergement-cout': {
     format: 'essentiel',
     whyItMatters: ['L’accès aux poids donne davantage de choix pour héberger et adapter une IA. Il ne rend pas automatiquement son exploitation simple, économique ou sûre.'],
